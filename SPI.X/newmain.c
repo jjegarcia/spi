@@ -36,7 +36,7 @@ void main()
    SSPIF = 0;
    SSPIE = 1;
    ADCON1 = 0x07;
-   TRISA5 = 1; 
+   TRISF7 = 1; //SS1 as slave reads from master
 
    spiInit(SPI_SLAVE_SS_EN, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
    while(1)
@@ -58,21 +58,21 @@ void main()
 //   TRISB = 0xFF;                 //PORTB as input
    TRISD = 0x00;                 //PORTD as output
    PORTD = 0x00;                 //All LEDs OFF
-   TRISC7 = 0;
-   RC7 = 1;
+   TRISF7 = 0;                  //SS1 as master writes to slave
+   RF7 = 1;
    
    spiInit(SPI_MASTER_OSC_DIV4, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
    
    while(1)
    {
-       RC7 = 0;       //Slave Select
+       RF7 = 0;       //Slave Select
        __delay_ms(1);
        
        spiWrite(0b00110011);
        PORTD = spiRead();
        
        __delay_ms(1);
-       RC7 = 1;       //Slave Deselect 
+       RF7 = 1;       //Slave Deselect 
        
        __delay_ms(100);
    }
