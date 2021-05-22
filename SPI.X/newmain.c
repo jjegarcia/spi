@@ -8,17 +8,13 @@
 #include "config.h"
 #include "main.h"
 #include "init.h"
+#include "interruptService.h"
 
 #define _XTAL_FREQ 8000000
 
-void __interrupt() SPI_Slave_Read() {
-    if (SSPIF == 1) {
-        SSPIF = 0;
-        readValue = spiRead();
-        FLAGS.ByteBits.DISPLAY_READING = 1;
-    }
+void __interrupt() service(){
+    interruptService();
 }
-
 void main() {
     setIo();
     setInterrupts();
