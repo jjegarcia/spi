@@ -19,8 +19,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "32
 [; ;./init.h: 32: void setInterrupts();
 [v _setInterrupts `(v ~T0 @X0 0 e? ]
-"23 newmain.c
-[; ;newmain.c: 23:     spiInit(SPI_SLAVE_SS_EN, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
+"21 newmain.c
+[; ;newmain.c: 21:     spiInit(SPI_MASTER_OSC_DIV4, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
 [c E4544 32 33 34 35 36 37 .. ]
 [n E4544 . SPI_MASTER_OSC_DIV4 SPI_MASTER_OSC_DIV16 SPI_MASTER_OSC_DIV64 SPI_MASTER_TMR2 SPI_SLAVE_SS_EN SPI_SLAVE_SS_DIS  ]
 [c E4552 0 128 .. ]
@@ -744,7 +744,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _readValue `uc ~T0 @X0 1 e ]
 [v $root$_service `(v ~T0 @X0 0 e ]
 "15 newmain.c
-[; ;newmain.c: 15: void __attribute__((picinterrupt(("")))) service() {
+[; ;newmain.c: 15: void __attribute__((picinterrupt(("")))) service(){
 [v _service `(v ~T110 @X0 1 ef ]
 {
 [e :U _service ]
@@ -757,52 +757,52 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :UE 503 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
-"19
-[; ;newmain.c: 19: void main() {
+"18
+[; ;newmain.c: 18: void main() {
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"20
-[; ;newmain.c: 20:     setIo();
+"19
+[; ;newmain.c: 19:     setIo();
 [e ( _setIo ..  ]
-"21
-[; ;newmain.c: 21:     setInterrupts();
+"20
+[; ;newmain.c: 20:     setInterrupts();
 [e ( _setInterrupts ..  ]
+"21
+[; ;newmain.c: 21:     spiInit(SPI_MASTER_OSC_DIV4, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
+[e ( _spiInit (4 , , , . `E4544 0 . `E4552 0 . `E4556 1 . `E4560 0 ]
 "23
-[; ;newmain.c: 23:     spiInit(SPI_SLAVE_SS_EN, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
-[e ( _spiInit (4 , , , . `E4544 4 . `E4552 0 . `E4556 1 . `E4560 0 ]
-"25
-[; ;newmain.c: 25:     spiWrite(0b01010101);
+[; ;newmain.c: 23:     spiWrite(0b01010101);
 [e ( _spiWrite (1 -> -> 85 `i `uc ]
-"26
-[; ;newmain.c: 26:     while (1) {
+"24
+[; ;newmain.c: 24:     while (1) {
 [e :U 506 ]
 {
-"27
-[; ;newmain.c: 27:         if (FLAGS.ByteBits.DISPLAY_READING) {
+"25
+[; ;newmain.c: 25:         if (FLAGS.ByteBits.DISPLAY_READING) {
 [e $ ! != -> . . _FLAGS 1 1 `i -> 0 `i 508  ]
 {
-"28
-[; ;newmain.c: 28:             PORTD = readValue;
+"26
+[; ;newmain.c: 26:             PORTD = readValue;
 [e = _PORTD _readValue ]
-"29
-[; ;newmain.c: 29:             FLAGS.ByteBits.DISPLAY_READING = 0;
+"27
+[; ;newmain.c: 27:             FLAGS.ByteBits.DISPLAY_READING = 0;
 [e = . . _FLAGS 1 1 -> -> 0 `i `uc ]
-"32
-[; ;newmain.c: 32:         }
+"30
+[; ;newmain.c: 30:         }
 }
 [e :U 508 ]
-"33
-[; ;newmain.c: 33:         _delay((unsigned long)((1000)*(8000000/4000.0)));
+"31
+[; ;newmain.c: 31:         _delay((unsigned long)((1000)*(8000000/4000.0)));
 [e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-"34
-[; ;newmain.c: 34:     }
+"32
+[; ;newmain.c: 32:     }
 }
 [e :U 505 ]
 [e $U 506  ]
 [e :U 507 ]
-"35
-[; ;newmain.c: 35: }
+"33
+[; ;newmain.c: 33: }
 [e :UE 504 ]
 }
