@@ -1,0 +1,458 @@
+%CMF
+# %PSECTS Section
+# For each object file, details of its psects are enumerated here.
+# The begining of the section is indicated by %PSECTS.  The first
+# line indicates the name of the first object file, e.g.
+#    $foo.obj
+# Each line that follows describes a psect in that object file, until
+# the next object file.  The lines that describe a psect have the
+# format:
+#    <psect name> <class name> <space> <link address> <load addresses> <length> <delta>
+# All addresses and the length are given in unqualified hexadecimal
+# in delta units.  Any other numeric values are decimal.
+%PSECTS
+$C:\Users\lauri\AppData\Local\Temp\xcAs13s.o
+idloc IDLOC 5 200000 200000 8 1
+init CODE 0 E E 4 1
+reset_vec CODE 0 0 0 4 1
+config CONFIG 4 300000 300000 E 1
+$dist/default/debug\SPI.X.debug.o
+cinit CODE 0 BA BA E 1
+idloc IDLOC 5 200000 200000 8 1
+intcode_body CODE 0 DE DE A 1
+text0 CODE 0 12 12 52 1
+text1 CODE 0 E8 E8 8 1
+text2 CODE 0 64 64 2C 1
+text3 CODE 0 C8 C8 C 1
+text4 CODE 0 D4 D4 A 1
+text6 CODE 0 F8 F8 6 1
+text7 CODE 0 90 90 1A 1
+text8 CODE 0 F0 F0 8 1
+text9 CODE 0 AA AA 10 1
+cstackCOMRAM COMRAM 1 1 1 6 1
+temp COMRAM 1 9 9 1 1
+intcode CODE 0 8 8 6 1
+bssCOMRAM COMRAM 1 7 7 2 1
+config CONFIG 4 300000 300000 E 1
+# %UNUSED Section
+# This section enumerates the unused ranges of each CLASS. Each entry
+# is described on a single line as follows:
+#    <class name> <range> <delta>
+# Addresses given in the range are in hexadecimal and units of delta.
+%UNUSED
+RAM 60-EEE 1
+RAM F00-F5F 1
+SFR F60-F9B 1
+SFR F9D-FD3 1
+SFR FD5-FDA 1
+SFR FE0-FE2 1
+SFR FE8-FEA 1
+SFR FF0-FFB 1
+BANK0 60-FF 1
+BANK1 100-1FF 1
+BANK2 200-2FF 1
+BANK3 300-3FF 1
+BANK4 400-4FF 1
+BANK5 500-5FF 1
+BANK6 600-6FF 1
+BANK7 700-7FF 1
+BANK8 800-8FF 1
+BANK9 900-9FF 1
+CONST 4-7 1
+CONST FE-1FD3F 1
+STACK 60-EEE 1
+SMALLCONST 1000-1FD3F 1
+CODE 4-7 1
+CODE FE-1FD3F 1
+BANK10 A00-AFF 1
+BANK11 B00-BFF 1
+BANK12 C00-CFF 1
+BANK13 D00-DFF 1
+BANK14 E00-EEE 1
+BANK15 F00-F5F 1
+BIGRAM A-EEE 1
+BIGRAM F00-F5F 1
+COMRAM A-5F 1
+EEDATA F00000-F003FF 1
+MEDIUMCONST 1000-FFFF 1
+MEDIUMCONST 11000-1FD3F 1
+# %LINETAB Section
+# This section enumerates the file/line to address mappings.
+# The beginning of the section is indicated by %LINETAB.
+# The first line indicates the name of the first object file, e.g.
+#   $foo.obj
+# Each line that follows describes a single mapping until the next
+# object file.  Mappings have the following format:
+#    <address> <psect name> <class name> ><line number>:<file name>
+# The address is absolute and given given in unqualified hex 
+# in delta units of the psect. All mappings within an object file
+# are in ascending order of addresses.
+# All other numeric values are in decimal.
+%LINETAB
+$dist/default/debug\SPI.X.debug.o
+8 intcode CODE >2614:C:\Users\lauri\AppData\Local\Temp\xcAs13s.s
+8 intcode CODE >15:C:\Users\lauri\Documents\GitHub\spi\SPI.X\newmain.c
+AA text9 CODE >26:C:\Users\lauri\Documents\GitHub\spi\SPI.X\spi.c
+AA text9 CODE >28:C:\Users\lauri\Documents\GitHub\spi\SPI.X\spi.c
+B8 text9 CODE >29:C:\Users\lauri\Documents\GitHub\spi\SPI.X\spi.c
+F0 text8 CODE >44:C:\Users\lauri\Documents\GitHub\spi\SPI.X\spi.c
+F0 text8 CODE >46:C:\Users\lauri\Documents\GitHub\spi\SPI.X\spi.c
+F4 text8 CODE >47:C:\Users\lauri\Documents\GitHub\spi\SPI.X\spi.c
+F6 text8 CODE >48:C:\Users\lauri\Documents\GitHub\spi\SPI.X\spi.c
+90 text7 CODE >15:C:\Users\lauri\Documents\GitHub\spi\SPI.X\interruptService.c
+90 text7 CODE >16:C:\Users\lauri\Documents\GitHub\spi\SPI.X\interruptService.c
+9E text7 CODE >17:C:\Users\lauri\Documents\GitHub\spi\SPI.X\interruptService.c
+A0 text7 CODE >18:C:\Users\lauri\Documents\GitHub\spi\SPI.X\interruptService.c
+A6 text7 CODE >19:C:\Users\lauri\Documents\GitHub\spi\SPI.X\interruptService.c
+A8 text7 CODE >21:C:\Users\lauri\Documents\GitHub\spi\SPI.X\interruptService.c
+F8 text6 CODE >11:C:\Users\lauri\Documents\GitHub\spi\SPI.X\interruptService.c
+F8 text6 CODE >12:C:\Users\lauri\Documents\GitHub\spi\SPI.X\interruptService.c
+FC text6 CODE >13:C:\Users\lauri\Documents\GitHub\spi\SPI.X\interruptService.c
+DE intcode_body CODE >15:C:\Users\lauri\Documents\GitHub\spi\SPI.X\newmain.c
+E0 intcode_body CODE >16:C:\Users\lauri\Documents\GitHub\spi\SPI.X\newmain.c
+E4 intcode_body CODE >17:C:\Users\lauri\Documents\GitHub\spi\SPI.X\newmain.c
+D4 text4 CODE >14:C:\Users\lauri\Documents\GitHub\spi\SPI.X\init.c
+D4 text4 CODE >15:C:\Users\lauri\Documents\GitHub\spi\SPI.X\init.c
+D6 text4 CODE >16:C:\Users\lauri\Documents\GitHub\spi\SPI.X\init.c
+D8 text4 CODE >17:C:\Users\lauri\Documents\GitHub\spi\SPI.X\init.c
+DA text4 CODE >18:C:\Users\lauri\Documents\GitHub\spi\SPI.X\init.c
+DC text4 CODE >20:C:\Users\lauri\Documents\GitHub\spi\SPI.X\init.c
+C8 text3 CODE >8:C:\Users\lauri\Documents\GitHub\spi\SPI.X\init.c
+C8 text3 CODE >9:C:\Users\lauri\Documents\GitHub\spi\SPI.X\init.c
+CA text3 CODE >10:C:\Users\lauri\Documents\GitHub\spi\SPI.X\init.c
+CE text3 CODE >11:C:\Users\lauri\Documents\GitHub\spi\SPI.X\init.c
+D2 text3 CODE >12:C:\Users\lauri\Documents\GitHub\spi\SPI.X\init.c
+64 text2 CODE >9:C:\Users\lauri\Documents\GitHub\spi\SPI.X\spi.c
+66 text2 CODE >11:C:\Users\lauri\Documents\GitHub\spi\SPI.X\spi.c
+68 text2 CODE >12:C:\Users\lauri\Documents\GitHub\spi\SPI.X\spi.c
+76 text2 CODE >14:C:\Users\lauri\Documents\GitHub\spi\SPI.X\spi.c
+7A text2 CODE >15:C:\Users\lauri\Documents\GitHub\spi\SPI.X\spi.c
+7C text2 CODE >16:C:\Users\lauri\Documents\GitHub\spi\SPI.X\spi.c
+80 text2 CODE >19:C:\Users\lauri\Documents\GitHub\spi\SPI.X\spi.c
+86 text2 CODE >20:C:\Users\lauri\Documents\GitHub\spi\SPI.X\spi.c
+88 text2 CODE >21:C:\Users\lauri\Documents\GitHub\spi\SPI.X\spi.c
+88 text2 CODE >23:C:\Users\lauri\Documents\GitHub\spi\SPI.X\spi.c
+8E text2 CODE >24:C:\Users\lauri\Documents\GitHub\spi\SPI.X\spi.c
+E8 text1 CODE >31:C:\Users\lauri\Documents\GitHub\spi\SPI.X\spi.c
+EA text1 CODE >33:C:\Users\lauri\Documents\GitHub\spi\SPI.X\spi.c
+EE text1 CODE >34:C:\Users\lauri\Documents\GitHub\spi\SPI.X\spi.c
+12 text0 CODE >18:C:\Users\lauri\Documents\GitHub\spi\SPI.X\newmain.c
+12 text0 CODE >19:C:\Users\lauri\Documents\GitHub\spi\SPI.X\newmain.c
+16 text0 CODE >20:C:\Users\lauri\Documents\GitHub\spi\SPI.X\newmain.c
+1A text0 CODE >21:C:\Users\lauri\Documents\GitHub\spi\SPI.X\newmain.c
+2C text0 CODE >23:C:\Users\lauri\Documents\GitHub\spi\SPI.X\newmain.c
+32 text0 CODE >25:C:\Users\lauri\Documents\GitHub\spi\SPI.X\newmain.c
+40 text0 CODE >26:C:\Users\lauri\Documents\GitHub\spi\SPI.X\newmain.c
+44 text0 CODE >27:C:\Users\lauri\Documents\GitHub\spi\SPI.X\newmain.c
+46 text0 CODE >31:C:\Users\lauri\Documents\GitHub\spi\SPI.X\newmain.c
+BA cinit CODE >1793:C:\Users\lauri\AppData\Local\Temp\xcAs13s.s
+BA cinit CODE >1795:C:\Users\lauri\AppData\Local\Temp\xcAs13s.s
+BA cinit CODE >1798:C:\Users\lauri\AppData\Local\Temp\xcAs13s.s
+BA cinit CODE >1813:C:\Users\lauri\AppData\Local\Temp\xcAs13s.s
+BC cinit CODE >1814:C:\Users\lauri\AppData\Local\Temp\xcAs13s.s
+BE cinit CODE >1820:C:\Users\lauri\AppData\Local\Temp\xcAs13s.s
+BE cinit CODE >1822:C:\Users\lauri\AppData\Local\Temp\xcAs13s.s
+C0 cinit CODE >1823:C:\Users\lauri\AppData\Local\Temp\xcAs13s.s
+C2 cinit CODE >1824:C:\Users\lauri\AppData\Local\Temp\xcAs13s.s
+C4 cinit CODE >1825:C:\Users\lauri\AppData\Local\Temp\xcAs13s.s
+# %SYMTAB Section
+# An enumeration of all symbols in the program.
+# The beginning of the section is indicated by %SYMTAB.
+# Each line describes a single symbol as follows:
+#    <label> <value> [-]<load-adj> <class> <space> <psect> <file-name>
+# The value and load-adj are both in unqualified hexadecimal.
+# All other numeric values are in decimal.  The load-adj is the
+# quantity one needs to add to the symbol value in order to obtain the load
+# address of the symbol.  This value may be signed. If the symbol
+# was defined in a psect then <psect> will be "-". File-name
+# is the name of the object file in which the symbol was defined.
+%SYMTAB
+_spiService 90 0 CODE 0 text7 dist/default/debug\SPI.X.debug.o
+__Lmediumconst 0 0 MEDIUMCONST 0 mediumconst dist/default/debug\SPI.X.debug.o
+__Hspace_0 1000 0 ABS 0 - dist/default/debug\SPI.X.debug.o
+__Hspace_1 A 0 ABS 0 - dist/default/debug\SPI.X.debug.o
+__Hspace_2 0 0 ABS 0 - dist/default/debug\SPI.X.debug.o
+__Hspace_4 60000E 0 ABS 0 - dist/default/debug\SPI.X.debug.o
+spiInit@sTransmitEdge 3 0 COMRAM 1 cstackCOMRAM dist/default/debug\SPI.X.debug.o
+__Hibigdata 0 0 CODE 0 ibigdata dist/default/debug\SPI.X.debug.o
+__mediumconst 0 0 MEDIUMCONST 0 mediumconst C:\Users\lauri\AppData\Local\Temp\xcAs13s.o
+__Heeprom_data 0 0 EEDATA 0 eeprom_data dist/default/debug\SPI.X.debug.o
+__Lsmallconst 0 0 SMALLCONST 0 smallconst dist/default/debug\SPI.X.debug.o
+_PEIE 7F96 0 ABS 0 - dist/default/debug\SPI.X.debug.o
+___sp 0 0 STACK 2 stack C:\Users\lauri\AppData\Local\Temp\xcAs13s.o
+_main 12 0 CODE 0 text0 dist/default/debug\SPI.X.debug.o
+btemp 9 0 COMRAM 1 temp dist/default/debug\SPI.X.debug.o
+start E 0 CODE 0 init C:\Users\lauri\AppData\Local\Temp\xcAs13s.o
+__size_of_main 0 0 ABS 0 - dist/default/debug\SPI.X.debug.o
+__HbssCOMRAM 0 0 ABS 0 bssCOMRAM dist/default/debug\SPI.X.debug.o
+__Hpowerup E 0 CODE 0 powerup dist/default/debug\SPI.X.debug.o
+ttemp5 A 0 COMRAM 1 temp dist/default/debug\SPI.X.debug.o
+ttemp6 D 0 COMRAM 1 temp dist/default/debug\SPI.X.debug.o
+ttemp7 11 0 COMRAM 1 temp dist/default/debug\SPI.X.debug.o
+__accesstop 60 0 ABS 0 - C:\Users\lauri\AppData\Local\Temp\xcAs13s.o
+intlevel0 0 0 CODE 0 text C:\Users\lauri\AppData\Local\Temp\xcAs13s.o
+intlevel1 0 0 CODE 0 text C:\Users\lauri\AppData\Local\Temp\xcAs13s.o
+intlevel2 0 0 CODE 0 text C:\Users\lauri\AppData\Local\Temp\xcAs13s.o
+intlevel3 0 0 CODE 0 text C:\Users\lauri\AppData\Local\Temp\xcAs13s.o
+__end_of_spiService AA 0 CODE 0 text7 dist/default/debug\SPI.X.debug.o
+_setInterrupts D4 0 CODE 0 text4 dist/default/debug\SPI.X.debug.o
+__LbssCOMRAM 0 0 ABS 0 bssCOMRAM dist/default/debug\SPI.X.debug.o
+__size_of_service 0 0 ABS 0 - dist/default/debug\SPI.X.debug.o
+__LnvFARRAM 0 0 FARRAM 0 nvFARRAM dist/default/debug\SPI.X.debug.o
+wtemp8 A 0 COMRAM 1 temp dist/default/debug\SPI.X.debug.o
+__Hifardata 0 0 CODE 0 ifardata dist/default/debug\SPI.X.debug.o
+__Hclrtext 0 0 ABS 0 clrtext dist/default/debug\SPI.X.debug.o
+___inthi_sp 0 0 STACK 2 stack C:\Users\lauri\AppData\Local\Temp\xcAs13s.o
+___intlo_sp 0 0 STACK 2 stack C:\Users\lauri\AppData\Local\Temp\xcAs13s.o
+__Hintcode_body 0 0 ABS 0 intcode_body dist/default/debug\SPI.X.debug.o
+__Lintsave_regs 0 0 BIGRAM 1 intsave_regs dist/default/debug\SPI.X.debug.o
+__size_of_spiInit 0 0 ABS 0 - dist/default/debug\SPI.X.debug.o
+__size_of_spiRead 0 0 ABS 0 - dist/default/debug\SPI.X.debug.o
+__Hmediumconst 0 0 MEDIUMCONST 0 mediumconst dist/default/debug\SPI.X.debug.o
+__Hintcodelo E 0 CODE 0 intcodelo dist/default/debug\SPI.X.debug.o
+_interruptService F8 0 CODE 0 text6 dist/default/debug\SPI.X.debug.o
+__size_of_setIo 0 0 ABS 0 - dist/default/debug\SPI.X.debug.o
+__Lintcodelo E 0 CODE 0 intcodelo dist/default/debug\SPI.X.debug.o
+spiInit@sDataSample 1 0 COMRAM 1 cstackCOMRAM dist/default/debug\SPI.X.debug.o
+start_initialization BA 0 CODE 0 cinit dist/default/debug\SPI.X.debug.o
+__HnvFARRAM 0 0 FARRAM 0 nvFARRAM dist/default/debug\SPI.X.debug.o
+__end_of_service E8 0 CODE 0 intcode_body dist/default/debug\SPI.X.debug.o
+__size_of_setInterrupts 0 0 ABS 0 - dist/default/debug\SPI.X.debug.o
+___rparam_used 1 0 ABS 0 - dist/default/debug\SPI.X.debug.o
+_SSPBUF FC9 0 ABS 0 - dist/default/debug\SPI.X.debug.o
+_TRISC3 7CA3 0 ABS 0 - dist/default/debug\SPI.X.debug.o
+_TRISC5 7CA5 0 ABS 0 - dist/default/debug\SPI.X.debug.o
+isa$xinst 0 0 ABS 0 - C:\Users\lauri\AppData\Local\Temp\xcAs13s.o
+__Hbank0 0 0 ABS 0 bank0 dist/default/debug\SPI.X.debug.o
+__Hbank1 0 0 ABS 0 bank1 dist/default/debug\SPI.X.debug.o
+__Hbank2 0 0 ABS 0 bank2 dist/default/debug\SPI.X.debug.o
+__Hbank3 0 0 ABS 0 bank3 dist/default/debug\SPI.X.debug.o
+__Hbank4 0 0 ABS 0 bank4 dist/default/debug\SPI.X.debug.o
+__Hbank5 0 0 ABS 0 bank5 dist/default/debug\SPI.X.debug.o
+__Hbank6 0 0 ABS 0 bank6 dist/default/debug\SPI.X.debug.o
+__Hbank7 0 0 ABS 0 bank7 dist/default/debug\SPI.X.debug.o
+__Hbank8 0 0 ABS 0 bank8 dist/default/debug\SPI.X.debug.o
+__Hbank9 0 0 ABS 0 bank9 dist/default/debug\SPI.X.debug.o
+__Hcinit 0 0 ABS 0 cinit dist/default/debug\SPI.X.debug.o
+__size_of_spiReceiveWait 0 0 ABS 0 - dist/default/debug\SPI.X.debug.o
+__Hconst 0 0 CONST 0 const dist/default/debug\SPI.X.debug.o
+__Hidata 0 0 CODE 0 idata dist/default/debug\SPI.X.debug.o
+__Hidloc 200008 0 IDLOC 5 idloc dist/default/debug\SPI.X.debug.o
+__end_of_setInterrupts DE 0 CODE 0 text4 dist/default/debug\SPI.X.debug.o
+__Hnvbit 0 0 COMRAM 1 nvbit dist/default/debug\SPI.X.debug.o
+__Hparam 0 0 COMRAM 1 rparam dist/default/debug\SPI.X.debug.o
+__Hrdata 0 0 COMRAM 1 rdata dist/default/debug\SPI.X.debug.o
+__Hstack 0 0 STACK 2 stack dist/default/debug\SPI.X.debug.o
+__Htext0 0 0 ABS 0 text0 dist/default/debug\SPI.X.debug.o
+__Htext1 0 0 ABS 0 text1 dist/default/debug\SPI.X.debug.o
+__Htext2 0 0 ABS 0 text2 dist/default/debug\SPI.X.debug.o
+__Htext3 0 0 ABS 0 text3 dist/default/debug\SPI.X.debug.o
+__Htext4 0 0 ABS 0 text4 dist/default/debug\SPI.X.debug.o
+__Htext6 0 0 ABS 0 text6 dist/default/debug\SPI.X.debug.o
+__Htext7 0 0 ABS 0 text7 dist/default/debug\SPI.X.debug.o
+__Htext8 0 0 ABS 0 text8 dist/default/debug\SPI.X.debug.o
+__Htext9 0 0 ABS 0 text9 dist/default/debug\SPI.X.debug.o
+__Hbank10 0 0 ABS 0 bank10 dist/default/debug\SPI.X.debug.o
+__Hbank11 0 0 ABS 0 bank11 dist/default/debug\SPI.X.debug.o
+__Hbank12 0 0 ABS 0 bank12 dist/default/debug\SPI.X.debug.o
+__Hbank13 0 0 ABS 0 bank13 dist/default/debug\SPI.X.debug.o
+__Hbank14 0 0 ABS 0 bank14 dist/default/debug\SPI.X.debug.o
+__Hbank15 0 0 ABS 0 bank15 dist/default/debug\SPI.X.debug.o
+__Hbigbss 0 0 BIGRAM 1 bigbss dist/default/debug\SPI.X.debug.o
+__Hbigram 0 0 ABS 0 bigram dist/default/debug\SPI.X.debug.o
+__smallconst 0 0 SMALLCONST 0 smallconst C:\Users\lauri\AppData\Local\Temp\xcAs13s.o
+__end_of_spiInit 90 0 CODE 0 text2 dist/default/debug\SPI.X.debug.o
+__end_of_spiRead F8 0 CODE 0 text8 dist/default/debug\SPI.X.debug.o
+__end_of_interruptService FE 0 CODE 0 text6 dist/default/debug\SPI.X.debug.o
+__Hcomram 0 0 ABS 0 comram dist/default/debug\SPI.X.debug.o
+__Hconfig 30000E 0 CONFIG 4 config dist/default/debug\SPI.X.debug.o
+__Lbank0 0 0 ABS 0 bank0 dist/default/debug\SPI.X.debug.o
+__Lbank1 0 0 ABS 0 bank1 dist/default/debug\SPI.X.debug.o
+__Lbank2 0 0 ABS 0 bank2 dist/default/debug\SPI.X.debug.o
+__Lbank3 0 0 ABS 0 bank3 dist/default/debug\SPI.X.debug.o
+__Lbank4 0 0 ABS 0 bank4 dist/default/debug\SPI.X.debug.o
+__Lbank5 0 0 ABS 0 bank5 dist/default/debug\SPI.X.debug.o
+__Lbank6 0 0 ABS 0 bank6 dist/default/debug\SPI.X.debug.o
+__Lbank7 0 0 ABS 0 bank7 dist/default/debug\SPI.X.debug.o
+__Lbank8 0 0 ABS 0 bank8 dist/default/debug\SPI.X.debug.o
+__Lbank9 0 0 ABS 0 bank9 dist/default/debug\SPI.X.debug.o
+__Lcinit 0 0 ABS 0 cinit dist/default/debug\SPI.X.debug.o
+__Lconst 0 0 CONST 0 const dist/default/debug\SPI.X.debug.o
+__size_of_spiService 0 0 ABS 0 - dist/default/debug\SPI.X.debug.o
+__Lidata 0 0 CODE 0 idata dist/default/debug\SPI.X.debug.o
+__Lidloc 0 0 IDLOC 5 idloc dist/default/debug\SPI.X.debug.o
+__Lnvbit 0 0 COMRAM 1 nvbit dist/default/debug\SPI.X.debug.o
+__Lparam 0 0 COMRAM 1 rparam dist/default/debug\SPI.X.debug.o
+__Lrdata 0 0 COMRAM 1 rdata dist/default/debug\SPI.X.debug.o
+__Lstack 0 0 STACK 2 stack dist/default/debug\SPI.X.debug.o
+__Ltext0 0 0 ABS 0 text0 dist/default/debug\SPI.X.debug.o
+__Ltext1 0 0 ABS 0 text1 dist/default/debug\SPI.X.debug.o
+__Ltext2 0 0 ABS 0 text2 dist/default/debug\SPI.X.debug.o
+__Ltext3 0 0 ABS 0 text3 dist/default/debug\SPI.X.debug.o
+__Ltext4 0 0 ABS 0 text4 dist/default/debug\SPI.X.debug.o
+__Ltext6 0 0 ABS 0 text6 dist/default/debug\SPI.X.debug.o
+__Ltext7 0 0 ABS 0 text7 dist/default/debug\SPI.X.debug.o
+__Ltext8 0 0 ABS 0 text8 dist/default/debug\SPI.X.debug.o
+__Ltext9 0 0 ABS 0 text9 dist/default/debug\SPI.X.debug.o
+__size_of_interruptService 0 0 ABS 0 - dist/default/debug\SPI.X.debug.o
+__Hfarbss 0 0 FARRAM 0 farbss dist/default/debug\SPI.X.debug.o
+__Lintcode_body 0 0 ABS 0 intcode_body dist/default/debug\SPI.X.debug.o
+__Habs1 0 0 ABS 0 abs1 dist/default/debug\SPI.X.debug.o
+__Hdata 0 0 ABS 0 data dist/default/debug\SPI.X.debug.o
+__Hinit 12 0 CODE 0 init dist/default/debug\SPI.X.debug.o
+__Hrbit 0 0 COMRAM 1 rbit dist/default/debug\SPI.X.debug.o
+__Hrbss 0 0 COMRAM 1 rbss dist/default/debug\SPI.X.debug.o
+__Htemp A 0 COMRAM 1 temp dist/default/debug\SPI.X.debug.o
+__Htext 0 0 ABS 0 text dist/default/debug\SPI.X.debug.o
+__Labs1 0 0 ABS 0 abs1 dist/default/debug\SPI.X.debug.o
+__Ldata 0 0 ABS 0 data dist/default/debug\SPI.X.debug.o
+__Linit E 0 CODE 0 init dist/default/debug\SPI.X.debug.o
+__Lrbit 0 0 COMRAM 1 rbit dist/default/debug\SPI.X.debug.o
+__Lrbss 0 0 COMRAM 1 rbss dist/default/debug\SPI.X.debug.o
+__Ltemp 9 0 COMRAM 1 temp dist/default/debug\SPI.X.debug.o
+__Ltext 0 0 ABS 0 text dist/default/debug\SPI.X.debug.o
+_SSP1CON1 FC6 0 ABS 0 - dist/default/debug\SPI.X.debug.o
+int$flags 9 0 COMRAM 1 temp dist/default/debug\SPI.X.debug.o
+__HcstackCOMRAM 0 0 ABS 0 cstackCOMRAM dist/default/debug\SPI.X.debug.o
+__Hintret 0 0 ABS 0 intret dist/default/debug\SPI.X.debug.o
+__Hirdata 0 0 CODE 0 irdata dist/default/debug\SPI.X.debug.o
+_GIE 7F97 0 ABS 0 - dist/default/debug\SPI.X.debug.o
+__S0 FE 0 ABS 0 - dist/default/debug\SPI.X.debug.o
+__S1 A 0 ABS 0 - dist/default/debug\SPI.X.debug.o
+__S2 0 0 ABS 0 - dist/default/debug\SPI.X.debug.o
+__S4 0 0 ABS 0 - dist/default/debug\SPI.X.debug.o
+__S5 0 0 ABS 0 - dist/default/debug\SPI.X.debug.o
+__Lbigdata 0 0 BIGRAM 1 bigdata dist/default/debug\SPI.X.debug.o
+__Hnvrram 0 0 COMRAM 1 nvrram dist/default/debug\SPI.X.debug.o
+int_func DE 0 CODE 0 intcode_body dist/default/debug\SPI.X.debug.o
+__Lintentry 0 0 ABS 0 intentry dist/default/debug\SPI.X.debug.o
+__Hramtop 1000 0 RAM 0 ramtop dist/default/debug\SPI.X.debug.o
+__Hrparam 0 0 COMRAM 1 rparam dist/default/debug\SPI.X.debug.o
+__activetblptr 0 0 ABS 0 - dist/default/debug\SPI.X.debug.o
+__Hstruct 0 0 COMRAM 1 struct dist/default/debug\SPI.X.debug.o
+__pintcode_body DE 0 CODE 0 intcode_body dist/default/debug\SPI.X.debug.o
+__Lbank10 0 0 ABS 0 bank10 dist/default/debug\SPI.X.debug.o
+__Lbank11 0 0 ABS 0 bank11 dist/default/debug\SPI.X.debug.o
+__Lbank12 0 0 ABS 0 bank12 dist/default/debug\SPI.X.debug.o
+__Lbank13 0 0 ABS 0 bank13 dist/default/debug\SPI.X.debug.o
+__Lbank14 0 0 ABS 0 bank14 dist/default/debug\SPI.X.debug.o
+__Lbank15 0 0 ABS 0 bank15 dist/default/debug\SPI.X.debug.o
+__Lbigbss 0 0 BIGRAM 1 bigbss dist/default/debug\SPI.X.debug.o
+__Lbigram 0 0 ABS 0 bigram dist/default/debug\SPI.X.debug.o
+__Lcomram 0 0 ABS 0 comram dist/default/debug\SPI.X.debug.o
+__Lconfig 0 0 CONFIG 4 config dist/default/debug\SPI.X.debug.o
+__Lfarbss 0 0 FARRAM 0 farbss dist/default/debug\SPI.X.debug.o
+__Lfardata 0 0 FARRAM 0 fardata dist/default/debug\SPI.X.debug.o
+isa$std 1 0 ABS 0 - C:\Users\lauri\AppData\Local\Temp\xcAs13s.o
+stackhi EEE 0 ABS 0 - C:\Users\lauri\AppData\Local\Temp\xcAs13s.o
+stacklo 60 0 ABS 0 - C:\Users\lauri\AppData\Local\Temp\xcAs13s.o
+__Lintcode 8 0 CODE 0 intcode dist/default/debug\SPI.X.debug.o
+__Lintret 0 0 ABS 0 intret dist/default/debug\SPI.X.debug.o
+__Lirdata 0 0 CODE 0 irdata dist/default/debug\SPI.X.debug.o
+_service 8 0 CODE 0 intcode dist/default/debug\SPI.X.debug.o
+__Lspace_0 0 0 ABS 0 - dist/default/debug\SPI.X.debug.o
+__Lspace_1 0 0 ABS 0 - dist/default/debug\SPI.X.debug.o
+__Lspace_2 0 0 ABS 0 - dist/default/debug\SPI.X.debug.o
+__Lspace_4 0 0 ABS 0 - dist/default/debug\SPI.X.debug.o
+__pbssCOMRAM 7 0 COMRAM 1 bssCOMRAM dist/default/debug\SPI.X.debug.o
+__LcstackCOMRAM 0 0 ABS 0 cstackCOMRAM dist/default/debug\SPI.X.debug.o
+end_of_initialization BE 0 CODE 0 cinit dist/default/debug\SPI.X.debug.o
+__Lnvrram 0 0 COMRAM 1 nvrram dist/default/debug\SPI.X.debug.o
+__Hintentry 0 0 ABS 0 intentry dist/default/debug\SPI.X.debug.o
+__Hreset_vec 4 0 CODE 0 reset_vec dist/default/debug\SPI.X.debug.o
+__Lramtop 1000 0 RAM 0 ramtop dist/default/debug\SPI.X.debug.o
+__Lrparam 0 0 COMRAM 1 rparam dist/default/debug\SPI.X.debug.o
+__pcinit BA 0 CODE 0 cinit dist/default/debug\SPI.X.debug.o
+__ptext0 12 0 CODE 0 text0 dist/default/debug\SPI.X.debug.o
+__ptext1 E8 0 CODE 0 text1 dist/default/debug\SPI.X.debug.o
+__ptext2 64 0 CODE 0 text2 dist/default/debug\SPI.X.debug.o
+__ptext3 C8 0 CODE 0 text3 dist/default/debug\SPI.X.debug.o
+__ptext4 D4 0 CODE 0 text4 dist/default/debug\SPI.X.debug.o
+__ptext6 F8 0 CODE 0 text6 dist/default/debug\SPI.X.debug.o
+__ptext7 90 0 CODE 0 text7 dist/default/debug\SPI.X.debug.o
+__ptext8 F0 0 CODE 0 text8 dist/default/debug\SPI.X.debug.o
+__ptext9 AA 0 CODE 0 text9 dist/default/debug\SPI.X.debug.o
+__Lstruct 0 0 COMRAM 1 struct dist/default/debug\SPI.X.debug.o
+_spiInit 64 0 CODE 0 text2 dist/default/debug\SPI.X.debug.o
+_spiRead F0 0 CODE 0 text8 dist/default/debug\SPI.X.debug.o
+__ramtop 1000 0 RAM 0 ramtop C:\Users\lauri\AppData\Local\Temp\xcAs13s.o
+spiWrite@dat 1 0 COMRAM 1 cstackCOMRAM dist/default/debug\SPI.X.debug.o
+__Lpowerup E 0 CODE 0 powerup dist/default/debug\SPI.X.debug.o
+spiInit@sType 4 0 COMRAM 1 cstackCOMRAM dist/default/debug\SPI.X.debug.o
+__Leeprom_data 0 0 EEDATA 0 eeprom_data dist/default/debug\SPI.X.debug.o
+__Lreset_vec 0 0 CODE 0 reset_vec dist/default/debug\SPI.X.debug.o
+___param_bank 0 0 ABS 0 - dist/default/debug\SPI.X.debug.o
+__Hbigdata 0 0 BIGRAM 1 bigdata dist/default/debug\SPI.X.debug.o
+__end_of__initialization BE 0 CODE 0 cinit dist/default/debug\SPI.X.debug.o
+__size_of_spiWrite 0 0 ABS 0 - dist/default/debug\SPI.X.debug.o
+__Libigdata 0 0 CODE 0 ibigdata dist/default/debug\SPI.X.debug.o
+_spiReceiveWait AA 0 CODE 0 text9 dist/default/debug\SPI.X.debug.o
+__Lclrtext 0 0 ABS 0 clrtext dist/default/debug\SPI.X.debug.o
+__pcstackCOMRAM 1 0 COMRAM 1 cstackCOMRAM dist/default/debug\SPI.X.debug.o
+_SSPSTAT FC7 0 ABS 0 - dist/default/debug\SPI.X.debug.o
+_readValue 7 0 COMRAM 1 bssCOMRAM dist/default/debug\SPI.X.debug.o
+__end_of_main 64 0 CODE 0 text0 dist/default/debug\SPI.X.debug.o
+__pintcode 8 0 CODE 0 intcode dist/default/debug\SPI.X.debug.o
+_FLAGS 8 0 COMRAM 1 bssCOMRAM dist/default/debug\SPI.X.debug.o
+_PORTD F83 0 ABS 0 - dist/default/debug\SPI.X.debug.o
+_SSPIE 7CEB 0 ABS 0 - dist/default/debug\SPI.X.debug.o
+_SSPIF 7CF3 0 ABS 0 - dist/default/debug\SPI.X.debug.o
+_TRISD F95 0 ABS 0 - dist/default/debug\SPI.X.debug.o
+__end_of_setIo D4 0 CODE 0 text3 dist/default/debug\SPI.X.debug.o
+__HRAM 0 0 ABS 0 - dist/default/debug\SPI.X.debug.o
+__Hbss 0 0 RAM 1 bss dist/default/debug\SPI.X.debug.o
+__Hram 0 0 ABS 0 ram dist/default/debug\SPI.X.debug.o
+__Hsfr 0 0 ABS 0 sfr dist/default/debug\SPI.X.debug.o
+__LRAM 1 0 ABS 0 - dist/default/debug\SPI.X.debug.o
+__Lbss 0 0 RAM 1 bss dist/default/debug\SPI.X.debug.o
+__Lram 0 0 ABS 0 ram dist/default/debug\SPI.X.debug.o
+__Lsfr 0 0 ABS 0 sfr dist/default/debug\SPI.X.debug.o
+_nRBPU 7F8F 0 ABS 0 - dist/default/debug\SPI.X.debug.o
+_setIo C8 0 CODE 0 text3 dist/default/debug\SPI.X.debug.o
+___extmem_base 20000 0 ABS 0 - C:\Users\lauri\AppData\Local\Temp\xcAs13s.o
+_SSPSTATbits FC7 0 ABS 0 - dist/default/debug\SPI.X.debug.o
+spiInit@sClockIdle 2 0 COMRAM 1 cstackCOMRAM dist/default/debug\SPI.X.debug.o
+__initialization BA 0 CODE 0 cinit dist/default/debug\SPI.X.debug.o
+_spiWrite E8 0 CODE 0 text1 dist/default/debug\SPI.X.debug.o
+__Hfardata 0 0 FARRAM 0 fardata dist/default/debug\SPI.X.debug.o
+__Hsmallconst 0 0 SMALLCONST 0 smallconst dist/default/debug\SPI.X.debug.o
+__end_of_spiReceiveWait BA 0 CODE 0 text9 dist/default/debug\SPI.X.debug.o
+__Lifardata 0 0 CODE 0 ifardata dist/default/debug\SPI.X.debug.o
+__Hintsave_regs 0 0 BIGRAM 1 intsave_regs dist/default/debug\SPI.X.debug.o
+__Hintcode E 0 CODE 0 intcode dist/default/debug\SPI.X.debug.o
+__end_of_spiWrite F0 0 CODE 0 text1 dist/default/debug\SPI.X.debug.o
+# %SPLITSTAB Section
+# This section enumerates all the psect splits performed by the assembler.
+# The beginning of the section is indicated by %SPLITSTAB.
+# Each line is a record a particular split, where the parent psect is on
+# the left and the child on the right.  Note that a child psect is always
+# split form the top of the parent psect. All splits from a given parent
+# are listed in the order in which they occurred.
+%SPLITSTAB
+# %DABS Section
+# This section contains a table of all usuage of the assember
+# directive DABS in the program. Each line has the following format:
+#   <name> <space> <address> <size>
+# If the DABS was originally labelled then that shall be <name>,
+# otherwise name will be "-".  The <space> number is in decimal.
+# <address> and <size> are in byte units as unqaulified hexadecimal
+%DABS
+# %SEGMENTS Section
+# This sections enumerates the segments of the program.  Each segment
+# is described on a single line as follows:
+#    <name> <space> <link address> <file address> <size> <delta>
+# Addresses and size are in unqualified hexadecimal.  The link address
+# and size are in units of delta. The file address is in units of bytes.
+# All other numeric quantities are in decimal.
+%SEGMENTS
+cstackCOMRAM 1 1 1 9 1
+reset_vec 0 0 0 4 1
+intcode 0 8 8 F6 1
+# %NOTES Section
+# This section contains data of all the note-psects.  The beginning of the section
+# is indicated by %NOTES. The first line indicates the name and decimal
+# byte-length of the first note-psect, e.g.
+#   $codecov_info_hdr 16
+# Each line that follows contains the byte-data of the psect in hexadecimal as a
+# space-separated list. These lines are limited to 16 bytes of data.
+%NOTES

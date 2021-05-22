@@ -1,47 +1,25 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"27 ./main.h
-[; ;./main.h: 27:     struct {
-[s S502 :1 `uc 1 :1 `uc 1 ]
-[n S502 . SPI_READ_REQUEST DISPLAY_READING ]
-"25
-[; ;./main.h: 25:  union {
-[u S501 `uc 1 `S502 1 ]
-[n S501 . fullByte ByteBits ]
-[t ~ __interrupt . k ]
-[t T110 __interrupt ]
-"28 ./interruptService.h
-[; ;./interruptService.h: 28: void interruptService();
-[v _interruptService `(v ~T0 @X0 0 e? ]
-[p mainexit ]
-"31 ./init.h
-[; ;./init.h: 31: void setIo();
-[v _setIo `(v ~T0 @X0 0 e? ]
-"32
-[; ;./init.h: 32: void setInterrupts();
-[v _setInterrupts `(v ~T0 @X0 0 e? ]
-"23 newmain.c
-[; ;newmain.c: 23:     spiInit(SPI_SLAVE_SS_EN, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
-[c E4544 32 33 34 35 36 37 .. ]
-[n E4544 . SPI_MASTER_OSC_DIV4 SPI_MASTER_OSC_DIV16 SPI_MASTER_OSC_DIV64 SPI_MASTER_TMR2 SPI_SLAVE_SS_EN SPI_SLAVE_SS_DIS  ]
-[c E4552 0 128 .. ]
-[n E4552 . SPI_DATA_SAMPLE_MIDDLE SPI_DATA_SAMPLE_END  ]
-[c E4556 16 0 .. ]
-[n E4556 . SPI_CLOCK_IDLE_HIGH SPI_CLOCK_IDLE_LOW  ]
-[c E4560 0 64 .. ]
-[n E4560 . SPI_IDLE_2_ACTIVE SPI_ACTIVE_2_IDLE  ]
-"40 ./spi.h
-[; ;./spi.h: 40: void spiInit(Spi_Type, Spi_Data_Sample, Spi_Clock_Idle, Spi_Transmit_Edge);
-[v _spiInit `(v ~T0 @X0 0 ef4`E4544`E4552`E4556`E4560 ]
-"41
-[; ;./spi.h: 41: void spiWrite(char);
-[v _spiWrite `(v ~T0 @X0 0 ef1`uc ]
-"3195 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f8722.h
+"16644 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f8722.h
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f8722.h: 16644: extern volatile __bit nRBPU __attribute__((address(0x7F8F)));
+[v _nRBPU `Vb ~T0 @X0 0 e@32655 ]
+"6123
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f8722.h: 6123: extern volatile unsigned char TRISD __attribute__((address(0xF95)));
+[v _TRISD `Vuc ~T0 @X0 0 e@3989 ]
+"3195
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f8722.h: 3195: extern volatile unsigned char PORTD __attribute__((address(0xF83)));
 [v _PORTD `Vuc ~T0 @X0 0 e@3971 ]
-[v F4536 `(v ~T0 @X0 1 tf1`ul ]
-"203 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\pic18.h
-[v __delay `JF4536 ~T0 @X0 0 e ]
-[p i __delay ]
+"14250
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f8722.h: 14250: extern volatile __bit GIE __attribute__((address(0x7F97)));
+[v _GIE `Vb ~T0 @X0 0 e@32663 ]
+"15273
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f8722.h: 15273: extern volatile __bit PEIE __attribute__((address(0x7F96)));
+[v _PEIE `Vb ~T0 @X0 0 e@32662 ]
+"15900
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f8722.h: 15900: extern volatile __bit SSPIF __attribute__((address(0x7CF3)));
+[v _SSPIF `Vb ~T0 @X0 0 e@31987 ]
+"15897
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f8722.h: 15897: extern volatile __bit SSPIE __attribute__((address(0x7CEB)));
+[v _SSPIE `Vb ~T0 @X0 0 e@31979 ]
 "54 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f8722.h
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f8722.h: 54: __asm("SSP2CON2 equ 0F62h");
 [; <" SSP2CON2 equ 0F62h ;# ">
@@ -636,173 +614,44 @@ Version 4.0 HI-TECH Software Intermediate Code
 "13453
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f8722.h: 13453: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-"34 ./config.h
-[p x OSC  =  XT          ]
-"35
-[p x FCMEN  =  OFF       ]
-"36
-[p x IESO  =  OFF        ]
-"39
-[p x PWRT  =  OFF        ]
-"40
-[p x BOREN  =  OFF       ]
-"41
-[p x BORV  =  3          ]
-"44
-[p x WDT  =  OFF         ]
-"45
-[p x WDTPS  =  32768     ]
-"48
-[p x MODE  =  MC         ]
-"49
-[p x ADDRBW  =  ADDR20BIT ]
-"50
-[p x DATABW  =  DATA16BIT ]
-"51
-[p x WAIT  =  OFF        ]
-"54
-[p x CCP2MX  =  PORTC    ]
-"55
-[p x ECCPMX  =  PORTE    ]
-"56
-[p x LPT1OSC  =  OFF     ]
-"57
-[p x MCLRE  =  ON        ]
-"60
-[p x STVREN  =  ON       ]
-"61
-[p x LVP  =  OFF         ]
-"62
-[p x BBSIZ  =  BB2K      ]
-"63
-[p x XINST  =  OFF       ]
-"66
-[p x CP0  =  OFF         ]
-"67
-[p x CP1  =  OFF         ]
-"68
-[p x CP2  =  OFF         ]
-"69
-[p x CP3  =  OFF         ]
-"70
-[p x CP4  =  OFF         ]
-"71
-[p x CP5  =  OFF         ]
-"72
-[p x CP6  =  OFF         ]
-"73
-[p x CP7  =  OFF         ]
-"76
-[p x CPB  =  OFF         ]
-"77
-[p x CPD  =  OFF         ]
-"80
-[p x WRT0  =  OFF        ]
-"81
-[p x WRT1  =  OFF        ]
-"82
-[p x WRT2  =  OFF        ]
-"83
-[p x WRT3  =  OFF        ]
-"84
-[p x WRT4  =  OFF        ]
-"85
-[p x WRT5  =  OFF        ]
-"86
-[p x WRT6  =  OFF        ]
-"87
-[p x WRT7  =  OFF        ]
-"90
-[p x WRTC  =  OFF        ]
-"91
-[p x WRTB  =  OFF        ]
-"92
-[p x WRTD  =  OFF        ]
-"95
-[p x EBTR0  =  OFF       ]
-"96
-[p x EBTR1  =  OFF       ]
-"97
-[p x EBTR2  =  OFF       ]
-"98
-[p x EBTR3  =  OFF       ]
-"99
-[p x EBTR4  =  OFF       ]
-"100
-[p x EBTR5  =  OFF       ]
-"101
-[p x EBTR6  =  OFF       ]
-"102
-[p x EBTR7  =  OFF       ]
-"105
-[p x EBTRB  =  OFF       ]
-"31 ./main.h
-[; ;./main.h: 31: } FLAGS;
-[v _FLAGS `S501 ~T0 @X0 1 e ]
-"33
-[; ;./main.h: 33: unsigned char readValue;
-[v _readValue `uc ~T0 @X0 1 e ]
-[v $root$_service `(v ~T0 @X0 0 e ]
-"15 newmain.c
-[; ;newmain.c: 15: void __attribute__((picinterrupt(("")))) service() {
-[v _service `(v ~T110 @X0 1 ef ]
+"8 init.c
+[; ;init.c: 8:  void setIo() {
+[v _setIo `(v ~T0 @X0 1 ef ]
 {
-[e :U _service ]
+[e :U _setIo ]
 [f ]
+"9
+[; ;init.c: 9:     nRBPU = 0;
+[e = _nRBPU -> -> 0 `i `b ]
+"10
+[; ;init.c: 10:     TRISD = 0x00;
+[e = _TRISD -> -> 0 `i `uc ]
+"11
+[; ;init.c: 11:     PORTD = 0x00;
+[e = _PORTD -> -> 0 `i `uc ]
+"12
+[; ;init.c: 12: }
+[e :UE 501 ]
+}
+"14
+[; ;init.c: 14:  void setInterrupts() {
+[v _setInterrupts `(v ~T0 @X0 1 ef ]
+{
+[e :U _setInterrupts ]
+[f ]
+"15
+[; ;init.c: 15:     GIE = 1;
+[e = _GIE -> -> 1 `i `b ]
 "16
-[; ;newmain.c: 16:     interruptService();
-[e ( _interruptService ..  ]
+[; ;init.c: 16:     PEIE = 1;
+[e = _PEIE -> -> 1 `i `b ]
 "17
-[; ;newmain.c: 17: }
-[e :UE 503 ]
-}
-[v $root$_main `(v ~T0 @X0 0 e ]
-"19
-[; ;newmain.c: 19: void main() {
-[v _main `(v ~T0 @X0 1 ef ]
-{
-[e :U _main ]
-[f ]
+[; ;init.c: 17:     SSPIF = 0;
+[e = _SSPIF -> -> 0 `i `b ]
+"18
+[; ;init.c: 18:     SSPIE = 1;
+[e = _SSPIE -> -> 1 `i `b ]
 "20
-[; ;newmain.c: 20:     setIo();
-[e ( _setIo ..  ]
-"21
-[; ;newmain.c: 21:     setInterrupts();
-[e ( _setInterrupts ..  ]
-"23
-[; ;newmain.c: 23:     spiInit(SPI_SLAVE_SS_EN, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
-[e ( _spiInit (4 , , , . `E4544 4 . `E4552 0 . `E4556 1 . `E4560 0 ]
-"25
-[; ;newmain.c: 25:     spiWrite(0b01010101);
-[e ( _spiWrite (1 -> -> 85 `i `uc ]
-"26
-[; ;newmain.c: 26:     while (1) {
-[e :U 506 ]
-{
-"27
-[; ;newmain.c: 27:         if (FLAGS.ByteBits.DISPLAY_READING) {
-[e $ ! != -> . . _FLAGS 1 1 `i -> 0 `i 508  ]
-{
-"28
-[; ;newmain.c: 28:             PORTD = readValue;
-[e = _PORTD _readValue ]
-"29
-[; ;newmain.c: 29:             FLAGS.ByteBits.DISPLAY_READING = 0;
-[e = . . _FLAGS 1 1 -> -> 0 `i `uc ]
-"32
-[; ;newmain.c: 32:         }
-}
-[e :U 508 ]
-"33
-[; ;newmain.c: 33:         _delay((unsigned long)((1000)*(8000000/4000.0)));
-[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-"34
-[; ;newmain.c: 34:     }
-}
-[e :U 505 ]
-[e $U 506  ]
-[e :U 507 ]
-"35
-[; ;newmain.c: 35: }
-[e :UE 504 ]
+[; ;init.c: 20: }
+[e :UE 502 ]
 }
