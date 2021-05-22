@@ -25,8 +25,8 @@ void main() {
         if (FLAGS.ByteBits.DISPLAY_READING) {
             PORTD = readValue;
             FLAGS.ByteBits.DISPLAY_READING = 0;
-            readValue = ~readValue;
-            spiWrite(readValue);
+//            readValue = ~readValue;
+//            spiWrite(readValue);
         }
         __delay_ms(1000);
     }
