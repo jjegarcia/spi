@@ -15,7 +15,10 @@ void interruptService() {
 static void spiService() {
     if (SSPIF == 1) {
         SSPIF = 0;
-        readValue = spiRead();
-        FLAGS.ByteBits.DISPLAY_READING = 1;
+//        PORTD= spiRead();
+        char test=spiRead();
+        PORTD=test;
+//        readValue = spiRead();
+//        FLAGS.ByteBits.DISPLAY_READING = 1;
     }
 }
