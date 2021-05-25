@@ -30,3 +30,5 @@
 *.exe
 *.out
 *.app
+/SPI_nano.X/build/
+/SPI_nano.X/dist/
