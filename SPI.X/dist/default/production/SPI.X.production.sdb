@@ -3,7 +3,7 @@
 [d edition pro ]
 [d chip 18F8722 ]
 [d frameptr 4065 ]
-"23 C:\Users\lauri\Documents\GitHub\spi\SPI.X\newmain.c
+"23 /Users/jgarc609/github/spi/SPI.X/newmain.c
 [e E4544 . `uc
 SPI_MASTER_OSC_DIV4 32
 SPI_MASTER_OSC_DIV16 33
@@ -24,7 +24,7 @@ SPI_CLOCK_IDLE_LOW 0
 SPI_IDLE_2_ACTIVE 0
 SPI_ACTIVE_2_IDLE 64
 ]
-"8 C:\Users\lauri\Documents\GitHub\spi\SPI.X\spi.c
+"8 /Users/jgarc609/github/spi/SPI.X/spi.c
 [e E4544 . `uc
 SPI_MASTER_OSC_DIV4 32
 SPI_MASTER_OSC_DIV16 33
@@ -45,43 +45,43 @@ SPI_CLOCK_IDLE_LOW 0
 SPI_IDLE_2_ACTIVE 0
 SPI_ACTIVE_2_IDLE 64
 ]
-"4 C:\Program Files\Microchip\xc8\v2.32\pic\sources\c99\common\fleq.c
+"4 /Applications/microchip/xc8/v2.32/pic/sources/c99/common/fleq.c
 [v ___fleq __fleq `(b  1 e 0 0 ]
-"62 C:\Program Files\Microchip\xc8\v2.32\pic\sources\c99\common\float.c
+"62 /Applications/microchip/xc8/v2.32/pic/sources/c99/common/float.c
 [v ___ftpack __ftpack `(f  1 e 4 0 ]
-"86 C:\Program Files\Microchip\xc8\v2.32\pic\sources\c99\common\ftadd.c
+"86 /Applications/microchip/xc8/v2.32/pic/sources/c99/common/ftadd.c
 [v ___ftadd __ftadd `(f  1 e 4 0 ]
-"54 C:\Program Files\Microchip\xc8\v2.32\pic\sources\c99\common\ftdiv.c
+"54 /Applications/microchip/xc8/v2.32/pic/sources/c99/common/ftdiv.c
 [v ___ftdiv __ftdiv `(f  1 e 4 0 ]
-"62 C:\Program Files\Microchip\xc8\v2.32\pic\sources\c99\common\ftmul.c
+"62 /Applications/microchip/xc8/v2.32/pic/sources/c99/common/ftmul.c
 [v ___ftmul __ftmul `(f  1 e 4 0 ]
-"19 C:\Program Files\Microchip\xc8\v2.32\pic\sources\c99\common\ftsub.c
+"19 /Applications/microchip/xc8/v2.32/pic/sources/c99/common/ftsub.c
 [v ___ftsub __ftsub `(f  1 e 4 0 ]
-"10 C:\Program Files\Microchip\xc8\v2.32\pic\sources\c99\common\sprcadd.c
+"10 /Applications/microchip/xc8/v2.32/pic/sources/c99/common/sprcadd.c
 [v ___fladd __fladd `(d  1 e 4 0 ]
 "245
 [v ___flsub __flsub `(d  1 e 4 0 ]
-"11 C:\Program Files\Microchip\xc8\v2.32\pic\sources\c99\common\sprcdiv.c
+"11 /Applications/microchip/xc8/v2.32/pic/sources/c99/common/sprcdiv.c
 [v ___fldiv __fldiv `(d  1 e 4 0 ]
-"8 C:\Program Files\Microchip\xc8\v2.32\pic\sources\c99\common\sprcmul.c
+"8 /Applications/microchip/xc8/v2.32/pic/sources/c99/common/sprcmul.c
 [v ___flmul __flmul `(d  1 e 4 0 ]
-"15 C:\Program Files\Microchip\xc8\v2.32\pic\sources\c99\common\Umul32.c
+"15 /Applications/microchip/xc8/v2.32/pic/sources/c99/common/Umul32.c
 [v ___lmul __lmul `(ul  1 e 4 0 ]
-"91 C:\Program Files\Microchip\xc8\v2.32\pic\sources\c99\common\Umul64.c
+"91 /Applications/microchip/xc8/v2.32/pic/sources/c99/common/Umul64.c
 [v ___omul __omul `(uo  1 e 8 0 ]
-"8 C:\Users\lauri\Documents\GitHub\spi\SPI.X\init.c
+"8 /Users/jgarc609/github/spi/SPI.X/init.c
 [v _setIo setIo `(v  1 e 1 0 ]
 "14
 [v _setInterrupts setInterrupts `(v  1 e 1 0 ]
-"11 C:\Users\lauri\Documents\GitHub\spi\SPI.X\interruptService.c
+"11 /Users/jgarc609/github/spi/SPI.X/interruptService.c
 [v _interruptService interruptService `(v  1 e 1 0 ]
 "15
 [v _spiService spiService `(v  1 s 1 spiService ]
-"15 C:\Users\lauri\Documents\GitHub\spi\SPI.X\newmain.c
+"15 /Users/jgarc609/github/spi/SPI.X/newmain.c
 [v _service service `IIH(v  1 e 1 0 ]
 "19
 [v _main main `(v  1 e 1 0 ]
-"8 C:\Users\lauri\Documents\GitHub\spi\SPI.X\spi.c
+"8 /Users/jgarc609/github/spi/SPI.X/spi.c
 [v _spiInit spiInit `(v  1 e 1 0 ]
 "26
 [v _spiReceiveWait spiReceiveWait `(v  1 s 1 spiReceiveWait ]
@@ -92,12 +92,10 @@ SPI_ACTIVE_2_IDLE 64
 [s S24 . 1 `uc 1 SPI_READ_REQUEST 1 0 :1:0 
 `uc 1 DISPLAY_READING 1 0 :1:1 
 ]
-"31 C:\Users\lauri\Documents\GitHub\spi\SPI.X/main.h
+"31 /Users/jgarc609/github/spi/SPI.X/main.h
 [u S27 . 1 `uc 1 fullByte 1 0 `S24 1 ByteBits 1 0 ]
 [v _FLAGS FLAGS `S27  1 e 1 0 ]
-"33
-[v _readValue readValue `uc  1 e 1 0 ]
-"3195 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8\pic\include\proc\pic18f8722.h
+"3195 /Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h
 [v _PORTD PORTD `VEuc  1 e 1 @3971 ]
 "6123
 [v _TRISD TRISD `VEuc  1 e 1 @3989 ]
@@ -105,14 +103,14 @@ SPI_ACTIVE_2_IDLE 64
 [v _SSP1CON1 SSP1CON1 `VEuc  1 e 1 @4038 ]
 "10996
 [v _SSPSTAT SSPSTAT `VEuc  1 e 1 @4039 ]
-[s S119 . 1 `uc 1 . 1 0 :2:0 
+[s S112 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R_NOT_W 1 0 :1:2 
 ]
 "11384
-[s S122 . 1 `uc 1 . 1 0 :5:0 
+[s S115 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 D_NOT_A 1 0 :1:5 
 ]
-[s S125 . 1 `uc 1 BF 1 0 :1:0 
+[s S118 . 1 `uc 1 BF 1 0 :1:0 
 `uc 1 UA 1 0 :1:1 
 `uc 1 R_nW 1 0 :1:2 
 `uc 1 S 1 0 :1:3 
@@ -121,44 +119,44 @@ SPI_ACTIVE_2_IDLE 64
 `uc 1 CKE 1 0 :1:6 
 `uc 1 SMP 1 0 :1:7 
 ]
-[s S134 . 1 `uc 1 . 1 0 :2:0 
+[s S127 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R_W 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 D_A 1 0 :1:5 
 ]
-[s S139 . 1 `uc 1 . 1 0 :2:0 
+[s S132 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 I2C_READ 1 0 :1:2 
 `uc 1 I2C_START 1 0 :1:3 
 `uc 1 I2C_STOP 1 0 :1:4 
 `uc 1 I2C_DAT 1 0 :1:5 
 ]
-[s S145 . 1 `uc 1 . 1 0 :2:0 
+[s S138 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 nW 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 nA 1 0 :1:5 
 ]
-[s S150 . 1 `uc 1 . 1 0 :2:0 
+[s S143 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 NOT_WRITE 1 0 :1:2 
 ]
-[s S153 . 1 `uc 1 . 1 0 :5:0 
+[s S146 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 NOT_ADDRESS 1 0 :1:5 
 ]
-[s S156 . 1 `uc 1 . 1 0 :2:0 
+[s S149 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 nWRITE 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 nADDRESS 1 0 :1:5 
 ]
-[s S161 . 1 `uc 1 . 1 0 :2:0 
+[s S154 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 READ_WRITE 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 DATA_ADDRESS 1 0 :1:5 
 ]
-[s S166 . 1 `uc 1 . 1 0 :2:0 
+[s S159 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 D 1 0 :1:5 
 ]
-[s S171 . 1 `uc 1 BF1 1 0 :1:0 
+[s S164 . 1 `uc 1 BF1 1 0 :1:0 
 `uc 1 UA1 1 0 :1:1 
 `uc 1 RW 1 0 :1:2 
 `uc 1 START 1 0 :1:3 
@@ -167,20 +165,20 @@ SPI_ACTIVE_2_IDLE 64
 `uc 1 CKE1 1 0 :1:6 
 `uc 1 SMP1 1 0 :1:7 
 ]
-[s S180 . 1 `uc 1 . 1 0 :2:0 
+[s S173 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 RW1 1 0 :1:2 
 `uc 1 START1 1 0 :1:3 
 `uc 1 STOP1 1 0 :1:4 
 `uc 1 DA1 1 0 :1:5 
 ]
-[s S186 . 1 `uc 1 . 1 0 :2:0 
+[s S179 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 NOT_W 1 0 :1:2 
 ]
-[s S189 . 1 `uc 1 . 1 0 :5:0 
+[s S182 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 NOT_A 1 0 :1:5 
 ]
-[u S192 . 1 `S119 1 . 1 0 `S122 1 . 1 0 `S125 1 . 1 0 `S134 1 . 1 0 `S139 1 . 1 0 `S145 1 . 1 0 `S150 1 . 1 0 `S153 1 . 1 0 `S156 1 . 1 0 `S161 1 . 1 0 `S166 1 . 1 0 `S171 1 . 1 0 `S180 1 . 1 0 `S186 1 . 1 0 `S189 1 . 1 0 ]
-[v _SSPSTATbits SSPSTATbits `VES192  1 e 1 @4039 ]
+[u S185 . 1 `S112 1 . 1 0 `S115 1 . 1 0 `S118 1 . 1 0 `S127 1 . 1 0 `S132 1 . 1 0 `S138 1 . 1 0 `S143 1 . 1 0 `S146 1 . 1 0 `S149 1 . 1 0 `S154 1 . 1 0 `S159 1 . 1 0 `S164 1 . 1 0 `S173 1 . 1 0 `S179 1 . 1 0 `S182 1 . 1 0 ]
+[v _SSPSTATbits SSPSTATbits `VES185  1 e 1 @4039 ]
 "11816
 [v _SSPBUF SSPBUF `VEuc  1 e 1 @4041 ]
 "14250
@@ -197,18 +195,14 @@ SPI_ACTIVE_2_IDLE 64
 [v _TRISC0 TRISC0 `VEb  1 e 0 @31904 ]
 "16254
 [v _TRISC3 TRISC3 `VEb  1 e 0 @31907 ]
-"16257
-[v _TRISC4 TRISC4 `VEb  1 e 0 @31908 ]
 "16260
 [v _TRISC5 TRISC5 `VEb  1 e 0 @31909 ]
-"16644
-[v _nRBPU nRBPU `VEb  1 e 0 @32655 ]
-"19 C:\Users\lauri\Documents\GitHub\spi\SPI.X\newmain.c
+"19 /Users/jgarc609/github/spi/SPI.X/newmain.c
 [v _main main `(v  1 e 1 0 ]
 {
 "35
 } 0
-"30 C:\Users\lauri\Documents\GitHub\spi\SPI.X\spi.c
+"30 /Users/jgarc609/github/spi/SPI.X/spi.c
 [v _spiWrite spiWrite `(v  1 e 1 0 ]
 {
 [v spiWrite@dat dat `uc  1 a 1 wreg ]
@@ -228,7 +222,7 @@ SPI_ACTIVE_2_IDLE 64
 [v spiInit@sType sType `E4544  1 a 1 3 ]
 "24
 } 0
-"8 C:\Users\lauri\Documents\GitHub\spi\SPI.X\init.c
+"8 /Users/jgarc609/github/spi/SPI.X/init.c
 [v _setIo setIo `(v  1 e 1 0 ]
 {
 "12
@@ -238,12 +232,12 @@ SPI_ACTIVE_2_IDLE 64
 {
 "20
 } 0
-"15 C:\Users\lauri\Documents\GitHub\spi\SPI.X\newmain.c
+"15 /Users/jgarc609/github/spi/SPI.X/newmain.c
 [v _service service `IIH(v  1 e 1 0 ]
 {
 "17
 } 0
-"11 C:\Users\lauri\Documents\GitHub\spi\SPI.X\interruptService.c
+"11 /Users/jgarc609/github/spi/SPI.X/interruptService.c
 [v _interruptService interruptService `(v  1 e 1 0 ]
 {
 "13
@@ -251,9 +245,9 @@ SPI_ACTIVE_2_IDLE 64
 "15
 [v _spiService spiService `(v  1 s 1 spiService ]
 {
-"21
+"22
 } 0
-"43 C:\Users\lauri\Documents\GitHub\spi\SPI.X\spi.c
+"43 /Users/jgarc609/github/spi/SPI.X/spi.c
 [v _spiRead spiRead `(uc  1 e 1 0 ]
 {
 "47

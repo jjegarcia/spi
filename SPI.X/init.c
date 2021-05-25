@@ -6,7 +6,7 @@
 #include "init.h"
 
  void setIo() {
-    nRBPU = 0; //Enable PORTB internal pull up resistor
+//    nRBPU = 0; //Enable PORTB internal pull up resistor
     TRISD = 0x00; //PORTD as output
     PORTD = 0x00; //All LEDs OFF
 }
