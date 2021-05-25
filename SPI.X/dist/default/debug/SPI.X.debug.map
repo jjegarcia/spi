@@ -2,12 +2,12 @@ Microchip MPLAB XC8 Compiler V2.32
 
 Linker command line:
 
---edf=C:\Program Files\Microchip\xc8\v2.32\pic\dat\en_msgs.txt -cn \
-  -h+dist/default/debug\SPI.X.debug.sym \
-  --cmf=dist/default/debug\SPI.X.debug.cmf -z -Q18F8722 \
-  -oC:\Users\lauri\AppData\Local\Temp\xcAs13s.4 --defsym=__MPLAB_BUILD=1 \
-  -Mdist/default/debug/SPI.X.debug.map -E1 -ver=XC8 Compiler --acfsm=1493 \
-  -ASTACK=060h-0EEEh -pstack=STACK -ACODE=00h-01FD3Fh -ACONST=00h-01FD3Fh \
+--edf=/Applications/microchip/xc8/v2.32/pic/dat/en_msgs.txt -cn \
+  -h+dist/default/debug/SPI.X.debug.sym \
+  --cmf=dist/default/debug/SPI.X.debug.cmf -z -Q18F8722 -o/tmp/xc36aMub2 \
+  --defsym=__MPLAB_BUILD=1 -Mdist/default/debug/SPI.X.debug.map -E1 \
+  -ver=XC8 Compiler --acfsm=1493 -ASTACK=060h-0EEEh -pstack=STACK \
+  -ACODE=00h-01FD3Fh -ACONST=00h-01FD3Fh \
   -ASMALLCONST=01000h-010FFhx493,01FD00h-01FD3Fh \
   -AMEDIUMCONST=01000h-0FFFFh,011000h-01FD3Fh -ACOMRAM=01h-05Fh \
   -AABS1=00h-0EEEh,0F00h-0F5Fh -ABIGRAM=01h-0EEEh,0F00h-0F5Fh \
@@ -27,8 +27,7 @@ Linker command line:
   -pfarbss=FARRAM,fardata=FARRAM,nvFARRAM=FARRAM \
   -pintsave_regs=BIGRAM,bigbss=BIGRAM,bigdata=BIGRAM -pbss=RAM \
   -pidata=CODE,irdata=CODE,ibigdata=CODE,ifardata=CODE -prparam=COMRAM \
-  C:\Users\lauri\AppData\Local\Temp\xcAs13s.o \
-  dist/default/debug\SPI.X.debug.o 
+  /tmp/xc01nfg5g.o dist/default/debug/SPI.X.debug.o 
 
 Object code version is 3.11
 
@@ -37,29 +36,29 @@ Machine type is 18F8722
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\lauri\AppData\Local\Temp\xcAs13s.o
+/tmp/xc01nfg5g.o
                 idloc                            200000   200000        8        0       5
                 config                           300000   300000        E        0       4
                 init                                  E        E        4        4       0
                 reset_vec                             0        0        4        0       0
-dist/default/debug\SPI.X.debug.o
+dist/default/debug/SPI.X.debug.o
                 intcode                               8        8        6        4       0
                 idloc                            200000   200000        8        0       5
                 config                           300000   300000        E        0       4
-                temp                                  9        9        1        1       1
-                text9                                AA       AA       10        4       0
-                text8                                F0       F0        8        4       0
-                text7                                90       90       1A        4       0
-                text6                                F8       F8        6        4       0
-                intcode_body                         DE       DE        A        4       0
-                text4                                D4       D4        A        4       0
-                text3                                C8       C8        C        4       0
-                text2                                64       64       2C        4       0
-                text1                                E8       E8        8        4       0
-                text0                                12       12       52        4       0
-                cstackCOMRAM                          1        1        6        1       1
-                bssCOMRAM                             7        7        2        1       1
-                cinit                                BA       BA        E        4       0
+                temp                                  8        8        1        1       1
+                text9                                9A       9A       10        4       0
+                text8                                DE       DE        8        4       0
+                text7                                7E       7E       1C        4       0
+                text6                                E6       E6        6        4       0
+                intcode_body                         CC       CC        A        4       0
+                text4                                C2       C2        A        4       0
+                text3                                B8       B8        A        4       0
+                text2                                4E       4E       30        4       0
+                text1                                D6       D6        8        4       0
+                text0                                12       12       3C        4       0
+                cstackCOMRAM                          1        1        5        1       1
+                bssCOMRAM                             6        6        2        1       1
+                cinit                                AA       AA        E        4       0
 
 TOTAL           Name                               Link     Load   Length     Space
         CLASS   STACK          
@@ -68,17 +67,17 @@ TOTAL           Name                               Link     Load   Length     Sp
                 intcode                               8        8        6         0
                 init                                  E        E        4         0
                 reset_vec                             0        0        4         0
-                text9                                AA       AA       10         0
-                text8                                F0       F0        8         0
-                text7                                90       90       1A         0
-                text6                                F8       F8        6         0
-                intcode_body                         DE       DE        A         0
-                text4                                D4       D4        A         0
-                text3                                C8       C8        C         0
-                text2                                64       64       2C         0
-                text1                                E8       E8        8         0
-                text0                                12       12       52         0
-                cinit                                BA       BA        E         0
+                text9                                9A       9A       10         0
+                text8                                DE       DE        8         0
+                text7                                7E       7E       1C         0
+                text6                                E6       E6        6         0
+                intcode_body                         CC       CC        A         0
+                text4                                C2       C2        A         0
+                text3                                B8       B8        A         0
+                text2                                4E       4E       30         0
+                text1                                D6       D6        8         0
+                text0                                12       12       3C         0
+                cinit                                AA       AA        E         0
 
         CLASS   CONST          
 
@@ -87,9 +86,9 @@ TOTAL           Name                               Link     Load   Length     Sp
         CLASS   MEDIUMCONST    
 
         CLASS   COMRAM         
-                temp                                  9        9        1         1
-                cstackCOMRAM                          1        1        6         1
-                bssCOMRAM                             7        7        2         1
+                temp                                  8        8        1         1
+                cstackCOMRAM                          1        1        5         1
+                bssCOMRAM                             6        6        2         1
 
         CLASS   ABS1           
 
@@ -146,8 +145,8 @@ TOTAL           Name                               Link     Load   Length     Sp
 SEGMENTS        Name                           Load    Length   Top    Selector   Space  Class
 
                 reset_vec                      000000  000004  000004         0       0  CODE    
-                cstackCOMRAM                   000001  000009  00000A         1       1  COMRAM  
-                intcode                        000008  0000F6  0000FE         4       0  CODE    
+                cstackCOMRAM                   000001  000008  000009         1       1  COMRAM  
+                intcode                        000008  0000E4  0000EC         4       0  CODE    
 
 
 UNUSED ADDRESS RANGES
@@ -169,13 +168,13 @@ UNUSED ADDRESS RANGES
         BANK7            000700-0007FF              100
         BANK8            000800-0008FF              100
         BANK9            000900-0009FF              100
-        BIGRAM           00000A-000EEE              EE5
+        BIGRAM           000009-000EEE              EE6
                          000F00-000F5F               60
         CODE             000004-000007                4
-                         0000FE-01FD3F            1FC42
-        COMRAM           00000A-00005F               56
+                         0000EC-01FD3F            1FC54
+        COMRAM           000009-00005F               57
         CONST            000004-000007                4
-                         0000FE-01FD3F            1FC42
+                         0000EC-01FD3F            1FC54
         EEDATA           F00000-F003FF              400
         MEDIUMCONST      001000-00FFFF             F000
                          011000-01FD3F             ED40
@@ -192,16 +191,18 @@ UNUSED ADDRESS RANGES
 
                                   Symbol Table
 
-_FLAGS                     bssCOMRAM    000008
+_FLAGS                     bssCOMRAM    000007
 _GIE                       (abs)        007F97
 _PEIE                      (abs)        007F96
 _PORTD                     (abs)        000F83
+_RC0                       (abs)        007C10
 _SSP1CON1                  (abs)        000FC6
 _SSPBUF                    (abs)        000FC9
 _SSPIE                     (abs)        007CEB
 _SSPIF                     (abs)        007CF3
 _SSPSTAT                   (abs)        000FC7
 _SSPSTATbits               (abs)        000FC7
+_TRISC0                    (abs)        007CA0
 _TRISC3                    (abs)        007CA3
 _TRISC5                    (abs)        007CA5
 _TRISD                     (abs)        000F95
@@ -266,12 +267,12 @@ __Hrparam                  rparam       000000
 __Hsfr                     sfr          000000
 __Hsmallconst              smallconst   000000
 __Hspace_0                 (abs)        001000
-__Hspace_1                 (abs)        00000A
+__Hspace_1                 (abs)        000009
 __Hspace_2                 (abs)        000000
 __Hspace_4                 (abs)        60000E
 __Hstack                   stack        000000
 __Hstruct                  struct       000000
-__Htemp                    temp         00000A
+__Htemp                    temp         000009
 __Htext                    text         000000
 __Htext0                   text0        000000
 __Htext1                   text1        000000
@@ -348,7 +349,7 @@ __Lspace_2                 (abs)        000000
 __Lspace_4                 (abs)        000000
 __Lstack                   stack        000000
 __Lstruct                  struct       000000
-__Ltemp                    temp         000009
+__Ltemp                    temp         000008
 __Ltext                    text         000000
 __Ltext0                   text0        000000
 __Ltext1                   text1        000000
@@ -359,8 +360,8 @@ __Ltext6                   text6        000000
 __Ltext7                   text7        000000
 __Ltext8                   text8        000000
 __Ltext9                   text9        000000
-__S0                       (abs)        0000FE
-__S1                       (abs)        00000A
+__S0                       (abs)        0000EC
+__S1                       (abs)        000009
 __S2                       (abs)        000000
 __S4                       (abs)        000000
 __S5                       (abs)        000000
@@ -372,33 +373,33 @@ ___rparam_used             (abs)        000001
 ___sp                      stack        000000
 __accesstop                (abs)        000060
 __activetblptr             (abs)        000000
-__end_of__initialization   cinit        0000BE
-__end_of_interruptService  text6        0000FE
-__end_of_main              text0        000064
-__end_of_service           intcode_body 0000E8
-__end_of_setInterrupts     text4        0000DE
-__end_of_setIo             text3        0000D4
-__end_of_spiInit           text2        000090
-__end_of_spiRead           text8        0000F8
-__end_of_spiReceiveWait    text9        0000BA
-__end_of_spiService        text7        0000AA
-__end_of_spiWrite          text1        0000F0
-__initialization           cinit        0000BA
+__end_of__initialization   cinit        0000AE
+__end_of_interruptService  text6        0000EC
+__end_of_main              text0        00004E
+__end_of_service           intcode_body 0000D6
+__end_of_setInterrupts     text4        0000CC
+__end_of_setIo             text3        0000C2
+__end_of_spiInit           text2        00007E
+__end_of_spiRead           text8        0000E6
+__end_of_spiReceiveWait    text9        0000AA
+__end_of_spiService        text7        00009A
+__end_of_spiWrite          text1        0000DE
+__initialization           cinit        0000AA
 __mediumconst              mediumconst  000000
-__pbssCOMRAM               bssCOMRAM    000007
-__pcinit                   cinit        0000BA
+__pbssCOMRAM               bssCOMRAM    000006
+__pcinit                   cinit        0000AA
 __pcstackCOMRAM            cstackCOMRAM 000001
 __pintcode                 intcode      000008
-__pintcode_body            intcode_body 0000DE
+__pintcode_body            intcode_body 0000CC
 __ptext0                   text0        000012
-__ptext1                   text1        0000E8
-__ptext2                   text2        000064
-__ptext3                   text3        0000C8
-__ptext4                   text4        0000D4
-__ptext6                   text6        0000F8
-__ptext7                   text7        000090
-__ptext8                   text8        0000F0
-__ptext9                   text9        0000AA
+__ptext1                   text1        0000D6
+__ptext2                   text2        00004E
+__ptext3                   text3        0000B8
+__ptext4                   text4        0000C2
+__ptext6                   text6        0000E6
+__ptext7                   text7        00007E
+__ptext8                   text8        0000DE
+__ptext9                   text9        00009A
 __ramtop                   ramtop       001000
 __size_of_interruptService (abs)        000000
 __size_of_main             (abs)        000000
@@ -411,41 +412,41 @@ __size_of_spiReceiveWait   (abs)        000000
 __size_of_spiService       (abs)        000000
 __size_of_spiWrite         (abs)        000000
 __smallconst               smallconst   000000
-_interruptService          text6        0000F8
+_interruptService          text6        0000E6
 _main                      text0        000012
-_nRBPU                     (abs)        007F8F
-_readValue                 bssCOMRAM    000007
+_readValue                 bssCOMRAM    000006
 _service                   intcode      000008
-_setInterrupts             text4        0000D4
-_setIo                     text3        0000C8
-_spiInit                   text2        000064
-_spiRead                   text8        0000F0
-_spiReceiveWait            text9        0000AA
-_spiService                text7        000090
-_spiWrite                  text1        0000E8
-btemp                      temp         000009
-end_of_initialization      cinit        0000BE
-int$flags                  temp         000009
-int_func                   intcode_body 0000DE
+_setInterrupts             text4        0000C2
+_setIo                     text3        0000B8
+_spiInit                   text2        00004E
+_spiRead                   text8        0000DE
+_spiReceiveWait            text9        00009A
+_spiService                text7        00007E
+_spiWrite                  text1        0000D6
+btemp                      temp         000008
+end_of_initialization      cinit        0000AE
+int$flags                  temp         000008
+int_func                   intcode_body 0000CC
 intlevel0                  text         000000
 intlevel1                  text         000000
 intlevel2                  text         000000
 intlevel3                  text         000000
 isa$std                    (abs)        000001
 isa$xinst                  (abs)        000000
-spiInit@sClockIdle         cstackCOMRAM 000002
-spiInit@sDataSample        cstackCOMRAM 000001
-spiInit@sTransmitEdge      cstackCOMRAM 000003
-spiInit@sType              cstackCOMRAM 000004
-spiWrite@dat               cstackCOMRAM 000001
+spiInit@sClockIdle         cstackCOMRAM 000003
+spiInit@sDataSample        cstackCOMRAM 000002
+spiInit@sTransmitEdge      cstackCOMRAM 000004
+spiInit@sType              cstackCOMRAM 000005
+spiService@test            cstackCOMRAM 000001
+spiWrite@dat               cstackCOMRAM 000002
 stackhi                    (abs)        000EEE
 stacklo                    (abs)        000060
 start                      init         00000E
-start_initialization       cinit        0000BA
-ttemp5                     temp         00000A
-ttemp6                     temp         00000D
-ttemp7                     temp         000011
-wtemp8                     temp         00000A
+start_initialization       cinit        0000AA
+ttemp5                     temp         000009
+ttemp6                     temp         00000C
+ttemp7                     temp         000010
+wtemp8                     temp         000009
 
 
 MODULE INFORMATION
@@ -453,32 +454,32 @@ MODULE INFORMATION
 Module		Function		Class		Link	Load	Size
 newmain.c
 		_service       		CODE           	0008	0000	16
-		_main          		CODE           	0012	0000	82
+		_main          		CODE           	0012	0000	60
 
-newmain.c estimated size: 98
+newmain.c estimated size: 76
 
 interruptService.c
-		_spiService    		CODE           	0090	0000	26
-		_interruptService		CODE           	00F8	0000	6
+		_spiService    		CODE           	007E	0000	28
+		_interruptService		CODE           	00E6	0000	6
 
-interruptService.c estimated size: 32
+interruptService.c estimated size: 34
 
 spi.c
-		_spiWrite      		CODE           	00E8	0000	8
-		_spiInit       		CODE           	0064	0000	44
-		_spiReceiveWait		CODE           	00AA	0000	16
-		_spiRead       		CODE           	00F0	0000	8
+		_spiWrite      		CODE           	00D6	0000	8
+		_spiInit       		CODE           	004E	0000	48
+		_spiReceiveWait		CODE           	009A	0000	16
+		_spiRead       		CODE           	00DE	0000	8
 
-spi.c estimated size: 76
+spi.c estimated size: 80
 
 shared
-		__initialization		CODE           	00BA	0000	4
+		__initialization		CODE           	00AA	0000	4
 
 shared estimated size: 4
 
 init.c
-		_setInterrupts 		CODE           	00D4	0000	10
-		_setIo         		CODE           	00C8	0000	12
+		_setInterrupts 		CODE           	00C2	0000	10
+		_setIo         		CODE           	00B8	0000	10
 
-init.c estimated size: 22
+init.c estimated size: 20
 

@@ -6,21 +6,21 @@
 #include <pic18f8722.h>
 
 void spiInit(Spi_Type sType, Spi_Data_Sample sDataSample, Spi_Clock_Idle sClockIdle, Spi_Transmit_Edge sTransmitEdge) {
-    TRISC5 = 0;
-    TRISC4 = 1;
+    TRISC5 = 0;//SDO  
+    TRISC4 = 1;//SDI
     if (sType & 0b00000100) //If Slave Mode
     {
         SSPSTAT = sTransmitEdge;
         TRISC3 = 1; //clock as input
-        TRISC0 = 0; //CE For This IC as output
+        TRISC2 = 0; //CE For This IC as output
         RC0 = 1;
     } else //If Master Mode
     {
         SSPSTAT = sDataSample | sTransmitEdge;
-        TRISC3 = 0;
-        TRISC0 = 1; //CE For This IC as input
+        TRISC3 = 0; //clock as output
+        TRISC2 = 1; //CE For This IC as input
     }
-    SSP1CON1 = sType | sClockIdle;
+    SSP1CON1 = 0b00100101;//sType | sClockIdle;
 }
 
 static void spiReceiveWait() {
