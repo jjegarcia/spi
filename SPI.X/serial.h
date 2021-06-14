@@ -28,11 +28,14 @@
 
 // This is a guard condition so that contents of this file are not included
 // more than once.  
-#ifndef XC_HEADER_TEMPLATE_H
-#define	XC_HEADER_TEMPLATE_H
+#ifndef SERIAL_H
+#define	SERIAL_H
 
 #include <xc.h> // include processor files - each processor file is guarded.  
+#include <pic18f8722.h>
 
+unsigned char readSerialValue;
 
+void serialCallback(void);
 #endif	/* XC_HEADER_TEMPLATE_H */
 

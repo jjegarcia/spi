@@ -29,6 +29,7 @@ void setIo() {
     PORTD = 0x00; //All LEDs OFF
     TRISC7 = 1; //serial Port RC
     TRISC6 = 0; //serial Port TX
+    TRISB0=1; //read switch
 }
 
 void setSPI(void) {
@@ -40,4 +41,8 @@ void setInterrupts(void) {
     GIE = 1;
     PEIE = 1;
     //    ADCON1 = 0x07;
+}
+
+void setSwitchInterrput(void){
+    INTEDG0=1;   
 }

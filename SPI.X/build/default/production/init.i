@@ -7614,7 +7614,7 @@ extern volatile __bit nWRITE2 __attribute__((address(0x7B22)));
 extern volatile __bit nWRL __attribute__((address(0x7C42)));
 # 6 "init.c" 2
 # 1 "./init.h" 1
-# 25 "./init.h"
+# 28 "./init.h"
 # 1 "/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/xc.h" 1 3
 # 18 "/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -7772,7 +7772,7 @@ extern __attribute__((nonreentrant)) void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 # 33 "/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/xc.h" 2 3
-# 26 "./init.h" 2
+# 29 "./init.h" 2
 
 
 
@@ -7806,6 +7806,7 @@ void setIo() {
     PORTD = 0x00;
     TRISC7 = 1;
     TRISC6 = 0;
+    TRISB0=1;
 }
 
 void setSPI(void) {
@@ -7817,4 +7818,8 @@ void setInterrupts(void) {
     GIE = 1;
     PEIE = 1;
 
+}
+
+void setSwitchInterrput(void){
+    INTEDG0=1;
 }

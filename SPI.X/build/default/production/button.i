@@ -1,4 +1,4 @@
-# 1 "newmain.c"
+# 1 "button.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,11 +6,9 @@
 # 1 "<built-in>" 2
 # 1 "/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "newmain.c" 2
-
-
-
-
+# 1 "button.c" 2
+# 1 "./button.h" 1
+# 34 "./button.h"
 # 1 "/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/xc.h" 1 3
 # 18 "/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -7771,183 +7769,13 @@ extern __attribute__((nonreentrant)) void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 # 33 "/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/xc.h" 2 3
-# 6 "newmain.c" 2
-
-# 1 "./spi.h" 1
+# 35 "./button.h" 2
 
 
 
+void buttonCallback(void);
+# 2 "button.c" 2
 
-
-
-
-
-typedef enum
-{
-    SPI_MASTER_OSC_DIV4 = 0b00100000,
-    SPI_MASTER_OSC_DIV16 = 0b00100001,
-    SPI_MASTER_OSC_DIV64 = 0b00100010,
-    SPI_MASTER_TMR2 = 0b00100011,
-    SPI_SLAVE_SS_EN = 0b00100100,
-    SPI_SLAVE_SS_DIS = 0b00100101
-}Spi_Type;
-
-typedef enum
-{
-    SPI_DATA_SAMPLE_MIDDLE = 0b00000000,
-    SPI_DATA_SAMPLE_END = 0b10000000
-}Spi_Data_Sample;
-
-typedef enum
-{
-    SPI_CLOCK_IDLE_HIGH = 0b00010000,
-    SPI_CLOCK_IDLE_LOW = 0b00000000
-}Spi_Clock_Idle;
-
-typedef enum
-{
-    SPI_IDLE_2_ACTIVE = 0b00000000,
-    SPI_ACTIVE_2_IDLE = 0b01000000
-}Spi_Transmit_Edge;
-
-
-void spiInit(Spi_Type, Spi_Data_Sample, Spi_Clock_Idle, Spi_Transmit_Edge);
-void spiWrite(char);
-unsigned spiDataReady(void);
-char spiRead(void);
-# 8 "newmain.c" 2
-# 1 "./config.h" 1
-# 34 "./config.h"
-#pragma config OSC = XT
-#pragma config FCMEN = OFF
-#pragma config IESO = OFF
-
-
-#pragma config PWRT = OFF
-#pragma config BOREN = OFF
-#pragma config BORV = 3
-
-
-#pragma config WDT = OFF
-#pragma config WDTPS = 32768
-
-
-#pragma config MODE = MC
-#pragma config ADDRBW = ADDR20BIT
-#pragma config DATABW = DATA16BIT
-#pragma config WAIT = OFF
-
-
-#pragma config CCP2MX = PORTC
-#pragma config ECCPMX = PORTE
-#pragma config LPT1OSC = OFF
-#pragma config MCLRE = ON
-
-
-#pragma config STVREN = ON
-#pragma config LVP = OFF
-#pragma config BBSIZ = BB2K
-#pragma config XINST = OFF
-
-
-#pragma config CP0 = OFF
-#pragma config CP1 = OFF
-#pragma config CP2 = OFF
-#pragma config CP3 = OFF
-#pragma config CP4 = OFF
-#pragma config CP5 = OFF
-#pragma config CP6 = OFF
-#pragma config CP7 = OFF
-
-
-#pragma config CPB = OFF
-#pragma config CPD = OFF
-
-
-#pragma config WRT0 = OFF
-#pragma config WRT1 = OFF
-#pragma config WRT2 = OFF
-#pragma config WRT3 = OFF
-#pragma config WRT4 = OFF
-#pragma config WRT5 = OFF
-#pragma config WRT6 = OFF
-#pragma config WRT7 = OFF
-
-
-#pragma config WRTC = OFF
-#pragma config WRTB = OFF
-#pragma config WRTD = OFF
-
-
-#pragma config EBTR0 = OFF
-#pragma config EBTR1 = OFF
-#pragma config EBTR2 = OFF
-#pragma config EBTR3 = OFF
-#pragma config EBTR4 = OFF
-#pragma config EBTR5 = OFF
-#pragma config EBTR6 = OFF
-#pragma config EBTR7 = OFF
-
-
-#pragma config EBTRB = OFF
-# 9 "newmain.c" 2
-# 1 "./main.h" 1
-# 25 "./main.h"
- union {
-     unsigned char byte;
-    struct {
-        unsigned SPI_READ_REQUEST : 1;
-        unsigned DISPLAY_READING : 1;
-        unsigned UART_RECEIVED:1;
-    }bits;
-} FLAGS;
-
-unsigned char readSPIValue;
-unsigned char readSerialValue;
-# 10 "newmain.c" 2
-# 1 "./interruptService.h" 1
-# 27 "./interruptService.h"
-void interruptService(void);
-static void spiService(void);
-# 11 "newmain.c" 2
-# 1 "./init.h" 1
-# 29 "./init.h"
-void setInterrupts(void);
-void setIo(void);
-void setSerial(void);
-void setSPI(void);
-# 12 "newmain.c" 2
-
-
-
-void __attribute__((picinterrupt(("")))) service() {
-    interruptService();
-}
-
-void main() {
-    setIo();
-    setSPI();
-    setSerial();
-    setInterrupts();
-
-
-
-
-
-    TXREG= 0b11001100;
-    while (1) {
-        if (FLAGS.bits.DISPLAY_READING) {
-
-            FLAGS.bits.DISPLAY_READING = 0;
-
-            spiWrite(0b00001111);
-        }
-        if (FLAGS.bits.UART_RECEIVED) {
-            readSerialValue = RCREG;
-            PORTD = readSerialValue;
-            TXREG = readSerialValue;
-        }
-
-
-    }
+void buttonCallback(void) {
+    TXREG = 0b11001100;
 }

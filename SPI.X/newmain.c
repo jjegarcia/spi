@@ -9,6 +9,8 @@
 #include "main.h"
 #include "interruptService.h"
 #include "init.h"
+#include "serial.h"
+#include "button.h"
 
 #define _XTAL_FREQ 8000000
 
@@ -22,11 +24,10 @@ void main() {
     setSerial();
     setInterrupts();
     //    spiInit(SPI_MASTER_OSC_DIV4, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);//master
-//    spiInit(SPI_SLAVE_SS_EN, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE); //slave
+    //    spiInit(SPI_SLAVE_SS_EN, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE); //slave
 
-//    spiWrite(0b01010101);
-    
-    TXREG= 0b11001100;
+    //    spiWrite(0b01010101);
+
     while (1) {
         if (FLAGS.bits.DISPLAY_READING) {
             //           PORTD = readSPIValue;
@@ -35,12 +36,16 @@ void main() {
             spiWrite(0b00001111);
         }
         if (FLAGS.bits.UART_RECEIVED) {
-            readSerialValue = RCREG;
-            PORTD = readSerialValue;
-            TXREG = readSerialValue;
+            serialCallback();
         }
+        if (FLAGS.bits.PUSHED_BUTTON) {
+            if (FLAGS.bits.PREVIOUS_BUTTON_STATE != FLAGS.bits.PUSHED_BUTTON) {
+                FLAGS.bits.PREVIOUS_BUTTON_STATE = FLAGS.bits.PUSHED_BUTTON;
+                buttonCallback();
+            }
+            FLAGS.bits.PUSHED_BUTTON = 0;
 
-        //        __delay_ms(1000);
+        }
     }
 }
 

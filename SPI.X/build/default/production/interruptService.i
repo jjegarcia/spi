@@ -7774,28 +7774,23 @@ extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 # 33 "/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/xc.h" 2 3
 # 7 "interruptService.c" 2
 # 1 "./main.h" 1
-# 25 "./main.h"
- union {
-     unsigned char byte;
+# 29 "./main.h"
+union {
+    unsigned char byte;
+
     struct {
         unsigned SPI_READ_REQUEST : 1;
         unsigned DISPLAY_READING : 1;
-        unsigned UART_RECEIVED:1;
-    }bits;
+        unsigned UART_RECEIVED : 1;
+        unsigned PREVIOUS_BUTTON_STATE : 1;
+        unsigned PUSHED_BUTTON : 1;
+    } bits;
 } FLAGS;
 
 unsigned char readSPIValue;
-unsigned char readSerialValue;
 # 8 "interruptService.c" 2
 # 1 "./spi.h" 1
-
-
-
-
-
-
-
-
+# 11 "./spi.h"
 typedef enum
 {
     SPI_MASTER_OSC_DIV4 = 0b00100000,
@@ -7831,10 +7826,16 @@ unsigned spiDataReady(void);
 char spiRead(void);
 # 9 "interruptService.c" 2
 # 1 "./interruptService.h" 1
-# 27 "./interruptService.h"
+# 28 "./interruptService.h"
 void interruptService(void);
 static void spiService(void);
 # 10 "interruptService.c" 2
+# 1 "./serial.h" 1
+# 37 "./serial.h"
+unsigned char readSerialValue;
+
+void serialCallback(void);
+# 11 "interruptService.c" 2
 
 void processInterruptService(void) {
     if (SSPIE == 1 && SSPIF == 1) {
@@ -7847,6 +7848,10 @@ void processInterruptService(void) {
             FLAGS.bits.UART_RECEIVED = 1;
             readSerialValue = RCREG;
 
+    }
+    if (INTEDG0==1 && INT0IF==1){
+        INT0IF=0;
+        FLAGS.bits.PUSHED_BUTTON = 1;
     }
 }
 
