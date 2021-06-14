@@ -7774,14 +7774,7 @@ extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 # 6 "newmain.c" 2
 
 # 1 "./spi.h" 1
-
-
-
-
-
-
-
-
+# 11 "./spi.h"
 typedef enum
 {
     SPI_MASTER_OSC_DIV4 = 0b00100000,
@@ -7817,7 +7810,7 @@ unsigned spiDataReady(void);
 char spiRead(void);
 # 8 "newmain.c" 2
 # 1 "./config.h" 1
-# 34 "./config.h"
+# 36 "./config.h"
 #pragma config OSC = XT
 #pragma config FCMEN = OFF
 #pragma config IESO = OFF
@@ -7892,31 +7885,44 @@ char spiRead(void);
 #pragma config EBTRB = OFF
 # 9 "newmain.c" 2
 # 1 "./main.h" 1
-# 25 "./main.h"
- union {
-     unsigned char byte;
+# 29 "./main.h"
+union {
+    unsigned char byte;
+
     struct {
         unsigned SPI_READ_REQUEST : 1;
         unsigned DISPLAY_READING : 1;
-        unsigned UART_RECEIVED:1;
-    }bits;
+        unsigned UART_RECEIVED : 1;
+        unsigned PREVIOUS_BUTTON_STATE : 1;
+        unsigned PUSHED_BUTTON : 1;
+    } bits;
 } FLAGS;
 
 unsigned char readSPIValue;
-unsigned char readSerialValue;
 # 10 "newmain.c" 2
 # 1 "./interruptService.h" 1
-# 27 "./interruptService.h"
+# 28 "./interruptService.h"
 void interruptService(void);
 static void spiService(void);
 # 11 "newmain.c" 2
 # 1 "./init.h" 1
-# 29 "./init.h"
+# 32 "./init.h"
 void setInterrupts(void);
 void setIo(void);
 void setSerial(void);
 void setSPI(void);
+void setSwitchInterrput(void);
 # 12 "newmain.c" 2
+# 1 "./serial.h" 1
+# 37 "./serial.h"
+unsigned char readSerialValue;
+
+void serialCallback(void);
+# 13 "newmain.c" 2
+# 1 "./button.h" 1
+# 38 "./button.h"
+void buttonCallback(void);
+# 14 "newmain.c" 2
 
 
 
@@ -7928,13 +7934,13 @@ void main() {
     setIo();
     setSPI();
     setSerial();
+    setSwitchInterrput();
     setInterrupts();
 
 
 
 
 
-    TXREG= 0b11001100;
     while (1) {
         if (FLAGS.bits.DISPLAY_READING) {
 
@@ -7943,11 +7949,15 @@ void main() {
             spiWrite(0b00001111);
         }
         if (FLAGS.bits.UART_RECEIVED) {
-            readSerialValue = RCREG;
-            PORTD = readSerialValue;
-            TXREG = readSerialValue;
+            serialCallback();
         }
+        if (FLAGS.bits.PUSHED_BUTTON) {
+            if (FLAGS.bits.PREVIOUS_BUTTON_STATE != FLAGS.bits.PUSHED_BUTTON) {
+                FLAGS.bits.PREVIOUS_BUTTON_STATE = FLAGS.bits.PUSHED_BUTTON;
+                buttonCallback();
+            }
+            FLAGS.bits.PUSHED_BUTTON = 0;
 
-
+        }
     }
 }

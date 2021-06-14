@@ -2,6 +2,8 @@
  * File            : spi.h
   */
 
+#ifndef SPI_H
+#define	SPI_H
 
 #include <xc.h> 
 #include <pic18f8722.h>
@@ -40,5 +42,5 @@ void spiWrite(char);
 unsigned spiDataReady(void);
 char spiRead(void);
 
-
+#endif
 

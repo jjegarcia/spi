@@ -35,6 +35,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 "16263
 [; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 16263: extern volatile __bit TRISC6 __attribute__((address(0x7CA6)));
 [v _TRISC6 `Vb ~T0 @X0 0 e@31910 ]
+"16221
+[; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 16221: extern volatile __bit TRISB0 __attribute__((address(0x7C98)));
+[v _TRISB0 `Vb ~T0 @X0 0 e@31896 ]
 "15900
 [; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 15900: extern volatile __bit SSPIF __attribute__((address(0x7CF3)));
 [v _SSPIF `Vb ~T0 @X0 0 e@31987 ]
@@ -47,6 +50,12 @@ Version 4.0 HI-TECH Software Intermediate Code
 "15273
 [; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 15273: extern volatile __bit PEIE __attribute__((address(0x7F96)));
 [v _PEIE `Vb ~T0 @X0 0 e@32662 ]
+"14403
+[; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 14403: extern volatile __bit INTEDG0 __attribute__((address(0x7F8E)));
+[v _INTEDG0 `Vb ~T0 @X0 0 e@32654 ]
+"14334
+[; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 14334: extern volatile __bit INT0IE __attribute__((address(0x7F94)));
+[v _INT0IE `Vb ~T0 @X0 0 e@32660 ]
 "54 /Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h
 [; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 54: __asm("SSP2CON2 equ 0F62h");
 [; <" SSP2CON2 equ 0F62h ;# ">
@@ -694,38 +703,57 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;init.c: 31:     TRISC6 = 0;
 [e = _TRISC6 -> -> 0 `i `b ]
 "32
-[; ;init.c: 32: }
+[; ;init.c: 32:     TRISB0 = 1;
+[e = _TRISB0 -> -> 1 `i `b ]
+"33
+[; ;init.c: 33: }
 [e :UE 502 ]
 }
-"34
-[; ;init.c: 34: void setSPI(void) {
+"35
+[; ;init.c: 35: void setSPI(void) {
 [v _setSPI `(v ~T0 @X0 1 ef ]
 {
 [e :U _setSPI ]
 [f ]
-"35
-[; ;init.c: 35:     SSPIF = 0;
-[e = _SSPIF -> -> 0 `i `b ]
 "36
-[; ;init.c: 36:     SSPIE = 1;
-[e = _SSPIE -> -> 1 `i `b ]
+[; ;init.c: 36:     SSPIF = 0;
+[e = _SSPIF -> -> 0 `i `b ]
 "37
-[; ;init.c: 37: }
+[; ;init.c: 37:     SSPIE = 1;
+[e = _SSPIE -> -> 1 `i `b ]
+"38
+[; ;init.c: 38: }
 [e :UE 503 ]
 }
-"39
-[; ;init.c: 39: void setInterrupts(void) {
+"40
+[; ;init.c: 40: void setInterrupts(void) {
 [v _setInterrupts `(v ~T0 @X0 1 ef ]
 {
 [e :U _setInterrupts ]
 [f ]
-"40
-[; ;init.c: 40:     GIE = 1;
-[e = _GIE -> -> 1 `i `b ]
 "41
-[; ;init.c: 41:     PEIE = 1;
+[; ;init.c: 41:     GIE = 1;
+[e = _GIE -> -> 1 `i `b ]
+"42
+[; ;init.c: 42:     PEIE = 1;
 [e = _PEIE -> -> 1 `i `b ]
-"43
-[; ;init.c: 43: }
+"44
+[; ;init.c: 44: }
 [e :UE 504 ]
+}
+"46
+[; ;init.c: 46: void setSwitchInterrput(void) {
+[v _setSwitchInterrput `(v ~T0 @X0 1 ef ]
+{
+[e :U _setSwitchInterrput ]
+[f ]
+"47
+[; ;init.c: 47:     INTEDG0 = 1;
+[e = _INTEDG0 -> -> 1 `i `b ]
+"48
+[; ;init.c: 48:     INT0IE = 1;
+[e = _INT0IE -> -> 1 `i `b ]
+"49
+[; ;init.c: 49: }
+[e :UE 505 ]
 }

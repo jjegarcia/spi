@@ -1,42 +1,42 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"27 ./main.h
-[; ;./main.h: 27:     struct {
-[s S502 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S502 . SPI_READ_REQUEST DISPLAY_READING UART_RECEIVED ]
-"25
-[; ;./main.h: 25:  union {
+"32 ./main.h
+[; ;./main.h: 32:     struct {
+[s S502 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S502 . SPI_READ_REQUEST DISPLAY_READING UART_RECEIVED PREVIOUS_BUTTON_STATE PUSHED_BUTTON ]
+"29
+[; ;./main.h: 29: union {
 [u S501 `uc 1 `S502 1 ]
 [n S501 . byte bits ]
 [t ~ __interrupt . k ]
 [t T110 __interrupt ]
-"27 ./interruptService.h
-[; ;./interruptService.h: 27: void interruptService(void);
+"28 ./interruptService.h
+[; ;./interruptService.h: 28: void interruptService(void);
 [v _interruptService `(v ~T0 @X0 0 ef ]
 [p mainexit ]
-"30 ./init.h
-[; ;./init.h: 30: void setIo(void);
+"33 ./init.h
+[; ;./init.h: 33: void setIo(void);
 [v _setIo `(v ~T0 @X0 0 ef ]
-"32
-[; ;./init.h: 32: void setSPI(void);
+"35
+[; ;./init.h: 35: void setSPI(void);
 [v _setSPI `(v ~T0 @X0 0 ef ]
-"31
-[; ;./init.h: 31: void setSerial(void);
+"34
+[; ;./init.h: 34: void setSerial(void);
 [v _setSerial `(v ~T0 @X0 0 ef ]
-"29
-[; ;./init.h: 29: void setInterrupts(void);
+"36
+[; ;./init.h: 36: void setSwitchInterrput(void);
+[v _setSwitchInterrput `(v ~T0 @X0 0 ef ]
+"32
+[; ;./init.h: 32: void setInterrupts(void);
 [v _setInterrupts `(v ~T0 @X0 0 ef ]
-"8951 /Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h
-[; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 8951: extern volatile unsigned char TXREG __attribute__((address(0xFAD)));
-[v _TXREG `Vuc ~T0 @X0 0 e@4013 ]
-"39 ./spi.h
-[; ;./spi.h: 39: void spiWrite(char);
+"41 ./spi.h
+[; ;./spi.h: 41: void spiWrite(char);
 [v _spiWrite `(v ~T0 @X0 0 ef1`uc ]
-"8963 /Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h
-[; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 8963: extern volatile unsigned char RCREG __attribute__((address(0xFAE)));
-[v _RCREG `Vuc ~T0 @X0 0 e@4014 ]
-"3195
-[; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 3195: extern volatile unsigned char PORTD __attribute__((address(0xF83)));
-[v _PORTD `Vuc ~T0 @X0 0 e@3971 ]
+"39 ./serial.h
+[; ;./serial.h: 39: void serialCallback(void);
+[v _serialCallback `(v ~T0 @X0 0 ef ]
+"38 ./button.h
+[; ;./button.h: 38: void buttonCallback(void);
+[v _buttonCallback `(v ~T0 @X0 0 ef ]
 "54 /Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h
 [; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 54: __asm("SSP2CON2 equ 0F62h");
 [; <" SSP2CON2 equ 0F62h ;# ">
@@ -631,193 +631,212 @@ Version 4.0 HI-TECH Software Intermediate Code
 "13453
 [; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 13453: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-"34 ./config.h
+"36 ./config.h
 [p x OSC  =  XT          ]
-"35
+"37
 [p x FCMEN  =  OFF       ]
-"36
+"38
 [p x IESO  =  OFF        ]
-"39
-[p x PWRT  =  OFF        ]
-"40
-[p x BOREN  =  OFF       ]
 "41
+[p x PWRT  =  OFF        ]
+"42
+[p x BOREN  =  OFF       ]
+"43
 [p x BORV  =  3          ]
-"44
+"46
 [p x WDT  =  OFF         ]
-"45
+"47
 [p x WDTPS  =  32768     ]
-"48
-[p x MODE  =  MC         ]
-"49
-[p x ADDRBW  =  ADDR20BIT ]
 "50
-[p x DATABW  =  DATA16BIT ]
+[p x MODE  =  MC         ]
 "51
+[p x ADDRBW  =  ADDR20BIT ]
+"52
+[p x DATABW  =  DATA16BIT ]
+"53
 [p x WAIT  =  OFF        ]
-"54
-[p x CCP2MX  =  PORTC    ]
-"55
-[p x ECCPMX  =  PORTE    ]
 "56
-[p x LPT1OSC  =  OFF     ]
+[p x CCP2MX  =  PORTC    ]
 "57
+[p x ECCPMX  =  PORTE    ]
+"58
+[p x LPT1OSC  =  OFF     ]
+"59
 [p x MCLRE  =  ON        ]
-"60
-[p x STVREN  =  ON       ]
-"61
-[p x LVP  =  OFF         ]
 "62
-[p x BBSIZ  =  BB2K      ]
+[p x STVREN  =  ON       ]
 "63
+[p x LVP  =  OFF         ]
+"64
+[p x BBSIZ  =  BB2K      ]
+"65
 [p x XINST  =  OFF       ]
-"66
-[p x CP0  =  OFF         ]
-"67
-[p x CP1  =  OFF         ]
 "68
-[p x CP2  =  OFF         ]
+[p x CP0  =  OFF         ]
 "69
-[p x CP3  =  OFF         ]
+[p x CP1  =  OFF         ]
 "70
-[p x CP4  =  OFF         ]
+[p x CP2  =  OFF         ]
 "71
-[p x CP5  =  OFF         ]
+[p x CP3  =  OFF         ]
 "72
-[p x CP6  =  OFF         ]
+[p x CP4  =  OFF         ]
 "73
+[p x CP5  =  OFF         ]
+"74
+[p x CP6  =  OFF         ]
+"75
 [p x CP7  =  OFF         ]
-"76
+"78
 [p x CPB  =  OFF         ]
-"77
+"79
 [p x CPD  =  OFF         ]
-"80
-[p x WRT0  =  OFF        ]
-"81
-[p x WRT1  =  OFF        ]
 "82
-[p x WRT2  =  OFF        ]
+[p x WRT0  =  OFF        ]
 "83
-[p x WRT3  =  OFF        ]
+[p x WRT1  =  OFF        ]
 "84
-[p x WRT4  =  OFF        ]
+[p x WRT2  =  OFF        ]
 "85
-[p x WRT5  =  OFF        ]
+[p x WRT3  =  OFF        ]
 "86
-[p x WRT6  =  OFF        ]
+[p x WRT4  =  OFF        ]
 "87
+[p x WRT5  =  OFF        ]
+"88
+[p x WRT6  =  OFF        ]
+"89
 [p x WRT7  =  OFF        ]
-"90
-[p x WRTC  =  OFF        ]
-"91
-[p x WRTB  =  OFF        ]
 "92
+[p x WRTC  =  OFF        ]
+"93
+[p x WRTB  =  OFF        ]
+"94
 [p x WRTD  =  OFF        ]
-"95
-[p x EBTR0  =  OFF       ]
-"96
-[p x EBTR1  =  OFF       ]
 "97
-[p x EBTR2  =  OFF       ]
+[p x EBTR0  =  OFF       ]
 "98
-[p x EBTR3  =  OFF       ]
+[p x EBTR1  =  OFF       ]
 "99
-[p x EBTR4  =  OFF       ]
+[p x EBTR2  =  OFF       ]
 "100
-[p x EBTR5  =  OFF       ]
+[p x EBTR3  =  OFF       ]
 "101
-[p x EBTR6  =  OFF       ]
+[p x EBTR4  =  OFF       ]
 "102
+[p x EBTR5  =  OFF       ]
+"103
+[p x EBTR6  =  OFF       ]
+"104
 [p x EBTR7  =  OFF       ]
-"105
+"107
 [p x EBTRB  =  OFF       ]
-"32 ./main.h
-[; ;./main.h: 32: } FLAGS;
+"39 ./main.h
+[; ;./main.h: 39: } FLAGS;
 [v _FLAGS `S501 ~T0 @X0 1 e ]
-"34
-[; ;./main.h: 34: unsigned char readSPIValue;
+"41
+[; ;./main.h: 41: unsigned char readSPIValue;
 [v _readSPIValue `uc ~T0 @X0 1 e ]
-"35
-[; ;./main.h: 35: unsigned char readSerialValue;
+"37 ./serial.h
+[; ;./serial.h: 37: unsigned char readSerialValue;
 [v _readSerialValue `uc ~T0 @X0 1 e ]
 [v $root$_service `(v ~T0 @X0 0 e ]
-"15 newmain.c
-[; ;newmain.c: 15: void __attribute__((picinterrupt(("")))) service() {
+"17 newmain.c
+[; ;newmain.c: 17: void __attribute__((picinterrupt(("")))) service() {
 [v _service `(v ~T110 @X0 1 ef ]
 {
 [e :U _service ]
 [f ]
-"16
-[; ;newmain.c: 16:     interruptService();
+"18
+[; ;newmain.c: 18:     interruptService();
 [e ( _interruptService ..  ]
-"17
-[; ;newmain.c: 17: }
+"19
+[; ;newmain.c: 19: }
 [e :UE 503 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
-"19
-[; ;newmain.c: 19: void main() {
+"21
+[; ;newmain.c: 21: void main() {
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"20
-[; ;newmain.c: 20:     setIo();
-[e ( _setIo ..  ]
-"21
-[; ;newmain.c: 21:     setSPI();
-[e ( _setSPI ..  ]
 "22
-[; ;newmain.c: 22:     setSerial();
-[e ( _setSerial ..  ]
+[; ;newmain.c: 22:     setIo();
+[e ( _setIo ..  ]
 "23
-[; ;newmain.c: 23:     setInterrupts();
+[; ;newmain.c: 23:     setSPI();
+[e ( _setSPI ..  ]
+"24
+[; ;newmain.c: 24:     setSerial();
+[e ( _setSerial ..  ]
+"25
+[; ;newmain.c: 25:     setSwitchInterrput();
+[e ( _setSwitchInterrput ..  ]
+"26
+[; ;newmain.c: 26:     setInterrupts();
 [e ( _setInterrupts ..  ]
-"29
-[; ;newmain.c: 29:     TXREG= 0b11001100;
-[e = _TXREG -> -> 204 `i `uc ]
-"30
-[; ;newmain.c: 30:     while (1) {
+"32
+[; ;newmain.c: 32:     while (1) {
 [e :U 506 ]
 {
-"31
-[; ;newmain.c: 31:         if (FLAGS.bits.DISPLAY_READING) {
+"33
+[; ;newmain.c: 33:         if (FLAGS.bits.DISPLAY_READING) {
 [e $ ! != -> . . _FLAGS 1 1 `i -> 0 `i 508  ]
 {
-"33
-[; ;newmain.c: 33:             FLAGS.bits.DISPLAY_READING = 0;
-[e = . . _FLAGS 1 1 -> -> 0 `i `uc ]
 "35
-[; ;newmain.c: 35:             spiWrite(0b00001111);
+[; ;newmain.c: 35:             FLAGS.bits.DISPLAY_READING = 0;
+[e = . . _FLAGS 1 1 -> -> 0 `i `uc ]
+"37
+[; ;newmain.c: 37:             spiWrite(0b00001111);
 [e ( _spiWrite (1 -> -> 15 `i `uc ]
-"36
-[; ;newmain.c: 36:         }
+"38
+[; ;newmain.c: 38:         }
 }
 [e :U 508 ]
-"37
-[; ;newmain.c: 37:         if (FLAGS.bits.UART_RECEIVED) {
+"39
+[; ;newmain.c: 39:         if (FLAGS.bits.UART_RECEIVED) {
 [e $ ! != -> . . _FLAGS 1 2 `i -> 0 `i 509  ]
 {
-"38
-[; ;newmain.c: 38:             readSerialValue = RCREG;
-[e = _readSerialValue _RCREG ]
-"39
-[; ;newmain.c: 39:             PORTD = readSerialValue;
-[e = _PORTD _readSerialValue ]
 "40
-[; ;newmain.c: 40:             TXREG = readSerialValue;
-[e = _TXREG _readSerialValue ]
+[; ;newmain.c: 40:             serialCallback();
+[e ( _serialCallback ..  ]
 "41
 [; ;newmain.c: 41:         }
 }
 [e :U 509 ]
+"42
+[; ;newmain.c: 42:         if (FLAGS.bits.PUSHED_BUTTON) {
+[e $ ! != -> . . _FLAGS 1 4 `i -> 0 `i 510  ]
+{
+"43
+[; ;newmain.c: 43:             if (FLAGS.bits.PREVIOUS_BUTTON_STATE != FLAGS.bits.PUSHED_BUTTON) {
+[e $ ! != -> . . _FLAGS 1 3 `i -> . . _FLAGS 1 4 `i 511  ]
+{
 "44
-[; ;newmain.c: 44:     }
+[; ;newmain.c: 44:                 FLAGS.bits.PREVIOUS_BUTTON_STATE = FLAGS.bits.PUSHED_BUTTON;
+[e = . . _FLAGS 1 3 . . _FLAGS 1 4 ]
+"45
+[; ;newmain.c: 45:                 buttonCallback();
+[e ( _buttonCallback ..  ]
+"46
+[; ;newmain.c: 46:             }
+}
+[e :U 511 ]
+"47
+[; ;newmain.c: 47:             FLAGS.bits.PUSHED_BUTTON = 0;
+[e = . . _FLAGS 1 4 -> -> 0 `i `uc ]
+"49
+[; ;newmain.c: 49:         }
+}
+[e :U 510 ]
+"50
+[; ;newmain.c: 50:     }
 }
 [e :U 505 ]
 [e $U 506  ]
 [e :U 507 ]
-"45
-[; ;newmain.c: 45: }
+"51
+[; ;newmain.c: 51: }
 [e :UE 504 ]
 }

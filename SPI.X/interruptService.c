@@ -7,6 +7,7 @@
 #include "main.h"
 #include "spi.h"
 #include "interruptService.h"
+#include"serial.h"
 
 void processInterruptService(void) {
     if (SSPIE == 1 && SSPIF == 1) {
@@ -19,6 +20,10 @@ void processInterruptService(void) {
             FLAGS.bits.UART_RECEIVED = 1;
             readSerialValue = RCREG;
 //        }
+    }
+    if (INTEDG0==1 && INT0IF==1){
+        INT0IF=0;
+        FLAGS.bits.PUSHED_BUTTON = 1;
     }
 }
 

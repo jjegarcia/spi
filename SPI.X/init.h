@@ -22,6 +22,9 @@
 /* 
  * File:   Init.h
  */
+#ifndef INIT_H
+#define	INIT_H
+
 #include <xc.h> 
 
 // This is a guard condition so that contents of this file are not included
@@ -30,4 +33,7 @@ void setInterrupts(void);
 void setIo(void);
 void setSerial(void);
 void setSPI(void); 
+void setSwitchInterrput(void);
+#endif
+
 

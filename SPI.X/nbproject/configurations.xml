@@ -10,6 +10,7 @@
       <itemPath>init.h</itemPath>
       <itemPath>interruptService.h</itemPath>
       <itemPath>serial.h</itemPath>
+      <itemPath>button.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -22,6 +23,8 @@
       <itemPath>spi.c</itemPath>
       <itemPath>init.c</itemPath>
       <itemPath>interruptService.c</itemPath>
+      <itemPath>serial.c</itemPath>
+      <itemPath>button.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -162,7 +165,8 @@
         <property key="ToolFirmwareFilePath"
                   value="Press to browse for a specific firmware version"/>
         <property key="ToolFirmwareOption.UseLatestFirmware" value="true"/>
-        <property key="debugoptions.useswbreakpoints" value="false"/>
+        <property key="debugoptions.useswbreakpoints" value="true"/>
+        <property key="firmware.download.all" value="false"/>
         <property key="hwtoolclock.frcindebug" value="false"/>
         <property key="memories.aux" value="false"/>
         <property key="memories.bootflash" value="false"/>
