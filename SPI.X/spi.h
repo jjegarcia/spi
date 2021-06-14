@@ -2,8 +2,6 @@
  * File            : spi.h
   */
 
-#ifndef SPI_H
-#define	SPI_H
 
 #include <xc.h> 
 #include <pic18f8722.h>
@@ -39,8 +37,8 @@ typedef enum
 
 void spiInit(Spi_Type, Spi_Data_Sample, Spi_Clock_Idle, Spi_Transmit_Edge);
 void spiWrite(char);
-unsigned spiDataReady();
-char spiRead();
+unsigned spiDataReady(void);
+char spiRead(void);
 
-#endif	/* SPI_H */
+
 

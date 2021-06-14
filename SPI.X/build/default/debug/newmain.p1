@@ -1,43 +1,42 @@
 Version 4.0 HI-TECH Software Intermediate Code
 "27 ./main.h
 [; ;./main.h: 27:     struct {
-[s S502 :1 `uc 1 :1 `uc 1 ]
-[n S502 . SPI_READ_REQUEST DISPLAY_READING ]
+[s S502 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S502 . SPI_READ_REQUEST DISPLAY_READING UART_RECEIVED ]
 "25
 [; ;./main.h: 25:  union {
 [u S501 `uc 1 `S502 1 ]
-[n S501 . fullByte ByteBits ]
+[n S501 . byte bits ]
 [t ~ __interrupt . k ]
 [t T110 __interrupt ]
-"28 ./interruptService.h
-[; ;./interruptService.h: 28: void interruptService();
-[v _interruptService `(v ~T0 @X0 0 e? ]
+"27 ./interruptService.h
+[; ;./interruptService.h: 27: void interruptService(void);
+[v _interruptService `(v ~T0 @X0 0 ef ]
 [p mainexit ]
-"31 ./init.h
-[; ;./init.h: 31: void setIo();
-[v _setIo `(v ~T0 @X0 0 e? ]
+"30 ./init.h
+[; ;./init.h: 30: void setIo(void);
+[v _setIo `(v ~T0 @X0 0 ef ]
 "32
-[; ;./init.h: 32: void setInterrupts();
-[v _setInterrupts `(v ~T0 @X0 0 e? ]
-"23 newmain.c
-[; ;newmain.c: 23:     spiInit(SPI_SLAVE_SS_EN, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
-[c E4544 32 33 34 35 36 37 .. ]
-[n E4544 . SPI_MASTER_OSC_DIV4 SPI_MASTER_OSC_DIV16 SPI_MASTER_OSC_DIV64 SPI_MASTER_TMR2 SPI_SLAVE_SS_EN SPI_SLAVE_SS_DIS  ]
-[c E4552 0 128 .. ]
-[n E4552 . SPI_DATA_SAMPLE_MIDDLE SPI_DATA_SAMPLE_END  ]
-[c E4556 16 0 .. ]
-[n E4556 . SPI_CLOCK_IDLE_HIGH SPI_CLOCK_IDLE_LOW  ]
-[c E4560 0 64 .. ]
-[n E4560 . SPI_IDLE_2_ACTIVE SPI_ACTIVE_2_IDLE  ]
-"40 ./spi.h
-[; ;./spi.h: 40: void spiInit(Spi_Type, Spi_Data_Sample, Spi_Clock_Idle, Spi_Transmit_Edge);
-[v _spiInit `(v ~T0 @X0 0 ef4`E4544`E4552`E4556`E4560 ]
-"3195 /Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h
+[; ;./init.h: 32: void setSPI(void);
+[v _setSPI `(v ~T0 @X0 0 ef ]
+"31
+[; ;./init.h: 31: void setSerial(void);
+[v _setSerial `(v ~T0 @X0 0 ef ]
+"29
+[; ;./init.h: 29: void setInterrupts(void);
+[v _setInterrupts `(v ~T0 @X0 0 ef ]
+"8951 /Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h
+[; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 8951: extern volatile unsigned char TXREG __attribute__((address(0xFAD)));
+[v _TXREG `Vuc ~T0 @X0 0 e@4013 ]
+"39 ./spi.h
+[; ;./spi.h: 39: void spiWrite(char);
+[v _spiWrite `(v ~T0 @X0 0 ef1`uc ]
+"8963 /Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h
+[; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 8963: extern volatile unsigned char RCREG __attribute__((address(0xFAE)));
+[v _RCREG `Vuc ~T0 @X0 0 e@4014 ]
+"3195
 [; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 3195: extern volatile unsigned char PORTD __attribute__((address(0xF83)));
 [v _PORTD `Vuc ~T0 @X0 0 e@3971 ]
-"41 ./spi.h
-[; ;./spi.h: 41: void spiWrite(char);
-[v _spiWrite `(v ~T0 @X0 0 ef1`uc ]
 "54 /Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h
 [; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 54: __asm("SSP2CON2 equ 0F62h");
 [; <" SSP2CON2 equ 0F62h ;# ">
@@ -732,12 +731,15 @@ Version 4.0 HI-TECH Software Intermediate Code
 [p x EBTR7  =  OFF       ]
 "105
 [p x EBTRB  =  OFF       ]
-"31 ./main.h
-[; ;./main.h: 31: } FLAGS;
+"32 ./main.h
+[; ;./main.h: 32: } FLAGS;
 [v _FLAGS `S501 ~T0 @X0 1 e ]
-"33
-[; ;./main.h: 33: unsigned char readValue;
-[v _readValue `uc ~T0 @X0 1 e ]
+"34
+[; ;./main.h: 34: unsigned char readSPIValue;
+[v _readSPIValue `uc ~T0 @X0 1 e ]
+"35
+[; ;./main.h: 35: unsigned char readSerialValue;
+[v _readSerialValue `uc ~T0 @X0 1 e ]
 [v $root$_service `(v ~T0 @X0 0 e ]
 "15 newmain.c
 [; ;newmain.c: 15: void __attribute__((picinterrupt(("")))) service() {
@@ -763,39 +765,59 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;newmain.c: 20:     setIo();
 [e ( _setIo ..  ]
 "21
-[; ;newmain.c: 21:     setInterrupts();
-[e ( _setInterrupts ..  ]
+[; ;newmain.c: 21:     setSPI();
+[e ( _setSPI ..  ]
+"22
+[; ;newmain.c: 22:     setSerial();
+[e ( _setSerial ..  ]
 "23
-[; ;newmain.c: 23:     spiInit(SPI_SLAVE_SS_EN, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
-[e ( _spiInit (4 , , , . `E4544 4 . `E4552 0 . `E4556 1 . `E4560 0 ]
-"26
-[; ;newmain.c: 26:     while (1) {
+[; ;newmain.c: 23:     setInterrupts();
+[e ( _setInterrupts ..  ]
+"29
+[; ;newmain.c: 29:     TXREG= 0b11001100;
+[e = _TXREG -> -> 204 `i `uc ]
+"30
+[; ;newmain.c: 30:     while (1) {
 [e :U 506 ]
 {
-"27
-[; ;newmain.c: 27:         if (FLAGS.ByteBits.DISPLAY_READING) {
+"31
+[; ;newmain.c: 31:         if (FLAGS.bits.DISPLAY_READING) {
 [e $ ! != -> . . _FLAGS 1 1 `i -> 0 `i 508  ]
 {
-"28
-[; ;newmain.c: 28:             PORTD = readValue;
-[e = _PORTD _readValue ]
-"29
-[; ;newmain.c: 29:             FLAGS.ByteBits.DISPLAY_READING = 0;
+"33
+[; ;newmain.c: 33:             FLAGS.bits.DISPLAY_READING = 0;
 [e = . . _FLAGS 1 1 -> -> 0 `i `uc ]
-"31
-[; ;newmain.c: 31:                         spiWrite(0b00001111);
+"35
+[; ;newmain.c: 35:             spiWrite(0b00001111);
 [e ( _spiWrite (1 -> -> 15 `i `uc ]
-"32
-[; ;newmain.c: 32:         }
+"36
+[; ;newmain.c: 36:         }
 }
 [e :U 508 ]
-"34
-[; ;newmain.c: 34:     }
+"37
+[; ;newmain.c: 37:         if (FLAGS.bits.UART_RECEIVED) {
+[e $ ! != -> . . _FLAGS 1 2 `i -> 0 `i 509  ]
+{
+"38
+[; ;newmain.c: 38:             readSerialValue = RCREG;
+[e = _readSerialValue _RCREG ]
+"39
+[; ;newmain.c: 39:             PORTD = readSerialValue;
+[e = _PORTD _readSerialValue ]
+"40
+[; ;newmain.c: 40:             TXREG = readSerialValue;
+[e = _TXREG _readSerialValue ]
+"41
+[; ;newmain.c: 41:         }
+}
+[e :U 509 ]
+"44
+[; ;newmain.c: 44:     }
 }
 [e :U 505 ]
 [e $U 506  ]
 [e :U 507 ]
-"35
-[; ;newmain.c: 35: }
+"45
+[; ;newmain.c: 45: }
 [e :UE 504 ]
 }

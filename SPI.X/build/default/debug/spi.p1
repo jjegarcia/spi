@@ -12,20 +12,21 @@ Version 4.0 HI-TECH Software Intermediate Code
 "16260 /Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h
 [; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 16260: extern volatile __bit TRISC5 __attribute__((address(0x7CA5)));
 [v _TRISC5 `Vb ~T0 @X0 0 e@31909 ]
+"16257
+[; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 16257: extern volatile __bit TRISC4 __attribute__((address(0x7CA4)));
+[v _TRISC4 `Vb ~T0 @X0 0 e@31908 ]
 "10996
 [; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 10996: extern volatile unsigned char SSPSTAT __attribute__((address(0xFC7)));
 [v _SSPSTAT `Vuc ~T0 @X0 0 e@4039 ]
 "16254
 [; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 16254: extern volatile __bit TRISC3 __attribute__((address(0x7CA3)));
 [v _TRISC3 `Vb ~T0 @X0 0 e@31907 ]
-"16245
-[; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 16245: extern volatile __bit TRISC0 __attribute__((address(0x7CA0)));
-[v _TRISC0 `Vb ~T0 @X0 0 e@31904 ]
-[t ~ __deprecated__ ]
-[t T1 __deprecated__ ]
-"15429
-[; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 15429: extern volatile __bit __attribute__((__deprecated__)) RC0 __attribute__((address(0x7C10)));
-[v _RC0 `Vb ~T1 @X0 0 e@31760 ]
+"16251
+[; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 16251: extern volatile __bit TRISC2 __attribute__((address(0x7CA2)));
+[v _TRISC2 `Vb ~T0 @X0 0 e@31906 ]
+"14523
+[; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 14523: extern volatile __bit LATC0 __attribute__((address(0x7C58)));
+[v _LATC0 `Vb ~T0 @X0 0 e@31832 ]
 "10753
 [; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 10753: extern volatile unsigned char SSP1CON1 __attribute__((address(0xFC6)));
 [v _SSP1CON1 `Vuc ~T0 @X0 0 e@4038 ]
@@ -706,6 +707,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 "9
 [; ;spi.c: 9:     TRISC5 = 0;
 [e = _TRISC5 -> -> 0 `i `b ]
+"10
+[; ;spi.c: 10:     TRISC4 = 1;
+[e = _TRISC4 -> -> 1 `i `b ]
 "11
 [; ;spi.c: 11:     if (sType & 0b00000100)
 [e $ ! != & -> _sType `ui -> -> 4 `i `ui -> -> 0 `i `ui 502  ]
@@ -719,11 +723,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;spi.c: 14:         TRISC3 = 1;
 [e = _TRISC3 -> -> 1 `i `b ]
 "15
-[; ;spi.c: 15:         TRISC0 = 0;
-[e = _TRISC0 -> -> 0 `i `b ]
+[; ;spi.c: 15:         TRISC2 = 0;
+[e = _TRISC2 -> -> 0 `i `b ]
 "16
-[; ;spi.c: 16:         RC0 = 1;
-[e = _RC0 -> -> 1 `i `b ]
+[; ;spi.c: 16:         LATC0 = 1;
+[e = _LATC0 -> -> 1 `i `b ]
 "17
 [; ;spi.c: 17:     } else
 }
@@ -739,8 +743,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;spi.c: 20:         TRISC3 = 0;
 [e = _TRISC3 -> -> 0 `i `b ]
 "21
-[; ;spi.c: 21:         TRISC0 = 1;
-[e = _TRISC0 -> -> 1 `i `b ]
+[; ;spi.c: 21:         TRISC2 = 1;
+[e = _TRISC2 -> -> 1 `i `b ]
 "22
 [; ;spi.c: 22:     }
 }
@@ -790,7 +794,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :UE 508 ]
 }
 "35
-[; ;spi.c: 35: unsigned spiDataReady()
+[; ;spi.c: 35: unsigned spiDataReady(void)
 [v _spiDataReady `(ui ~T0 @X0 1 ef ]
 "36
 [; ;spi.c: 36: {
@@ -818,7 +822,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :UE 509 ]
 }
 "43
-[; ;spi.c: 43: char spiRead()
+[; ;spi.c: 43: char spiRead(void)
 [v _spiRead `(uc ~T0 @X0 1 ef ]
 "44
 [; ;spi.c: 44: {

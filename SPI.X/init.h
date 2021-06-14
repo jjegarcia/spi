@@ -22,12 +22,12 @@
 /* 
  * File:   Init.h
  */
-#ifndef INIT_H
-#define	INIT_H
 #include <xc.h> 
 
 // This is a guard condition so that contents of this file are not included
 // more than once.  
-void setIo();
-void setInterrupts();
-#endif
+void setInterrupts(void);
+void setIo(void);
+void setSerial(void);
+void setSPI(void); 
+
