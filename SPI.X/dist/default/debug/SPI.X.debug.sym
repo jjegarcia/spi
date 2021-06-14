@@ -105,7 +105,7 @@ __Hdata 0 0 ABS 0
 __Ldata 0 0 ABS 0
 _processInterruptService AA 0 CODE 0
 isa$std 1 0 ABS 0
-stackhi F5F 0 ABS 0
+stackhi EEE 0 ABS 0
 __size_of_setSwitchInterrput 0 0 ABS 0
 __size_of_service 0 0 ABS 0
 __Htemp 7 0 COMRAM 1
@@ -296,9 +296,9 @@ reset_vec 0 3 CODE 0 0
 intcode 8 19D CODE 8 0
 bssCOMRAM 1 6 COMRAM 1 1
 %locals
-dist/default/production/SPI.X.production.o
+dist/default/debug/SPI.X.debug.o
 /Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h
-/tmp/xcYlmuTaM.s
+/tmp/xcmQr4R3e.s
 2626 128 0 CODE 0
 2628 128 0 CODE 0
 2631 128 0 CODE 0
@@ -375,8 +375,8 @@ button.c
 3 192 0 CODE 0
 4 192 0 CODE 0
 5 196 0 CODE 0
-/tmp/xcYlmuTaM.s
-3734 8 0 CODE 0
+/tmp/xcmQr4R3e.s
+3745 8 0 CODE 0
 newmain.c
 17 8 0 CODE 0
 newmain.c

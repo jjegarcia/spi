@@ -14,12 +14,12 @@ void setSerial(void) {
 
     WUE1 = 0;
     SPBRG = 0b01000000; //64d for 9600 bauds
-    
+
     RC1IF = 0;
     RC1IE = 1;
-    
-//    TX1IE=1;
-    
+
+    //    TX1IE=1;
+
 
 }
 
@@ -29,7 +29,7 @@ void setIo() {
     PORTD = 0x00; //All LEDs OFF
     TRISC7 = 1; //serial Port RC
     TRISC6 = 0; //serial Port TX
-    TRISB0=1; //read switch
+    TRISB0 = 1; //read switch
 }
 
 void setSPI(void) {
@@ -43,6 +43,7 @@ void setInterrupts(void) {
     //    ADCON1 = 0x07;
 }
 
-void setSwitchInterrput(void){
-    INTEDG0=1;   
+void setSwitchInterrput(void) {
+    INTEDG0 = 1;
+    INT0IE = 1;
 }
