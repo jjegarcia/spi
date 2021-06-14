@@ -20,16 +20,19 @@
  */
 
 /* 
- * File:   main.h
+ * File:   
+ * Author: 
+ * Comments:
+ * Revision history: 
  */
- union {
-     unsigned char byte;
-    struct {
-        unsigned SPI_READ_REQUEST : 1;
-        unsigned DISPLAY_READING : 1;
-        unsigned UART_RECEIVED:1;
-    }bits;
-} FLAGS;
 
-unsigned char readSPIValue;
-unsigned char readSerialValue;
+// This is a guard condition so that contents of this file are not included
+// more than once.  
+#ifndef XC_HEADER_TEMPLATE_H
+#define	XC_HEADER_TEMPLATE_H
+
+#include <xc.h> // include processor files - each processor file is guarded.  
+
+
+#endif	/* XC_HEADER_TEMPLATE_H */
+

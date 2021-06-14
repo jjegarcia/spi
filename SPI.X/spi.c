@@ -13,7 +13,7 @@ void spiInit(Spi_Type sType, Spi_Data_Sample sDataSample, Spi_Clock_Idle sClockI
         SSPSTAT = sTransmitEdge;
         TRISC3 = 1; //clock as input
         TRISC2 = 0; //CE For This IC as output
-        RC0 = 1;
+        LATC0 = 1;
     } else //If Master Mode
     {
         SSPSTAT = sDataSample | sTransmitEdge;
@@ -32,7 +32,7 @@ void spiWrite(char dat) //Write data to SPI bus
     SSPBUF = dat;
 }
 
-unsigned spiDataReady() //Check whether the data is ready to read
+unsigned spiDataReady(void) //Check whether the data is ready to read
 {
     if (SSPSTATbits.BF)
         return 1;
@@ -40,7 +40,7 @@ unsigned spiDataReady() //Check whether the data is ready to read
         return 0;
 }
 
-char spiRead() //REad the received data
+char spiRead(void) //REad the received data
 {
     spiReceiveWait(); // wait until the all bits receive
     return (SSPBUF); // read the received data from the buffer

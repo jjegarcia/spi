@@ -22,11 +22,10 @@
 /* 
  * File:   InterruptService
  */
-#ifndef INT_SERV_H
-#define	INT_SERV_H
 
-void interruptService();
-static void spiService();
 
-#endif
+void interruptService(void);
+static void spiService(void);
+
+
 

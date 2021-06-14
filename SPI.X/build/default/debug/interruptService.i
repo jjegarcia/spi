@@ -7776,17 +7776,26 @@ extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 # 1 "./main.h" 1
 # 25 "./main.h"
  union {
-     unsigned char fullByte;
+     unsigned char byte;
     struct {
         unsigned SPI_READ_REQUEST : 1;
         unsigned DISPLAY_READING : 1;
-    }ByteBits;
+        unsigned UART_RECEIVED:1;
+    }bits;
 } FLAGS;
 
-unsigned char readValue;
+unsigned char readSPIValue;
+unsigned char readSerialValue;
 # 8 "interruptService.c" 2
 # 1 "./spi.h" 1
-# 11 "./spi.h"
+
+
+
+
+
+
+
+
 typedef enum
 {
     SPI_MASTER_OSC_DIV4 = 0b00100000,
@@ -7818,26 +7827,29 @@ typedef enum
 
 void spiInit(Spi_Type, Spi_Data_Sample, Spi_Clock_Idle, Spi_Transmit_Edge);
 void spiWrite(char);
-unsigned spiDataReady();
-char spiRead();
+unsigned spiDataReady(void);
+char spiRead(void);
 # 9 "interruptService.c" 2
 # 1 "./interruptService.h" 1
-# 28 "./interruptService.h"
-void interruptService();
-static void spiService();
+# 27 "./interruptService.h"
+void interruptService(void);
+static void spiService(void);
 # 10 "interruptService.c" 2
 
-void interruptService() {
-    spiService();
-}
-
-static void spiService() {
-    if (SSPIF == 1) {
+void processInterruptService(void) {
+    if (SSPIE == 1 && SSPIF == 1) {
         SSPIF = 0;
+        readSPIValue = spiRead();
+    }
+    if (RC1IE == 1 && RC1IF == 1) {
+        RC1IF = 0;
 
-        char test=spiRead();
-        PORTD=test;
-
+            FLAGS.bits.UART_RECEIVED = 1;
+            readSerialValue = RCREG;
 
     }
+}
+
+void interruptService(void) {
+    processInterruptService();
 }

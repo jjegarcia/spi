@@ -8,17 +8,21 @@
 #include "spi.h"
 #include "interruptService.h"
 
-void interruptService() {
-    spiService();
-}
-
-static void spiService() {
-    if (SSPIF == 1) {
+void processInterruptService(void) {
+    if (SSPIE == 1 && SSPIF == 1) {
         SSPIF = 0;
-//        PORTD= spiRead();
-        char test=spiRead();
-        PORTD=test;
-//        readValue = spiRead();
-//        FLAGS.ByteBits.DISPLAY_READING = 1;
+        readSPIValue = spiRead();
+    }
+    if (RC1IE == 1 && RC1IF == 1) {
+        RC1IF = 0;
+//        if (RCSTA1 == 0) {
+            FLAGS.bits.UART_RECEIVED = 1;
+            readSerialValue = RCREG;
+//        }
     }
 }
+
+void interruptService(void) {
+    processInterruptService();
+}
+

@@ -17,8 +17,6 @@
 
 
 
-
-
 # 1 "/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/xc.h" 1 3
 # 18 "/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -7779,7 +7777,7 @@ extern __attribute__((nonreentrant)) void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 # 33 "/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/xc.h" 2 3
-# 9 "./spi.h" 2
+# 7 "./spi.h" 2
 
 
 typedef enum
@@ -7813,25 +7811,25 @@ typedef enum
 
 void spiInit(Spi_Type, Spi_Data_Sample, Spi_Clock_Idle, Spi_Transmit_Edge);
 void spiWrite(char);
-unsigned spiDataReady();
-char spiRead();
+unsigned spiDataReady(void);
+char spiRead(void);
 # 6 "spi.c" 2
 
 
 void spiInit(Spi_Type sType, Spi_Data_Sample sDataSample, Spi_Clock_Idle sClockIdle, Spi_Transmit_Edge sTransmitEdge) {
     TRISC5 = 0;
-
+    TRISC4 = 1;
     if (sType & 0b00000100)
     {
         SSPSTAT = sTransmitEdge;
         TRISC3 = 1;
-        TRISC0 = 0;
-        RC0 = 1;
+        TRISC2 = 0;
+        LATC0 = 1;
     } else
     {
         SSPSTAT = sDataSample | sTransmitEdge;
         TRISC3 = 0;
-        TRISC0 = 1;
+        TRISC2 = 1;
     }
     SSP1CON1 = 0b00100101;
 }
@@ -7845,7 +7843,7 @@ void spiWrite(char dat)
     SSPBUF = dat;
 }
 
-unsigned spiDataReady()
+unsigned spiDataReady(void)
 {
     if (SSPSTATbits.BF)
         return 1;
@@ -7853,7 +7851,7 @@ unsigned spiDataReady()
         return 0;
 }
 
-char spiRead()
+char spiRead(void)
 {
     spiReceiveWait();
     return (SSPBUF);

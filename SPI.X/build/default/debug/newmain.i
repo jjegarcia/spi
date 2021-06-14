@@ -7774,7 +7774,14 @@ extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 # 6 "newmain.c" 2
 
 # 1 "./spi.h" 1
-# 11 "./spi.h"
+
+
+
+
+
+
+
+
 typedef enum
 {
     SPI_MASTER_OSC_DIV4 = 0b00100000,
@@ -7806,8 +7813,8 @@ typedef enum
 
 void spiInit(Spi_Type, Spi_Data_Sample, Spi_Clock_Idle, Spi_Transmit_Edge);
 void spiWrite(char);
-unsigned spiDataReady();
-char spiRead();
+unsigned spiDataReady(void);
+char spiRead(void);
 # 8 "newmain.c" 2
 # 1 "./config.h" 1
 # 34 "./config.h"
@@ -7887,24 +7894,28 @@ char spiRead();
 # 1 "./main.h" 1
 # 25 "./main.h"
  union {
-     unsigned char fullByte;
+     unsigned char byte;
     struct {
         unsigned SPI_READ_REQUEST : 1;
         unsigned DISPLAY_READING : 1;
-    }ByteBits;
+        unsigned UART_RECEIVED:1;
+    }bits;
 } FLAGS;
 
-unsigned char readValue;
+unsigned char readSPIValue;
+unsigned char readSerialValue;
 # 10 "newmain.c" 2
-# 1 "./init.h" 1
-# 31 "./init.h"
-void setIo();
-void setInterrupts();
-# 11 "newmain.c" 2
 # 1 "./interruptService.h" 1
-# 28 "./interruptService.h"
-void interruptService();
-static void spiService();
+# 27 "./interruptService.h"
+void interruptService(void);
+static void spiService(void);
+# 11 "newmain.c" 2
+# 1 "./init.h" 1
+# 29 "./init.h"
+void setInterrupts(void);
+void setIo(void);
+void setSerial(void);
+void setSPI(void);
 # 12 "newmain.c" 2
 
 
@@ -7915,18 +7926,28 @@ void __attribute__((picinterrupt(("")))) service() {
 
 void main() {
     setIo();
+    setSPI();
+    setSerial();
     setInterrupts();
 
-    spiInit(SPI_SLAVE_SS_EN, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
 
 
+
+
+    TXREG= 0b11001100;
     while (1) {
-        if (FLAGS.ByteBits.DISPLAY_READING) {
-            PORTD = readValue;
-            FLAGS.ByteBits.DISPLAY_READING = 0;
+        if (FLAGS.bits.DISPLAY_READING) {
 
-                        spiWrite(0b00001111);
+            FLAGS.bits.DISPLAY_READING = 0;
+
+            spiWrite(0b00001111);
         }
+        if (FLAGS.bits.UART_RECEIVED) {
+            readSerialValue = RCREG;
+            PORTD = readSerialValue;
+            TXREG = readSerialValue;
+        }
+
 
     }
 }
