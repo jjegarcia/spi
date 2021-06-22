@@ -7803,11 +7803,14 @@ typedef enum
     SPI_ACTIVE_2_IDLE = 0b01000000
 }Spi_Transmit_Edge;
 
+unsigned char readSPIValue;
 
 void spiInit(Spi_Type, Spi_Data_Sample, Spi_Clock_Idle, Spi_Transmit_Edge);
 void spiWrite(char);
 unsigned spiDataReady(void);
 char spiRead(void);
+void SPIHandle(void);
+void SPICallback(void);
 # 8 "newmain.c" 2
 # 1 "./config.h" 1
 # 36 "./config.h"
@@ -7891,14 +7894,14 @@ union {
 
     struct {
         unsigned SPI_READ_REQUEST : 1;
-        unsigned DISPLAY_READING : 1;
         unsigned UART_RECEIVED : 1;
         unsigned PREVIOUS_BUTTON_STATE : 1;
         unsigned PUSHED_BUTTON : 1;
+        unsigned DISPLAY_READING: 1;
+        unsigned DISPLAY_SPI_READING : 1;
+        unsigned DISPLAY_SERIAL_READING : 1;
     } bits;
 } FLAGS;
-
-unsigned char readSPIValue;
 # 10 "newmain.c" 2
 # 1 "./interruptService.h" 1
 # 28 "./interruptService.h"
@@ -7916,7 +7919,7 @@ void setSwitchInterrput(void);
 # 1 "./serial.h" 1
 # 37 "./serial.h"
 unsigned char readSerialValue;
-
+void serialHandle(void);
 void serialCallback(void);
 # 13 "newmain.c" 2
 # 1 "./button.h" 1
@@ -7939,17 +7942,16 @@ void main() {
 
 
 
-
+    const unsigned char test[80] = "sssdddd";
 
     while (1) {
         if (FLAGS.bits.DISPLAY_READING) {
-
             FLAGS.bits.DISPLAY_READING = 0;
-
-            spiWrite(0b00001111);
         }
         if (FLAGS.bits.UART_RECEIVED) {
             serialCallback();
+            FLAGS.bits.DISPLAY_READING = 1;
+            FLAGS.bits.UART_RECEIVED = 0;
         }
         if (FLAGS.bits.PUSHED_BUTTON) {
             if (FLAGS.bits.PREVIOUS_BUTTON_STATE != FLAGS.bits.PUSHED_BUTTON) {

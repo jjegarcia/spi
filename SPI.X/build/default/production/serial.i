@@ -8,6 +8,22 @@
 # 2 "<built-in>" 2
 # 1 "serial.c" 2
 
+# 1 "./main.h" 1
+# 29 "./main.h"
+union {
+    unsigned char byte;
+
+    struct {
+        unsigned SPI_READ_REQUEST : 1;
+        unsigned UART_RECEIVED : 1;
+        unsigned PREVIOUS_BUTTON_STATE : 1;
+        unsigned PUSHED_BUTTON : 1;
+        unsigned DISPLAY_READING: 1;
+        unsigned DISPLAY_SPI_READING : 1;
+        unsigned DISPLAY_SERIAL_READING : 1;
+    } bits;
+} FLAGS;
+# 3 "serial.c" 2
 # 1 "./serial.h" 1
 # 34 "./serial.h"
 # 1 "/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/xc.h" 1 3
@@ -7774,12 +7790,15 @@ extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 
 
 unsigned char readSerialValue;
-
+void serialHandle(void);
 void serialCallback(void);
-# 3 "serial.c" 2
+# 4 "serial.c" 2
 
 void serialCallback(void) {
+
+}
+
+void serialHandle() {
+    FLAGS.bits.UART_RECEIVED = 1;
     readSerialValue = RCREG;
-    PORTD = readSerialValue;
-    TXREG = readSerialValue;
 }

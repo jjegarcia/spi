@@ -1,13 +1,18 @@
 Version 4.0 HI-TECH Software Intermediate Code
+"32 ./main.h
+[; ;./main.h: 32:     struct {
+[s S2 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S2 . SPI_READ_REQUEST UART_RECEIVED PREVIOUS_BUTTON_STATE PUSHED_BUTTON DISPLAY_READING DISPLAY_SPI_READING DISPLAY_SERIAL_READING ]
+"29
+[; ;./main.h: 29: union {
+[u S1 `uc 1 `S2 1 ]
+[n S1 . byte bits ]
 "8963 /Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h
 [; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 8963: extern volatile unsigned char RCREG __attribute__((address(0xFAE)));
 [v _RCREG `Vuc ~T0 @X0 0 e@4014 ]
-"3195
-[; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 3195: extern volatile unsigned char PORTD __attribute__((address(0xF83)));
-[v _PORTD `Vuc ~T0 @X0 0 e@3971 ]
-"8951
-[; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 8951: extern volatile unsigned char TXREG __attribute__((address(0xFAD)));
-[v _TXREG `Vuc ~T0 @X0 0 e@4013 ]
+"41 ./main.h
+[; ;./main.h: 41: } FLAGS;
+[v _FLAGS `S1 ~T0 @X0 1 e ]
 "54 /Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h
 [; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 54: __asm("SSP2CON2 equ 0F62h");
 [; <" SSP2CON2 equ 0F62h ;# ">
@@ -605,22 +610,29 @@ Version 4.0 HI-TECH Software Intermediate Code
 "37 ./serial.h
 [; ;./serial.h: 37: unsigned char readSerialValue;
 [v _readSerialValue `uc ~T0 @X0 1 e ]
-"4 serial.c
-[; ;serial.c: 4: void serialCallback(void) {
+"5 serial.c
+[; ;serial.c: 5: void serialCallback(void) {
 [v _serialCallback `(v ~T0 @X0 1 ef ]
 {
 [e :U _serialCallback ]
 [f ]
-"5
-[; ;serial.c: 5:     readSerialValue = RCREG;
-[e = _readSerialValue _RCREG ]
-"6
-[; ;serial.c: 6:     PORTD = readSerialValue;
-[e = _PORTD _readSerialValue ]
 "7
-[; ;serial.c: 7:     TXREG = readSerialValue;
-[e = _TXREG _readSerialValue ]
-"8
-[; ;serial.c: 8: }
-[e :UE 501 ]
+[; ;serial.c: 7: }
+[e :UE 503 ]
+}
+"9
+[; ;serial.c: 9: void serialHandle() {
+[v _serialHandle `(v ~T0 @X0 1 ef ]
+{
+[e :U _serialHandle ]
+[f ]
+"10
+[; ;serial.c: 10:     FLAGS.bits.UART_RECEIVED = 1;
+[e = . . _FLAGS 1 1 -> -> 1 `i `uc ]
+"11
+[; ;serial.c: 11:     readSerialValue = RCREG;
+[e = _readSerialValue _RCREG ]
+"12
+[; ;serial.c: 12: }
+[e :UE 504 ]
 }

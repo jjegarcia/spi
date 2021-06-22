@@ -6,8 +6,8 @@
 #include <pic18f8722.h>
 
 void spiInit(Spi_Type sType, Spi_Data_Sample sDataSample, Spi_Clock_Idle sClockIdle, Spi_Transmit_Edge sTransmitEdge) {
-    TRISC5 = 0;//SDO  
-    TRISC4 = 1;//SDI
+    TRISC5 = 0; //SDO  
+    TRISC4 = 1; //SDI
     if (sType & 0b00000100) //If Slave Mode
     {
         SSPSTAT = sTransmitEdge;
@@ -20,7 +20,7 @@ void spiInit(Spi_Type sType, Spi_Data_Sample sDataSample, Spi_Clock_Idle sClockI
         TRISC3 = 0; //clock as output
         TRISC2 = 1; //CE For This IC as input
     }
-    SSP1CON1 = 0b00100101;//sType | sClockIdle;
+    SSP1CON1 = 0b00100101; //sType | sClockIdle;
 }
 
 static void spiReceiveWait() {
@@ -44,4 +44,12 @@ char spiRead(void) //REad the received data
 {
     spiReceiveWait(); // wait until the all bits receive
     return (SSPBUF); // read the received data from the buffer
+}
+
+void SPIHandle(void) {
+    readSPIValue = spiRead();
+}
+
+void SPICallback(void){
+    
 }

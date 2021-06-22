@@ -1,4 +1,4 @@
-# 1 "spi.c"
+# 1 "display.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,19 +6,34 @@
 # 1 "<built-in>" 2
 # 1 "/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "spi.c" 2
+# 1 "display.c" 2
+# 1 "./display.h" 1
+# 11 "./display.h"
+unsigned char outValue;
 
+void displaySerial(void);
+void displaySPI(void);
+void displayRequestHandle(void);
+void display(void);
+# 2 "display.c" 2
+# 1 "./main.h" 1
+# 29 "./main.h"
+union {
+    unsigned char byte;
 
-
-
-# 1 "./spi.h" 1
-
-
-
-
-
-
-
+    struct {
+        unsigned SPI_READ_REQUEST : 1;
+        unsigned UART_RECEIVED : 1;
+        unsigned PREVIOUS_BUTTON_STATE : 1;
+        unsigned PUSHED_BUTTON : 1;
+        unsigned DISPLAY_READING: 1;
+        unsigned DISPLAY_SPI_READING : 1;
+        unsigned DISPLAY_SERIAL_READING : 1;
+    } bits;
+} FLAGS;
+# 3 "display.c" 2
+# 1 "./serial.h" 1
+# 34 "./serial.h"
 # 1 "/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/xc.h" 1 3
 # 18 "/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -7779,9 +7794,15 @@ extern __attribute__((nonreentrant)) void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 # 33 "/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/xc.h" 2 3
-# 9 "./spi.h" 2
+# 35 "./serial.h" 2
 
 
+unsigned char readSerialValue;
+void serialHandle(void);
+void serialCallback(void);
+# 4 "display.c" 2
+# 1 "./spi.h" 1
+# 11 "./spi.h"
 typedef enum
 {
     SPI_MASTER_OSC_DIV4 = 0b00100000,
@@ -7810,51 +7831,38 @@ typedef enum
     SPI_ACTIVE_2_IDLE = 0b01000000
 }Spi_Transmit_Edge;
 
+unsigned char readSPIValue;
 
 void spiInit(Spi_Type, Spi_Data_Sample, Spi_Clock_Idle, Spi_Transmit_Edge);
 void spiWrite(char);
 unsigned spiDataReady(void);
 char spiRead(void);
-# 6 "spi.c" 2
+void SPIHandle(void);
+void SPICallback(void);
+# 5 "display.c" 2
 
+void displaySerial() {
+    outValue = readSerialValue;
+    display();
+}
 
-void spiInit(Spi_Type sType, Spi_Data_Sample sDataSample, Spi_Clock_Idle sClockIdle, Spi_Transmit_Edge sTransmitEdge) {
-    TRISC5 = 0;
-    TRISC4 = 1;
-    if (sType & 0b00000100)
-    {
-        SSPSTAT = sTransmitEdge;
-        TRISC3 = 1;
-        TRISC2 = 0;
-        LATC0 = 1;
-    } else
-    {
-        SSPSTAT = sDataSample | sTransmitEdge;
-        TRISC3 = 0;
-        TRISC2 = 1;
+void displaySPI() {
+    outValue = readSPIValue;
+    display();
+}
+
+void displayRequestHandle() {
+    if (FLAGS.bits.DISPLAY_SERIAL_READING) {
+        displaySerial();
+        FLAGS.bits.DISPLAY_SERIAL_READING = 0;
+    } else {
+        if (FLAGS.bits.DISPLAY_SPI_READING) {
+            displaySPI();
+            FLAGS.bits.DISPLAY_SPI_READING = 0;
+        }
     }
-    SSP1CON1 = 0b00100101;
 }
 
-static void spiReceiveWait() {
-    while (!SSPSTATbits.BF);
-}
-
-void spiWrite(char dat)
-{
-    SSPBUF = dat;
-}
-
-unsigned spiDataReady(void)
-{
-    if (SSPSTATbits.BF)
-        return 1;
-    else
-        return 0;
-}
-
-char spiRead(void)
-{
-    spiReceiveWait();
-    return (SSPBUF);
+void display() {
+    PORTD = outValue;
 }

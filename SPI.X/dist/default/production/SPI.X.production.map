@@ -5,7 +5,7 @@ Linker command line:
 --edf=/Applications/microchip/xc8/v2.32/pic/dat/en_msgs.txt -cn \
   -h+dist/default/production/SPI.X.production.sym \
   --cmf=dist/default/production/SPI.X.production.cmf -z -Q18F8722 \
-  -o/tmp/xct162Gd4 --defsym=__MPLAB_BUILD=1 \
+  -o/tmp/xcFpEFwR9 --defsym=__MPLAB_BUILD=1 \
   -Mdist/default/production/SPI.X.production.map -E1 -ver=XC8 Compiler \
   --acfsm=1493 -ASTACK=060h-0F5Fh -pstack=STACK -ACODE=00h-01FFFFh \
   -ACONST=00h-01FFFFh -ASMALLCONST=01000h-010FFhx496 \
@@ -26,7 +26,7 @@ Linker command line:
   -pfarbss=FARRAM,fardata=FARRAM,nvFARRAM=FARRAM \
   -pintsave_regs=BIGRAM,bigbss=BIGRAM,bigdata=BIGRAM -pbss=RAM \
   -pidata=CODE,irdata=CODE,ibigdata=CODE,ifardata=CODE -prparam=COMRAM \
-  /tmp/xcY3lrIuY.o dist/default/production/SPI.X.production.o 
+  /tmp/xczmk2T3F.o dist/default/production/SPI.X.production.o 
 
 Object code version is 3.11
 
@@ -35,7 +35,7 @@ Machine type is 18F8722
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-/tmp/xcY3lrIuY.o
+/tmp/xczmk2T3F.o
                 idloc                            200000   200000        8        0       5
                 config                           300000   300000        E        0       4
                 init                                  E        E        4        4       0
@@ -44,24 +44,26 @@ dist/default/production/SPI.X.production.o
                 intcode                               8        8        6        4       0
                 idloc                            200000   200000        8        0       5
                 config                           300000   300000        E        0       4
-                temp                                  6        6        1        1       1
-                text13                              148      148       10        4       0
-                text12                              178      178        8        4       0
-                text11                               AA       AA       6A        4       0
-                text10                              198      198        6        4       0
-                intcode_body                        166      166        A        4       0
-                text8                               192      192        6        4       0
-                text7                               158      158        E        4       0
-                text6                               18C      18C        6        4       0
-                text5                               138      138       10        4       0
-                text4                               186      186        6        4       0
-                text3                               114      114       14        4       0
-                text2                               180      180        6        4       0
-                text1                               170      170        8        4       0
-                text0                                12       12       98        4       0
-                cstackCOMRAM                          4        4        2        1       1
-                bssCOMRAM                             1        1        3        1       1
-                cinit                               128      128       10        4       0
+                temp                                 56       56        1        1       1
+                smallconst                         1000     1000       52      800       0
+                text14                             11AE     11AE       10      829       0
+                text13                             11D8     11D8        8      829       0
+                text12                             11D0     11D0        8      829       0
+                text11                             11C8     11C8        8      829       0
+                text10                             10FC     10FC       74      829       0
+                text9                              11F8     11F8        6      829       0
+                intcode_body                       11BE     11BE        A      829       0
+                text7                              11F2     11F2        6      829       0
+                text6                              11FE     11FE        2      829       0
+                text5                              11EC     11EC        6      829       0
+                text4                              119E     119E       10      829       0
+                text3                              11E6     11E6        6      829       0
+                text2                              118A     118A       14      829       0
+                text1                              11E0     11E0        6      829       0
+                text0                              1052     1052       AA      829       0
+                cstackCOMRAM                          1        1       51        1       1
+                bssCOMRAM                            52       52        4        1       1
+                cinit                              1170     1170       1A      829       0
 
 TOTAL           Name                               Link     Load   Length     Space
         CLASS   STACK          
@@ -70,32 +72,34 @@ TOTAL           Name                               Link     Load   Length     Sp
                 intcode                               8        8        6         0
                 init                                  E        E        4         0
                 reset_vec                             0        0        4         0
-                text13                              148      148       10         0
-                text12                              178      178        8         0
-                text11                               AA       AA       6A         0
-                text10                              198      198        6         0
-                intcode_body                        166      166        A         0
-                text8                               192      192        6         0
-                text7                               158      158        E         0
-                text6                               18C      18C        6         0
-                text5                               138      138       10         0
-                text4                               186      186        6         0
-                text3                               114      114       14         0
-                text2                               180      180        6         0
-                text1                               170      170        8         0
-                text0                                12       12       98         0
-                cinit                               128      128       10         0
+                text14                             11AE     11AE       10         0
+                text13                             11D8     11D8        8         0
+                text12                             11D0     11D0        8         0
+                text11                             11C8     11C8        8         0
+                text10                             10FC     10FC       74         0
+                text9                              11F8     11F8        6         0
+                intcode_body                       11BE     11BE        A         0
+                text7                              11F2     11F2        6         0
+                text6                              11FE     11FE        2         0
+                text5                              11EC     11EC        6         0
+                text4                              119E     119E       10         0
+                text3                              11E6     11E6        6         0
+                text2                              118A     118A       14         0
+                text1                              11E0     11E0        6         0
+                text0                              1052     1052       AA         0
+                cinit                              1170     1170       1A         0
 
         CLASS   CONST          
 
         CLASS   SMALLCONST     
+                smallconst                         1000     1000       52         0
 
         CLASS   MEDIUMCONST    
 
         CLASS   COMRAM         
-                temp                                  6        6        1         1
-                cstackCOMRAM                          4        4        2         1
-                bssCOMRAM                             1        1        3         1
+                temp                                 56       56        1         1
+                cstackCOMRAM                          1        1       51         1
+                bssCOMRAM                            52       52        4         1
 
         CLASS   ABS1           
 
@@ -152,8 +156,10 @@ TOTAL           Name                               Link     Load   Length     Sp
 SEGMENTS        Name                           Load    Length   Top    Selector   Space  Class
 
                 reset_vec                      000000  000004  000004         0       0  CODE    
-                bssCOMRAM                      000001  000006  000007         1       1  COMRAM  
-                intcode                        000008  000196  00019E         4       0  CODE    
+                text0                          001052  0001AE  001200       829       0  CODE    
+                cstackCOMRAM                   000001  000056  000057         1       1  COMRAM  
+                intcode                        000008  00000A  000012         4       0  CODE    
+                smallconst                     001000  000052  001052       800       0  SMALLCON
 
 
 UNUSED ADDRESS RANGES
@@ -175,25 +181,27 @@ UNUSED ADDRESS RANGES
         BANK7            000700-0007FF              100
         BANK8            000800-0008FF              100
         BANK9            000900-0009FF              100
-        BIGRAM           000007-000F5F              F59
+        BIGRAM           000057-000F5F              F09
         CODE             000004-000007                4
-                         00019E-01FFFF            1FE62
-        COMRAM           000007-00005F               59
+                         000012-000FFF              FEE
+                         001200-01FFFF            1EE00
+        COMRAM           000057-00005F                9
         CONST            000004-000007                4
-                         00019E-01FFFF            1FE62
+                         000012-000FFF              FEE
+                         001200-01FFFF            1EE00
         EEDATA           F00000-F003FF              400
-        MEDIUMCONST      001000-00FFFF             F000
+        MEDIUMCONST      001200-00FFFF             EE00
                          011000-01FFFF             F000
         RAM              000060-000F5F              100
         SFR              000F60-000FFF               A0
-        SMALLCONST       001000-01FFFF              100
+        SMALLCONST       001200-01FFFF              100
         STACK            000060-000F5F              F00
 
                                   Symbol Table
 
 _BRGH1                            (abs)        007D62
 _CREN1                            (abs)        007D5C
-_FLAGS                            bssCOMRAM    000003
+_FLAGS                            bssCOMRAM    000054
 _GIE                              (abs)        007F97
 _INT0IE                           (abs)        007F94
 _INT0IF                           (abs)        007F91
@@ -206,6 +214,7 @@ _RC1IF                            (abs)        007CF5
 _RCREG                            (abs)        000FAE
 _SPBRG                            (abs)        000FAF
 _SPEN1                            (abs)        007D5F
+_SPIHandle                        text12       0011D0
 _SSP1CON1                         (abs)        000FC6
 _SSPBUF                           (abs)        000FC9
 _SSPIE                            (abs)        007CEB
@@ -282,14 +291,14 @@ __Hrdata                          rdata        000000
 __Hreset_vec                      reset_vec    000004
 __Hrparam                         rparam       000000
 __Hsfr                            sfr          000000
-__Hsmallconst                     smallconst   000000
-__Hspace_0                        (abs)        001000
-__Hspace_1                        (abs)        000007
+__Hsmallconst                     smallconst   001052
+__Hspace_0                        (abs)        001200
+__Hspace_1                        (abs)        000057
 __Hspace_2                        (abs)        000000
 __Hspace_4                        (abs)        60000E
 __Hstack                          stack        000000
 __Hstruct                         struct       000000
-__Htemp                           temp         000007
+__Htemp                           temp         000057
 __Htext                           text         000000
 __Htext0                          text0        000000
 __Htext1                          text1        000000
@@ -297,13 +306,14 @@ __Htext10                         text10       000000
 __Htext11                         text11       000000
 __Htext12                         text12       000000
 __Htext13                         text13       000000
+__Htext14                         text14       000000
 __Htext2                          text2        000000
 __Htext3                          text3        000000
 __Htext4                          text4        000000
 __Htext5                          text5        000000
 __Htext6                          text6        000000
 __Htext7                          text7        000000
-__Htext8                          text8        000000
+__Htext9                          text9        000000
 __LRAM                            (abs)        000001
 __Labs1                           abs1         000000
 __Lbank0                          bank0        000000
@@ -363,14 +373,14 @@ __Lrdata                          rdata        000000
 __Lreset_vec                      reset_vec    000000
 __Lrparam                         rparam       000000
 __Lsfr                            sfr          000000
-__Lsmallconst                     smallconst   000000
+__Lsmallconst                     smallconst   001000
 __Lspace_0                        (abs)        000000
 __Lspace_1                        (abs)        000000
 __Lspace_2                        (abs)        000000
 __Lspace_4                        (abs)        000000
 __Lstack                          stack        000000
 __Lstruct                         struct       000000
-__Ltemp                           temp         000006
+__Ltemp                           temp         000056
 __Ltext                           text         000000
 __Ltext0                          text0        000000
 __Ltext1                          text1        000000
@@ -378,15 +388,16 @@ __Ltext10                         text10       000000
 __Ltext11                         text11       000000
 __Ltext12                         text12       000000
 __Ltext13                         text13       000000
+__Ltext14                         text14       000000
 __Ltext2                          text2        000000
 __Ltext3                          text3        000000
 __Ltext4                          text4        000000
 __Ltext5                          text5        000000
 __Ltext6                          text6        000000
 __Ltext7                          text7        000000
-__Ltext8                          text8        000000
-__S0                              (abs)        00019E
-__S1                              (abs)        000007
+__Ltext9                          text9        000000
+__S0                              (abs)        001200
+__S1                              (abs)        000057
 __S2                              (abs)        000000
 __S4                              (abs)        000000
 __S5                              (abs)        000000
@@ -397,48 +408,54 @@ ___param_bank                     (abs)        000000
 ___rparam_used                    (abs)        000001
 ___sp                             stack        000000
 __accesstop                       (abs)        000060
-__activetblptr                    (abs)        000000
-__end_of__initialization          cinit        00012E
-__end_of_buttonCallback           text8        000198
-__end_of_interruptService         text10       00019E
-__end_of_main                     text0        0000AA
-__end_of_processInterruptService  text11       000114
-__end_of_serialCallback           text7        000166
-__end_of_service                  intcode_body 000170
-__end_of_setInterrupts            text6        000192
-__end_of_setIo                    text5        000148
-__end_of_setSPI                   text4        00018C
-__end_of_setSerial                text3        000128
-__end_of_setSwitchInterrput       text2        000186
-__end_of_spiRead                  text12       000180
-__end_of_spiReceiveWait           text13       000158
-__end_of_spiWrite                 text1        000178
-__initialization                  cinit        000128
+__activetblptr                    (abs)        000001
+__end_of_SPIHandle                text12       0011D8
+__end_of__initialization          cinit        001178
+__end_of_buttonCallback           text7        0011F8
+__end_of_interruptService         text9        0011FE
+__end_of_main                     text0        0010FC
+__end_of_processInterruptService  text10       001170
+__end_of_serialCallback           text6        001200
+__end_of_serialHandle             text11       0011D0
+__end_of_service                  intcode_body 0011C8
+__end_of_setInterrupts            text5        0011F2
+__end_of_setIo                    text4        0011AE
+__end_of_setSPI                   text3        0011EC
+__end_of_setSerial                text2        00119E
+__end_of_setSwitchInterrput       text1        0011E6
+__end_of_spiRead                  text13       0011E0
+__end_of_spiReceiveWait           text14       0011BE
+__end_ofmain@F4601                smallconst   001051
+__initialization                  cinit        001170
 __mediumconst                     mediumconst  000000
-__pbssCOMRAM                      bssCOMRAM    000001
-__pcinit                          cinit        000128
-__pcstackCOMRAM                   cstackCOMRAM 000004
+__pbssCOMRAM                      bssCOMRAM    000052
+__pcinit                          cinit        001170
+__pcstackCOMRAM                   cstackCOMRAM 000001
 __pintcode                        intcode      000008
-__pintcode_body                   intcode_body 000166
-__ptext0                          text0        000012
-__ptext1                          text1        000170
-__ptext10                         text10       000198
-__ptext11                         text11       0000AA
-__ptext12                         text12       000178
-__ptext13                         text13       000148
-__ptext2                          text2        000180
-__ptext3                          text3        000114
-__ptext4                          text4        000186
-__ptext5                          text5        000138
-__ptext6                          text6        00018C
-__ptext7                          text7        000158
-__ptext8                          text8        000192
+__pintcode_body                   intcode_body 0011BE
+__psmallconst                     smallconst   001000
+__ptext0                          text0        001052
+__ptext1                          text1        0011E0
+__ptext10                         text10       0010FC
+__ptext11                         text11       0011C8
+__ptext12                         text12       0011D0
+__ptext13                         text13       0011D8
+__ptext14                         text14       0011AE
+__ptext2                          text2        00118A
+__ptext3                          text3        0011E6
+__ptext4                          text4        00119E
+__ptext5                          text5        0011EC
+__ptext6                          text6        0011FE
+__ptext7                          text7        0011F2
+__ptext9                          text9        0011F8
 __ramtop                          ramtop       001000
+__size_of_SPIHandle               (abs)        000000
 __size_of_buttonCallback          (abs)        000000
 __size_of_interruptService        (abs)        000000
 __size_of_main                    (abs)        000000
 __size_of_processInterruptService (abs)        000000
 __size_of_serialCallback          (abs)        000000
+__size_of_serialHandle            (abs)        000000
 __size_of_service                 (abs)        000000
 __size_of_setInterrupts           (abs)        000000
 __size_of_setIo                   (abs)        000000
@@ -447,88 +464,91 @@ __size_of_setSerial               (abs)        000000
 __size_of_setSwitchInterrput      (abs)        000000
 __size_of_spiRead                 (abs)        000000
 __size_of_spiReceiveWait          (abs)        000000
-__size_of_spiWrite                (abs)        000000
-__smallconst                      smallconst   000000
-_buttonCallback                   text8        000192
-_interruptService                 text10       000198
-_main                             text0        000012
-_processInterruptService          text11       0000AA
-_readSPIValue                     bssCOMRAM    000002
-_readSerialValue                  bssCOMRAM    000001
-_serialCallback                   text7        000158
+__smallconst                      smallconst   001000
+_buttonCallback                   text7        0011F2
+_interruptService                 text9        0011F8
+_main                             text0        001052
+_outValue                         bssCOMRAM    000052
+_processInterruptService          text10       0010FC
+_readSPIValue                     bssCOMRAM    000055
+_readSerialValue                  bssCOMRAM    000053
+_serialCallback                   text6        0011FE
+_serialHandle                     text11       0011C8
 _service                          intcode      000008
-_setInterrupts                    text6        00018C
-_setIo                            text5        000138
-_setSPI                           text4        000186
-_setSerial                        text3        000114
-_setSwitchInterrput               text2        000180
-_spiRead                          text12       000178
-_spiReceiveWait                   text13       000148
-_spiWrite                         text1        000170
-btemp                             temp         000006
-end_of_initialization             cinit        00012E
-int$flags                         temp         000006
-int_func                          intcode_body 000166
+_setInterrupts                    text5        0011EC
+_setIo                            text4        00119E
+_setSPI                           text3        0011E6
+_setSerial                        text2        00118A
+_setSwitchInterrput               text1        0011E0
+_spiRead                          text13       0011D8
+_spiReceiveWait                   text14       0011AE
+btemp                             temp         000056
+end_of_initialization             cinit        001178
+int$flags                         temp         000056
+int_func                          intcode_body 0011BE
 intlevel0                         text         000000
 intlevel1                         text         000000
 intlevel2                         text         000000
 intlevel3                         text         000000
 isa$std                           (abs)        000001
 isa$xinst                         (abs)        000000
-spiWrite@dat                      cstackCOMRAM 000004
+main@F4601                        smallconst   001001
+main@test                         cstackCOMRAM 000002
 stackhi                           (abs)        000F5F
 stacklo                           (abs)        000060
 start                             init         00000E
-start_initialization              cinit        000128
-ttemp5                            temp         000007
-ttemp6                            temp         00000A
-ttemp7                            temp         00000E
-wtemp8                            temp         000007
+start_initialization              cinit        001170
+ttemp5                            temp         000057
+ttemp6                            temp         00005A
+ttemp7                            temp         00005E
+wtemp8                            temp         000057
 
 
 MODULE INFORMATION
 
 Module		Function		Class		Link	Load	Size
 serial.c
-		_serialCallback		CODE           	0158	0000	14
+		_serialCallback		CODE           	11FE	0000	2
+		_serialHandle  		CODE           	11C8	0000	8
 
-serial.c estimated size: 14
+serial.c estimated size: 10
 
 button.c
-		_buttonCallback		CODE           	0192	0000	6
+		_buttonCallback		CODE           	11F2	0000	6
 
 button.c estimated size: 6
 
 newmain.c
 		_service       		CODE           	0008	0000	16
-		_main          		CODE           	0012	0000	152
+		_main          		CODE           	1052	0000	170
 
-newmain.c estimated size: 168
+newmain.c estimated size: 186
 
 interruptService.c
-		_interruptService		CODE           	0198	0000	6
-		_processInterruptService		CODE           	00AA	0000	106
+		_interruptService		CODE           	11F8	0000	6
+		_processInterruptService		CODE           	10FC	0000	116
 
-interruptService.c estimated size: 112
+interruptService.c estimated size: 122
 
 spi.c
-		_spiWrite      		CODE           	0170	0000	8
-		_spiReceiveWait		CODE           	0148	0000	16
-		_spiRead       		CODE           	0178	0000	8
+		_SPIHandle     		CODE           	11D0	0000	8
+		_spiReceiveWait		CODE           	11AE	0000	16
+		_spiRead       		CODE           	11D8	0000	8
 
 spi.c estimated size: 32
 
 shared
-		__initialization		CODE           	0128	0000	6
+		__initialization		CODE           	1170	0000	8
+		main@F4601     		SMALLCONST     	1001	0000	80
 
-shared estimated size: 6
+shared estimated size: 88
 
 init.c
-		_setInterrupts 		CODE           	018C	0000	6
-		_setSerial     		CODE           	0114	0000	20
-		_setSPI        		CODE           	0186	0000	6
-		_setIo         		CODE           	0138	0000	16
-		_setSwitchInterrput		CODE           	0180	0000	6
+		_setInterrupts 		CODE           	11EC	0000	6
+		_setSerial     		CODE           	118A	0000	20
+		_setSPI        		CODE           	11E6	0000	6
+		_setIo         		CODE           	119E	0000	16
+		_setSwitchInterrput		CODE           	11E0	0000	6
 
 init.c estimated size: 54
 

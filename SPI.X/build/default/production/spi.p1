@@ -694,6 +694,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 "13453
 [; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 13453: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
+"39 ./spi.h
+[; ;./spi.h: 39: unsigned char readSPIValue;
+[v _readSPIValue `uc ~T0 @X0 1 e ]
 "8 spi.c
 [; ;spi.c: 8: void spiInit(Spi_Type sType, Spi_Data_Sample sDataSample, Spi_Clock_Idle sClockIdle, Spi_Transmit_Edge sTransmitEdge) {
 [v _spiInit `(v ~T0 @X0 1 ef4`E4544`E4552`E4556`E4560 ]
@@ -839,4 +842,27 @@ Version 4.0 HI-TECH Software Intermediate Code
 "47
 [; ;spi.c: 47: }
 [e :UE 512 ]
+}
+"49
+[; ;spi.c: 49: void SPIHandle(void) {
+[v _SPIHandle `(v ~T0 @X0 1 ef ]
+{
+[e :U _SPIHandle ]
+[f ]
+"50
+[; ;spi.c: 50:     readSPIValue = spiRead();
+[e = _readSPIValue -> ( _spiRead ..  `uc ]
+"51
+[; ;spi.c: 51: }
+[e :UE 513 ]
+}
+"53
+[; ;spi.c: 53: void SPICallback(void){
+[v _SPICallback `(v ~T0 @X0 1 ef ]
+{
+[e :U _SPICallback ]
+[f ]
+"55
+[; ;spi.c: 55: }
+[e :UE 514 ]
 }

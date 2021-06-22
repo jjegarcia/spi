@@ -36,11 +36,13 @@ typedef enum
     SPI_ACTIVE_2_IDLE    = 0b01000000
 }Spi_Transmit_Edge;
 
+unsigned char readSPIValue;
 
 void spiInit(Spi_Type, Spi_Data_Sample, Spi_Clock_Idle, Spi_Transmit_Edge);
 void spiWrite(char);
 unsigned spiDataReady(void);
 char spiRead(void);
-
+void SPIHandle(void);
+void SPICallback(void);
 #endif
 

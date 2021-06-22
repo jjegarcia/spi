@@ -1,8 +1,8 @@
 Version 4.0 HI-TECH Software Intermediate Code
 "32 ./main.h
 [; ;./main.h: 32:     struct {
-[s S502 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S502 . SPI_READ_REQUEST DISPLAY_READING UART_RECEIVED PREVIOUS_BUTTON_STATE PUSHED_BUTTON ]
+[s S502 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S502 . SPI_READ_REQUEST UART_RECEIVED PREVIOUS_BUTTON_STATE PUSHED_BUTTON DISPLAY_READING DISPLAY_SPI_READING DISPLAY_SERIAL_READING ]
 "29
 [; ;./main.h: 29: union {
 [u S501 `uc 1 `S502 1 ]
@@ -28,9 +28,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "32
 [; ;./init.h: 32: void setInterrupts(void);
 [v _setInterrupts `(v ~T0 @X0 0 ef ]
-"41 ./spi.h
-[; ;./spi.h: 41: void spiWrite(char);
-[v _spiWrite `(v ~T0 @X0 0 ef1`uc ]
 "39 ./serial.h
 [; ;./serial.h: 39: void serialCallback(void);
 [v _serialCallback `(v ~T0 @X0 0 ef ]
@@ -631,6 +628,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 "13453
 [; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 13453: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
+"39 ./spi.h
+[; ;./spi.h: 39: unsigned char readSPIValue;
+[v _readSPIValue `uc ~T0 @X0 1 e ]
 "36 ./config.h
 [p x OSC  =  XT          ]
 "37
@@ -731,12 +731,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 [p x EBTR7  =  OFF       ]
 "107
 [p x EBTRB  =  OFF       ]
-"39 ./main.h
-[; ;./main.h: 39: } FLAGS;
+"41 ./main.h
+[; ;./main.h: 41: } FLAGS;
 [v _FLAGS `S501 ~T0 @X0 1 e ]
-"41
-[; ;./main.h: 41: unsigned char readSPIValue;
-[v _readSPIValue `uc ~T0 @X0 1 e ]
 "37 ./serial.h
 [; ;./serial.h: 37: unsigned char readSerialValue;
 [v _readSerialValue `uc ~T0 @X0 1 e ]
@@ -776,67 +773,87 @@ Version 4.0 HI-TECH Software Intermediate Code
 "26
 [; ;newmain.c: 26:     setInterrupts();
 [e ( _setInterrupts ..  ]
+[v F4601 `Cuc ~T0 @X0 -> 80 `i s ]
+[i F4601
+:U ..
+"30
+[; ;newmain.c: 30:     const unsigned char test[80] = "sssdddd";
+-> 115 `c
+-> 115 `c
+-> 115 `c
+-> 100 `c
+-> 100 `c
+-> 100 `c
+-> 100 `c
+-> 0 `c
+..
+]
+[v _test `Cuc ~T0 @X0 -> 80 `i a ]
+[e = _test F4601 ]
 "32
 [; ;newmain.c: 32:     while (1) {
 [e :U 506 ]
 {
 "33
 [; ;newmain.c: 33:         if (FLAGS.bits.DISPLAY_READING) {
-[e $ ! != -> . . _FLAGS 1 1 `i -> 0 `i 508  ]
+[e $ ! != -> . . _FLAGS 1 4 `i -> 0 `i 508  ]
 {
+"34
+[; ;newmain.c: 34:             FLAGS.bits.DISPLAY_READING = 0;
+[e = . . _FLAGS 1 4 -> -> 0 `i `uc ]
 "35
-[; ;newmain.c: 35:             FLAGS.bits.DISPLAY_READING = 0;
-[e = . . _FLAGS 1 1 -> -> 0 `i `uc ]
-"37
-[; ;newmain.c: 37:             spiWrite(0b00001111);
-[e ( _spiWrite (1 -> -> 15 `i `uc ]
-"38
-[; ;newmain.c: 38:         }
+[; ;newmain.c: 35:         }
 }
 [e :U 508 ]
-"39
-[; ;newmain.c: 39:         if (FLAGS.bits.UART_RECEIVED) {
-[e $ ! != -> . . _FLAGS 1 2 `i -> 0 `i 509  ]
+"36
+[; ;newmain.c: 36:         if (FLAGS.bits.UART_RECEIVED) {
+[e $ ! != -> . . _FLAGS 1 1 `i -> 0 `i 509  ]
 {
-"40
-[; ;newmain.c: 40:             serialCallback();
+"37
+[; ;newmain.c: 37:             serialCallback();
 [e ( _serialCallback ..  ]
-"41
-[; ;newmain.c: 41:         }
+"38
+[; ;newmain.c: 38:             FLAGS.bits.DISPLAY_READING = 1;
+[e = . . _FLAGS 1 4 -> -> 1 `i `uc ]
+"39
+[; ;newmain.c: 39:             FLAGS.bits.UART_RECEIVED = 0;
+[e = . . _FLAGS 1 1 -> -> 0 `i `uc ]
+"40
+[; ;newmain.c: 40:         }
 }
 [e :U 509 ]
+"41
+[; ;newmain.c: 41:         if (FLAGS.bits.PUSHED_BUTTON) {
+[e $ ! != -> . . _FLAGS 1 3 `i -> 0 `i 510  ]
+{
 "42
-[; ;newmain.c: 42:         if (FLAGS.bits.PUSHED_BUTTON) {
-[e $ ! != -> . . _FLAGS 1 4 `i -> 0 `i 510  ]
+[; ;newmain.c: 42:             if (FLAGS.bits.PREVIOUS_BUTTON_STATE != FLAGS.bits.PUSHED_BUTTON) {
+[e $ ! != -> . . _FLAGS 1 2 `i -> . . _FLAGS 1 3 `i 511  ]
 {
 "43
-[; ;newmain.c: 43:             if (FLAGS.bits.PREVIOUS_BUTTON_STATE != FLAGS.bits.PUSHED_BUTTON) {
-[e $ ! != -> . . _FLAGS 1 3 `i -> . . _FLAGS 1 4 `i 511  ]
-{
+[; ;newmain.c: 43:                 FLAGS.bits.PREVIOUS_BUTTON_STATE = FLAGS.bits.PUSHED_BUTTON;
+[e = . . _FLAGS 1 2 . . _FLAGS 1 3 ]
 "44
-[; ;newmain.c: 44:                 FLAGS.bits.PREVIOUS_BUTTON_STATE = FLAGS.bits.PUSHED_BUTTON;
-[e = . . _FLAGS 1 3 . . _FLAGS 1 4 ]
-"45
-[; ;newmain.c: 45:                 buttonCallback();
+[; ;newmain.c: 44:                 buttonCallback();
 [e ( _buttonCallback ..  ]
-"46
-[; ;newmain.c: 46:             }
+"45
+[; ;newmain.c: 45:             }
 }
 [e :U 511 ]
-"47
-[; ;newmain.c: 47:             FLAGS.bits.PUSHED_BUTTON = 0;
-[e = . . _FLAGS 1 4 -> -> 0 `i `uc ]
-"49
-[; ;newmain.c: 49:         }
+"46
+[; ;newmain.c: 46:             FLAGS.bits.PUSHED_BUTTON = 0;
+[e = . . _FLAGS 1 3 -> -> 0 `i `uc ]
+"48
+[; ;newmain.c: 48:         }
 }
 [e :U 510 ]
-"50
-[; ;newmain.c: 50:     }
+"49
+[; ;newmain.c: 49:     }
 }
 [e :U 505 ]
 [e $U 506  ]
 [e :U 507 ]
-"51
-[; ;newmain.c: 51: }
+"50
+[; ;newmain.c: 50: }
 [e :UE 504 ]
 }

@@ -35,7 +35,7 @@
 #include <pic18f8722.h>
 
 unsigned char readSerialValue;
-
+void serialHandle(void);
 void serialCallback(void);
 #endif	/* XC_HEADER_TEMPLATE_H */
 
