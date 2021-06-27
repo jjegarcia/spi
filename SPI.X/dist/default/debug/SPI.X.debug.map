@@ -3,21 +3,22 @@ Microchip MPLAB XC8 Compiler V2.32
 Linker command line:
 
 --edf=/Applications/microchip/xc8/v2.32/pic/dat/en_msgs.txt -cn \
-  -h+dist/default/production/SPI.X.production.sym \
-  --cmf=dist/default/production/SPI.X.production.cmf -z -Q18F8722 \
-  -o/tmp/xc5ixgk1n --defsym=__MPLAB_BUILD=1 \
-  -Mdist/default/production/SPI.X.production.map -E1 -ver=XC8 Compiler \
-  --acfsm=1493 -ASTACK=060h-0F5Fh -pstack=STACK -ACODE=00h-01FFFFh \
-  -ACONST=00h-01FFFFh -ASMALLCONST=01000h-010FFhx496 \
-  -AMEDIUMCONST=01000h-0FFFFh,011000h-01FFFFh -ACOMRAM=01h-05Fh \
-  -AABS1=00h-0F5Fh -ABIGRAM=01h-0F5Fh \
-  -ARAM=060h-0FFh,0100h-01FFhx14,0F00h-0F5Fh -ABANK0=060h-0FFh \
+  -h+dist/default/debug/SPI.X.debug.sym \
+  --cmf=dist/default/debug/SPI.X.debug.cmf -z -Q18F8722 -o/tmp/xck64WcqJ \
+  --defsym=__MPLAB_BUILD=1 -Mdist/default/debug/SPI.X.debug.map -E1 \
+  -ver=XC8 Compiler --acfsm=1493 -ASTACK=060h-0EEEh -pstack=STACK \
+  -ACODE=00h-01FD3Fh -ACONST=00h-01FD3Fh \
+  -ASMALLCONST=01000h-010FFhx493,01FD00h-01FD3Fh \
+  -AMEDIUMCONST=01000h-0FFFFh,011000h-01FD3Fh -ACOMRAM=01h-05Fh \
+  -AABS1=00h-0EEEh,0F00h-0F5Fh -ABIGRAM=01h-0EEEh,0F00h-0F5Fh \
+  -ARAM=060h-0FFh,0100h-01FFhx13,0E00h-0EEEh,0F00h-0F5Fh -ABANK0=060h-0FFh \
   -ABANK1=0100h-01FFh -ABANK2=0200h-02FFh -ABANK3=0300h-03FFh \
   -ABANK4=0400h-04FFh -ABANK5=0500h-05FFh -ABANK6=0600h-06FFh \
   -ABANK7=0700h-07FFh -ABANK8=0800h-08FFh -ABANK9=0900h-09FFh \
   -ABANK10=0A00h-0AFFh -ABANK11=0B00h-0BFFh -ABANK12=0C00h-0CFFh \
-  -ABANK13=0D00h-0DFFh -ABANK14=0E00h-0EFFh -ABANK15=0F00h-0F5Fh \
-  -ASFR=0F60h-0FFFh -ACONFIG=0300000h-030000Dh -AIDLOC=0200000h-0200007h \
+  -ABANK13=0D00h-0DFFh -ABANK14=0E00h-0EEEh -ABANK15=0F00h-0F5Fh \
+  -ASFR=0F60h-0F9Bh,0F9Dh-0FD3h,0FD5h-0FDAh,0FE0h-0FE2h,0FE8h-0FEAh,0FF0h-0FFBh \
+  -ACONFIG=0300000h-030000Dh -AIDLOC=0200000h-0200007h \
   -AEEDATA=0F00000h-0F003FFh -peeprom_data=EEDATA \
   -preset_vec=00h,intcode=08h,intcodelo,powerup,init -pramtop=01000h \
   -psmallconst=SMALLCONST -pmediumconst=MEDIUMCONST -pconst=CONST \
@@ -26,7 +27,7 @@ Linker command line:
   -pfarbss=FARRAM,fardata=FARRAM,nvFARRAM=FARRAM \
   -pintsave_regs=BIGRAM,bigbss=BIGRAM,bigdata=BIGRAM -pbss=RAM \
   -pidata=CODE,irdata=CODE,ibigdata=CODE,ifardata=CODE -prparam=COMRAM \
-  /tmp/xcmmHeqMQ.o dist/default/production/SPI.X.production.o 
+  /tmp/xcTrSMqQC.o dist/default/debug/SPI.X.debug.o 
 
 Object code version is 3.11
 
@@ -35,12 +36,12 @@ Machine type is 18F8722
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-/tmp/xcmmHeqMQ.o
+/tmp/xcTrSMqQC.o
                 idloc                            200000   200000        8        0       5
                 config                           300000   300000        E        0       4
                 init                                  E        E        4        4       0
                 reset_vec                             0        0        4        0       0
-dist/default/production/SPI.X.production.o
+dist/default/debug/SPI.X.debug.o
                 intcode                               8        8        6        4       0
                 idloc                            200000   200000        8        0       5
                 config                           300000   300000        E        0       4
@@ -187,7 +188,7 @@ UNUSED ADDRESS RANGES
         BANK11           000B00-000BFF              100
         BANK12           000C00-000CFF              100
         BANK13           000D00-000DFF              100
-        BANK14           000E00-000EFF              100
+        BANK14           000E00-000EEE               EF
         BANK15           000F00-000F5F               60
         BANK2            000200-0002FF              100
         BANK3            000300-0003FF              100
@@ -197,21 +198,28 @@ UNUSED ADDRESS RANGES
         BANK7            000700-0007FF              100
         BANK8            000800-0008FF              100
         BANK9            000900-0009FF              100
-        BIGRAM           000057-000F5F              F09
+        BIGRAM           000057-000EEE              E98
+                         000F00-000F5F               60
         CODE             000004-000007                4
                          000012-000FFF              FEE
-                         001272-01FFFF            1ED8E
+                         001272-01FD3F            1EACE
         COMRAM           000057-00005F                9
         CONST            000004-000007                4
                          000012-000FFF              FEE
-                         001272-01FFFF            1ED8E
+                         001272-01FD3F            1EACE
         EEDATA           F00000-F003FF              400
         MEDIUMCONST      001272-00FFFF             ED8E
-                         011000-01FFFF             F000
-        RAM              000060-000F5F              100
-        SFR              000F60-000FFF               A0
-        SMALLCONST       001272-01FFFF              100
-        STACK            000060-000F5F              F00
+                         011000-01FD3F             ED40
+        RAM              000060-000EEE              100
+                         000F00-000F5F               60
+        SFR              000F60-000F9B               3C
+                         000F9D-000FD3               37
+                         000FD5-000FDA                6
+                         000FE0-000FE2                3
+                         000FE8-000FEA                3
+                         000FF0-000FFB                C
+        SMALLCONST       001272-01FD3F              100
+        STACK            000060-000EEE              E8F
 
                                   Symbol Table
 
@@ -558,7 +566,7 @@ isa$std                           (abs)        000001
 isa$xinst                         (abs)        000000
 main@F4611                        smallconst   001001
 main@test                         cstackCOMRAM 000002
-stackhi                           (abs)        000F5F
+stackhi                           (abs)        000EEE
 stacklo                           (abs)        000060
 start                             init         00000E
 start_initialization              cinit        0011A8

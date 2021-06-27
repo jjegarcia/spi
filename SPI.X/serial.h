@@ -40,5 +40,8 @@ void setSerial(void);
 void serialHandle(void);
 void serialCallback(void);
 void transmittRead(void);
+void writeSerial(unsigned char); 
+unsigned char readSerial(void);
+
 #endif	/* XC_HEADER_TEMPLATE_H */
 

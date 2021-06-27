@@ -1,42 +1,24 @@
 Version 4.0 HI-TECH Software Intermediate Code
 "32 ./main.h
 [; ;./main.h: 32:     struct {
-[s S502 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S502 . SPI_READ_REQUEST UART_RECEIVED PREVIOUS_BUTTON_STATE PUSHED_BUTTON DISPLAY_READING DISPLAY_SPI_READING DISPLAY_SERIAL_READING ]
+[s S2 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S2 . SPI_READ_REQUEST UART_RECEIVED PREVIOUS_BUTTON_STATE PUSHED_BUTTON DISPLAY_READING DISPLAY_SPI_READING DISPLAY_SERIAL_READING ]
 "29
 [; ;./main.h: 29: union {
-[u S501 `uc 1 `S502 1 ]
-[n S501 . byte bits ]
-[t ~ __interrupt . k ]
-[t T110 __interrupt ]
-"28 ./interruptService.h
-[; ;./interruptService.h: 28: void interruptService(void);
-[v _interruptService `(v ~T0 @X0 0 ef ]
-[p mainexit ]
-"33 ./init.h
-[; ;./init.h: 33: void setIo(void);
-[v _setIo `(v ~T0 @X0 0 ef ]
-"41 ./spi.h
-[; ;./spi.h: 41: void setSPIInterrupt(void);
-[v _setSPIInterrupt `(v ~T0 @X0 0 ef ]
-"39 ./serial.h
-[; ;./serial.h: 39: void setSerial(void);
-[v _setSerial `(v ~T0 @X0 0 ef ]
-"34 ./init.h
-[; ;./init.h: 34: void setSwitchInterrput(void);
-[v _setSwitchInterrput `(v ~T0 @X0 0 ef ]
-"32
-[; ;./init.h: 32: void setInterrupts(void);
-[v _setInterrupts `(v ~T0 @X0 0 ef ]
-"15 ./display.h
-[; ;./display.h: 15: void displayRequestHandle(void);
-[v _displayRequestHandle `(v ~T0 @X0 0 ef ]
-"41 ./serial.h
-[; ;./serial.h: 41: void serialCallback(void);
-[v _serialCallback `(v ~T0 @X0 0 ef ]
-"38 ./button.h
-[; ;./button.h: 38: void buttonCallback(void);
-[v _buttonCallback `(v ~T0 @X0 0 ef ]
+[u S1 `uc 1 `S2 1 ]
+[n S1 . byte bits ]
+"16 ./display.h
+[; ;./display.h: 16: void displayCallback(void);
+[v _displayCallback `(v ~T0 @X0 0 ef ]
+"3195 /Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h
+[; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 3195: extern volatile unsigned char PORTD __attribute__((address(0xF83)));
+[v _PORTD `Vuc ~T0 @X0 0 e@3971 ]
+"11 ./display.h
+[; ;./display.h: 11: unsigned char outValue;
+[v _outValue `uc ~T0 @X0 1 e ]
+"41 ./main.h
+[; ;./main.h: 41: } FLAGS;
+[v _FLAGS `S1 ~T0 @X0 1 e ]
 "54 /Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h
 [; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 54: __asm("SSP2CON2 equ 0F62h");
 [; <" SSP2CON2 equ 0F62h ;# ">
@@ -631,224 +613,98 @@ Version 4.0 HI-TECH Software Intermediate Code
 "13453
 [; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 13453: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-"39 ./spi.h
-[; ;./spi.h: 39: unsigned char readSPIValue;
-[v _readSPIValue `uc ~T0 @X0 1 e ]
-"36 ./config.h
-[p x OSC  =  XT          ]
-"37
-[p x FCMEN  =  OFF       ]
-"38
-[p x IESO  =  OFF        ]
-"41
-[p x PWRT  =  OFF        ]
-"42
-[p x BOREN  =  OFF       ]
-"43
-[p x BORV  =  3          ]
-"46
-[p x WDT  =  OFF         ]
-"47
-[p x WDTPS  =  32768     ]
-"50
-[p x MODE  =  MC         ]
-"51
-[p x ADDRBW  =  ADDR20BIT ]
-"52
-[p x DATABW  =  DATA16BIT ]
-"53
-[p x WAIT  =  OFF        ]
-"56
-[p x CCP2MX  =  PORTC    ]
-"57
-[p x ECCPMX  =  PORTE    ]
-"58
-[p x LPT1OSC  =  OFF     ]
-"59
-[p x MCLRE  =  ON        ]
-"62
-[p x STVREN  =  ON       ]
-"63
-[p x LVP  =  OFF         ]
-"64
-[p x BBSIZ  =  BB2K      ]
-"65
-[p x XINST  =  OFF       ]
-"68
-[p x CP0  =  OFF         ]
-"69
-[p x CP1  =  OFF         ]
-"70
-[p x CP2  =  OFF         ]
-"71
-[p x CP3  =  OFF         ]
-"72
-[p x CP4  =  OFF         ]
-"73
-[p x CP5  =  OFF         ]
-"74
-[p x CP6  =  OFF         ]
-"75
-[p x CP7  =  OFF         ]
-"78
-[p x CPB  =  OFF         ]
-"79
-[p x CPD  =  OFF         ]
-"82
-[p x WRT0  =  OFF        ]
-"83
-[p x WRT1  =  OFF        ]
-"84
-[p x WRT2  =  OFF        ]
-"85
-[p x WRT3  =  OFF        ]
-"86
-[p x WRT4  =  OFF        ]
-"87
-[p x WRT5  =  OFF        ]
-"88
-[p x WRT6  =  OFF        ]
-"89
-[p x WRT7  =  OFF        ]
-"92
-[p x WRTC  =  OFF        ]
-"93
-[p x WRTB  =  OFF        ]
-"94
-[p x WRTD  =  OFF        ]
-"97
-[p x EBTR0  =  OFF       ]
-"98
-[p x EBTR1  =  OFF       ]
-"99
-[p x EBTR2  =  OFF       ]
-"100
-[p x EBTR3  =  OFF       ]
-"101
-[p x EBTR4  =  OFF       ]
-"102
-[p x EBTR5  =  OFF       ]
-"103
-[p x EBTR6  =  OFF       ]
-"104
-[p x EBTR7  =  OFF       ]
-"107
-[p x EBTRB  =  OFF       ]
-"41 ./main.h
-[; ;./main.h: 41: } FLAGS;
-[v _FLAGS `S501 ~T0 @X0 1 e ]
 "37 ./serial.h
 [; ;./serial.h: 37: unsigned char readSerialValue;
 [v _readSerialValue `uc ~T0 @X0 1 e ]
-"11 ./display.h
-[; ;./display.h: 11: unsigned char outValue;
-[v _outValue `uc ~T0 @X0 1 e ]
-[v $root$_service `(v ~T0 @X0 0 e ]
-"18 newmain.c
-[; ;newmain.c: 18: void __attribute__((picinterrupt(("")))) service() {
-[v _service `(v ~T110 @X0 1 ef ]
+"39 ./spi.h
+[; ;./spi.h: 39: unsigned char readSPIValue;
+[v _readSPIValue `uc ~T0 @X0 1 e ]
+"6 display.c
+[; ;display.c: 6: void displaySerial() {
+[v _displaySerial `(v ~T0 @X0 1 ef ]
 {
-[e :U _service ]
+[e :U _displaySerial ]
 [f ]
-"19
-[; ;newmain.c: 19:     interruptService();
-[e ( _interruptService ..  ]
-"20
-[; ;newmain.c: 20: }
+"7
+[; ;display.c: 7:     outValue = readSerialValue;
+[e = _outValue _readSerialValue ]
+"8
+[; ;display.c: 8:     displayCallback();
+[e ( _displayCallback ..  ]
+"9
+[; ;display.c: 9: }
 [e :UE 503 ]
 }
-[v $root$_main `(v ~T0 @X0 0 e ]
-"22
-[; ;newmain.c: 22: void main() {
-[v _main `(v ~T0 @X0 1 ef ]
+"11
+[; ;display.c: 11: void displaySPI() {
+[v _displaySPI `(v ~T0 @X0 1 ef ]
 {
-[e :U _main ]
+[e :U _displaySPI ]
 [f ]
-"23
-[; ;newmain.c: 23:     setIo();
-[e ( _setIo ..  ]
-"24
-[; ;newmain.c: 24:     setSPIInterrupt();
-[e ( _setSPIInterrupt ..  ]
-"25
-[; ;newmain.c: 25:     setSerial();
-[e ( _setSerial ..  ]
-"26
-[; ;newmain.c: 26:     setSwitchInterrput();
-[e ( _setSwitchInterrput ..  ]
-"27
-[; ;newmain.c: 27:     setInterrupts();
-[e ( _setInterrupts ..  ]
-[v F4611 `Cuc ~T0 @X0 -> 80 `i s ]
-[i F4611
-:U ..
-"31
-[; ;newmain.c: 31:     const unsigned char test[80] = "sssdddd";
--> 115 `c
--> 115 `c
--> 115 `c
--> 100 `c
--> 100 `c
--> 100 `c
--> 100 `c
--> 0 `c
-..
-]
-[v _test `Cuc ~T0 @X0 -> 80 `i a ]
-[e = _test F4611 ]
-"33
-[; ;newmain.c: 33:     while (1) {
+"12
+[; ;display.c: 12:     outValue = readSPIValue;
+[e = _outValue _readSPIValue ]
+"13
+[; ;display.c: 13:     displayCallback();
+[e ( _displayCallback ..  ]
+"14
+[; ;display.c: 14: }
+[e :UE 504 ]
+}
+"16
+[; ;display.c: 16: void displayRequestHandle() {
+[v _displayRequestHandle `(v ~T0 @X0 1 ef ]
+{
+[e :U _displayRequestHandle ]
+[f ]
+"17
+[; ;display.c: 17:     if (FLAGS.bits.DISPLAY_SERIAL_READING) {
+[e $ ! != -> . . _FLAGS 1 6 `i -> 0 `i 506  ]
+{
+"18
+[; ;display.c: 18:         displaySerial();
+[e ( _displaySerial ..  ]
+"19
+[; ;display.c: 19:         FLAGS.bits.DISPLAY_SERIAL_READING = 0;
+[e = . . _FLAGS 1 6 -> -> 0 `i `uc ]
+"20
+[; ;display.c: 20:     } else {
+}
+[e $U 507  ]
 [e :U 506 ]
 {
-"34
-[; ;newmain.c: 34:         if (FLAGS.bits.DISPLAY_READING) {
-[e $ ! != -> . . _FLAGS 1 4 `i -> 0 `i 508  ]
+"21
+[; ;display.c: 21:         if (FLAGS.bits.DISPLAY_SPI_READING) {
+[e $ ! != -> . . _FLAGS 1 5 `i -> 0 `i 508  ]
 {
-"35
-[; ;newmain.c: 35:             displayRequestHandle();
-[e ( _displayRequestHandle ..  ]
-"36
-[; ;newmain.c: 36:             FLAGS.bits.DISPLAY_READING = 0;
-[e = . . _FLAGS 1 4 -> -> 0 `i `uc ]
-"37
-[; ;newmain.c: 37:         }
+"22
+[; ;display.c: 22:             displaySPI();
+[e ( _displaySPI ..  ]
+"23
+[; ;display.c: 23:             FLAGS.bits.DISPLAY_SPI_READING = 0;
+[e = . . _FLAGS 1 5 -> -> 0 `i `uc ]
+"24
+[; ;display.c: 24:         }
 }
 [e :U 508 ]
-"38
-[; ;newmain.c: 38:         if (FLAGS.bits.UART_RECEIVED) {
-[e $ ! != -> . . _FLAGS 1 1 `i -> 0 `i 509  ]
-{
-"39
-[; ;newmain.c: 39:             serialCallback();
-[e ( _serialCallback ..  ]
-"40
-[; ;newmain.c: 40:             FLAGS.bits.UART_RECEIVED = 0;
-[e = . . _FLAGS 1 1 -> -> 0 `i `uc ]
-"41
-[; ;newmain.c: 41:         }
+"25
+[; ;display.c: 25:     }
 }
-[e :U 509 ]
-"42
-[; ;newmain.c: 42:         if (FLAGS.bits.PUSHED_BUTTON) {
-[e $ ! != -> . . _FLAGS 1 3 `i -> 0 `i 510  ]
-{
-"43
-[; ;newmain.c: 43:             buttonCallback();
-[e ( _buttonCallback ..  ]
-"44
-[; ;newmain.c: 44:             FLAGS.bits.PUSHED_BUTTON = 0;
-[e = . . _FLAGS 1 3 -> -> 0 `i `uc ]
-"45
-[; ;newmain.c: 45:         }
-}
-[e :U 510 ]
-"46
-[; ;newmain.c: 46:     }
-}
-[e :U 505 ]
-[e $U 506  ]
 [e :U 507 ]
-"47
-[; ;newmain.c: 47: }
-[e :UE 504 ]
+"26
+[; ;display.c: 26: }
+[e :UE 505 ]
+}
+"28
+[; ;display.c: 28: void displayCallback() {
+[v _displayCallback `(v ~T0 @X0 1 ef ]
+{
+[e :U _displayCallback ]
+[f ]
+"29
+[; ;display.c: 29:     PORTD = outValue;
+[e = _PORTD _outValue ]
+"30
+[; ;display.c: 30: }
+[e :UE 509 ]
 }

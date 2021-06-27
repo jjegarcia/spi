@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V2.32 build 20210201212658 
-                                                                                               Sun Jun 27 16:35:18 2021
+                                                                                               Sun Jun 27 16:36:26 2021
 
 Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1 
      1                           	processor	18F8722
@@ -173,37 +173,37 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
    159  001050  00                 	db	0
    160  001051                     __end_ofmain@F4611:
    161                           	callstack 0
-   162  0000                     _TXREG1	set	4013
-   163  0000                     _RCREG1	set	4014
-   164  0000                     _SPBRG	set	4015
-   165  0000                     _PORTD	set	3971
-   166  0000                     _TRISD	set	3989
-   167  0000                     _SSPBUF	set	4041
-   168  0000                     _SSPSTATbits	set	4039
-   169  0000                     _SSP1CON1	set	4038
-   170  0000                     _SSPSTAT	set	4039
-   171  0000                     _TXEN1	set	32101
-   172  0000                     _CREN1	set	32092
-   173  0000                     _SPEN1	set	32095
-   174  0000                     _SYNC1	set	32100
-   175  0000                     _BRGH1	set	32098
-   176  0000                     _INT0IF	set	32657
-   177  0000                     _RC1IF	set	31989
-   178  0000                     _RC1IE	set	31981
-   179  0000                     _INT0IE	set	32660
-   180  0000                     _INTEDG0	set	32654
-   181  0000                     _PEIE	set	32662
-   182  0000                     _GIE	set	32663
-   183  0000                     _TRISB0	set	31896
-   184  0000                     _TRISC6	set	31910
-   185  0000                     _TRISC7	set	31911
-   186  0000                     _LATC0	set	31832
-   187  0000                     _TRISC2	set	31906
-   188  0000                     _TRISC3	set	31907
-   189  0000                     _TRISC4	set	31908
-   190  0000                     _TRISC5	set	31909
-   191  0000                     _SSPIE	set	31979
-   192  0000                     _SSPIF	set	31987
+   162  0000                     _PORTD	set	3971
+   163  0000                     _TRISD	set	3989
+   164  0000                     _TRISB0	set	31896
+   165  0000                     _TRISC6	set	31910
+   166  0000                     _TRISC7	set	31911
+   167  0000                     _LATC0	set	31832
+   168  0000                     _TRISC2	set	31906
+   169  0000                     _TRISC3	set	31907
+   170  0000                     _TRISC4	set	31908
+   171  0000                     _TRISC5	set	31909
+   172  0000                     _TXREG1	set	4013
+   173  0000                     _RCREG1	set	4014
+   174  0000                     _SPBRG	set	4015
+   175  0000                     _SSPBUF	set	4041
+   176  0000                     _SSPSTATbits	set	4039
+   177  0000                     _SSP1CON1	set	4038
+   178  0000                     _SSPSTAT	set	4039
+   179  0000                     _TXEN1	set	32101
+   180  0000                     _CREN1	set	32092
+   181  0000                     _SPEN1	set	32095
+   182  0000                     _SYNC1	set	32100
+   183  0000                     _BRGH1	set	32098
+   184  0000                     _RC1IF	set	31989
+   185  0000                     _RC1IE	set	31981
+   186  0000                     _SSPIE	set	31979
+   187  0000                     _SSPIF	set	31987
+   188  0000                     _INT0IF	set	32657
+   189  0000                     _INT0IE	set	32660
+   190  0000                     _INTEDG0	set	32654
+   191  0000                     _PEIE	set	32662
+   192  0000                     _GIE	set	32663
    193  001051  00                 	db	0	; dummy byte at the end
    194  0000                     
    195                           ; #config settings
@@ -1942,7 +1942,7 @@ Auto Spaces:
     BANK11          256      0       0
     BANK12          256      0       0
     BANK13          256      0       0
-    BANK14          256      0       0
+    BANK14          239      0       0
     BANK15           96      0       0
 
 Pointer List with Targets:
@@ -2199,53 +2199,64 @@ Call Graph Tables:
 
  Address spaces:
 Name               Size   Autos  Total    Cost      Usage
-BIGRAM             F5F      0       0      37        0.0%
+BIGRAM             EEE      0       0      38        0.0%
 EEDATA             400      0       0       0        0.0%
-BITBANK14          100      0       0      33        0.0%
-BANK14             100      0       0      34        0.0%
-BITBANK13          100      0       0      30        0.0%
-BANK13             100      0       0      31        0.0%
-BITBANK12          100      0       0      28        0.0%
-BANK12             100      0       0      29        0.0%
-BITBANK11          100      0       0      26        0.0%
-BANK11             100      0       0      27        0.0%
-BITBANK10          100      0       0      24        0.0%
-BANK10             100      0       0      25        0.0%
-BITBANK9           100      0       0      22        0.0%
-BANK9              100      0       0      23        0.0%
-BITBANK8           100      0       0      20        0.0%
-BANK8              100      0       0      21        0.0%
-BITBANK7           100      0       0      18        0.0%
-BANK7              100      0       0      19        0.0%
-BITBANK6           100      0       0      16        0.0%
-BANK6              100      0       0      17        0.0%
-BITBANK5           100      0       0      14        0.0%
-BANK5              100      0       0      15        0.0%
-BITBANK4           100      0       0      12        0.0%
-BANK4              100      0       0      13        0.0%
-BITBANK3           100      0       0      10        0.0%
-BANK3              100      0       0      11        0.0%
-BITBANK2           100      0       0       8        0.0%
-BANK2              100      0       0       9        0.0%
-BITBANK1           100      0       0       6        0.0%
-BANK1              100      0       0       7        0.0%
+BITBANK13          100      0       0      31        0.0%
+BANK13             100      0       0      32        0.0%
+BITBANK12          100      0       0      29        0.0%
+BANK12             100      0       0      30        0.0%
+BITBANK11          100      0       0      27        0.0%
+BANK11             100      0       0      28        0.0%
+BITBANK10          100      0       0      25        0.0%
+BANK10             100      0       0      26        0.0%
+BITBANK9           100      0       0      23        0.0%
+BANK9              100      0       0      24        0.0%
+BITBANK8           100      0       0      21        0.0%
+BANK8              100      0       0      22        0.0%
+BITBANK7           100      0       0      19        0.0%
+BANK7              100      0       0      20        0.0%
+BITBANK6           100      0       0      17        0.0%
+BANK6              100      0       0      18        0.0%
+BITBANK5           100      0       0      15        0.0%
+BANK5              100      0       0      16        0.0%
+BITBANK4           100      0       0      13        0.0%
+BANK4              100      0       0      14        0.0%
+BITBANK3           100      0       0      11        0.0%
+BANK3              100      0       0      12        0.0%
+BITBANK2           100      0       0       9        0.0%
+BANK2              100      0       0      10        0.0%
+BITBANK1           100      0       0       7        0.0%
+BANK1              100      0       0       8        0.0%
+BITBANK14           EF      0       0      33        0.0%
+BANK14              EF      0       0      34        0.0%
 BITBANK0            A0      0       0       4        0.0%
 BANK0               A0      0       0       5        0.0%
 BITBANK15           60      0       0      35        0.0%
 BANK15              60      0       0      36        0.0%
+BIGRAM_1            60      0       0      37        0.0%
 BITCOMRAM           5E      0       0       0        0.0%
 COMRAM              5E     51      55       1       90.4%
+BITSFR_5             0      0       0     200        0.0%
+SFR_5                0      0       0     200        0.0%
+BITSFR_4             0      0       0     200        0.0%
+SFR_4                0      0       0     200        0.0%
+BITSFR_3             0      0       0     200        0.0%
+SFR_3                0      0       0     200        0.0%
+BITSFR_2             0      0       0     200        0.0%
+SFR_2                0      0       0     200        0.0%
+BITSFR_1             0      0       0     200        0.0%
+SFR_1                0      0       0     200        0.0%
 BITSFR               0      0       0     200        0.0%
 SFR                  0      0       0     200        0.0%
 STACK                0      0       0       2        0.0%
 NULL                 0      0       0       0        0.0%
-ABS                  0      0      55      32        0.0%
+ABS                  0      0      55       6        0.0%
 DATA                 0      0      55       3        0.0%
 CODE                 0      0       0       0        0.0%
 
 
 Microchip Technology PIC18 Macro Assembler V2.32 build 20210201212658 
-Symbol Table                                                                                   Sun Jun 27 16:35:18 2021
+Symbol Table                                                                                   Sun Jun 27 16:36:26 2021
 
         ?_processInterruptService 0001                       _SSPSTATbits 000FC7  
                               l71 1256                                u90 1188  

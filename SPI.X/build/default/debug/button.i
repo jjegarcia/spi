@@ -1,4 +1,4 @@
-# 1 "interruptService.c"
+# 1 "button.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,12 +6,25 @@
 # 1 "<built-in>" 2
 # 1 "/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "interruptService.c" 2
+# 1 "button.c" 2
+# 1 "./main.h" 1
+# 29 "./main.h"
+union {
+    unsigned char byte;
 
-
-
-
-
+    struct {
+        unsigned SPI_READ_REQUEST : 1;
+        unsigned UART_RECEIVED : 1;
+        unsigned PREVIOUS_BUTTON_STATE : 1;
+        unsigned PUSHED_BUTTON : 1;
+        unsigned DISPLAY_READING: 1;
+        unsigned DISPLAY_SPI_READING : 1;
+        unsigned DISPLAY_SERIAL_READING : 1;
+    } bits;
+} FLAGS;
+# 2 "button.c" 2
+# 1 "./button.h" 1
+# 34 "./button.h"
 # 1 "/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/xc.h" 1 3
 # 18 "/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -7772,100 +7785,21 @@ extern __attribute__((nonreentrant)) void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 # 33 "/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/xc.h" 2 3
-# 7 "interruptService.c" 2
-# 1 "./main.h" 1
-# 29 "./main.h"
-union {
-    unsigned char byte;
+# 35 "./button.h" 2
 
-    struct {
-        unsigned SPI_READ_REQUEST : 1;
-        unsigned UART_RECEIVED : 1;
-        unsigned PREVIOUS_BUTTON_STATE : 1;
-        unsigned PUSHED_BUTTON : 1;
-        unsigned DISPLAY_READING: 1;
-        unsigned DISPLAY_SPI_READING : 1;
-        unsigned DISPLAY_SERIAL_READING : 1;
-    } bits;
-} FLAGS;
-# 8 "interruptService.c" 2
-# 1 "./spi.h" 1
-# 11 "./spi.h"
-typedef enum
-{
-    SPI_MASTER_OSC_DIV4 = 0b00100000,
-    SPI_MASTER_OSC_DIV16 = 0b00100001,
-    SPI_MASTER_OSC_DIV64 = 0b00100010,
-    SPI_MASTER_TMR2 = 0b00100011,
-    SPI_SLAVE_SS_EN = 0b00100100,
-    SPI_SLAVE_SS_DIS = 0b00100101
-}Spi_Type;
 
-typedef enum
-{
-    SPI_DATA_SAMPLE_MIDDLE = 0b00000000,
-    SPI_DATA_SAMPLE_END = 0b10000000
-}Spi_Data_Sample;
 
-typedef enum
-{
-    SPI_CLOCK_IDLE_HIGH = 0b00010000,
-    SPI_CLOCK_IDLE_LOW = 0b00000000
-}Spi_Clock_Idle;
-
-typedef enum
-{
-    SPI_IDLE_2_ACTIVE = 0b00000000,
-    SPI_ACTIVE_2_IDLE = 0b01000000
-}Spi_Transmit_Edge;
-
-unsigned char readSPIValue;
-
-void setSPIInterrupt(void);
-void spiInit(Spi_Type, Spi_Data_Sample, Spi_Clock_Idle, Spi_Transmit_Edge);
-void spiWrite(char);
-unsigned spiDataReady(void);
-char spiRead(void);
-void SPIHandle(void);
-void SPICallback(void);
-# 9 "interruptService.c" 2
-# 1 "./interruptService.h" 1
-# 28 "./interruptService.h"
-void interruptService(void);
-static void spiService(void);
-# 10 "interruptService.c" 2
-# 1 "./serial.h" 1
-# 37 "./serial.h"
-unsigned char readSerialValue;
-
-void setSerial(void);
-void serialHandle(void);
-void serialCallback(void);
-void transmittRead(void);
-void writeSerial(unsigned char);
-unsigned char readSerial(void);
-# 11 "interruptService.c" 2
-# 1 "./button.h" 1
-# 38 "./button.h"
 void buttonCallback(void);
 void buttonHandle(void);
-# 12 "interruptService.c" 2
+# 3 "button.c" 2
 
-void processInterruptService(void) {
-    if (SSPIE == 1 && SSPIF == 1) {
-        SPIHandle();
-        SSPIF = 0;
-    }
-    if (RC1IE == 1 && RC1IF == 1 && FLAGS.bits.UART_RECEIVED == 0) {
-        serialHandle();
-        RC1IF = 0;
-    }
-    if (INTEDG0 == 1 && INT0IF == 1) {
-        buttonHandle();
-        INT0IF = 0;
+void buttonCallback(void) {
+    if (FLAGS.bits.PREVIOUS_BUTTON_STATE != FLAGS.bits.PUSHED_BUTTON) {
+        FLAGS.bits.PREVIOUS_BUTTON_STATE = FLAGS.bits.PUSHED_BUTTON;
+        TXREG1 = 'a';
     }
 }
 
-void interruptService(void) {
-    processInterruptService();
+void buttonHandle(void) {
+    FLAGS.bits.PUSHED_BUTTON = 1;
 }
