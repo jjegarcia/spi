@@ -13,8 +13,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "15900
 [; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 15900: extern volatile __bit SSPIF __attribute__((address(0x7CF3)));
 [v _SSPIF `Vb ~T0 @X0 0 e@31987 ]
-"45 ./spi.h
-[; ;./spi.h: 45: void SPIHandle(void);
+"46 ./spi.h
+[; ;./spi.h: 46: void SPIHandle(void);
 [v _SPIHandle `(v ~T0 @X0 0 ef ]
 "15435 /Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h
 [; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 15435: extern volatile __bit RC1IE __attribute__((address(0x7CED)));
@@ -22,8 +22,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "15438
 [; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 15438: extern volatile __bit RC1IF __attribute__((address(0x7CF5)));
 [v _RC1IF `Vb ~T0 @X0 0 e@31989 ]
-"38 ./serial.h
-[; ;./serial.h: 38: void serialHandle(void);
+"40 ./serial.h
+[; ;./serial.h: 40: void serialHandle(void);
 [v _serialHandle `(v ~T0 @X0 0 ef ]
 "14403 /Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h
 [; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 14403: extern volatile __bit INTEDG0 __attribute__((address(0x7F8E)));
@@ -31,6 +31,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 "14337
 [; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 14337: extern volatile __bit INT0IF __attribute__((address(0x7F91)));
 [v _INT0IF `Vb ~T0 @X0 0 e@32657 ]
+"39 ./button.h
+[; ;./button.h: 39: void buttonHandle(void);
+[v _buttonHandle `(v ~T0 @X0 0 ef ]
 "54 /Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h
 [; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 54: __asm("SSP2CON2 equ 0F62h");
 [; <" SSP2CON2 equ 0F62h ;# ">
@@ -634,68 +637,68 @@ Version 4.0 HI-TECH Software Intermediate Code
 "37 ./serial.h
 [; ;./serial.h: 37: unsigned char readSerialValue;
 [v _readSerialValue `uc ~T0 @X0 1 e ]
-"12 interruptService.c
-[; ;interruptService.c: 12: void processInterruptService(void) {
+"13 interruptService.c
+[; ;interruptService.c: 13: void processInterruptService(void) {
 [v _processInterruptService `(v ~T0 @X0 1 ef ]
 {
 [e :U _processInterruptService ]
 [f ]
-"13
-[; ;interruptService.c: 13:     if (SSPIE == 1 && SSPIF == 1) {
+"14
+[; ;interruptService.c: 14:     if (SSPIE == 1 && SSPIF == 1) {
 [e $ ! && == -> _SSPIE `i -> 1 `i == -> _SSPIF `i -> 1 `i 504  ]
 {
-"14
-[; ;interruptService.c: 14:         SPIHandle();
-[e ( _SPIHandle ..  ]
 "15
-[; ;interruptService.c: 15:         SSPIF = 0;
-[e = _SSPIF -> -> 0 `i `b ]
+[; ;interruptService.c: 15:         SPIHandle();
+[e ( _SPIHandle ..  ]
 "16
-[; ;interruptService.c: 16:     }
+[; ;interruptService.c: 16:         SSPIF = 0;
+[e = _SSPIF -> -> 0 `i `b ]
+"17
+[; ;interruptService.c: 17:     }
 }
 [e :U 504 ]
-"17
-[; ;interruptService.c: 17:     if (RC1IE == 1 && RC1IF == 1 && FLAGS.bits.UART_RECEIVED==0) {
+"18
+[; ;interruptService.c: 18:     if (RC1IE == 1 && RC1IF == 1 && FLAGS.bits.UART_RECEIVED == 0) {
 [e $ ! && && == -> _RC1IE `i -> 1 `i == -> _RC1IF `i -> 1 `i == -> . . _FLAGS 1 1 `i -> 0 `i 505  ]
 {
-"18
-[; ;interruptService.c: 18:         serialHandle();
-[e ( _serialHandle ..  ]
 "19
-[; ;interruptService.c: 19:         RC1IF = 0;
-[e = _RC1IF -> -> 0 `i `b ]
+[; ;interruptService.c: 19:         serialHandle();
+[e ( _serialHandle ..  ]
 "20
-[; ;interruptService.c: 20:     }
+[; ;interruptService.c: 20:         RC1IF = 0;
+[e = _RC1IF -> -> 0 `i `b ]
+"21
+[; ;interruptService.c: 21:     }
 }
 [e :U 505 ]
-"21
-[; ;interruptService.c: 21:     if (INTEDG0==1 && INT0IF==1){
+"22
+[; ;interruptService.c: 22:     if (INTEDG0 == 1 && INT0IF == 1) {
 [e $ ! && == -> _INTEDG0 `i -> 1 `i == -> _INT0IF `i -> 1 `i 506  ]
 {
-"22
-[; ;interruptService.c: 22:         INT0IF=0;
-[e = _INT0IF -> -> 0 `i `b ]
 "23
-[; ;interruptService.c: 23:         FLAGS.bits.PUSHED_BUTTON = 1;
-[e = . . _FLAGS 1 3 -> -> 1 `i `uc ]
+[; ;interruptService.c: 23:         buttonHandle();
+[e ( _buttonHandle ..  ]
 "24
-[; ;interruptService.c: 24:     }
+[; ;interruptService.c: 24:         INT0IF = 0;
+[e = _INT0IF -> -> 0 `i `b ]
+"25
+[; ;interruptService.c: 25:     }
 }
 [e :U 506 ]
-"25
-[; ;interruptService.c: 25: }
+"26
+[; ;interruptService.c: 26: }
 [e :UE 503 ]
 }
-"27
-[; ;interruptService.c: 27: void interruptService(void) {
+"28
+[; ;interruptService.c: 28: void interruptService(void) {
 [v _interruptService `(v ~T0 @X0 1 ef ]
 {
 [e :U _interruptService ]
 [f ]
-"28
-[; ;interruptService.c: 28:     processInterruptService();
-[e ( _processInterruptService ..  ]
 "29
-[; ;interruptService.c: 29: }
+[; ;interruptService.c: 29:     processInterruptService();
+[e ( _processInterruptService ..  ]
+"30
+[; ;interruptService.c: 30: }
 [e :UE 507 ]
 }

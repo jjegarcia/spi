@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V2.32 build 20210201212658 
-                                                                                               Tue Jun 22 12:57:52 2021
+                                                                                               Sun Jun 27 07:24:31 2021
 
 Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1 
      1                           	processor	18F8722
@@ -20,1460 +20,1804 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
     14                           	psect	text5,global,reloc=2,class=CODE,delta=1
     15                           	psect	text6,global,reloc=2,class=CODE,delta=1
     16                           	psect	text7,global,reloc=2,class=CODE,delta=1
-    17                           	psect	intcode,global,reloc=2,class=CODE,delta=1
-    18                           	psect	intcode_body,global,reloc=2,class=CODE,delta=1
-    19                           	psect	text9,global,reloc=2,class=CODE,delta=1
-    20                           	psect	text10,global,reloc=2,class=CODE,delta=1
-    21                           	psect	text11,global,reloc=2,class=CODE,delta=1
-    22                           	psect	text12,global,reloc=2,class=CODE,delta=1
-    23                           	psect	text13,global,reloc=2,class=CODE,delta=1
+    17                           	psect	text8,global,reloc=2,class=CODE,delta=1
+    18                           	psect	text9,global,reloc=2,class=CODE,delta=1
+    19                           	psect	text10,global,reloc=2,class=CODE,delta=1
+    20                           	psect	text11,global,reloc=2,class=CODE,delta=1
+    21                           	psect	text12,global,reloc=2,class=CODE,delta=1
+    22                           	psect	intcode,global,reloc=2,class=CODE,delta=1
+    23                           	psect	intcode_body,global,reloc=2,class=CODE,delta=1
     24                           	psect	text14,global,reloc=2,class=CODE,delta=1
-    25                           	psect	intsave_regs,global,class=BIGRAM,space=1,delta=1,noexec
-    26                           	psect	rparam,global,class=COMRAM,space=1,delta=1,noexec
-    27                           	psect	temp,global,ovrld,common,class=COMRAM,space=1,delta=1
-    28                           	psect	idloc,global,abs,ovrld,class=IDLOC,space=5,delta=1,noexec
-    29                           	psect	config,global,abs,ovrld,class=CONFIG,space=4,delta=1,noexec
-    30  0000                     
-    31                           ; Version 2.20
-    32                           ; Generated 12/02/2020 GMT
-    33                           ; 
-    34                           ; Copyright © 2020, Microchip Technology Inc. and its subsidiaries ("Microchip")
-    35                           ; All rights reserved.
-    36                           ; 
-    37                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
+    25                           	psect	text15,global,reloc=2,class=CODE,delta=1
+    26                           	psect	text16,global,reloc=2,class=CODE,delta=1
+    27                           	psect	text17,global,reloc=2,class=CODE,delta=1
+    28                           	psect	text18,global,reloc=2,class=CODE,delta=1
+    29                           	psect	text19,global,reloc=2,class=CODE,delta=1
+    30                           	psect	text20,global,reloc=2,class=CODE,delta=1
+    31                           	psect	intsave_regs,global,class=BIGRAM,space=1,delta=1,noexec
+    32                           	psect	rparam,global,class=COMRAM,space=1,delta=1,noexec
+    33                           	psect	temp,global,ovrld,common,class=COMRAM,space=1,delta=1
+    34                           	psect	idloc,global,abs,ovrld,class=IDLOC,space=5,delta=1,noexec
+    35                           	psect	config,global,abs,ovrld,class=CONFIG,space=4,delta=1,noexec
+    36  0000                     
+    37                           ; Version 2.20
+    38                           ; Generated 12/02/2020 GMT
+    39                           ; 
+    40                           ; Copyright © 2020, Microchip Technology Inc. and its subsidiaries ("Microchip")
+    41                           ; All rights reserved.
+    42                           ; 
+    43                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
       +                          ip").
-    38                           ; 
-    39                           ; Redistribution and use in source and binary forms, with or without modification, are
-    40                           ; permitted provided that the following conditions are met:
-    41                           ; 
-    42                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
-      +                          t of
-    43                           ;        conditions and the following disclaimer.
     44                           ; 
-    45                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
+    45                           ; Redistribution and use in source and binary forms, with or without modification, are
+    46                           ; permitted provided that the following conditions are met:
+    47                           ; 
+    48                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
+      +                          t of
+    49                           ;        conditions and the following disclaimer.
+    50                           ; 
+    51                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
       +                          list
-    46                           ;        of conditions and the following disclaimer in the documentation and/or other
-    47                           ;        materials provided with the distribution.
-    48                           ; 
-    49                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
+    52                           ;        of conditions and the following disclaimer in the documentation and/or other
+    53                           ;        materials provided with the distribution.
+    54                           ; 
+    55                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
       +                          is
-    50                           ;        software without specific prior written permission.
-    51                           ; 
-    52                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
-    53                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
+    56                           ;        software without specific prior written permission.
+    57                           ; 
+    58                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+    59                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
       +                          OR
-    54                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
+    60                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
       +                          T,
-    55                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
-    56                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
-    57                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
+    61                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
+    62                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
+    63                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
       +                          RICT
-    58                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
+    64                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
       +                          SE OF
-    59                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-    60                           ; 
-    61                           ; 
-    62                           ; Code-generator required, PIC18F8722 Definitions
-    63                           ; 
-    64                           ; SFR Addresses
-    65  0000                     
-    66                           	psect	smallconst
-    67  001000                     __psmallconst:
-    68                           	callstack 0
-    69  001000  00                 	db	0
-    70  001001                     main@F4601:
-    71                           	callstack 0
-    72  001001  73                 	db	115
-    73  001002  73                 	db	115
-    74  001003  73                 	db	115
-    75  001004  64                 	db	100
-    76  001005  64                 	db	100
-    77  001006  64                 	db	100
-    78  001007  64                 	db	100
-    79  001008  00                 	db	0
-    80  001009  00                 	db	0
-    81  00100A  00                 	db	0
-    82  00100B  00                 	db	0
-    83  00100C  00                 	db	0
-    84  00100D  00                 	db	0
-    85  00100E  00                 	db	0
-    86  00100F  00                 	db	0
-    87  001010  00                 	db	0
-    88  001011  00                 	db	0
-    89  001012  00                 	db	0
-    90  001013  00                 	db	0
-    91  001014  00                 	db	0
-    92  001015  00                 	db	0
-    93  001016  00                 	db	0
-    94  001017  00                 	db	0
-    95  001018  00                 	db	0
-    96  001019  00                 	db	0
-    97  00101A  00                 	db	0
-    98  00101B  00                 	db	0
-    99  00101C  00                 	db	0
-   100  00101D  00                 	db	0
-   101  00101E  00                 	db	0
-   102  00101F  00                 	db	0
-   103  001020  00                 	db	0
-   104  001021  00                 	db	0
-   105  001022  00                 	db	0
-   106  001023  00                 	db	0
-   107  001024  00                 	db	0
-   108  001025  00                 	db	0
-   109  001026  00                 	db	0
-   110  001027  00                 	db	0
-   111  001028  00                 	db	0
-   112  001029  00                 	db	0
-   113  00102A  00                 	db	0
-   114  00102B  00                 	db	0
-   115  00102C  00                 	db	0
-   116  00102D  00                 	db	0
-   117  00102E  00                 	db	0
-   118  00102F  00                 	db	0
-   119  001030  00                 	db	0
-   120  001031  00                 	db	0
-   121  001032  00                 	db	0
-   122  001033  00                 	db	0
-   123  001034  00                 	db	0
-   124  001035  00                 	db	0
-   125  001036  00                 	db	0
-   126  001037  00                 	db	0
-   127  001038  00                 	db	0
-   128  001039  00                 	db	0
-   129  00103A  00                 	db	0
-   130  00103B  00                 	db	0
-   131  00103C  00                 	db	0
-   132  00103D  00                 	db	0
-   133  00103E  00                 	db	0
-   134  00103F  00                 	db	0
-   135  001040  00                 	db	0
-   136  001041  00                 	db	0
-   137  001042  00                 	db	0
-   138  001043  00                 	db	0
-   139  001044  00                 	db	0
-   140  001045  00                 	db	0
-   141  001046  00                 	db	0
-   142  001047  00                 	db	0
-   143  001048  00                 	db	0
-   144  001049  00                 	db	0
-   145  00104A  00                 	db	0
-   146  00104B  00                 	db	0
-   147  00104C  00                 	db	0
-   148  00104D  00                 	db	0
-   149  00104E  00                 	db	0
-   150  00104F  00                 	db	0
-   151  001050  00                 	db	0
-   152  001051                     __end_ofmain@F4601:
-   153                           	callstack 0
-   154  0000                     _TXREG	set	4013
-   155  0000                     _RCREG	set	4014
-   156  0000                     _PORTD	set	3971
-   157  0000                     _TRISD	set	3989
-   158  0000                     _SPBRG	set	4015
-   159  0000                     _SSPBUF	set	4041
-   160  0000                     _SSPSTATbits	set	4039
-   161  0000                     _SSP1CON1	set	4038
-   162  0000                     _SSPSTAT	set	4039
-   163  0000                     _INT0IF	set	32657
-   164  0000                     _INT0IE	set	32660
-   165  0000                     _INTEDG0	set	32654
-   166  0000                     _PEIE	set	32662
-   167  0000                     _GIE	set	32663
-   168  0000                     _SSPIE	set	31979
-   169  0000                     _SSPIF	set	31987
-   170  0000                     _TRISB0	set	31896
-   171  0000                     _TRISC6	set	31910
-   172  0000                     _TRISC7	set	31911
-   173  0000                     _RC1IE	set	31981
-   174  0000                     _RC1IF	set	31989
-   175  0000                     _WUE1	set	31729
-   176  0000                     _CREN1	set	32092
-   177  0000                     _SPEN1	set	32095
-   178  0000                     _BRGH1	set	32098
-   179  0000                     _TXEN1	set	32101
-   180  0000                     _LATC0	set	31832
-   181  0000                     _TRISC2	set	31906
-   182  0000                     _TRISC3	set	31907
-   183  0000                     _TRISC4	set	31908
-   184  0000                     _TRISC5	set	31909
-   185  001051  00                 	db	0	; dummy byte at the end
-   186  0000                     
-   187                           ; #config settings
-   188                           
-   189                           	psect	cinit
-   190  001170                     __pcinit:
-   191                           	callstack 0
-   192  001170                     start_initialization:
-   193                           	callstack 0
-   194  001170                     __initialization:
-   195                           	callstack 0
+    65                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    66                           ; 
+    67                           ; 
+    68                           ; Code-generator required, PIC18F8722 Definitions
+    69                           ; 
+    70                           ; SFR Addresses
+    71  0000                     
+    72                           	psect	smallconst
+    73  001000                     __psmallconst:
+    74                           	callstack 0
+    75  001000  00                 	db	0
+    76  001001                     main@F4608:
+    77                           	callstack 0
+    78  001001  73                 	db	115
+    79  001002  73                 	db	115
+    80  001003  73                 	db	115
+    81  001004  64                 	db	100
+    82  001005  64                 	db	100
+    83  001006  64                 	db	100
+    84  001007  64                 	db	100
+    85  001008  00                 	db	0
+    86  001009  00                 	db	0
+    87  00100A  00                 	db	0
+    88  00100B  00                 	db	0
+    89  00100C  00                 	db	0
+    90  00100D  00                 	db	0
+    91  00100E  00                 	db	0
+    92  00100F  00                 	db	0
+    93  001010  00                 	db	0
+    94  001011  00                 	db	0
+    95  001012  00                 	db	0
+    96  001013  00                 	db	0
+    97  001014  00                 	db	0
+    98  001015  00                 	db	0
+    99  001016  00                 	db	0
+   100  001017  00                 	db	0
+   101  001018  00                 	db	0
+   102  001019  00                 	db	0
+   103  00101A  00                 	db	0
+   104  00101B  00                 	db	0
+   105  00101C  00                 	db	0
+   106  00101D  00                 	db	0
+   107  00101E  00                 	db	0
+   108  00101F  00                 	db	0
+   109  001020  00                 	db	0
+   110  001021  00                 	db	0
+   111  001022  00                 	db	0
+   112  001023  00                 	db	0
+   113  001024  00                 	db	0
+   114  001025  00                 	db	0
+   115  001026  00                 	db	0
+   116  001027  00                 	db	0
+   117  001028  00                 	db	0
+   118  001029  00                 	db	0
+   119  00102A  00                 	db	0
+   120  00102B  00                 	db	0
+   121  00102C  00                 	db	0
+   122  00102D  00                 	db	0
+   123  00102E  00                 	db	0
+   124  00102F  00                 	db	0
+   125  001030  00                 	db	0
+   126  001031  00                 	db	0
+   127  001032  00                 	db	0
+   128  001033  00                 	db	0
+   129  001034  00                 	db	0
+   130  001035  00                 	db	0
+   131  001036  00                 	db	0
+   132  001037  00                 	db	0
+   133  001038  00                 	db	0
+   134  001039  00                 	db	0
+   135  00103A  00                 	db	0
+   136  00103B  00                 	db	0
+   137  00103C  00                 	db	0
+   138  00103D  00                 	db	0
+   139  00103E  00                 	db	0
+   140  00103F  00                 	db	0
+   141  001040  00                 	db	0
+   142  001041  00                 	db	0
+   143  001042  00                 	db	0
+   144  001043  00                 	db	0
+   145  001044  00                 	db	0
+   146  001045  00                 	db	0
+   147  001046  00                 	db	0
+   148  001047  00                 	db	0
+   149  001048  00                 	db	0
+   150  001049  00                 	db	0
+   151  00104A  00                 	db	0
+   152  00104B  00                 	db	0
+   153  00104C  00                 	db	0
+   154  00104D  00                 	db	0
+   155  00104E  00                 	db	0
+   156  00104F  00                 	db	0
+   157  001050  00                 	db	0
+   158  001051                     __end_ofmain@F4608:
+   159                           	callstack 0
+   160  0000                     _TXREG	set	4013
+   161  0000                     _RCREG	set	4014
+   162  0000                     _TXREG1	set	4013
+   163  0000                     _RCREG1	set	4014
+   164  0000                     _SPBRG	set	4015
+   165  0000                     _PORTD	set	3971
+   166  0000                     _TRISD	set	3989
+   167  0000                     _SSPBUF	set	4041
+   168  0000                     _SSPSTATbits	set	4039
+   169  0000                     _SSP1CON1	set	4038
+   170  0000                     _SSPSTAT	set	4039
+   171  0000                     _WUE1	set	31729
+   172  0000                     _CREN1	set	32092
+   173  0000                     _SPEN1	set	32095
+   174  0000                     _BRGH1	set	32098
+   175  0000                     _TXEN1	set	32101
+   176  0000                     _INT0IF	set	32657
+   177  0000                     _RC1IF	set	31989
+   178  0000                     _RC1IE	set	31981
+   179  0000                     _INT0IE	set	32660
+   180  0000                     _INTEDG0	set	32654
+   181  0000                     _PEIE	set	32662
+   182  0000                     _GIE	set	32663
+   183  0000                     _TRISB0	set	31896
+   184  0000                     _TRISC6	set	31910
+   185  0000                     _TRISC7	set	31911
+   186  0000                     _LATC0	set	31832
+   187  0000                     _TRISC2	set	31906
+   188  0000                     _TRISC3	set	31907
+   189  0000                     _TRISC4	set	31908
+   190  0000                     _TRISC5	set	31909
+   191  0000                     _SSPIE	set	31979
+   192  0000                     _SSPIF	set	31987
+   193  001051  00                 	db	0	; dummy byte at the end
+   194  0000                     
+   195                           ; #config settings
    196                           
-   197                           ; Clear objects allocated to COMRAM (4 bytes)
-   198  001170  6A55               	clrf	(__pbssCOMRAM+3)& (0+255),c
-   199  001172  6A54               	clrf	(__pbssCOMRAM+2)& (0+255),c
-   200  001174  6A53               	clrf	(__pbssCOMRAM+1)& (0+255),c
-   201  001176  6A52               	clrf	__pbssCOMRAM& (0+255),c
-   202  001178                     end_of_initialization:
+   197                           	psect	cinit
+   198  0011C4                     __pcinit:
+   199                           	callstack 0
+   200  0011C4                     start_initialization:
+   201                           	callstack 0
+   202  0011C4                     __initialization:
    203                           	callstack 0
-   204  001178                     __end_of__initialization:
-   205                           	callstack 0
-   206  001178  9056               	bcf	int$flags,0,c	;clear compiler interrupt flag (level 1)
-   207  00117A  9256               	bcf	int$flags,1,c	;clear compiler interrupt flag (level 2)
-   208  00117C  0E00               	movlw	low (__Lsmallconst shr (0+16))
-   209  00117E  6EF8               	movwf	tblptru,c
-   210  001180  0E10               	movlw	high __Lsmallconst
-   211  001182  6EF7               	movwf	tblptrh,c
-   212  001184  0100               	movlb	0
-   213  001186  EF29  F008         	goto	_main	;jump to C main() function
-   214                           
-   215                           	psect	bssCOMRAM
-   216  000052                     __pbssCOMRAM:
-   217                           	callstack 0
-   218  000052                     _outValue:
-   219                           	callstack 0
-   220  000052                     	ds	1
-   221  000053                     _readSerialValue:
-   222                           	callstack 0
-   223  000053                     	ds	1
-   224  000054                     _FLAGS:
+   204                           
+   205                           ; Clear objects allocated to COMRAM (4 bytes)
+   206  0011C4  6A55               	clrf	(__pbssCOMRAM+3)& (0+255),c
+   207  0011C6  6A54               	clrf	(__pbssCOMRAM+2)& (0+255),c
+   208  0011C8  6A53               	clrf	(__pbssCOMRAM+1)& (0+255),c
+   209  0011CA  6A52               	clrf	__pbssCOMRAM& (0+255),c
+   210  0011CC                     end_of_initialization:
+   211                           	callstack 0
+   212  0011CC                     __end_of__initialization:
+   213                           	callstack 0
+   214  0011CC  9056               	bcf	int$flags,0,c	;clear compiler interrupt flag (level 1)
+   215  0011CE  9256               	bcf	int$flags,1,c	;clear compiler interrupt flag (level 2)
+   216  0011D0  0E00               	movlw	low (__Lsmallconst shr (0+16))
+   217  0011D2  6EF8               	movwf	tblptru,c
+   218  0011D4  0E10               	movlw	high __Lsmallconst
+   219  0011D6  6EF7               	movwf	tblptrh,c
+   220  0011D8  0100               	movlb	0
+   221  0011DA  EF64  F008         	goto	_main	;jump to C main() function
+   222                           
+   223                           	psect	bssCOMRAM
+   224  000052                     __pbssCOMRAM:
    225                           	callstack 0
-   226  000054                     	ds	1
-   227  000055                     _readSPIValue:
-   228                           	callstack 0
-   229  000055                     	ds	1
-   230                           
-   231                           	psect	cstackCOMRAM
-   232  000001                     __pcstackCOMRAM:
+   226  000052                     _outValue:
+   227                           	callstack 0
+   228  000052                     	ds	1
+   229  000053                     _readSerialValue:
+   230                           	callstack 0
+   231  000053                     	ds	1
+   232  000054                     _FLAGS:
    233                           	callstack 0
-   234  000001                     ??_main:
-   235  000001                     
-   236                           ; 1 bytes @ 0x0
-   237  000001                     	ds	1
-   238  000002                     main@test:
-   239                           	callstack 0
-   240                           
-   241                           ; 80 bytes @ 0x1
-   242  000002                     	ds	80
-   243                           
-   244 ;;
-   245 ;;Main: autosize = 0, tempsize = 1, incstack = 0, save=0
-   246 ;;
-   247 ;; *************** function _main *****************
-   248 ;; Defined at:
-   249 ;;		line 21 in file "newmain.c"
-   250 ;; Parameters:    Size  Location     Type
-   251 ;;		None
-   252 ;; Auto vars:     Size  Location     Type
-   253 ;;  test           80    1[COMRAM] const unsigned char [80]
-   254 ;; Return value:  Size  Location     Type
-   255 ;;                  1    wreg      void 
-   256 ;; Registers used:
-   257 ;;		wreg, fsr2l, fsr2h, status,2, status,0, tblptrl, tblptrh, tblptru, cstack
-   258 ;; Tracked objects:
-   259 ;;		On entry : 0/0
-   260 ;;		On exit  : 0/0
-   261 ;;		Unchanged: 0/0
-   262 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+   234  000054                     	ds	1
+   235  000055                     _readSPIValue:
+   236                           	callstack 0
+   237  000055                     	ds	1
+   238                           
+   239                           	psect	cstackCOMRAM
+   240  000001                     __pcstackCOMRAM:
+   241                           	callstack 0
+   242  000001                     ??_buttonCallback:
+   243  000001                     
+   244                           ; 1 bytes @ 0x0
+   245  000001                     	ds	1
+   246  000002                     main@test:
+   247                           	callstack 0
+   248                           
+   249                           ; 80 bytes @ 0x1
+   250  000002                     	ds	80
+   251                           
+   252 ;;
+   253 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   254 ;;
+   255 ;; *************** function _main *****************
+   256 ;; Defined at:
+   257 ;;		line 22 in file "newmain.c"
+   258 ;; Parameters:    Size  Location     Type
+   259 ;;		None
+   260 ;; Auto vars:     Size  Location     Type
+   261 ;;  test           80    1[COMRAM] const unsigned char [80]
+   262 ;; Return value:  Size  Location     Type
+   263 ;;                  1    wreg      void 
+   264 ;; Registers used:
+   265 ;;		wreg, fsr2l, fsr2h, status,2, status,0, tblptrl, tblptrh, tblptru, cstack
+   266 ;; Tracked objects:
+   267 ;;		On entry : 0/0
+   268 ;;		On exit  : 0/0
+   269 ;;		Unchanged: 0/0
+   270 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
       +1  BANK12  BANK13  BANK14  BANK15
-   263 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+   271 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   264 ;;      Locals:        80       0       0       0       0       0       0       0       0       0       0       0       
+   272 ;;      Locals:        80       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   265 ;;      Temps:          1       0       0       0       0       0       0       0       0       0       0       0       
+   273 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   266 ;;      Totals:        81       0       0       0       0       0       0       0       0       0       0       0       
+   274 ;;      Totals:        80       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   267 ;;Total ram usage:       81 bytes
-   268 ;; Hardware stack levels required when called: 7
-   269 ;; This function calls:
-   270 ;;		_buttonCallback
-   271 ;;		_serialCallback
-   272 ;;		_setInterrupts
-   273 ;;		_setIo
-   274 ;;		_setSPI
-   275 ;;		_setSerial
-   276 ;;		_setSwitchInterrput
-   277 ;; This function is called by:
-   278 ;;		Startup code after reset
-   279 ;; This function uses a non-reentrant model
-   280 ;;
-   281                           
-   282                           	psect	text0
-   283  001052                     __ptext0:
-   284                           	callstack 0
-   285  001052                     _main:
-   286                           	callstack 24
-   287  001052                     
-   288                           ;newmain.c: 22:     setIo();
-   289  001052  ECCF  F008         	call	_setIo	;wreg free
-   290  001056                     
-   291                           ;newmain.c: 23:     setSPI();
-   292  001056  ECF3  F008         	call	_setSPI	;wreg free
-   293  00105A                     
-   294                           ;newmain.c: 24:     setSerial();
-   295  00105A  ECC5  F008         	call	_setSerial	;wreg free
-   296                           
-   297                           ;newmain.c: 25:     setSwitchInterrput();
-   298  00105E  ECF0  F008         	call	_setSwitchInterrput	;wreg free
-   299                           
-   300                           ;newmain.c: 26:     setInterrupts();
-   301  001062  ECF6  F008         	call	_setInterrupts	;wreg free
-   302  001066                     
-   303                           ;newmain.c: 30:     const unsigned char test[80] = "sssdddd";
-   304  001066  0E01               	movlw	low main@F4601
-   305  001068  6EF6               	movwf	tblptrl,c
-   306  00106A                     	if	0	;There is only one active tblptr byte
-   307  00106A                     	endif
-   308  00106A                     	if	0	;There are less than 3 active tblptr bytes
-   309  00106A                     	endif
-   310  00106A  EE20  F002         	lfsr	2,main@test
-   311  00106E  0E4F               	movlw	79
-   312  001070                     u90:
-   313  001070  0009               	tblrd		*+
-   314  001072  CFF5 FFDE          	movff	tablat,postinc2
-   315  001076  06E8               	decf	wreg,f,c
-   316  001078  E2FB               	bc	u90
-   317  00107A                     l973:
-   318                           
-   319                           ;newmain.c: 33:         if (FLAGS.bits.DISPLAY_READING) {
-   320  00107A  A854               	btfss	_FLAGS^0,4,c
-   321  00107C  EF42  F008         	goto	u101
-   322  001080  EF44  F008         	goto	u100
-   323  001084                     u101:
-   324  001084  EF45  F008         	goto	l35
-   325  001088                     u100:
-   326  001088                     
-   327                           ;newmain.c: 34:             FLAGS.bits.DISPLAY_READING = 0;
-   328  001088  9854               	bcf	_FLAGS^0,4,c
-   329  00108A                     l35:
-   330                           
-   331                           ;newmain.c: 36:         if (FLAGS.bits.UART_RECEIVED) {
-   332  00108A  A254               	btfss	_FLAGS^0,1,c
-   333  00108C  EF4A  F008         	goto	u111
-   334  001090  EF4C  F008         	goto	u110
-   335  001094                     u111:
-   336  001094  EF50  F008         	goto	l983
-   337  001098                     u110:
-   338  001098                     
-   339                           ;newmain.c: 37:             serialCallback();
-   340  001098  ECFF  F008         	call	_serialCallback	;wreg free
-   341  00109C                     
-   342                           ;newmain.c: 38:             FLAGS.bits.DISPLAY_READING = 1;
-   343  00109C  8854               	bsf	_FLAGS^0,4,c
-   344  00109E                     
-   345                           ;newmain.c: 39:             FLAGS.bits.UART_RECEIVED = 0;
-   346  00109E  9254               	bcf	_FLAGS^0,1,c
-   347  0010A0                     l983:
-   348                           
-   349                           ;newmain.c: 41:         if (FLAGS.bits.PUSHED_BUTTON) {
-   350  0010A0  A654               	btfss	_FLAGS^0,3,c
-   351  0010A2  EF55  F008         	goto	u121
-   352  0010A6  EF57  F008         	goto	u120
-   353  0010AA                     u121:
-   354  0010AA  EF3D  F008         	goto	l973
-   355  0010AE                     u120:
-   356  0010AE                     
-   357                           ;newmain.c: 42:             if (FLAGS.bits.PREVIOUS_BUTTON_STATE != FLAGS.bits.PUSHED_BU
-      +                          TTON) {
-   358  0010AE  B654               	btfsc	_FLAGS^0,3,c
-   359  0010B0  EF5C  F008         	goto	u131
-   360  0010B4  EF5F  F008         	goto	u130
-   361  0010B8                     u131:
-   362  0010B8  0E01               	movlw	1
-   363  0010BA  EF60  F008         	goto	u132
-   364  0010BE                     u130:
-   365  0010BE  0E00               	movlw	0
-   366  0010C0                     u132:
-   367  0010C0  6E01               	movwf	??_main^0,c
-   368  0010C2  B454               	btfsc	_FLAGS^0,2,c
-   369  0010C4  EF66  F008         	goto	u141
-   370  0010C8  EF69  F008         	goto	u140
-   371  0010CC                     u141:
-   372  0010CC  0E01               	movlw	1
-   373  0010CE  EF6A  F008         	goto	u142
-   374  0010D2                     u140:
-   375  0010D2  0E00               	movlw	0
-   376  0010D4                     u142:
-   377  0010D4  1A01               	xorwf	??_main^0,f,c
-   378  0010D6  B4D8               	btfsc	status,2,c
-   379  0010D8  EF70  F008         	goto	u151
-   380  0010DC  EF72  F008         	goto	u150
-   381  0010E0                     u151:
-   382  0010E0  EF79  F008         	goto	l991
-   383  0010E4                     u150:
-   384  0010E4                     
-   385                           ;newmain.c: 43:                 FLAGS.bits.PREVIOUS_BUTTON_STATE = FLAGS.bits.PUSHED_BUT
-      +                          TON;
-   386  0010E4  A654               	btfss	_FLAGS^0,3,c
-   387  0010E6  D002               	bra	u165
-   388  0010E8  8454               	bsf	_FLAGS^0,2,c
-   389  0010EA  D001               	bra	u167
-   390  0010EC                     u165:
-   391  0010EC  9454               	bcf	_FLAGS^0,2,c
-   392  0010EE                     u167:
-   393  0010EE                     
-   394                           ;newmain.c: 44:                 buttonCallback();
-   395  0010EE  ECF9  F008         	call	_buttonCallback	;wreg free
-   396  0010F2                     l991:
-   397                           
-   398                           ;newmain.c: 46:             FLAGS.bits.PUSHED_BUTTON = 0;
-   399  0010F2  9654               	bcf	_FLAGS^0,3,c
-   400  0010F4  EF3D  F008         	goto	l973
-   401  0010F8  EF07  F000         	goto	start
-   402  0010FC                     __end_of_main:
-   403                           	callstack 0
-   404                           
-   405 ;; *************** function _setSwitchInterrput *****************
-   406 ;; Defined at:
-   407 ;;		line 46 in file "init.c"
-   408 ;; Parameters:    Size  Location     Type
-   409 ;;		None
-   410 ;; Auto vars:     Size  Location     Type
-   411 ;;		None
-   412 ;; Return value:  Size  Location     Type
-   413 ;;                  1    wreg      void 
-   414 ;; Registers used:
-   415 ;;		None
-   416 ;; Tracked objects:
-   417 ;;		On entry : 0/0
-   418 ;;		On exit  : 0/0
-   419 ;;		Unchanged: 0/0
-   420 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+   275 ;;Total ram usage:       80 bytes
+   276 ;; Hardware stack levels required when called: 9
+   277 ;; This function calls:
+   278 ;;		_buttonCallback
+   279 ;;		_displayRequestHandle
+   280 ;;		_serialCallback
+   281 ;;		_setInterrupts
+   282 ;;		_setIo
+   283 ;;		_setSPIInterrupt
+   284 ;;		_setSerial
+   285 ;;		_setSwitchInterrput
+   286 ;; This function is called by:
+   287 ;;		Startup code after reset
+   288 ;; This function uses a non-reentrant model
+   289 ;;
+   290                           
+   291                           	psect	text0
+   292  0010C8                     __ptext0:
+   293                           	callstack 0
+   294  0010C8                     _main:
+   295                           	callstack 22
+   296  0010C8                     
+   297                           ;newmain.c: 23:     setIo();
+   298  0010C8  ECEF  F008         	call	_setIo	;wreg free
+   299  0010CC                     
+   300                           ;newmain.c: 24:     setSPIInterrupt();
+   301  0010CC  EC22  F009         	call	_setSPIInterrupt	;wreg free
+   302  0010D0                     
+   303                           ;newmain.c: 25:     setSerial();
+   304  0010D0  ECD4  F008         	call	_setSerial	;wreg free
+   305                           
+   306                           ;newmain.c: 26:     setSwitchInterrput();
+   307  0010D4  EC1F  F009         	call	_setSwitchInterrput	;wreg free
+   308                           
+   309                           ;newmain.c: 27:     setInterrupts();
+   310  0010D8  EC25  F009         	call	_setInterrupts	;wreg free
+   311  0010DC                     
+   312                           ;newmain.c: 31:     const unsigned char test[80] = "sssdddd";
+   313  0010DC  0E01               	movlw	low main@F4608
+   314  0010DE  6EF6               	movwf	tblptrl,c
+   315  0010E0                     	if	0	;There is only one active tblptr byte
+   316  0010E0                     	endif
+   317  0010E0                     	if	0	;There are less than 3 active tblptr bytes
+   318  0010E0                     	endif
+   319  0010E0  EE20  F002         	lfsr	2,main@test
+   320  0010E4  0E4F               	movlw	79
+   321  0010E6                     u150:
+   322  0010E6  0009               	tblrd		*+
+   323  0010E8  CFF5 FFDE          	movff	tablat,postinc2
+   324  0010EC  06E8               	decf	wreg,f,c
+   325  0010EE  E2FB               	bc	u150
+   326  0010F0                     l1021:
+   327                           
+   328                           ;newmain.c: 34:         if (FLAGS.bits.DISPLAY_READING) {
+   329  0010F0  A854               	btfss	_FLAGS^0,4,c
+   330  0010F2  EF7D  F008         	goto	u161
+   331  0010F6  EF7F  F008         	goto	u160
+   332  0010FA                     u161:
+   333  0010FA  EF82  F008         	goto	l1027
+   334  0010FE                     u160:
+   335  0010FE                     
+   336                           ;newmain.c: 35:             displayRequestHandle();
+   337  0010FE  ECBD  F008         	call	_displayRequestHandle	;wreg free
+   338  001102                     
+   339                           ;newmain.c: 36:             FLAGS.bits.DISPLAY_READING = 0;
+   340  001102  9854               	bcf	_FLAGS^0,4,c
+   341  001104                     l1027:
+   342                           
+   343                           ;newmain.c: 38:         if (FLAGS.bits.UART_RECEIVED) {
+   344  001104  A254               	btfss	_FLAGS^0,1,c
+   345  001106  EF87  F008         	goto	u171
+   346  00110A  EF89  F008         	goto	u170
+   347  00110E                     u171:
+   348  00110E  EF8C  F008         	goto	l1033
+   349  001112                     u170:
+   350  001112                     
+   351                           ;newmain.c: 39:             serialCallback();
+   352  001112  ECFF  F008         	call	_serialCallback	;wreg free
+   353  001116                     
+   354                           ;newmain.c: 40:             FLAGS.bits.UART_RECEIVED = 0;
+   355  001116  9254               	bcf	_FLAGS^0,1,c
+   356  001118                     l1033:
+   357                           
+   358                           ;newmain.c: 42:         if (FLAGS.bits.PUSHED_BUTTON) {
+   359  001118  A654               	btfss	_FLAGS^0,3,c
+   360  00111A  EF91  F008         	goto	u181
+   361  00111E  EF93  F008         	goto	u180
+   362  001122                     u181:
+   363  001122  EF78  F008         	goto	l1021
+   364  001126                     u180:
+   365  001126                     
+   366                           ;newmain.c: 43:             buttonCallback();
+   367  001126  EC9A  F008         	call	_buttonCallback	;wreg free
+   368  00112A                     
+   369                           ;newmain.c: 44:             FLAGS.bits.PUSHED_BUTTON = 0;
+   370  00112A  9654               	bcf	_FLAGS^0,3,c
+   371  00112C  EF78  F008         	goto	l1021
+   372  001130  EF07  F000         	goto	start
+   373  001134                     __end_of_main:
+   374                           	callstack 0
+   375                           
+   376 ;; *************** function _setSwitchInterrput *****************
+   377 ;; Defined at:
+   378 ;;		line 24 in file "init.c"
+   379 ;; Parameters:    Size  Location     Type
+   380 ;;		None
+   381 ;; Auto vars:     Size  Location     Type
+   382 ;;		None
+   383 ;; Return value:  Size  Location     Type
+   384 ;;                  1    wreg      void 
+   385 ;; Registers used:
+   386 ;;		None
+   387 ;; Tracked objects:
+   388 ;;		On entry : 0/0
+   389 ;;		On exit  : 0/0
+   390 ;;		Unchanged: 0/0
+   391 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
       +1  BANK12  BANK13  BANK14  BANK15
-   421 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+   392 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   422 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+   393 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   423 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+   394 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   424 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
+   395 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   425 ;;Total ram usage:        0 bytes
-   426 ;; Hardware stack levels used: 1
-   427 ;; Hardware stack levels required when called: 6
-   428 ;; This function calls:
-   429 ;;		Nothing
-   430 ;; This function is called by:
-   431 ;;		_main
-   432 ;; This function uses a non-reentrant model
-   433 ;;
-   434                           
-   435                           	psect	text1
-   436  0011E0                     __ptext1:
-   437                           	callstack 0
-   438  0011E0                     _setSwitchInterrput:
-   439                           	callstack 24
-   440  0011E0                     
-   441                           ;init.c: 47:     INTEDG0 = 1;
-   442  0011E0  8CF1               	bsf	4081,6,c	;volatile
-   443                           
-   444                           ;init.c: 48:     INT0IE = 1;
-   445  0011E2  88F2               	bsf	4082,4,c	;volatile
-   446  0011E4  0012               	return		;funcret
-   447  0011E6                     __end_of_setSwitchInterrput:
-   448                           	callstack 0
-   449                           
-   450 ;; *************** function _setSerial *****************
-   451 ;; Defined at:
-   452 ;;		line 8 in file "init.c"
-   453 ;; Parameters:    Size  Location     Type
-   454 ;;		None
-   455 ;; Auto vars:     Size  Location     Type
-   456 ;;		None
-   457 ;; Return value:  Size  Location     Type
-   458 ;;                  1    wreg      void 
-   459 ;; Registers used:
-   460 ;;		wreg, status,2
-   461 ;; Tracked objects:
-   462 ;;		On entry : 0/0
-   463 ;;		On exit  : 0/0
-   464 ;;		Unchanged: 0/0
-   465 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+   396 ;;Total ram usage:        0 bytes
+   397 ;; Hardware stack levels used: 1
+   398 ;; Hardware stack levels required when called: 6
+   399 ;; This function calls:
+   400 ;;		Nothing
+   401 ;; This function is called by:
+   402 ;;		_main
+   403 ;; This function uses a non-reentrant model
+   404 ;;
+   405                           
+   406                           	psect	text1
+   407  00123E                     __ptext1:
+   408                           	callstack 0
+   409  00123E                     _setSwitchInterrput:
+   410                           	callstack 24
+   411  00123E                     
+   412                           ;init.c: 25:     INTEDG0 = 1;
+   413  00123E  8CF1               	bsf	4081,6,c	;volatile
+   414                           
+   415                           ;init.c: 26:     INT0IE = 1;
+   416  001240  88F2               	bsf	4082,4,c	;volatile
+   417  001242  0012               	return		;funcret
+   418  001244                     __end_of_setSwitchInterrput:
+   419                           	callstack 0
+   420                           
+   421 ;; *************** function _setSerial *****************
+   422 ;; Defined at:
+   423 ;;		line 5 in file "serial.c"
+   424 ;; Parameters:    Size  Location     Type
+   425 ;;		None
+   426 ;; Auto vars:     Size  Location     Type
+   427 ;;		None
+   428 ;; Return value:  Size  Location     Type
+   429 ;;                  1    wreg      void 
+   430 ;; Registers used:
+   431 ;;		wreg, status,2
+   432 ;; Tracked objects:
+   433 ;;		On entry : 0/0
+   434 ;;		On exit  : 0/0
+   435 ;;		Unchanged: 0/0
+   436 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
       +1  BANK12  BANK13  BANK14  BANK15
-   466 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+   437 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   467 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+   438 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   468 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+   439 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   469 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
+   440 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   470 ;;Total ram usage:        0 bytes
-   471 ;; Hardware stack levels used: 1
-   472 ;; Hardware stack levels required when called: 6
-   473 ;; This function calls:
-   474 ;;		Nothing
-   475 ;; This function is called by:
-   476 ;;		_main
-   477 ;; This function uses a non-reentrant model
-   478 ;;
-   479                           
-   480                           	psect	text2
-   481  00118A                     __ptext2:
-   482                           	callstack 0
-   483  00118A                     _setSerial:
-   484                           	callstack 24
-   485  00118A                     
-   486                           ;init.c: 9:     TXEN1 = 1;
-   487  00118A  8AAC               	bsf	4012,5,c	;volatile
-   488                           
-   489                           ;init.c: 10:     BRGH1 = 0;
-   490  00118C  94AC               	bcf	4012,2,c	;volatile
-   491                           
-   492                           ;init.c: 12:     SPEN1 = 1;
-   493  00118E  8EAB               	bsf	4011,7,c	;volatile
-   494                           
-   495                           ;init.c: 13:     CREN1 = 1;
-   496  001190  88AB               	bsf	4011,4,c	;volatile
-   497                           
-   498                           ;init.c: 15:     WUE1 = 0;
-   499  001192  927E               	bcf	3966,1,c	;volatile
-   500  001194                     
-   501                           ;init.c: 16:     SPBRG = 0b01000000;
-   502  001194  0E40               	movlw	64
-   503  001196  6EAF               	movwf	175,c	;volatile
-   504  001198                     
-   505                           ;init.c: 18:     RC1IF = 0;
-   506  001198  9A9E               	bcf	3998,5,c	;volatile
-   507  00119A                     
-   508                           ;init.c: 19:     RC1IE = 1;
-   509  00119A  8A9D               	bsf	3997,5,c	;volatile
-   510  00119C  0012               	return		;funcret
-   511  00119E                     __end_of_setSerial:
-   512                           	callstack 0
-   513                           
-   514 ;; *************** function _setSPI *****************
-   515 ;; Defined at:
-   516 ;;		line 35 in file "init.c"
-   517 ;; Parameters:    Size  Location     Type
-   518 ;;		None
-   519 ;; Auto vars:     Size  Location     Type
-   520 ;;		None
-   521 ;; Return value:  Size  Location     Type
-   522 ;;                  1    wreg      void 
-   523 ;; Registers used:
-   524 ;;		None
-   525 ;; Tracked objects:
-   526 ;;		On entry : 0/0
-   527 ;;		On exit  : 0/0
-   528 ;;		Unchanged: 0/0
-   529 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+   441 ;;Total ram usage:        0 bytes
+   442 ;; Hardware stack levels used: 1
+   443 ;; Hardware stack levels required when called: 6
+   444 ;; This function calls:
+   445 ;;		Nothing
+   446 ;; This function is called by:
+   447 ;;		_main
+   448 ;; This function uses a non-reentrant model
+   449 ;;
+   450                           
+   451                           	psect	text2
+   452  0011A8                     __ptext2:
+   453                           	callstack 0
+   454  0011A8                     _setSerial:
+   455                           	callstack 24
+   456  0011A8                     
+   457                           ;serial.c: 6:     TXEN1 = 1;
+   458  0011A8  8AAC               	bsf	4012,5,c	;volatile
+   459                           
+   460                           ;serial.c: 7:     BRGH1 = 0;
+   461  0011AA  94AC               	bcf	4012,2,c	;volatile
+   462                           
+   463                           ;serial.c: 9:     SPEN1 = 1;
+   464  0011AC  8EAB               	bsf	4011,7,c	;volatile
+   465                           
+   466                           ;serial.c: 10:     CREN1 = 1;
+   467  0011AE  88AB               	bsf	4011,4,c	;volatile
+   468                           
+   469                           ;serial.c: 12:     WUE1 = 0;
+   470  0011B0  927E               	bcf	3966,1,c	;volatile
+   471  0011B2                     
+   472                           ;serial.c: 13:     SPBRG = 0b01000000;
+   473  0011B2  0E40               	movlw	64
+   474  0011B4  6EAF               	movwf	175,c	;volatile
+   475  0011B6                     
+   476                           ;serial.c: 15:     RC1IF = 0;
+   477  0011B6  9A9E               	bcf	3998,5,c	;volatile
+   478  0011B8                     
+   479                           ;serial.c: 16:     RC1IE = 1;
+   480  0011B8  8A9D               	bsf	3997,5,c	;volatile
+   481                           
+   482                           ;serial.c: 18:     RCREG1=0;
+   483  0011BA  0E00               	movlw	0
+   484  0011BC  6EAE               	movwf	174,c	;volatile
+   485                           
+   486                           ;serial.c: 19:     TXREG1=0;
+   487  0011BE  0E00               	movlw	0
+   488  0011C0  6EAD               	movwf	173,c	;volatile
+   489  0011C2  0012               	return		;funcret
+   490  0011C4                     __end_of_setSerial:
+   491                           	callstack 0
+   492                           
+   493 ;; *************** function _setSPIInterrupt *****************
+   494 ;; Defined at:
+   495 ;;		line 8 in file "spi.c"
+   496 ;; Parameters:    Size  Location     Type
+   497 ;;		None
+   498 ;; Auto vars:     Size  Location     Type
+   499 ;;		None
+   500 ;; Return value:  Size  Location     Type
+   501 ;;                  1    wreg      void 
+   502 ;; Registers used:
+   503 ;;		None
+   504 ;; Tracked objects:
+   505 ;;		On entry : 0/0
+   506 ;;		On exit  : 0/0
+   507 ;;		Unchanged: 0/0
+   508 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
       +1  BANK12  BANK13  BANK14  BANK15
-   530 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+   509 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   531 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+   510 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   532 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+   511 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   533 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
+   512 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   534 ;;Total ram usage:        0 bytes
-   535 ;; Hardware stack levels used: 1
-   536 ;; Hardware stack levels required when called: 6
-   537 ;; This function calls:
-   538 ;;		Nothing
-   539 ;; This function is called by:
-   540 ;;		_main
-   541 ;; This function uses a non-reentrant model
-   542 ;;
-   543                           
-   544                           	psect	text3
-   545  0011E6                     __ptext3:
-   546                           	callstack 0
-   547  0011E6                     _setSPI:
-   548                           	callstack 24
-   549  0011E6                     
-   550                           ;init.c: 36:     SSPIF = 0;
-   551  0011E6  969E               	bcf	3998,3,c	;volatile
-   552                           
-   553                           ;init.c: 37:     SSPIE = 1;
-   554  0011E8  869D               	bsf	3997,3,c	;volatile
-   555  0011EA  0012               	return		;funcret
-   556  0011EC                     __end_of_setSPI:
-   557                           	callstack 0
-   558                           
-   559 ;; *************** function _setIo *****************
-   560 ;; Defined at:
-   561 ;;		line 26 in file "init.c"
-   562 ;; Parameters:    Size  Location     Type
-   563 ;;		None
-   564 ;; Auto vars:     Size  Location     Type
-   565 ;;		None
-   566 ;; Return value:  Size  Location     Type
-   567 ;;                  1    wreg      void 
-   568 ;; Registers used:
-   569 ;;		wreg, status,2
-   570 ;; Tracked objects:
-   571 ;;		On entry : 0/0
-   572 ;;		On exit  : 0/0
-   573 ;;		Unchanged: 0/0
-   574 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+   513 ;;Total ram usage:        0 bytes
+   514 ;; Hardware stack levels used: 1
+   515 ;; Hardware stack levels required when called: 6
+   516 ;; This function calls:
+   517 ;;		Nothing
+   518 ;; This function is called by:
+   519 ;;		_main
+   520 ;; This function uses a non-reentrant model
+   521 ;;
+   522                           
+   523                           	psect	text3
+   524  001244                     __ptext3:
+   525                           	callstack 0
+   526  001244                     _setSPIInterrupt:
+   527                           	callstack 24
+   528  001244                     
+   529                           ;spi.c: 9:     SSPIF = 0;
+   530  001244  969E               	bcf	3998,3,c	;volatile
+   531                           
+   532                           ;spi.c: 10:     SSPIE = 1;
+   533  001246  869D               	bsf	3997,3,c	;volatile
+   534  001248  0012               	return		;funcret
+   535  00124A                     __end_of_setSPIInterrupt:
+   536                           	callstack 0
+   537                           
+   538 ;; *************** function _setIo *****************
+   539 ;; Defined at:
+   540 ;;		line 9 in file "init.c"
+   541 ;; Parameters:    Size  Location     Type
+   542 ;;		None
+   543 ;; Auto vars:     Size  Location     Type
+   544 ;;		None
+   545 ;; Return value:  Size  Location     Type
+   546 ;;                  1    wreg      void 
+   547 ;; Registers used:
+   548 ;;		wreg, status,2
+   549 ;; Tracked objects:
+   550 ;;		On entry : 0/0
+   551 ;;		On exit  : 0/0
+   552 ;;		Unchanged: 0/0
+   553 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
       +1  BANK12  BANK13  BANK14  BANK15
-   575 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+   554 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   576 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+   555 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   577 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+   556 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   578 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
+   557 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   579 ;;Total ram usage:        0 bytes
-   580 ;; Hardware stack levels used: 1
-   581 ;; Hardware stack levels required when called: 6
-   582 ;; This function calls:
-   583 ;;		Nothing
-   584 ;; This function is called by:
-   585 ;;		_main
-   586 ;; This function uses a non-reentrant model
-   587 ;;
-   588                           
-   589                           	psect	text4
-   590  00119E                     __ptext4:
-   591                           	callstack 0
-   592  00119E                     _setIo:
-   593                           	callstack 24
-   594  00119E                     
-   595                           ;init.c: 28:     TRISD = 0x00;
-   596  00119E  0E00               	movlw	0
-   597  0011A0  6E95               	movwf	149,c	;volatile
-   598                           
-   599                           ;init.c: 29:     PORTD = 0x00;
-   600  0011A2  0E00               	movlw	0
-   601  0011A4  6E83               	movwf	131,c	;volatile
-   602  0011A6                     
-   603                           ;init.c: 30:     TRISC7 = 1;
-   604  0011A6  8E94               	bsf	3988,7,c	;volatile
-   605  0011A8                     
-   606                           ;init.c: 31:     TRISC6 = 0;
-   607  0011A8  9C94               	bcf	3988,6,c	;volatile
-   608  0011AA                     
-   609                           ;init.c: 32:     TRISB0 = 1;
-   610  0011AA  8093               	bsf	3987,0,c	;volatile
-   611  0011AC  0012               	return		;funcret
-   612  0011AE                     __end_of_setIo:
-   613                           	callstack 0
-   614                           
-   615 ;; *************** function _setInterrupts *****************
-   616 ;; Defined at:
-   617 ;;		line 40 in file "init.c"
-   618 ;; Parameters:    Size  Location     Type
-   619 ;;		None
-   620 ;; Auto vars:     Size  Location     Type
-   621 ;;		None
-   622 ;; Return value:  Size  Location     Type
-   623 ;;                  1    wreg      void 
-   624 ;; Registers used:
-   625 ;;		None
-   626 ;; Tracked objects:
-   627 ;;		On entry : 0/0
-   628 ;;		On exit  : 0/0
-   629 ;;		Unchanged: 0/0
-   630 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+   558 ;;Total ram usage:        0 bytes
+   559 ;; Hardware stack levels used: 1
+   560 ;; Hardware stack levels required when called: 6
+   561 ;; This function calls:
+   562 ;;		Nothing
+   563 ;; This function is called by:
+   564 ;;		_main
+   565 ;; This function uses a non-reentrant model
+   566 ;;
+   567                           
+   568                           	psect	text4
+   569  0011DE                     __ptext4:
+   570                           	callstack 0
+   571  0011DE                     _setIo:
+   572                           	callstack 24
+   573  0011DE                     
+   574                           ;init.c: 11:     TRISD = 0x00;
+   575  0011DE  0E00               	movlw	0
+   576  0011E0  6E95               	movwf	149,c	;volatile
+   577                           
+   578                           ;init.c: 12:     PORTD = 0x00;
+   579  0011E2  0E00               	movlw	0
+   580  0011E4  6E83               	movwf	131,c	;volatile
+   581  0011E6                     
+   582                           ;init.c: 13:     TRISC7 = 1;
+   583  0011E6  8E94               	bsf	3988,7,c	;volatile
+   584  0011E8                     
+   585                           ;init.c: 14:     TRISC6 = 0;
+   586  0011E8  9C94               	bcf	3988,6,c	;volatile
+   587  0011EA                     
+   588                           ;init.c: 15:     TRISB0 = 1;
+   589  0011EA  8093               	bsf	3987,0,c	;volatile
+   590  0011EC  0012               	return		;funcret
+   591  0011EE                     __end_of_setIo:
+   592                           	callstack 0
+   593                           
+   594 ;; *************** function _setInterrupts *****************
+   595 ;; Defined at:
+   596 ;;		line 18 in file "init.c"
+   597 ;; Parameters:    Size  Location     Type
+   598 ;;		None
+   599 ;; Auto vars:     Size  Location     Type
+   600 ;;		None
+   601 ;; Return value:  Size  Location     Type
+   602 ;;                  1    wreg      void 
+   603 ;; Registers used:
+   604 ;;		None
+   605 ;; Tracked objects:
+   606 ;;		On entry : 0/0
+   607 ;;		On exit  : 0/0
+   608 ;;		Unchanged: 0/0
+   609 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
       +1  BANK12  BANK13  BANK14  BANK15
-   631 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+   610 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   632 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+   611 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   633 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+   612 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   634 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
+   613 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   635 ;;Total ram usage:        0 bytes
-   636 ;; Hardware stack levels used: 1
-   637 ;; Hardware stack levels required when called: 6
-   638 ;; This function calls:
-   639 ;;		Nothing
-   640 ;; This function is called by:
-   641 ;;		_main
-   642 ;; This function uses a non-reentrant model
-   643 ;;
-   644                           
-   645                           	psect	text5
-   646  0011EC                     __ptext5:
-   647                           	callstack 0
-   648  0011EC                     _setInterrupts:
-   649                           	callstack 24
-   650  0011EC                     
-   651                           ;init.c: 41:     GIE = 1;
-   652  0011EC  8EF2               	bsf	4082,7,c	;volatile
-   653                           
-   654                           ;init.c: 42:     PEIE = 1;
-   655  0011EE  8CF2               	bsf	4082,6,c	;volatile
-   656  0011F0  0012               	return		;funcret
-   657  0011F2                     __end_of_setInterrupts:
-   658                           	callstack 0
-   659                           
-   660 ;; *************** function _serialCallback *****************
-   661 ;; Defined at:
-   662 ;;		line 5 in file "serial.c"
-   663 ;; Parameters:    Size  Location     Type
-   664 ;;		None
-   665 ;; Auto vars:     Size  Location     Type
-   666 ;;		None
-   667 ;; Return value:  Size  Location     Type
-   668 ;;                  1    wreg      void 
-   669 ;; Registers used:
-   670 ;;		None
-   671 ;; Tracked objects:
-   672 ;;		On entry : 0/0
-   673 ;;		On exit  : 0/0
-   674 ;;		Unchanged: 0/0
-   675 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+   614 ;;Total ram usage:        0 bytes
+   615 ;; Hardware stack levels used: 1
+   616 ;; Hardware stack levels required when called: 6
+   617 ;; This function calls:
+   618 ;;		Nothing
+   619 ;; This function is called by:
+   620 ;;		_main
+   621 ;; This function uses a non-reentrant model
+   622 ;;
+   623                           
+   624                           	psect	text5
+   625  00124A                     __ptext5:
+   626                           	callstack 0
+   627  00124A                     _setInterrupts:
+   628                           	callstack 24
+   629  00124A                     
+   630                           ;init.c: 19:     GIE = 1;
+   631  00124A  8EF2               	bsf	4082,7,c	;volatile
+   632                           
+   633                           ;init.c: 20:     PEIE = 1;
+   634  00124C  8CF2               	bsf	4082,6,c	;volatile
+   635  00124E  0012               	return		;funcret
+   636  001250                     __end_of_setInterrupts:
+   637                           	callstack 0
+   638                           
+   639 ;; *************** function _serialCallback *****************
+   640 ;; Defined at:
+   641 ;;		line 25 in file "serial.c"
+   642 ;; Parameters:    Size  Location     Type
+   643 ;;		None
+   644 ;; Auto vars:     Size  Location     Type
+   645 ;;		None
+   646 ;; Return value:  Size  Location     Type
+   647 ;;                  1    wreg      void 
+   648 ;; Registers used:
+   649 ;;		cstack
+   650 ;; Tracked objects:
+   651 ;;		On entry : 0/0
+   652 ;;		On exit  : 0/0
+   653 ;;		Unchanged: 0/0
+   654 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
       +1  BANK12  BANK13  BANK14  BANK15
-   676 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+   655 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   677 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+   656 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   678 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+   657 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   679 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
+   658 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   680 ;;Total ram usage:        0 bytes
-   681 ;; Hardware stack levels used: 1
-   682 ;; Hardware stack levels required when called: 6
-   683 ;; This function calls:
-   684 ;;		Nothing
-   685 ;; This function is called by:
-   686 ;;		_main
-   687 ;; This function uses a non-reentrant model
-   688 ;;
-   689                           
-   690                           	psect	text6
-   691  0011FE                     __ptext6:
-   692                           	callstack 0
-   693  0011FE                     _serialCallback:
-   694                           	callstack 24
-   695  0011FE  0012               	return		;funcret
-   696  001200                     __end_of_serialCallback:
-   697                           	callstack 0
-   698                           
-   699 ;; *************** function _buttonCallback *****************
-   700 ;; Defined at:
-   701 ;;		line 3 in file "button.c"
-   702 ;; Parameters:    Size  Location     Type
-   703 ;;		None
-   704 ;; Auto vars:     Size  Location     Type
-   705 ;;		None
-   706 ;; Return value:  Size  Location     Type
-   707 ;;                  1    wreg      void 
-   708 ;; Registers used:
-   709 ;;		wreg, status,2
-   710 ;; Tracked objects:
-   711 ;;		On entry : 0/0
-   712 ;;		On exit  : 0/0
-   713 ;;		Unchanged: 0/0
-   714 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+   659 ;;Total ram usage:        0 bytes
+   660 ;; Hardware stack levels used: 1
+   661 ;; Hardware stack levels required when called: 7
+   662 ;; This function calls:
+   663 ;;		_transmittRead
+   664 ;; This function is called by:
+   665 ;;		_main
+   666 ;; This function uses a non-reentrant model
+   667 ;;
+   668                           
+   669                           	psect	text6
+   670  0011FE                     __ptext6:
+   671                           	callstack 0
+   672  0011FE                     _serialCallback:
+   673                           	callstack 23
+   674  0011FE                     
+   675                           ;serial.c: 26:     FLAGS.bits.DISPLAY_READING=1;
+   676  0011FE  8854               	bsf	_FLAGS^0,4,c
+   677                           
+   678                           ;serial.c: 27:     FLAGS.bits.DISPLAY_SERIAL_READING=1;
+   679  001200  8C54               	bsf	_FLAGS^0,6,c
+   680  001202                     
+   681                           ;serial.c: 28:     transmittRead();
+   682  001202  EC28  F009         	call	_transmittRead	;wreg free
+   683  001206  0012               	return		;funcret
+   684  001208                     __end_of_serialCallback:
+   685                           	callstack 0
+   686                           
+   687 ;; *************** function _transmittRead *****************
+   688 ;; Defined at:
+   689 ;;		line 35 in file "serial.c"
+   690 ;; Parameters:    Size  Location     Type
+   691 ;;		None
+   692 ;; Auto vars:     Size  Location     Type
+   693 ;;		None
+   694 ;; Return value:  Size  Location     Type
+   695 ;;                  1    wreg      void 
+   696 ;; Registers used:
+   697 ;;		None
+   698 ;; Tracked objects:
+   699 ;;		On entry : 0/0
+   700 ;;		On exit  : 0/0
+   701 ;;		Unchanged: 0/0
+   702 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
       +1  BANK12  BANK13  BANK14  BANK15
-   715 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+   703 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   716 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+   704 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   717 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+   705 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   718 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
+   706 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   719 ;;Total ram usage:        0 bytes
-   720 ;; Hardware stack levels used: 1
-   721 ;; Hardware stack levels required when called: 6
-   722 ;; This function calls:
-   723 ;;		Nothing
-   724 ;; This function is called by:
-   725 ;;		_main
-   726 ;; This function uses a non-reentrant model
-   727 ;;
+   707 ;;Total ram usage:        0 bytes
+   708 ;; Hardware stack levels used: 1
+   709 ;; Hardware stack levels required when called: 6
+   710 ;; This function calls:
+   711 ;;		Nothing
+   712 ;; This function is called by:
+   713 ;;		_serialCallback
+   714 ;; This function uses a non-reentrant model
+   715 ;;
+   716                           
+   717                           	psect	text7
+   718  001250                     __ptext7:
+   719                           	callstack 0
+   720  001250                     _transmittRead:
+   721                           	callstack 23
+   722  001250                     
+   723                           ;serial.c: 36:     TXREG=readSerialValue;
+   724  001250  C053  FFAD         	movff	_readSerialValue,4013	;volatile
+   725  001254  0012               	return		;funcret
+   726  001256                     __end_of_transmittRead:
+   727                           	callstack 0
    728                           
-   729                           	psect	text7
-   730  0011F2                     __ptext7:
-   731                           	callstack 0
-   732  0011F2                     _buttonCallback:
-   733                           	callstack 24
-   734  0011F2                     
-   735                           ;button.c: 4:     TXREG = 0b11001100;
-   736  0011F2  0ECC               	movlw	204
-   737  0011F4  6EAD               	movwf	173,c	;volatile
-   738  0011F6  0012               	return		;funcret
-   739  0011F8                     __end_of_buttonCallback:
-   740                           	callstack 0
-   741                           
-   742 ;; *************** function _service *****************
-   743 ;; Defined at:
-   744 ;;		line 17 in file "newmain.c"
-   745 ;; Parameters:    Size  Location     Type
-   746 ;;		None
-   747 ;; Auto vars:     Size  Location     Type
-   748 ;;		None
-   749 ;; Return value:  Size  Location     Type
-   750 ;;                  1    wreg      void 
-   751 ;; Registers used:
-   752 ;;		wreg, status,2, cstack
-   753 ;; Tracked objects:
-   754 ;;		On entry : 0/0
-   755 ;;		On exit  : 0/0
-   756 ;;		Unchanged: 0/0
-   757 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+   729 ;; *************** function _displayRequestHandle *****************
+   730 ;; Defined at:
+   731 ;;		line 16 in file "display.c"
+   732 ;; Parameters:    Size  Location     Type
+   733 ;;		None
+   734 ;; Auto vars:     Size  Location     Type
+   735 ;;		None
+   736 ;; Return value:  Size  Location     Type
+   737 ;;                  1    wreg      void 
+   738 ;; Registers used:
+   739 ;;		cstack
+   740 ;; Tracked objects:
+   741 ;;		On entry : 0/0
+   742 ;;		On exit  : 0/0
+   743 ;;		Unchanged: 0/0
+   744 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
       +1  BANK12  BANK13  BANK14  BANK15
-   758 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+   745 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   759 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+   746 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   760 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+   747 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   761 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
+   748 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   762 ;;Total ram usage:        0 bytes
-   763 ;; Hardware stack levels used: 1
-   764 ;; Hardware stack levels required when called: 5
-   765 ;; This function calls:
-   766 ;;		_interruptService
-   767 ;; This function is called by:
-   768 ;;		Interrupt level 2
-   769 ;; This function uses a non-reentrant model
-   770 ;;
-   771                           
-   772                           	psect	intcode
-   773  000008                     __pintcode:
-   774                           	callstack 0
-   775  000008                     _service:
-   776                           	callstack 24
-   777                           
-   778                           ;incstack = 0
-   779  000008  8256               	bsf	int$flags,1,c	;set compiler interrupt flag (level 2)
-   780  00000A  EDDF  F008         	call	int_func,f	;refresh shadow registers
-   781                           
-   782                           	psect	intcode_body
-   783  0011BE                     __pintcode_body:
-   784                           	callstack 24
-   785  0011BE                     int_func:
-   786                           	callstack 24
-   787  0011BE  0006               	pop		; remove dummy address from shadow register refresh
-   788  0011C0                     
-   789                           ;newmain.c: 18:     interruptService();
-   790  0011C0  ECFC  F008         	call	_interruptService	;wreg free
-   791  0011C4  9256               	bcf	int$flags,1,c	;clear compiler interrupt flag (level 2)
-   792  0011C6  0011               	retfie		f
-   793  0011C8                     __end_of_service:
-   794                           	callstack 0
-   795                           
-   796 ;; *************** function _interruptService *****************
-   797 ;; Defined at:
-   798 ;;		line 27 in file "interruptService.c"
-   799 ;; Parameters:    Size  Location     Type
-   800 ;;		None
-   801 ;; Auto vars:     Size  Location     Type
-   802 ;;		None
-   803 ;; Return value:  Size  Location     Type
-   804 ;;                  1    wreg      void 
-   805 ;; Registers used:
-   806 ;;		wreg, status,2, cstack
-   807 ;; Tracked objects:
-   808 ;;		On entry : 0/0
-   809 ;;		On exit  : 0/0
-   810 ;;		Unchanged: 0/0
-   811 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+   749 ;;Total ram usage:        0 bytes
+   750 ;; Hardware stack levels used: 1
+   751 ;; Hardware stack levels required when called: 8
+   752 ;; This function calls:
+   753 ;;		_displaySPI
+   754 ;;		_displaySerial
+   755 ;; This function is called by:
+   756 ;;		_main
+   757 ;; This function uses a non-reentrant model
+   758 ;;
+   759                           
+   760                           	psect	text8
+   761  00117A                     __ptext8:
+   762                           	callstack 0
+   763  00117A                     _displayRequestHandle:
+   764                           	callstack 22
+   765  00117A                     
+   766                           ;display.c: 17:     if (FLAGS.bits.DISPLAY_SERIAL_READING) {
+   767  00117A  AC54               	btfss	_FLAGS^0,6,c
+   768  00117C  EFC2  F008         	goto	u91
+   769  001180  EFC4  F008         	goto	u90
+   770  001184                     u91:
+   771  001184  EFC9  F008         	goto	l233
+   772  001188                     u90:
+   773  001188                     
+   774                           ;display.c: 18:         displaySerial();
+   775  001188  EC04  F009         	call	_displaySerial	;wreg free
+   776  00118C                     
+   777                           ;display.c: 19:         FLAGS.bits.DISPLAY_SERIAL_READING = 0;
+   778  00118C  9C54               	bcf	_FLAGS^0,6,c
+   779                           
+   780                           ;display.c: 20:     } else {
+   781  00118E  EFD3  F008         	goto	l236
+   782  001192                     l233:
+   783                           
+   784                           ;display.c: 21:         if (FLAGS.bits.DISPLAY_SPI_READING) {
+   785  001192  AA54               	btfss	_FLAGS^0,5,c
+   786  001194  EFCE  F008         	goto	u101
+   787  001198  EFD0  F008         	goto	u100
+   788  00119C                     u101:
+   789  00119C  EFD3  F008         	goto	l236
+   790  0011A0                     u100:
+   791  0011A0                     
+   792                           ;display.c: 22:             displaySPI();
+   793  0011A0  EC09  F009         	call	_displaySPI	;wreg free
+   794  0011A4                     
+   795                           ;display.c: 23:             FLAGS.bits.DISPLAY_SPI_READING = 0;
+   796  0011A4  9A54               	bcf	_FLAGS^0,5,c
+   797  0011A6                     l236:
+   798  0011A6  0012               	return		;funcret
+   799  0011A8                     __end_of_displayRequestHandle:
+   800                           	callstack 0
+   801                           
+   802 ;; *************** function _displaySerial *****************
+   803 ;; Defined at:
+   804 ;;		line 6 in file "display.c"
+   805 ;; Parameters:    Size  Location     Type
+   806 ;;		None
+   807 ;; Auto vars:     Size  Location     Type
+   808 ;;		None
+   809 ;; Return value:  Size  Location     Type
+   810 ;;                  1    wreg      void 
+   811 ;; Registers used:
+   812 ;;		cstack
+   813 ;; Tracked objects:
+   814 ;;		On entry : 0/0
+   815 ;;		On exit  : 0/0
+   816 ;;		Unchanged: 0/0
+   817 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
       +1  BANK12  BANK13  BANK14  BANK15
-   812 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+   818 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   813 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+   819 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   814 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+   820 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   815 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
+   821 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   816 ;;Total ram usage:        0 bytes
-   817 ;; Hardware stack levels used: 1
-   818 ;; Hardware stack levels required when called: 4
-   819 ;; This function calls:
-   820 ;;		_processInterruptService
-   821 ;; This function is called by:
-   822 ;;		_service
-   823 ;; This function uses a non-reentrant model
-   824 ;;
-   825                           
-   826                           	psect	text9
-   827  0011F8                     __ptext9:
-   828                           	callstack 0
-   829  0011F8                     _interruptService:
-   830                           	callstack 24
-   831  0011F8                     
-   832                           ;interruptService.c: 28:     processInterruptService();
-   833  0011F8  EC7E  F008         	call	_processInterruptService	;wreg free
-   834  0011FC  0012               	return		;funcret
-   835  0011FE                     __end_of_interruptService:
-   836                           	callstack 0
-   837                           
-   838 ;; *************** function _processInterruptService *****************
-   839 ;; Defined at:
-   840 ;;		line 12 in file "interruptService.c"
-   841 ;; Parameters:    Size  Location     Type
-   842 ;;		None
-   843 ;; Auto vars:     Size  Location     Type
-   844 ;;		None
-   845 ;; Return value:  Size  Location     Type
-   846 ;;                  1    wreg      void 
-   847 ;; Registers used:
-   848 ;;		wreg, status,2, cstack
-   849 ;; Tracked objects:
-   850 ;;		On entry : 0/0
-   851 ;;		On exit  : 0/0
-   852 ;;		Unchanged: 0/0
-   853 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+   822 ;;Total ram usage:        0 bytes
+   823 ;; Hardware stack levels used: 1
+   824 ;; Hardware stack levels required when called: 7
+   825 ;; This function calls:
+   826 ;;		_displayCallback
+   827 ;; This function is called by:
+   828 ;;		_displayRequestHandle
+   829 ;; This function uses a non-reentrant model
+   830 ;;
+   831                           
+   832                           	psect	text9
+   833  001208                     __ptext9:
+   834                           	callstack 0
+   835  001208                     _displaySerial:
+   836                           	callstack 22
+   837  001208                     
+   838                           ;display.c: 7:     outValue = readSerialValue;
+   839  001208  C053  F052         	movff	_readSerialValue,_outValue
+   840  00120C                     
+   841                           ;display.c: 8:     displayCallback();
+   842  00120C  EC2B  F009         	call	_displayCallback	;wreg free
+   843  001210  0012               	return		;funcret
+   844  001212                     __end_of_displaySerial:
+   845                           	callstack 0
+   846                           
+   847 ;; *************** function _displaySPI *****************
+   848 ;; Defined at:
+   849 ;;		line 11 in file "display.c"
+   850 ;; Parameters:    Size  Location     Type
+   851 ;;		None
+   852 ;; Auto vars:     Size  Location     Type
+   853 ;;		None
+   854 ;; Return value:  Size  Location     Type
+   855 ;;                  1    wreg      void 
+   856 ;; Registers used:
+   857 ;;		cstack
+   858 ;; Tracked objects:
+   859 ;;		On entry : 0/0
+   860 ;;		On exit  : 0/0
+   861 ;;		Unchanged: 0/0
+   862 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
       +1  BANK12  BANK13  BANK14  BANK15
-   854 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+   863 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   855 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+   864 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   856 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+   865 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   857 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
+   866 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   858 ;;Total ram usage:        0 bytes
-   859 ;; Hardware stack levels used: 1
-   860 ;; Hardware stack levels required when called: 3
-   861 ;; This function calls:
-   862 ;;		_SPIHandle
-   863 ;;		_serialHandle
-   864 ;; This function is called by:
-   865 ;;		_interruptService
-   866 ;; This function uses a non-reentrant model
-   867 ;;
-   868                           
-   869                           	psect	text10
-   870  0010FC                     __ptext10:
-   871                           	callstack 0
-   872  0010FC                     _processInterruptService:
-   873                           	callstack 24
-   874  0010FC                     
-   875                           ;interruptService.c: 13:     if (SSPIE == 1 && SSPIF == 1) {
-   876  0010FC  A69D               	btfss	3997,3,c	;volatile
-   877  0010FE  EF83  F008         	goto	i2u2_41
-   878  001102  EF85  F008         	goto	i2u2_40
-   879  001106                     i2u2_41:
-   880  001106  EF8F  F008         	goto	i2l913
-   881  00110A                     i2u2_40:
-   882  00110A  A69E               	btfss	3998,3,c	;volatile
-   883  00110C  EF8A  F008         	goto	i2u3_41
-   884  001110  EF8C  F008         	goto	i2u3_40
-   885  001114                     i2u3_41:
-   886  001114  EF8F  F008         	goto	i2l913
-   887  001118                     i2u3_40:
-   888  001118                     
-   889                           ;interruptService.c: 14:         SPIHandle();
-   890  001118  ECE8  F008         	call	_SPIHandle	;wreg free
-   891  00111C                     
-   892                           ;interruptService.c: 15:         SSPIF = 0;
-   893  00111C  969E               	bcf	3998,3,c	;volatile
-   894  00111E                     i2l913:
-   895                           
-   896                           ;interruptService.c: 17:     if (RC1IE == 1 && RC1IF == 1 && FLAGS.bits.UART_RECEIVED==0
-      +                          ) {
-   897  00111E  AA9D               	btfss	3997,5,c	;volatile
-   898  001120  EF94  F008         	goto	i2u4_41
-   899  001124  EF96  F008         	goto	i2u4_40
-   900  001128                     i2u4_41:
-   901  001128  EFA7  F008         	goto	i2l923
-   902  00112C                     i2u4_40:
-   903  00112C  AA9E               	btfss	3998,5,c	;volatile
-   904  00112E  EF9B  F008         	goto	i2u5_41
-   905  001132  EF9D  F008         	goto	i2u5_40
-   906  001136                     i2u5_41:
-   907  001136  EFA7  F008         	goto	i2l923
-   908  00113A                     i2u5_40:
-   909  00113A  B254               	btfsc	_FLAGS^0,1,c
-   910  00113C  EFA2  F008         	goto	i2u6_41
-   911  001140  EFA4  F008         	goto	i2u6_40
-   912  001144                     i2u6_41:
-   913  001144  EFA7  F008         	goto	i2l923
-   914  001148                     i2u6_40:
-   915  001148                     
-   916                           ;interruptService.c: 18:         serialHandle();
-   917  001148  ECE4  F008         	call	_serialHandle	;wreg free
-   918  00114C                     
-   919                           ;interruptService.c: 19:         RC1IF = 0;
-   920  00114C  9A9E               	bcf	3998,5,c	;volatile
-   921  00114E                     i2l923:
+   867 ;;Total ram usage:        0 bytes
+   868 ;; Hardware stack levels used: 1
+   869 ;; Hardware stack levels required when called: 7
+   870 ;; This function calls:
+   871 ;;		_displayCallback
+   872 ;; This function is called by:
+   873 ;;		_displayRequestHandle
+   874 ;; This function uses a non-reentrant model
+   875 ;;
+   876                           
+   877                           	psect	text10
+   878  001212                     __ptext10:
+   879                           	callstack 0
+   880  001212                     _displaySPI:
+   881                           	callstack 22
+   882  001212                     
+   883                           ;display.c: 12:     outValue = readSPIValue;
+   884  001212  C055  F052         	movff	_readSPIValue,_outValue
+   885  001216                     
+   886                           ;display.c: 13:     displayCallback();
+   887  001216  EC2B  F009         	call	_displayCallback	;wreg free
+   888  00121A  0012               	return		;funcret
+   889  00121C                     __end_of_displaySPI:
+   890                           	callstack 0
+   891                           
+   892 ;; *************** function _displayCallback *****************
+   893 ;; Defined at:
+   894 ;;		line 28 in file "display.c"
+   895 ;; Parameters:    Size  Location     Type
+   896 ;;		None
+   897 ;; Auto vars:     Size  Location     Type
+   898 ;;		None
+   899 ;; Return value:  Size  Location     Type
+   900 ;;                  1    wreg      void 
+   901 ;; Registers used:
+   902 ;;		None
+   903 ;; Tracked objects:
+   904 ;;		On entry : 0/0
+   905 ;;		On exit  : 0/0
+   906 ;;		Unchanged: 0/0
+   907 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12  BANK13  BANK14  BANK15
+   908 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   909 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   910 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   911 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   912 ;;Total ram usage:        0 bytes
+   913 ;; Hardware stack levels used: 1
+   914 ;; Hardware stack levels required when called: 6
+   915 ;; This function calls:
+   916 ;;		Nothing
+   917 ;; This function is called by:
+   918 ;;		_displaySerial
+   919 ;;		_displaySPI
+   920 ;; This function uses a non-reentrant model
+   921 ;;
    922                           
-   923                           ;interruptService.c: 21:     if (INTEDG0==1 && INT0IF==1){
-   924  00114E  ACF1               	btfss	4081,6,c	;volatile
-   925  001150  EFAC  F008         	goto	i2u7_41
-   926  001154  EFAE  F008         	goto	i2u7_40
-   927  001158                     i2u7_41:
-   928  001158  EFB7  F008         	goto	i2l170
-   929  00115C                     i2u7_40:
-   930  00115C  A2F2               	btfss	4082,1,c	;volatile
-   931  00115E  EFB3  F008         	goto	i2u8_41
-   932  001162  EFB5  F008         	goto	i2u8_40
-   933  001166                     i2u8_41:
-   934  001166  EFB7  F008         	goto	i2l170
-   935  00116A                     i2u8_40:
-   936  00116A                     
-   937                           ;interruptService.c: 22:         INT0IF=0;
-   938  00116A  92F2               	bcf	4082,1,c	;volatile
-   939                           
-   940                           ;interruptService.c: 23:         FLAGS.bits.PUSHED_BUTTON = 1;
-   941  00116C  8654               	bsf	_FLAGS^0,3,c
-   942  00116E                     i2l170:
-   943  00116E  0012               	return		;funcret
-   944  001170                     __end_of_processInterruptService:
-   945                           	callstack 0
-   946                           
-   947 ;; *************** function _serialHandle *****************
-   948 ;; Defined at:
-   949 ;;		line 9 in file "serial.c"
-   950 ;; Parameters:    Size  Location     Type
-   951 ;;		None
-   952 ;; Auto vars:     Size  Location     Type
-   953 ;;		None
-   954 ;; Return value:  Size  Location     Type
-   955 ;;                  1    wreg      void 
-   956 ;; Registers used:
-   957 ;;		None
-   958 ;; Tracked objects:
-   959 ;;		On entry : 0/0
-   960 ;;		On exit  : 0/0
-   961 ;;		Unchanged: 0/0
-   962 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+   923                           	psect	text11
+   924  001256                     __ptext11:
+   925                           	callstack 0
+   926  001256                     _displayCallback:
+   927                           	callstack 22
+   928  001256                     
+   929                           ;display.c: 29:     PORTD = outValue;
+   930  001256  C052  FF83         	movff	_outValue,3971	;volatile
+   931  00125A  0012               	return		;funcret
+   932  00125C                     __end_of_displayCallback:
+   933                           	callstack 0
+   934                           
+   935 ;; *************** function _buttonCallback *****************
+   936 ;; Defined at:
+   937 ;;		line 4 in file "button.c"
+   938 ;; Parameters:    Size  Location     Type
+   939 ;;		None
+   940 ;; Auto vars:     Size  Location     Type
+   941 ;;		None
+   942 ;; Return value:  Size  Location     Type
+   943 ;;                  1    wreg      void 
+   944 ;; Registers used:
+   945 ;;		wreg, status,2
+   946 ;; Tracked objects:
+   947 ;;		On entry : 0/0
+   948 ;;		On exit  : 0/0
+   949 ;;		Unchanged: 0/0
+   950 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
       +1  BANK12  BANK13  BANK14  BANK15
-   963 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+   951 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   964 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+   952 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   965 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+   953 ;;      Temps:          1       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   966 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
+   954 ;;      Totals:         1       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-   967 ;;Total ram usage:        0 bytes
-   968 ;; Hardware stack levels used: 1
-   969 ;; This function calls:
-   970 ;;		Nothing
-   971 ;; This function is called by:
-   972 ;;		_processInterruptService
-   973 ;; This function uses a non-reentrant model
-   974 ;;
-   975                           
-   976                           	psect	text11
-   977  0011C8                     __ptext11:
-   978                           	callstack 0
-   979  0011C8                     _serialHandle:
-   980                           	callstack 26
-   981  0011C8                     
-   982                           ;serial.c: 10:     FLAGS.bits.UART_RECEIVED = 1;
-   983  0011C8  8254               	bsf	_FLAGS^0,1,c
-   984                           
-   985                           ;serial.c: 11:     readSerialValue = RCREG;
-   986  0011CA  CFAE F053          	movff	4014,_readSerialValue	;volatile
-   987  0011CE  0012               	return		;funcret
-   988  0011D0                     __end_of_serialHandle:
-   989                           	callstack 0
-   990                           
-   991 ;; *************** function _SPIHandle *****************
-   992 ;; Defined at:
-   993 ;;		line 49 in file "spi.c"
-   994 ;; Parameters:    Size  Location     Type
-   995 ;;		None
-   996 ;; Auto vars:     Size  Location     Type
-   997 ;;		None
-   998 ;; Return value:  Size  Location     Type
-   999 ;;                  1    wreg      void 
-  1000 ;; Registers used:
-  1001 ;;		wreg, status,2, cstack
-  1002 ;; Tracked objects:
-  1003 ;;		On entry : 0/0
-  1004 ;;		On exit  : 0/0
-  1005 ;;		Unchanged: 0/0
-  1006 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+   955 ;;Total ram usage:        1 bytes
+   956 ;; Hardware stack levels used: 1
+   957 ;; Hardware stack levels required when called: 6
+   958 ;; This function calls:
+   959 ;;		Nothing
+   960 ;; This function is called by:
+   961 ;;		_main
+   962 ;; This function uses a non-reentrant model
+   963 ;;
+   964                           
+   965                           	psect	text12
+   966  001134                     __ptext12:
+   967                           	callstack 0
+   968  001134                     _buttonCallback:
+   969                           	callstack 24
+   970  001134                     
+   971                           ;button.c: 5:     if (FLAGS.bits.PREVIOUS_BUTTON_STATE != FLAGS.bits.PUSHED_BUTTON) {
+   972  001134  B654               	btfsc	_FLAGS^0,3,c
+   973  001136  EF9F  F008         	goto	u111
+   974  00113A  EFA2  F008         	goto	u110
+   975  00113E                     u111:
+   976  00113E  0E01               	movlw	1
+   977  001140  EFA3  F008         	goto	u112
+   978  001144                     u110:
+   979  001144  0E00               	movlw	0
+   980  001146                     u112:
+   981  001146  6E01               	movwf	??_buttonCallback^0,c
+   982  001148  B454               	btfsc	_FLAGS^0,2,c
+   983  00114A  EFA9  F008         	goto	u121
+   984  00114E  EFAC  F008         	goto	u120
+   985  001152                     u121:
+   986  001152  0E01               	movlw	1
+   987  001154  EFAD  F008         	goto	u122
+   988  001158                     u120:
+   989  001158  0E00               	movlw	0
+   990  00115A                     u122:
+   991  00115A  1A01               	xorwf	??_buttonCallback^0,f,c
+   992  00115C  B4D8               	btfsc	status,2,c
+   993  00115E  EFB3  F008         	goto	u131
+   994  001162  EFB5  F008         	goto	u130
+   995  001166                     u131:
+   996  001166  EFBC  F008         	goto	l209
+   997  00116A                     u130:
+   998  00116A                     
+   999                           ;button.c: 6:         FLAGS.bits.PREVIOUS_BUTTON_STATE = FLAGS.bits.PUSHED_BUTTON;
+  1000  00116A  A654               	btfss	_FLAGS^0,3,c
+  1001  00116C  D002               	bra	u145
+  1002  00116E  8454               	bsf	_FLAGS^0,2,c
+  1003  001170  D001               	bra	u147
+  1004  001172                     u145:
+  1005  001172  9454               	bcf	_FLAGS^0,2,c
+  1006  001174                     u147:
+  1007  001174                     
+  1008                           ;button.c: 7:         TXREG1 = 'a';
+  1009  001174  0E61               	movlw	97
+  1010  001176  6EAD               	movwf	173,c	;volatile
+  1011  001178                     l209:
+  1012  001178  0012               	return		;funcret
+  1013  00117A                     __end_of_buttonCallback:
+  1014                           	callstack 0
+  1015                           
+  1016 ;; *************** function _service *****************
+  1017 ;; Defined at:
+  1018 ;;		line 18 in file "newmain.c"
+  1019 ;; Parameters:    Size  Location     Type
+  1020 ;;		None
+  1021 ;; Auto vars:     Size  Location     Type
+  1022 ;;		None
+  1023 ;; Return value:  Size  Location     Type
+  1024 ;;                  1    wreg      void 
+  1025 ;; Registers used:
+  1026 ;;		wreg, status,2, cstack
+  1027 ;; Tracked objects:
+  1028 ;;		On entry : 0/0
+  1029 ;;		On exit  : 0/0
+  1030 ;;		Unchanged: 0/0
+  1031 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
       +1  BANK12  BANK13  BANK14  BANK15
-  1007 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+  1032 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-  1008 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+  1033 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-  1009 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+  1034 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-  1010 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
+  1035 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-  1011 ;;Total ram usage:        0 bytes
-  1012 ;; Hardware stack levels used: 1
-  1013 ;; Hardware stack levels required when called: 2
-  1014 ;; This function calls:
-  1015 ;;		_spiRead
-  1016 ;; This function is called by:
-  1017 ;;		_processInterruptService
-  1018 ;; This function uses a non-reentrant model
-  1019 ;;
-  1020                           
-  1021                           	psect	text12
-  1022  0011D0                     __ptext12:
-  1023                           	callstack 0
-  1024  0011D0                     _SPIHandle:
-  1025                           	callstack 24
-  1026  0011D0                     
-  1027                           ;spi.c: 50:     readSPIValue = spiRead();
-  1028  0011D0  ECEC  F008         	call	_spiRead	;wreg free
-  1029  0011D4  6E55               	movwf	_readSPIValue^0,c
-  1030  0011D6  0012               	return		;funcret
-  1031  0011D8                     __end_of_SPIHandle:
-  1032                           	callstack 0
-  1033                           
-  1034 ;; *************** function _spiRead *****************
-  1035 ;; Defined at:
-  1036 ;;		line 43 in file "spi.c"
-  1037 ;; Parameters:    Size  Location     Type
-  1038 ;;		None
-  1039 ;; Auto vars:     Size  Location     Type
-  1040 ;;		None
-  1041 ;; Return value:  Size  Location     Type
-  1042 ;;                  1    wreg      unsigned char 
-  1043 ;; Registers used:
-  1044 ;;		wreg, status,2, cstack
-  1045 ;; Tracked objects:
-  1046 ;;		On entry : 0/0
-  1047 ;;		On exit  : 0/0
-  1048 ;;		Unchanged: 0/0
-  1049 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+  1036 ;;Total ram usage:        0 bytes
+  1037 ;; Hardware stack levels used: 1
+  1038 ;; Hardware stack levels required when called: 5
+  1039 ;; This function calls:
+  1040 ;;		_interruptService
+  1041 ;; This function is called by:
+  1042 ;;		Interrupt level 2
+  1043 ;; This function uses a non-reentrant model
+  1044 ;;
+  1045                           
+  1046                           	psect	intcode
+  1047  000008                     __pintcode:
+  1048                           	callstack 0
+  1049  000008                     _service:
+  1050                           	callstack 22
+  1051                           
+  1052                           ;incstack = 0
+  1053  000008  8256               	bsf	int$flags,1,c	;set compiler interrupt flag (level 2)
+  1054  00000A  ED0E  F009         	call	int_func,f	;refresh shadow registers
+  1055                           
+  1056                           	psect	intcode_body
+  1057  00121C                     __pintcode_body:
+  1058                           	callstack 22
+  1059  00121C                     int_func:
+  1060                           	callstack 22
+  1061  00121C  0006               	pop		; remove dummy address from shadow register refresh
+  1062  00121E                     
+  1063                           ;newmain.c: 19:     interruptService();
+  1064  00121E  EC2E  F009         	call	_interruptService	;wreg free
+  1065  001222  9256               	bcf	int$flags,1,c	;clear compiler interrupt flag (level 2)
+  1066  001224  0011               	retfie		f
+  1067  001226                     __end_of_service:
+  1068                           	callstack 0
+  1069                           
+  1070 ;; *************** function _interruptService *****************
+  1071 ;; Defined at:
+  1072 ;;		line 28 in file "interruptService.c"
+  1073 ;; Parameters:    Size  Location     Type
+  1074 ;;		None
+  1075 ;; Auto vars:     Size  Location     Type
+  1076 ;;		None
+  1077 ;; Return value:  Size  Location     Type
+  1078 ;;                  1    wreg      void 
+  1079 ;; Registers used:
+  1080 ;;		wreg, status,2, cstack
+  1081 ;; Tracked objects:
+  1082 ;;		On entry : 0/0
+  1083 ;;		On exit  : 0/0
+  1084 ;;		Unchanged: 0/0
+  1085 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
       +1  BANK12  BANK13  BANK14  BANK15
-  1050 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+  1086 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-  1051 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+  1087 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-  1052 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+  1088 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-  1053 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
+  1089 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0       0       0
-  1054 ;;Total ram usage:        0 bytes
-  1055 ;; Hardware stack levels used: 1
-  1056 ;; Hardware stack levels required when called: 1
-  1057 ;; This function calls:
-  1058 ;;		_spiReceiveWait
-  1059 ;; This function is called by:
-  1060 ;;		_SPIHandle
-  1061 ;; This function uses a non-reentrant model
-  1062 ;;
-  1063                           
-  1064                           	psect	text13
-  1065  0011D8                     __ptext13:
-  1066                           	callstack 0
-  1067  0011D8                     _spiRead:
-  1068                           	callstack 24
-  1069  0011D8                     
-  1070                           ;spi.c: 45:     spiReceiveWait();
-  1071  0011D8  ECD7  F008         	call	_spiReceiveWait	;wreg free
-  1072  0011DC                     
-  1073                           ;spi.c: 46:     return (SSPBUF);
-  1074  0011DC  50C9               	movf	201,w,c	;volatile
-  1075  0011DE  0012               	return		;funcret
-  1076  0011E0                     __end_of_spiRead:
-  1077                           	callstack 0
-  1078                           
-  1079 ;; *************** function _spiReceiveWait *****************
-  1080 ;; Defined at:
-  1081 ;;		line 26 in file "spi.c"
-  1082 ;; Parameters:    Size  Location     Type
-  1083 ;;		None
-  1084 ;; Auto vars:     Size  Location     Type
-  1085 ;;		None
-  1086 ;; Return value:  Size  Location     Type
-  1087 ;;                  1    wreg      void 
-  1088 ;; Registers used:
-  1089 ;;		None
-  1090 ;; Tracked objects:
-  1091 ;;		On entry : 0/0
-  1092 ;;		On exit  : 0/0
-  1093 ;;		Unchanged: 0/0
-  1094 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
-      +1  BANK12  BANK13  BANK14  BANK15
-  1095 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
-      +0       0       0       0       0
-  1096 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
-      +0       0       0       0       0
-  1097 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
-      +0       0       0       0       0
-  1098 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
-      +0       0       0       0       0
-  1099 ;;Total ram usage:        0 bytes
-  1100 ;; Hardware stack levels used: 1
-  1101 ;; This function calls:
-  1102 ;;		Nothing
-  1103 ;; This function is called by:
-  1104 ;;		_spiRead
-  1105 ;; This function uses a non-reentrant model
-  1106 ;;
-  1107                           
-  1108                           	psect	text14
-  1109  0011AE                     __ptext14:
+  1090 ;;Total ram usage:        0 bytes
+  1091 ;; Hardware stack levels used: 1
+  1092 ;; Hardware stack levels required when called: 4
+  1093 ;; This function calls:
+  1094 ;;		_processInterruptService
+  1095 ;; This function is called by:
+  1096 ;;		_service
+  1097 ;; This function uses a non-reentrant model
+  1098 ;;
+  1099                           
+  1100                           	psect	text14
+  1101  00125C                     __ptext14:
+  1102                           	callstack 0
+  1103  00125C                     _interruptService:
+  1104                           	callstack 22
+  1105  00125C                     
+  1106                           ;interruptService.c: 29:     processInterruptService();
+  1107  00125C  EC29  F008         	call	_processInterruptService	;wreg free
+  1108  001260  0012               	return		;funcret
+  1109  001262                     __end_of_interruptService:
   1110                           	callstack 0
-  1111  0011AE                     _spiReceiveWait:
-  1112                           	callstack 24
-  1113  0011AE                     i2l69:
-  1114  0011AE  A0C7               	btfss	199,0,c	;volatile
-  1115  0011B0  EFDC  F008         	goto	i2u1_41
-  1116  0011B4  EFDE  F008         	goto	i2u1_40
-  1117  0011B8                     i2u1_41:
-  1118  0011B8  EFD7  F008         	goto	i2l69
-  1119  0011BC                     i2u1_40:
-  1120  0011BC  0012               	return		;funcret
-  1121  0011BE                     __end_of_spiReceiveWait:
-  1122                           	callstack 0
-  1123                           
-  1124                           	psect	rparam
-  1125  0000                     
-  1126                           	psect	temp
-  1127  000056                     btemp:
-  1128                           	callstack 0
-  1129  000056                     	ds	1
-  1130  0000                     int$flags	set	btemp
-  1131  0000                     wtemp8	set	btemp+1
-  1132  0000                     ttemp5	set	btemp+1
-  1133  0000                     ttemp6	set	btemp+4
-  1134  0000                     ttemp7	set	btemp+8
-  1135                           
-  1136                           	psect	idloc
-  1137                           
-  1138                           ;Config register IDLOC0 @ 0x200000
-  1139                           ;	unspecified, using default values
-  1140  200000                     	org	2097152
-  1141  200000  FF                 	db	255
-  1142                           
-  1143                           ;Config register IDLOC1 @ 0x200001
-  1144                           ;	unspecified, using default values
-  1145  200001                     	org	2097153
-  1146  200001  FF                 	db	255
-  1147                           
-  1148                           ;Config register IDLOC2 @ 0x200002
-  1149                           ;	unspecified, using default values
-  1150  200002                     	org	2097154
-  1151  200002  FF                 	db	255
-  1152                           
-  1153                           ;Config register IDLOC3 @ 0x200003
-  1154                           ;	unspecified, using default values
-  1155  200003                     	org	2097155
-  1156  200003  FF                 	db	255
-  1157                           
-  1158                           ;Config register IDLOC4 @ 0x200004
-  1159                           ;	unspecified, using default values
-  1160  200004                     	org	2097156
-  1161  200004  FF                 	db	255
-  1162                           
-  1163                           ;Config register IDLOC5 @ 0x200005
-  1164                           ;	unspecified, using default values
-  1165  200005                     	org	2097157
-  1166  200005  FF                 	db	255
-  1167                           
-  1168                           ;Config register IDLOC6 @ 0x200006
-  1169                           ;	unspecified, using default values
-  1170  200006                     	org	2097158
-  1171  200006  FF                 	db	255
-  1172                           
-  1173                           ;Config register IDLOC7 @ 0x200007
-  1174                           ;	unspecified, using default values
-  1175  200007                     	org	2097159
-  1176  200007  FF                 	db	255
-  1177                           
-  1178                           	psect	config
-  1179                           
-  1180                           ; Padding undefined space
-  1181  300000                     	org	3145728
-  1182  300000  FF                 	db	255
-  1183                           
-  1184                           ;Config register CONFIG1H @ 0x300001
-  1185                           ;	Oscillator Selection bits
-  1186                           ;	OSC = XT, XT oscillator
-  1187                           ;	Fail-Safe Clock Monitor Enable bit
-  1188                           ;	FCMEN = OFF, Fail-Safe Clock Monitor disabled
-  1189                           ;	Internal/External Oscillator Switchover bit
-  1190                           ;	IESO = OFF, Two-Speed Start-up disabled
-  1191  300001                     	org	3145729
-  1192  300001  01                 	db	1
-  1193                           
-  1194                           ;Config register CONFIG2L @ 0x300002
-  1195                           ;	Power-up Timer Enable bit
-  1196                           ;	PWRT = OFF, PWRT disabled
-  1197                           ;	Brown-out Reset Enable bits
-  1198                           ;	BOREN = OFF, Brown-out Reset disabled in hardware and software
-  1199                           ;	Brown-out Voltage bits
-  1200                           ;	BORV = 3, Minimum setting
-  1201  300002                     	org	3145730
-  1202  300002  19                 	db	25
-  1203                           
-  1204                           ;Config register CONFIG2H @ 0x300003
-  1205                           ;	Watchdog Timer
-  1206                           ;	WDT = OFF, WDT disabled (control is placed on the SWDTEN bit)
-  1207                           ;	Watchdog Timer Postscale Select bits
-  1208                           ;	WDTPS = 32768, 1:32768
-  1209  300003                     	org	3145731
-  1210  300003  1E                 	db	30
-  1211                           
-  1212                           ;Config register CONFIG3L @ 0x300004
-  1213                           ;	Processor Data Memory Mode Select bits
-  1214                           ;	MODE = MC, Microcontroller mode
-  1215                           ;	Address Bus Width Select bits
-  1216                           ;	ADDRBW = ADDR20BIT, 20-bit Address Bus
-  1217                           ;	Data Bus Width Select bit
-  1218                           ;	DATABW = DATA16BIT, 16-bit External Bus mode
-  1219                           ;	External Bus Data Wait Enable bit
-  1220                           ;	WAIT = OFF, Wait selections are unavailable for table reads and table writes
-  1221  300004                     	org	3145732
-  1222  300004  F3                 	db	243
-  1223                           
-  1224                           ;Config register CONFIG3H @ 0x300005
-  1225                           ;	CCP2 MUX bit
-  1226                           ;	CCP2MX = PORTC, ECCP2 input/output is multiplexed with RC1
-  1227                           ;	ECCP MUX bit
-  1228                           ;	ECCPMX = PORTE, ECCP1/3 (P1B/P1C/P3B/P3C) are multiplexed onto RE6, RE5, RE4 and RE3 r
+  1111                           
+  1112 ;; *************** function _processInterruptService *****************
+  1113 ;; Defined at:
+  1114 ;;		line 13 in file "interruptService.c"
+  1115 ;; Parameters:    Size  Location     Type
+  1116 ;;		None
+  1117 ;; Auto vars:     Size  Location     Type
+  1118 ;;		None
+  1119 ;; Return value:  Size  Location     Type
+  1120 ;;                  1    wreg      void 
+  1121 ;; Registers used:
+  1122 ;;		wreg, status,2, cstack
+  1123 ;; Tracked objects:
+  1124 ;;		On entry : 0/0
+  1125 ;;		On exit  : 0/0
+  1126 ;;		Unchanged: 0/0
+  1127 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12  BANK13  BANK14  BANK15
+  1128 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1129 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1130 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1131 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1132 ;;Total ram usage:        0 bytes
+  1133 ;; Hardware stack levels used: 1
+  1134 ;; Hardware stack levels required when called: 3
+  1135 ;; This function calls:
+  1136 ;;		_SPIHandle
+  1137 ;;		_buttonHandle
+  1138 ;;		_serialHandle
+  1139 ;; This function is called by:
+  1140 ;;		_interruptService
+  1141 ;; This function uses a non-reentrant model
+  1142 ;;
+  1143                           
+  1144                           	psect	text15
+  1145  001052                     __ptext15:
+  1146                           	callstack 0
+  1147  001052                     _processInterruptService:
+  1148                           	callstack 22
+  1149  001052                     
+  1150                           ;interruptService.c: 14:     if (SSPIE == 1 && SSPIF == 1) {
+  1151  001052  A69D               	btfss	3997,3,c	;volatile
+  1152  001054  EF2E  F008         	goto	i2u2_41
+  1153  001058  EF30  F008         	goto	i2u2_40
+  1154  00105C                     i2u2_41:
+  1155  00105C  EF3A  F008         	goto	i2l939
+  1156  001060                     i2u2_40:
+  1157  001060  A69E               	btfss	3998,3,c	;volatile
+  1158  001062  EF35  F008         	goto	i2u3_41
+  1159  001066  EF37  F008         	goto	i2u3_40
+  1160  00106A                     i2u3_41:
+  1161  00106A  EF3A  F008         	goto	i2l939
+  1162  00106E                     i2u3_40:
+  1163  00106E                     
+  1164                           ;interruptService.c: 15:         SPIHandle();
+  1165  00106E  EC17  F009         	call	_SPIHandle	;wreg free
+  1166  001072                     
+  1167                           ;interruptService.c: 16:         SSPIF = 0;
+  1168  001072  969E               	bcf	3998,3,c	;volatile
+  1169  001074                     i2l939:
+  1170                           
+  1171                           ;interruptService.c: 18:     if (RC1IE == 1 && RC1IF == 1 && FLAGS.bits.UART_RECEIVED ==
+      +                           0) {
+  1172  001074  AA9D               	btfss	3997,5,c	;volatile
+  1173  001076  EF3F  F008         	goto	i2u4_41
+  1174  00107A  EF41  F008         	goto	i2u4_40
+  1175  00107E                     i2u4_41:
+  1176  00107E  EF52  F008         	goto	i2l949
+  1177  001082                     i2u4_40:
+  1178  001082  AA9E               	btfss	3998,5,c	;volatile
+  1179  001084  EF46  F008         	goto	i2u5_41
+  1180  001088  EF48  F008         	goto	i2u5_40
+  1181  00108C                     i2u5_41:
+  1182  00108C  EF52  F008         	goto	i2l949
+  1183  001090                     i2u5_40:
+  1184  001090  B254               	btfsc	_FLAGS^0,1,c
+  1185  001092  EF4D  F008         	goto	i2u6_41
+  1186  001096  EF4F  F008         	goto	i2u6_40
+  1187  00109A                     i2u6_41:
+  1188  00109A  EF52  F008         	goto	i2l949
+  1189  00109E                     i2u6_40:
+  1190  00109E                     
+  1191                           ;interruptService.c: 19:         serialHandle();
+  1192  00109E  EC13  F009         	call	_serialHandle	;wreg free
+  1193  0010A2                     
+  1194                           ;interruptService.c: 20:         RC1IF = 0;
+  1195  0010A2  9A9E               	bcf	3998,5,c	;volatile
+  1196  0010A4                     i2l949:
+  1197                           
+  1198                           ;interruptService.c: 22:     if (INTEDG0 == 1 && INT0IF == 1) {
+  1199  0010A4  ACF1               	btfss	4081,6,c	;volatile
+  1200  0010A6  EF57  F008         	goto	i2u7_41
+  1201  0010AA  EF59  F008         	goto	i2u7_40
+  1202  0010AE                     i2u7_41:
+  1203  0010AE  EF63  F008         	goto	i2l156
+  1204  0010B2                     i2u7_40:
+  1205  0010B2  A2F2               	btfss	4082,1,c	;volatile
+  1206  0010B4  EF5E  F008         	goto	i2u8_41
+  1207  0010B8  EF60  F008         	goto	i2u8_40
+  1208  0010BC                     i2u8_41:
+  1209  0010BC  EF63  F008         	goto	i2l156
+  1210  0010C0                     i2u8_40:
+  1211  0010C0                     
+  1212                           ;interruptService.c: 23:         buttonHandle();
+  1213  0010C0  EC31  F009         	call	_buttonHandle	;wreg free
+  1214  0010C4                     
+  1215                           ;interruptService.c: 24:         INT0IF = 0;
+  1216  0010C4  92F2               	bcf	4082,1,c	;volatile
+  1217  0010C6                     i2l156:
+  1218  0010C6  0012               	return		;funcret
+  1219  0010C8                     __end_of_processInterruptService:
+  1220                           	callstack 0
+  1221                           
+  1222 ;; *************** function _serialHandle *****************
+  1223 ;; Defined at:
+  1224 ;;		line 31 in file "serial.c"
+  1225 ;; Parameters:    Size  Location     Type
+  1226 ;;		None
+  1227 ;; Auto vars:     Size  Location     Type
+  1228 ;;		None
+  1229 ;; Return value:  Size  Location     Type
+  1230 ;;                  1    wreg      void 
+  1231 ;; Registers used:
+  1232 ;;		None
+  1233 ;; Tracked objects:
+  1234 ;;		On entry : 0/0
+  1235 ;;		On exit  : 0/0
+  1236 ;;		Unchanged: 0/0
+  1237 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12  BANK13  BANK14  BANK15
+  1238 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1239 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1240 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1241 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1242 ;;Total ram usage:        0 bytes
+  1243 ;; Hardware stack levels used: 1
+  1244 ;; This function calls:
+  1245 ;;		Nothing
+  1246 ;; This function is called by:
+  1247 ;;		_processInterruptService
+  1248 ;; This function uses a non-reentrant model
+  1249 ;;
+  1250                           
+  1251                           	psect	text16
+  1252  001226                     __ptext16:
+  1253                           	callstack 0
+  1254  001226                     _serialHandle:
+  1255                           	callstack 24
+  1256  001226                     
+  1257                           ;serial.c: 32:     FLAGS.bits.UART_RECEIVED = 1;
+  1258  001226  8254               	bsf	_FLAGS^0,1,c
+  1259                           
+  1260                           ;serial.c: 33:     readSerialValue = RCREG;
+  1261  001228  CFAE F053          	movff	4014,_readSerialValue	;volatile
+  1262  00122C  0012               	return		;funcret
+  1263  00122E                     __end_of_serialHandle:
+  1264                           	callstack 0
+  1265                           
+  1266 ;; *************** function _buttonHandle *****************
+  1267 ;; Defined at:
+  1268 ;;		line 11 in file "button.c"
+  1269 ;; Parameters:    Size  Location     Type
+  1270 ;;		None
+  1271 ;; Auto vars:     Size  Location     Type
+  1272 ;;		None
+  1273 ;; Return value:  Size  Location     Type
+  1274 ;;                  1    wreg      void 
+  1275 ;; Registers used:
+  1276 ;;		None
+  1277 ;; Tracked objects:
+  1278 ;;		On entry : 0/0
+  1279 ;;		On exit  : 0/0
+  1280 ;;		Unchanged: 0/0
+  1281 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12  BANK13  BANK14  BANK15
+  1282 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1283 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1284 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1285 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1286 ;;Total ram usage:        0 bytes
+  1287 ;; Hardware stack levels used: 1
+  1288 ;; This function calls:
+  1289 ;;		Nothing
+  1290 ;; This function is called by:
+  1291 ;;		_processInterruptService
+  1292 ;; This function uses a non-reentrant model
+  1293 ;;
+  1294                           
+  1295                           	psect	text17
+  1296  001262                     __ptext17:
+  1297                           	callstack 0
+  1298  001262                     _buttonHandle:
+  1299                           	callstack 24
+  1300  001262                     
+  1301                           ;button.c: 12:     FLAGS.bits.PUSHED_BUTTON = 1;
+  1302  001262  8654               	bsf	_FLAGS^0,3,c
+  1303  001264  0012               	return		;funcret
+  1304  001266                     __end_of_buttonHandle:
+  1305                           	callstack 0
+  1306                           
+  1307 ;; *************** function _SPIHandle *****************
+  1308 ;; Defined at:
+  1309 ;;		line 55 in file "spi.c"
+  1310 ;; Parameters:    Size  Location     Type
+  1311 ;;		None
+  1312 ;; Auto vars:     Size  Location     Type
+  1313 ;;		None
+  1314 ;; Return value:  Size  Location     Type
+  1315 ;;                  1    wreg      void 
+  1316 ;; Registers used:
+  1317 ;;		wreg, status,2, cstack
+  1318 ;; Tracked objects:
+  1319 ;;		On entry : 0/0
+  1320 ;;		On exit  : 0/0
+  1321 ;;		Unchanged: 0/0
+  1322 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12  BANK13  BANK14  BANK15
+  1323 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1324 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1325 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1326 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1327 ;;Total ram usage:        0 bytes
+  1328 ;; Hardware stack levels used: 1
+  1329 ;; Hardware stack levels required when called: 2
+  1330 ;; This function calls:
+  1331 ;;		_spiRead
+  1332 ;; This function is called by:
+  1333 ;;		_processInterruptService
+  1334 ;; This function uses a non-reentrant model
+  1335 ;;
+  1336                           
+  1337                           	psect	text18
+  1338  00122E                     __ptext18:
+  1339                           	callstack 0
+  1340  00122E                     _SPIHandle:
+  1341                           	callstack 22
+  1342  00122E                     
+  1343                           ;spi.c: 56:     readSPIValue = spiRead();
+  1344  00122E  EC1B  F009         	call	_spiRead	;wreg free
+  1345  001232  6E55               	movwf	_readSPIValue^0,c
+  1346  001234  0012               	return		;funcret
+  1347  001236                     __end_of_SPIHandle:
+  1348                           	callstack 0
+  1349                           
+  1350 ;; *************** function _spiRead *****************
+  1351 ;; Defined at:
+  1352 ;;		line 49 in file "spi.c"
+  1353 ;; Parameters:    Size  Location     Type
+  1354 ;;		None
+  1355 ;; Auto vars:     Size  Location     Type
+  1356 ;;		None
+  1357 ;; Return value:  Size  Location     Type
+  1358 ;;                  1    wreg      unsigned char 
+  1359 ;; Registers used:
+  1360 ;;		wreg, status,2, cstack
+  1361 ;; Tracked objects:
+  1362 ;;		On entry : 0/0
+  1363 ;;		On exit  : 0/0
+  1364 ;;		Unchanged: 0/0
+  1365 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12  BANK13  BANK14  BANK15
+  1366 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1367 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1368 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1369 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1370 ;;Total ram usage:        0 bytes
+  1371 ;; Hardware stack levels used: 1
+  1372 ;; Hardware stack levels required when called: 1
+  1373 ;; This function calls:
+  1374 ;;		_spiReceiveWait
+  1375 ;; This function is called by:
+  1376 ;;		_SPIHandle
+  1377 ;; This function uses a non-reentrant model
+  1378 ;;
+  1379                           
+  1380                           	psect	text19
+  1381  001236                     __ptext19:
+  1382                           	callstack 0
+  1383  001236                     _spiRead:
+  1384                           	callstack 22
+  1385  001236                     
+  1386                           ;spi.c: 51:     spiReceiveWait();
+  1387  001236  ECF7  F008         	call	_spiReceiveWait	;wreg free
+  1388  00123A                     
+  1389                           ;spi.c: 52:     return (SSPBUF);
+  1390  00123A  50C9               	movf	201,w,c	;volatile
+  1391  00123C  0012               	return		;funcret
+  1392  00123E                     __end_of_spiRead:
+  1393                           	callstack 0
+  1394                           
+  1395 ;; *************** function _spiReceiveWait *****************
+  1396 ;; Defined at:
+  1397 ;;		line 32 in file "spi.c"
+  1398 ;; Parameters:    Size  Location     Type
+  1399 ;;		None
+  1400 ;; Auto vars:     Size  Location     Type
+  1401 ;;		None
+  1402 ;; Return value:  Size  Location     Type
+  1403 ;;                  1    wreg      void 
+  1404 ;; Registers used:
+  1405 ;;		None
+  1406 ;; Tracked objects:
+  1407 ;;		On entry : 0/0
+  1408 ;;		On exit  : 0/0
+  1409 ;;		Unchanged: 0/0
+  1410 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12  BANK13  BANK14  BANK15
+  1411 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1412 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1413 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1414 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1415 ;;Total ram usage:        0 bytes
+  1416 ;; Hardware stack levels used: 1
+  1417 ;; This function calls:
+  1418 ;;		Nothing
+  1419 ;; This function is called by:
+  1420 ;;		_spiRead
+  1421 ;; This function uses a non-reentrant model
+  1422 ;;
+  1423                           
+  1424                           	psect	text20
+  1425  0011EE                     __ptext20:
+  1426                           	callstack 0
+  1427  0011EE                     _spiReceiveWait:
+  1428                           	callstack 22
+  1429  0011EE                     i2l79:
+  1430  0011EE  A0C7               	btfss	199,0,c	;volatile
+  1431  0011F0  EFFC  F008         	goto	i2u1_41
+  1432  0011F4  EFFE  F008         	goto	i2u1_40
+  1433  0011F8                     i2u1_41:
+  1434  0011F8  EFF7  F008         	goto	i2l79
+  1435  0011FC                     i2u1_40:
+  1436  0011FC  0012               	return		;funcret
+  1437  0011FE                     __end_of_spiReceiveWait:
+  1438                           	callstack 0
+  1439                           
+  1440                           	psect	rparam
+  1441  0000                     
+  1442                           	psect	temp
+  1443  000056                     btemp:
+  1444                           	callstack 0
+  1445  000056                     	ds	1
+  1446  0000                     int$flags	set	btemp
+  1447  0000                     wtemp8	set	btemp+1
+  1448  0000                     ttemp5	set	btemp+1
+  1449  0000                     ttemp6	set	btemp+4
+  1450  0000                     ttemp7	set	btemp+8
+  1451                           
+  1452                           	psect	idloc
+  1453                           
+  1454                           ;Config register IDLOC0 @ 0x200000
+  1455                           ;	unspecified, using default values
+  1456  200000                     	org	2097152
+  1457  200000  FF                 	db	255
+  1458                           
+  1459                           ;Config register IDLOC1 @ 0x200001
+  1460                           ;	unspecified, using default values
+  1461  200001                     	org	2097153
+  1462  200001  FF                 	db	255
+  1463                           
+  1464                           ;Config register IDLOC2 @ 0x200002
+  1465                           ;	unspecified, using default values
+  1466  200002                     	org	2097154
+  1467  200002  FF                 	db	255
+  1468                           
+  1469                           ;Config register IDLOC3 @ 0x200003
+  1470                           ;	unspecified, using default values
+  1471  200003                     	org	2097155
+  1472  200003  FF                 	db	255
+  1473                           
+  1474                           ;Config register IDLOC4 @ 0x200004
+  1475                           ;	unspecified, using default values
+  1476  200004                     	org	2097156
+  1477  200004  FF                 	db	255
+  1478                           
+  1479                           ;Config register IDLOC5 @ 0x200005
+  1480                           ;	unspecified, using default values
+  1481  200005                     	org	2097157
+  1482  200005  FF                 	db	255
+  1483                           
+  1484                           ;Config register IDLOC6 @ 0x200006
+  1485                           ;	unspecified, using default values
+  1486  200006                     	org	2097158
+  1487  200006  FF                 	db	255
+  1488                           
+  1489                           ;Config register IDLOC7 @ 0x200007
+  1490                           ;	unspecified, using default values
+  1491  200007                     	org	2097159
+  1492  200007  FF                 	db	255
+  1493                           
+  1494                           	psect	config
+  1495                           
+  1496                           ; Padding undefined space
+  1497  300000                     	org	3145728
+  1498  300000  FF                 	db	255
+  1499                           
+  1500                           ;Config register CONFIG1H @ 0x300001
+  1501                           ;	Oscillator Selection bits
+  1502                           ;	OSC = XT, XT oscillator
+  1503                           ;	Fail-Safe Clock Monitor Enable bit
+  1504                           ;	FCMEN = OFF, Fail-Safe Clock Monitor disabled
+  1505                           ;	Internal/External Oscillator Switchover bit
+  1506                           ;	IESO = OFF, Two-Speed Start-up disabled
+  1507  300001                     	org	3145729
+  1508  300001  01                 	db	1
+  1509                           
+  1510                           ;Config register CONFIG2L @ 0x300002
+  1511                           ;	Power-up Timer Enable bit
+  1512                           ;	PWRT = OFF, PWRT disabled
+  1513                           ;	Brown-out Reset Enable bits
+  1514                           ;	BOREN = OFF, Brown-out Reset disabled in hardware and software
+  1515                           ;	Brown-out Voltage bits
+  1516                           ;	BORV = 3, Minimum setting
+  1517  300002                     	org	3145730
+  1518  300002  19                 	db	25
+  1519                           
+  1520                           ;Config register CONFIG2H @ 0x300003
+  1521                           ;	Watchdog Timer
+  1522                           ;	WDT = OFF, WDT disabled (control is placed on the SWDTEN bit)
+  1523                           ;	Watchdog Timer Postscale Select bits
+  1524                           ;	WDTPS = 32768, 1:32768
+  1525  300003                     	org	3145731
+  1526  300003  1E                 	db	30
+  1527                           
+  1528                           ;Config register CONFIG3L @ 0x300004
+  1529                           ;	Processor Data Memory Mode Select bits
+  1530                           ;	MODE = MC, Microcontroller mode
+  1531                           ;	Address Bus Width Select bits
+  1532                           ;	ADDRBW = ADDR20BIT, 20-bit Address Bus
+  1533                           ;	Data Bus Width Select bit
+  1534                           ;	DATABW = DATA16BIT, 16-bit External Bus mode
+  1535                           ;	External Bus Data Wait Enable bit
+  1536                           ;	WAIT = OFF, Wait selections are unavailable for table reads and table writes
+  1537  300004                     	org	3145732
+  1538  300004  F3                 	db	243
+  1539                           
+  1540                           ;Config register CONFIG3H @ 0x300005
+  1541                           ;	CCP2 MUX bit
+  1542                           ;	CCP2MX = PORTC, ECCP2 input/output is multiplexed with RC1
+  1543                           ;	ECCP MUX bit
+  1544                           ;	ECCPMX = PORTE, ECCP1/3 (P1B/P1C/P3B/P3C) are multiplexed onto RE6, RE5, RE4 and RE3 r
       +                          espectively
-  1229                           ;	Low-Power Timer1 Oscillator Enable bit
-  1230                           ;	LPT1OSC = OFF, Timer1 configured for higher power operation
-  1231                           ;	MCLR Pin Enable bit
-  1232                           ;	MCLRE = ON, MCLR pin enabled; RG5 input pin disabled
-  1233  300005                     	org	3145733
-  1234  300005  83                 	db	131
-  1235                           
-  1236                           ;Config register CONFIG4L @ 0x300006
-  1237                           ;	Stack Full/Underflow Reset Enable bit
-  1238                           ;	STVREN = ON, Stack full/underflow will cause Reset
-  1239                           ;	Single-Supply ICSP Enable bit
-  1240                           ;	LVP = OFF, Single-Supply ICSP disabled
-  1241                           ;	Boot Block Size Select bits
-  1242                           ;	BBSIZ = BB2K, 1K word (2 Kbytes) Boot Block size
-  1243                           ;	Extended Instruction Set Enable bit
-  1244                           ;	XINST = OFF, Instruction set extension and Indexed Addressing mode disabled (Legacy mo
+  1545                           ;	Low-Power Timer1 Oscillator Enable bit
+  1546                           ;	LPT1OSC = OFF, Timer1 configured for higher power operation
+  1547                           ;	MCLR Pin Enable bit
+  1548                           ;	MCLRE = ON, MCLR pin enabled; RG5 input pin disabled
+  1549  300005                     	org	3145733
+  1550  300005  83                 	db	131
+  1551                           
+  1552                           ;Config register CONFIG4L @ 0x300006
+  1553                           ;	Stack Full/Underflow Reset Enable bit
+  1554                           ;	STVREN = ON, Stack full/underflow will cause Reset
+  1555                           ;	Single-Supply ICSP Enable bit
+  1556                           ;	LVP = OFF, Single-Supply ICSP disabled
+  1557                           ;	Boot Block Size Select bits
+  1558                           ;	BBSIZ = BB2K, 1K word (2 Kbytes) Boot Block size
+  1559                           ;	Extended Instruction Set Enable bit
+  1560                           ;	XINST = OFF, Instruction set extension and Indexed Addressing mode disabled (Legacy mo
       +                          de)
-  1245                           ;	Background Debugger Enable bit
-  1246                           ;	DEBUG = 0x1, unprogrammed default
-  1247  300006                     	org	3145734
-  1248  300006  81                 	db	129
-  1249                           
-  1250                           ; Padding undefined space
-  1251  300007                     	org	3145735
-  1252  300007  FF                 	db	255
-  1253                           
-  1254                           ;Config register CONFIG5L @ 0x300008
-  1255                           ;	Code Protection bit Block 0
-  1256                           ;	CP0 = OFF, Block 0 (000800, 001000 or 002000-003FFFh) not code-protected
-  1257                           ;	Code Protection bit Block 1
-  1258                           ;	CP1 = OFF, Block 1 (004000-007FFFh) not code-protected
-  1259                           ;	Code Protection bit Block 2
-  1260                           ;	CP2 = OFF, Block 2 (008000-00BFFFh) not code-protected
-  1261                           ;	Code Protection bit Block 3
-  1262                           ;	CP3 = OFF, Block 3 (00C000-00FFFFh) not code-protected
-  1263                           ;	Code Protection bit Block 4
-  1264                           ;	CP4 = OFF, Block 4 (010000-013FFFh) not code-protected
-  1265                           ;	Code Protection bit Block 5
-  1266                           ;	CP5 = OFF, Block 5 (014000-017FFFh) not code-protected
-  1267                           ;	Code Protection bit Block 6
-  1268                           ;	CP6 = OFF, Block 6 (01BFFF-018000h) not code-protected
-  1269                           ;	Code Protection bit Block 7
-  1270                           ;	CP7 = OFF, Block 7 (01C000-01FFFFh) not code-protected
-  1271  300008                     	org	3145736
-  1272  300008  FF                 	db	255
-  1273                           
-  1274                           ;Config register CONFIG5H @ 0x300009
-  1275                           ;	Boot Block Code Protection bit
-  1276                           ;	CPB = OFF, Boot Block (000000-0007FFh) not code-protected
-  1277                           ;	Data EEPROM Code Protection bit
-  1278                           ;	CPD = OFF, Data EEPROM not code-protected
-  1279  300009                     	org	3145737
-  1280  300009  C0                 	db	192
-  1281                           
-  1282                           ;Config register CONFIG6L @ 0x30000A
-  1283                           ;	Write Protection bit Block 0
-  1284                           ;	WRT0 = OFF, Block 0 (000800, 001000 or 002000-003FFFh) not write-protected
-  1285                           ;	Write Protection bit Block 1
-  1286                           ;	WRT1 = OFF, Block 1 (004000-007FFFh) not write-protected
-  1287                           ;	Write Protection bit Block 2
-  1288                           ;	WRT2 = OFF, Block 2 (008000-00BFFFh) not write-protected
-  1289                           ;	Write Protection bit Block 3
-  1290                           ;	WRT3 = OFF, Block 3 (00C000-00FFFFh) not write-protected
-  1291                           ;	Write Protection bit Block 4
-  1292                           ;	WRT4 = OFF, Block 4 (010000-013FFFh) not write-protected
-  1293                           ;	Write Protection bit Block 5
-  1294                           ;	WRT5 = OFF, Block 5 (014000-017FFFh) not write-protected
-  1295                           ;	Write Protection bit Block 6
-  1296                           ;	WRT6 = OFF, Block 6 (01BFFF-018000h) not write-protected
-  1297                           ;	Write Protection bit Block 7
-  1298                           ;	WRT7 = OFF, Block 7 (01C000-01FFFFh) not write-protected
-  1299  30000A                     	org	3145738
-  1300  30000A  FF                 	db	255
-  1301                           
-  1302                           ;Config register CONFIG6H @ 0x30000B
-  1303                           ;	Configuration Register Write Protection bit
-  1304                           ;	WRTC = OFF, Configuration registers (300000-3000FFh) not write-protected
-  1305                           ;	Boot Block Write Protection bit
-  1306                           ;	WRTB = OFF, Boot Block (000000-007FFF, 000FFF or 001FFFh) not write-protected
-  1307                           ;	Data EEPROM Write Protection bit
-  1308                           ;	WRTD = OFF, Data EEPROM not write-protected
-  1309  30000B                     	org	3145739
-  1310  30000B  E0                 	db	224
-  1311                           
-  1312                           ;Config register CONFIG7L @ 0x30000C
-  1313                           ;	Table Read Protection bit Block 0
-  1314                           ;	EBTR0 = OFF, Block 0 (000800, 001000 or 002000-003FFFh) not protected from table reads
+  1561                           ;	Background Debugger Enable bit
+  1562                           ;	DEBUG = 0x1, unprogrammed default
+  1563  300006                     	org	3145734
+  1564  300006  81                 	db	129
+  1565                           
+  1566                           ; Padding undefined space
+  1567  300007                     	org	3145735
+  1568  300007  FF                 	db	255
+  1569                           
+  1570                           ;Config register CONFIG5L @ 0x300008
+  1571                           ;	Code Protection bit Block 0
+  1572                           ;	CP0 = OFF, Block 0 (000800, 001000 or 002000-003FFFh) not code-protected
+  1573                           ;	Code Protection bit Block 1
+  1574                           ;	CP1 = OFF, Block 1 (004000-007FFFh) not code-protected
+  1575                           ;	Code Protection bit Block 2
+  1576                           ;	CP2 = OFF, Block 2 (008000-00BFFFh) not code-protected
+  1577                           ;	Code Protection bit Block 3
+  1578                           ;	CP3 = OFF, Block 3 (00C000-00FFFFh) not code-protected
+  1579                           ;	Code Protection bit Block 4
+  1580                           ;	CP4 = OFF, Block 4 (010000-013FFFh) not code-protected
+  1581                           ;	Code Protection bit Block 5
+  1582                           ;	CP5 = OFF, Block 5 (014000-017FFFh) not code-protected
+  1583                           ;	Code Protection bit Block 6
+  1584                           ;	CP6 = OFF, Block 6 (01BFFF-018000h) not code-protected
+  1585                           ;	Code Protection bit Block 7
+  1586                           ;	CP7 = OFF, Block 7 (01C000-01FFFFh) not code-protected
+  1587  300008                     	org	3145736
+  1588  300008  FF                 	db	255
+  1589                           
+  1590                           ;Config register CONFIG5H @ 0x300009
+  1591                           ;	Boot Block Code Protection bit
+  1592                           ;	CPB = OFF, Boot Block (000000-0007FFh) not code-protected
+  1593                           ;	Data EEPROM Code Protection bit
+  1594                           ;	CPD = OFF, Data EEPROM not code-protected
+  1595  300009                     	org	3145737
+  1596  300009  C0                 	db	192
+  1597                           
+  1598                           ;Config register CONFIG6L @ 0x30000A
+  1599                           ;	Write Protection bit Block 0
+  1600                           ;	WRT0 = OFF, Block 0 (000800, 001000 or 002000-003FFFh) not write-protected
+  1601                           ;	Write Protection bit Block 1
+  1602                           ;	WRT1 = OFF, Block 1 (004000-007FFFh) not write-protected
+  1603                           ;	Write Protection bit Block 2
+  1604                           ;	WRT2 = OFF, Block 2 (008000-00BFFFh) not write-protected
+  1605                           ;	Write Protection bit Block 3
+  1606                           ;	WRT3 = OFF, Block 3 (00C000-00FFFFh) not write-protected
+  1607                           ;	Write Protection bit Block 4
+  1608                           ;	WRT4 = OFF, Block 4 (010000-013FFFh) not write-protected
+  1609                           ;	Write Protection bit Block 5
+  1610                           ;	WRT5 = OFF, Block 5 (014000-017FFFh) not write-protected
+  1611                           ;	Write Protection bit Block 6
+  1612                           ;	WRT6 = OFF, Block 6 (01BFFF-018000h) not write-protected
+  1613                           ;	Write Protection bit Block 7
+  1614                           ;	WRT7 = OFF, Block 7 (01C000-01FFFFh) not write-protected
+  1615  30000A                     	org	3145738
+  1616  30000A  FF                 	db	255
+  1617                           
+  1618                           ;Config register CONFIG6H @ 0x30000B
+  1619                           ;	Configuration Register Write Protection bit
+  1620                           ;	WRTC = OFF, Configuration registers (300000-3000FFh) not write-protected
+  1621                           ;	Boot Block Write Protection bit
+  1622                           ;	WRTB = OFF, Boot Block (000000-007FFF, 000FFF or 001FFFh) not write-protected
+  1623                           ;	Data EEPROM Write Protection bit
+  1624                           ;	WRTD = OFF, Data EEPROM not write-protected
+  1625  30000B                     	org	3145739
+  1626  30000B  E0                 	db	224
+  1627                           
+  1628                           ;Config register CONFIG7L @ 0x30000C
+  1629                           ;	Table Read Protection bit Block 0
+  1630                           ;	EBTR0 = OFF, Block 0 (000800, 001000 or 002000-003FFFh) not protected from table reads
       +                           executed in other blocks
-  1315                           ;	Table Read Protection bit Block 1
-  1316                           ;	EBTR1 = OFF, Block 1 (004000-007FFFh) not protected from table reads executed in other
+  1631                           ;	Table Read Protection bit Block 1
+  1632                           ;	EBTR1 = OFF, Block 1 (004000-007FFFh) not protected from table reads executed in other
       +                           blocks
-  1317                           ;	Table Read Protection bit Block 2
-  1318                           ;	EBTR2 = OFF, Block 2 (008000-00BFFFh) not protected from table reads executed in other
+  1633                           ;	Table Read Protection bit Block 2
+  1634                           ;	EBTR2 = OFF, Block 2 (008000-00BFFFh) not protected from table reads executed in other
       +                           blocks
-  1319                           ;	Table Read Protection bit Block 3
-  1320                           ;	EBTR3 = OFF, Block 3 (00C000-00FFFFh) not protected from table reads executed in other
+  1635                           ;	Table Read Protection bit Block 3
+  1636                           ;	EBTR3 = OFF, Block 3 (00C000-00FFFFh) not protected from table reads executed in other
       +                           blocks
-  1321                           ;	Table Read Protection bit Block 4
-  1322                           ;	EBTR4 = OFF, Block 4 (010000-013FFFh) not protected from table reads executed in other
+  1637                           ;	Table Read Protection bit Block 4
+  1638                           ;	EBTR4 = OFF, Block 4 (010000-013FFFh) not protected from table reads executed in other
       +                           blocks
-  1323                           ;	Table Read Protection bit Block 5
-  1324                           ;	EBTR5 = OFF, Block 5 (014000-017FFFh) not protected from table reads executed in other
+  1639                           ;	Table Read Protection bit Block 5
+  1640                           ;	EBTR5 = OFF, Block 5 (014000-017FFFh) not protected from table reads executed in other
       +                           blocks
-  1325                           ;	Table Read Protection bit Block 6
-  1326                           ;	EBTR6 = OFF, Block 6 (018000-01BFFFh) not protected from table reads executed in other
+  1641                           ;	Table Read Protection bit Block 6
+  1642                           ;	EBTR6 = OFF, Block 6 (018000-01BFFFh) not protected from table reads executed in other
       +                           blocks
-  1327                           ;	Table Read Protection bit Block 7
-  1328                           ;	EBTR7 = OFF, Block 7 (01C000-01FFFFh) not protected from table reads executed in other
+  1643                           ;	Table Read Protection bit Block 7
+  1644                           ;	EBTR7 = OFF, Block 7 (01C000-01FFFFh) not protected from table reads executed in other
       +                           blocks
-  1329  30000C                     	org	3145740
-  1330  30000C  FF                 	db	255
-  1331                           
-  1332                           ;Config register CONFIG7H @ 0x30000D
-  1333                           ;	Boot Block Table Read Protection bit
-  1334                           ;	EBTRB = OFF, Boot Block (000000-007FFF, 000FFF or 001FFFh) not protected from table re
+  1645  30000C                     	org	3145740
+  1646  30000C  FF                 	db	255
+  1647                           
+  1648                           ;Config register CONFIG7H @ 0x30000D
+  1649                           ;	Boot Block Table Read Protection bit
+  1650                           ;	EBTRB = OFF, Boot Block (000000-007FFF, 000FFF or 001FFFh) not protected from table re
       +                          ads executed in other blocks
-  1335  30000D                     	org	3145741
-  1336  30000D  40                 	db	64
-  1337                           tosu	equ	0xFFF
-  1338                           tosh	equ	0xFFE
-  1339                           tosl	equ	0xFFD
-  1340                           stkptr	equ	0xFFC
-  1341                           pclatu	equ	0xFFB
-  1342                           pclath	equ	0xFFA
-  1343                           pcl	equ	0xFF9
-  1344                           tblptru	equ	0xFF8
-  1345                           tblptrh	equ	0xFF7
-  1346                           tblptrl	equ	0xFF6
-  1347                           tablat	equ	0xFF5
-  1348                           prodh	equ	0xFF4
-  1349                           prodl	equ	0xFF3
-  1350                           indf0	equ	0xFEF
-  1351                           postinc0	equ	0xFEE
-  1352                           postdec0	equ	0xFED
-  1353                           preinc0	equ	0xFEC
-  1354                           plusw0	equ	0xFEB
-  1355                           fsr0h	equ	0xFEA
-  1356                           fsr0l	equ	0xFE9
-  1357                           wreg	equ	0xFE8
-  1358                           indf1	equ	0xFE7
-  1359                           postinc1	equ	0xFE6
-  1360                           postdec1	equ	0xFE5
-  1361                           preinc1	equ	0xFE4
-  1362                           plusw1	equ	0xFE3
-  1363                           fsr1h	equ	0xFE2
-  1364                           fsr1l	equ	0xFE1
-  1365                           bsr	equ	0xFE0
-  1366                           indf2	equ	0xFDF
-  1367                           postinc2	equ	0xFDE
-  1368                           postdec2	equ	0xFDD
-  1369                           preinc2	equ	0xFDC
-  1370                           plusw2	equ	0xFDB
-  1371                           fsr2h	equ	0xFDA
-  1372                           fsr2l	equ	0xFD9
-  1373                           status	equ	0xFD8
+  1651  30000D                     	org	3145741
+  1652  30000D  40                 	db	64
+  1653                           tosu	equ	0xFFF
+  1654                           tosh	equ	0xFFE
+  1655                           tosl	equ	0xFFD
+  1656                           stkptr	equ	0xFFC
+  1657                           pclatu	equ	0xFFB
+  1658                           pclath	equ	0xFFA
+  1659                           pcl	equ	0xFF9
+  1660                           tblptru	equ	0xFF8
+  1661                           tblptrh	equ	0xFF7
+  1662                           tblptrl	equ	0xFF6
+  1663                           tablat	equ	0xFF5
+  1664                           prodh	equ	0xFF4
+  1665                           prodl	equ	0xFF3
+  1666                           indf0	equ	0xFEF
+  1667                           postinc0	equ	0xFEE
+  1668                           postdec0	equ	0xFED
+  1669                           preinc0	equ	0xFEC
+  1670                           plusw0	equ	0xFEB
+  1671                           fsr0h	equ	0xFEA
+  1672                           fsr0l	equ	0xFE9
+  1673                           wreg	equ	0xFE8
+  1674                           indf1	equ	0xFE7
+  1675                           postinc1	equ	0xFE6
+  1676                           postdec1	equ	0xFE5
+  1677                           preinc1	equ	0xFE4
+  1678                           plusw1	equ	0xFE3
+  1679                           fsr1h	equ	0xFE2
+  1680                           fsr1l	equ	0xFE1
+  1681                           bsr	equ	0xFE0
+  1682                           indf2	equ	0xFDF
+  1683                           postinc2	equ	0xFDE
+  1684                           postdec2	equ	0xFDD
+  1685                           preinc2	equ	0xFDC
+  1686                           plusw2	equ	0xFDB
+  1687                           fsr2h	equ	0xFDA
+  1688                           fsr2l	equ	0xFD9
+  1689                           status	equ	0xFD8
 
 Data Sizes:
     Strings     0
@@ -1509,7 +1853,7 @@ Pointer List with Targets:
 
 Critical Paths under _main in COMRAM
 
-    None.
+    _main->_buttonCallback
 
 Critical Paths under _service in COMRAM
 
@@ -1648,13 +1992,14 @@ Call Graph Tables:
  ---------------------------------------------------------------------------------
  (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
  ---------------------------------------------------------------------------------
- (0) _main                                                81    81      0       0
-                                              0 COMRAM    81    81      0
+ (0) _main                                                80    80      0       0
+                                              1 COMRAM    80    80      0
                      _buttonCallback
+               _displayRequestHandle
                      _serialCallback
                       _setInterrupts
                               _setIo
-                             _setSPI
+                    _setSPIInterrupt
                           _setSerial
                  _setSwitchInterrput
  ---------------------------------------------------------------------------------
@@ -1662,51 +2007,76 @@ Call Graph Tables:
  ---------------------------------------------------------------------------------
  (1) _setSerial                                            0     0      0       0
  ---------------------------------------------------------------------------------
- (1) _setSPI                                               0     0      0       0
+ (1) _setSPIInterrupt                                      0     0      0       0
  ---------------------------------------------------------------------------------
  (1) _setIo                                                0     0      0       0
  ---------------------------------------------------------------------------------
  (1) _setInterrupts                                        0     0      0       0
  ---------------------------------------------------------------------------------
  (1) _serialCallback                                       0     0      0       0
+                      _transmittRead
  ---------------------------------------------------------------------------------
- (1) _buttonCallback                                       0     0      0       0
+ (2) _transmittRead                                        0     0      0       0
  ---------------------------------------------------------------------------------
- Estimated maximum stack depth 1
+ (1) _displayRequestHandle                                 0     0      0       0
+                         _displaySPI
+                      _displaySerial
+ ---------------------------------------------------------------------------------
+ (2) _displaySerial                                        0     0      0       0
+                    _displayCallback
+ ---------------------------------------------------------------------------------
+ (2) _displaySPI                                           0     0      0       0
+                    _displayCallback
+ ---------------------------------------------------------------------------------
+ (3) _displayCallback                                      0     0      0       0
+ ---------------------------------------------------------------------------------
+ (1) _buttonCallback                                       1     1      0       0
+                                              0 COMRAM     1     1      0
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 3
  ---------------------------------------------------------------------------------
  (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
  ---------------------------------------------------------------------------------
- (2) _service                                              0     0      0       0
+ (4) _service                                              0     0      0       0
                    _interruptService
  ---------------------------------------------------------------------------------
- (3) _interruptService                                     0     0      0       0
+ (5) _interruptService                                     0     0      0       0
             _processInterruptService
  ---------------------------------------------------------------------------------
- (4) _processInterruptService                              0     0      0       0
+ (6) _processInterruptService                              0     0      0       0
                           _SPIHandle
+                       _buttonHandle
                        _serialHandle
  ---------------------------------------------------------------------------------
- (5) _serialHandle                                         0     0      0       0
+ (7) _serialHandle                                         0     0      0       0
  ---------------------------------------------------------------------------------
- (5) _SPIHandle                                            0     0      0       0
+ (7) _buttonHandle                                         0     0      0       0
+ ---------------------------------------------------------------------------------
+ (7) _SPIHandle                                            0     0      0       0
                             _spiRead
  ---------------------------------------------------------------------------------
- (6) _spiRead                                              0     0      0       0
+ (8) _spiRead                                              0     0      0       0
                      _spiReceiveWait
  ---------------------------------------------------------------------------------
- (7) _spiReceiveWait                                       0     0      0       0
+ (9) _spiReceiveWait                                       0     0      0       0
  ---------------------------------------------------------------------------------
- Estimated maximum stack depth 7
+ Estimated maximum stack depth 9
  ---------------------------------------------------------------------------------
 
  Call Graph Graphs:
 
  _main (ROOT)
    _buttonCallback
+   _displayRequestHandle
+     _displaySPI
+       _displayCallback
+     _displaySerial
+       _displayCallback
    _serialCallback
+     _transmittRead
    _setInterrupts
    _setIo
-   _setSPI
+   _setSPIInterrupt
    _setSerial
    _setSwitchInterrput
 
@@ -1716,6 +2086,7 @@ Call Graph Tables:
        _SPIHandle
          _spiRead
            _spiReceiveWait
+       _buttonHandle
        _serialHandle
 
  Address spaces:
@@ -1766,136 +2137,168 @@ CODE                 0      0       0       0        0.0%
 
 
 Microchip Technology PIC18 Macro Assembler V2.32 build 20210201212658 
-Symbol Table                                                                                   Tue Jun 22 12:57:52 2021
+Symbol Table                                                                                   Sun Jun 27 07:24:31 2021
 
         ?_processInterruptService 0001                       _SSPSTATbits 000FC7  
-                              l35 108A                                u90 1070  
-                             l130 119C                               l133 11AC  
-                             l142 11E4                               l136 11EA  
-                             l139 11F0                               l190 11F6  
-                             l182 11FE                               l931 119E  
-                             l933 11A6                               l941 118A  
-                             l951 11EC                               l935 11A8  
-                             l943 1194                               l953 11F2  
-                             l937 11AA                               l945 1198  
-                             l939 11E6                               l947 119A  
-                             l971 1066                               l949 11E0  
-                             l981 109E                               l973 107A  
-                             l965 1052                               l991 10F2  
-                             l983 10A0                               l975 1088  
-                             l967 1056                               l985 10AE  
-                             l977 1098                               l969 105A  
-                             l987 10E4                               l979 109C  
-                             _GIE 007F97                               l989 10EE  
-                             u100 1088                               u101 1084  
-                             u110 1098                               u111 1094  
-                             u120 10AE                               u121 10AA  
-                             u130 10BE                               u131 10B8  
-                             u140 10D2                               u132 10C0  
-                             u141 10CC                               u150 10E4  
-                             u142 10D4                               u151 10E0  
-                             u165 10EC                               u167 10EE  
-                             wreg 000FE8                              _PEIE 007F96  
-                            i2l27 11C4                              i2l72 11BC  
-                            i2l83 11DE                              i2l69 11AE  
-                            i2l86 11D6                              _WUE1 007BF1  
-                            _main 1052                              btemp 0056  
-                            start 000E                      ___param_bank 000000  
-        __end_of_interruptService 11FE                _setSwitchInterrput 11E0  
-                           ?_main 0001                             _BRGH1 007D62  
-                           _CREN1 007D5C                             _FLAGS 0054  
-                           _LATC0 007C58                             _RC1IE 007CED  
-                           _RC1IF 007CF5               ?_setSwitchInterrput 0001  
-                           i2l170 116E                             i2l173 11FC  
-                           i2l185 11CE                             i2l901 11D0  
-                           i2l903 11C8                             i2l911 111C  
-                           i2l921 114C                             i2l913 111E  
-                           i2l905 10FC                             i2l915 112C  
-                           i2l923 114E                             i2l907 110A  
-                           i2l925 115C                             i2l917 113A  
-                           i2l909 1118                             i2l927 116A  
-                           i2l919 1148                             i2l929 11F8  
-                           i2l963 11C0                             i2l893 11AE  
-                           i2l895 11D8                             i2l897 11DC  
-                           _RCREG 000FAE                             _SPEN1 007D5F  
-                           _SPBRG 000FAF                             _PORTD 000F83  
-                           _TRISD 000F95                             _SSPIE 007CEB  
-                           _SSPIF 007CF3                             _TXEN1 007D65  
-                           _TXREG 000FAD                             _setIo 119E  
-              __size_of_SPIHandle 0008                   __end_of_spiRead 11E0  
-                           tablat 000FF5                   __end_of_service 11C8  
-                           ttemp5 0057                             ttemp6 005A  
-                           ttemp7 005E                             status 000FD8  
-           __end_of_setInterrupts 11F2                             wtemp8 0057  
-            ??_setSwitchInterrput 0001                   __initialization 1170  
-                    __end_of_main 10FC                   _readSerialValue 0053  
-                          ??_main 0001                     __activetblptr 000001  
-                          ?_setIo 0001                            _INT0IE 007F94  
-                          _INT0IF 007F91                            i2u1_40 11BC  
-                          i2u1_41 11B8                            i2u2_40 110A  
-                          i2u2_41 1106                            i2u3_40 1118  
-                          i2u3_41 1114                            i2u4_40 112C  
-                          i2u4_41 1128                            i2u5_40 113A  
-                          i2u5_41 1136                            i2u6_40 1148  
-                          i2u6_41 1144                            i2u7_40 115C  
-                          i2u7_41 1158                            i2u8_40 116A  
-                          i2u8_41 1166                            _TRISB0 007C98  
+                              l71 1248                                u90 1188  
+                              u91 1184                               l120 11EC  
+                             l201 1254                               l123 124E  
+                             l230 121A                               l126 1242  
+                             l209 1178                               l233 1192  
+                             l227 1210                               l236 11A6  
+                             l239 125A                               l192 11C2  
+                             l195 1206                               l929 1256  
+                             l961 120C                               l963 1212  
+                             l971 11E6                               l965 1216  
+                             l957 1250                               l973 11E8  
+                             l981 11B2                               l959 1208  
+                             l991 117A                               l975 11EA  
+                             l983 11B6                               l993 1188  
+                             l969 11DE                               l977 1244  
+                             l985 11B8                               l995 118C  
+                             l979 11A8                               l987 123E  
+                             _GIE 007F97                               l997 11A0  
+                             l989 124A                               l999 11A4  
+                             u100 11A0                               u101 119C  
+                             u110 1144                               u111 113E  
+                             u120 1158                               u112 1146  
+                             u121 1152                               u130 116A  
+                             u122 115A                               u131 1166  
+                             u150 10E6                               u160 10FE  
+                             u145 1172                               u161 10FA  
+                             u170 1112                               u147 1174  
+                             u171 110E                               u180 1126  
+                             u181 1122                               wreg 000FE8  
+                  ?_displaySerial 0001            ??_displayRequestHandle 0001  
+                            l1001 11FE                              l1003 1202  
+                            l1005 1134                              l1021 10F0  
+                            l1013 10C8                              l1007 116A  
+                            l1031 1116                              l1023 10FE  
+                            l1015 10CC                              l1009 1174  
+                            l1033 1118                              l1025 1102  
+                            l1017 10D0                              l1035 1126  
+                            l1027 1104                              l1019 10DC  
+                            l1037 112A                              l1029 1112  
+                            _PEIE 007F96                              i2l31 1222  
+                            i2l82 11FC                              i2l93 123C  
+                            i2l79 11EE                              i2l96 1234  
+                            _WUE1 007BF1                              _main 10C8  
+                            btemp 0056                              start 000E  
+                    ___param_bank 000000          __end_of_interruptService 1262  
+              _setSwitchInterrput 123E                             ?_main 0001  
+                           _BRGH1 007D62                             _CREN1 007D5C  
+                           _FLAGS 0054                             _LATC0 007C58  
+                           _RC1IE 007CED                             _RC1IF 007CF5  
+             ?_setSwitchInterrput 0001                             i2l212 1264  
+                           i2l156 10C6                             i2l159 1260  
+                           i2l198 122C                             i2l915 11EE  
+                           i2l923 122E                             i2l931 1052  
+                           i2l917 1236                             i2l925 1226  
+                           i2l941 1082                             i2l933 1060  
+                           i2l919 123A                             i2l927 1262  
+                           i2l951 10B2                             i2l943 1090  
+                           i2l935 106E                             i2l953 10C0  
+                           i2l945 109E                             i2l937 1072  
+                           i2l955 10C4                             i2l947 10A2  
+                           i2l939 1074                             i2l949 10A4  
+                           i2l967 125C                             _RCREG 000FAE  
+                           _SPEN1 007D5F                             _SPBRG 000FAF  
+                           _PORTD 000F83                             _TRISD 000F95  
+                           _SSPIE 007CEB                             _SSPIF 007CF3  
+                           _TXEN1 007D65                             _TXREG 000FAD  
+                   _transmittRead 1250                             _setIo 11DE  
+                ?_displayCallback 0001                __size_of_SPIHandle 0008  
+                 __end_of_spiRead 123E                             tablat 000FF5  
+                 __end_of_service 1226                             ttemp5 0057  
+                           ttemp6 005A                             ttemp7 005E  
+                           status 000FD8             __end_of_setInterrupts 1250  
+                           wtemp8 0057              ??_setSwitchInterrput 0001  
+                 __initialization 11C4                      __end_of_main 1134  
+                 _readSerialValue 0053                            ??_main 0002  
+                   __activetblptr 000001                    ?_transmittRead 0001  
+                 ??_displaySerial 0001                            ?_setIo 0001  
+                   ?_buttonHandle 0001                            _INT0IE 007F94  
+                          _INT0IF 007F91                            i2l1011 121E  
+                          _RCREG1 000FAE                            i2u1_40 11FC  
+                          i2u1_41 11F8                            i2u2_40 1060  
+                          i2u2_41 105C                            i2u3_40 106E  
+                          i2u3_41 106A                            i2u4_40 1082  
+                          i2u4_41 107E                            i2u5_40 1090  
+                          i2u5_41 108C                            i2u6_40 109E  
+                          i2u6_41 109A                            i2u7_40 10B2  
+                          i2u7_41 10AE                            i2u8_40 10C0  
+                          i2u8_41 10BC                            _TRISB0 007C98  
                           _TRISC2 007CA2                            _TRISC3 007CA3  
                           _TRISC4 007CA4                            _TRISC5 007CA5  
                           _TRISC6 007CA6                            _TRISC7 007CA7  
-                          _SSPBUF 000FC9                 __end_of_SPIHandle 11D8  
-                          _setSPI 11E6           __size_of_serialCallback 0002  
+                          _SSPBUF 000FC9                            _TXREG1 000FAD  
+               __end_of_SPIHandle 1236           __size_of_serialCallback 000A  
                           isa$std 000001                      __mediumconst 0000  
                           tblptrh 000FF7                            tblptrl 000FF6  
                           tblptru 000FF8                         ??_spiRead 0001  
-                       ??_service 0001                        __accesstop 0060  
-         __end_of__initialization 1178                     ___rparam_used 000001  
-                  __pcstackCOMRAM 0001                     __end_of_setIo 11AE  
-__size_of_processInterruptService 0074                           ??_setIo 0001  
-               ?_interruptService 0001           __size_of_spiReceiveWait 0010  
-              __size_of_setSerial 0014                           ?_setSPI 0001  
+                       ??_service 0001                    ??_buttonHandle 0001  
+                      __accesstop 0060           __end_of__initialization 11CC  
+                   ___rparam_used 000001                    __pcstackCOMRAM 0001  
+                   __end_of_setIo 11EE                   ??_transmittRead 0001  
+        __size_of_setSPIInterrupt 0006  __size_of_processInterruptService 0076  
+                         ??_setIo 0001                 ?_interruptService 0001  
+         __size_of_spiReceiveWait 0010                __size_of_setSerial 001C  
               ??_interruptService 0001                           _INTEDG0 007F8E  
-                         _SSPSTAT 000FC7           __size_of_buttonCallback 0006  
+                      _displaySPI 1212                           _SSPSTAT 000FC7  
+         __size_of_buttonCallback 0046     __size_of_displayRequestHandle 002E  
                    ?_serialHandle 0001                           __Hparam 0000  
-                         __Lparam 0000                      __psmallconst 1000  
-                  _serialCallback 11FE                           __pcinit 1170  
-                 __size_of_setSPI 0006                           __ramtop 1000  
-                         __ptext0 1052                           __ptext1 11E0  
-                         __ptext2 118A                           __ptext3 11E6  
-                         __ptext4 119E                           __ptext5 11EC  
-                         __ptext6 11FE                           __ptext7 11F2  
-                         __ptext9 11F8                           _spiRead 11D8  
-                         _service 0008                    __pintcode_body 11BE  
-            end_of_initialization 1178                 __end_of_setSerial 119E  
-                  ??_serialHandle 0001                           int_func 11BE  
-     __size_of_setSwitchInterrput 0006                 __end_ofmain@F4601 1051  
-          __end_of_serialCallback 1200                           postinc2 000FDE  
-          __size_of_setInterrupts 0006                         _SPIHandle 11D0  
-         _processInterruptService 10FC                   ?_serialCallback 0001  
-                  _spiReceiveWait 11AE                    __end_of_setSPI 11EC  
-                      ?_SPIHandle 0001               start_initialization 1170  
-                  _buttonCallback 11F2                     _setInterrupts 11EC  
-                    _readSPIValue 0055            __end_of_spiReceiveWait 11BE  
-                        ??_setSPI 0001              __end_of_serialHandle 11D0  
-       ??_processInterruptService 0001                       __pbssCOMRAM 0052  
-          __end_of_buttonCallback 11F8         __size_of_interruptService 0006  
+                         __Lparam 0000              __end_of_buttonHandle 1266  
+                    __psmallconst 1000                    _serialCallback 11FE  
+                         __pcinit 11C4                           __ramtop 1000  
+                         __ptext0 10C8                           __ptext1 123E  
+                         __ptext2 11A8                           __ptext3 1244  
+                         __ptext4 11DE                           __ptext5 124A  
+                         __ptext6 11FE                           __ptext7 1250  
+                         __ptext8 117A                           __ptext9 1208  
+                         _spiRead 1236                           _service 0008  
+                  __pintcode_body 121C              end_of_initialization 11CC  
+               __end_of_setSerial 11C4                    ??_serialHandle 0001  
+                         int_func 121C                 ??_setSPIInterrupt 0001  
+     __size_of_setSwitchInterrput 0006                 __end_ofmain@F4608 1051  
+        __size_of_displayCallback 0006            __end_of_serialCallback 1208  
+                         postinc2 000FDE            __size_of_setInterrupts 0006  
+                       _SPIHandle 122E           _processInterruptService 1052  
+                     ?_displaySPI 0001             __end_of_displaySerial 1212  
+                 ?_serialCallback 0001                    _spiReceiveWait 11EE  
+                      ?_SPIHandle 0001               start_initialization 11C4  
+                  _buttonCallback 1134                     _setInterrupts 124A  
+                    _readSPIValue 0055             __size_of_buttonHandle 0004  
+          __end_of_spiReceiveWait 11FE               __size_of_displaySPI 000A  
+               ??_displayCallback 0001              __end_of_serialHandle 122E  
+       ??_processInterruptService 0001             __end_of_transmittRead 1256  
+                     __pbssCOMRAM 0052            __end_of_buttonCallback 117A  
+       __size_of_interruptService 0006                      _buttonHandle 1262  
                   ?_setInterrupts 0001                   ?_spiReceiveWait 0001  
-                       __pintcode 0008                       __smallconst 1000  
-                     ??_SPIHandle 0001                          ?_spiRead 0001  
+                       __pintcode 0008      __end_of_displayRequestHandle 11A8  
+                     __smallconst 1000                       ??_SPIHandle 0001  
+                 _setSPIInterrupt 1244                          ?_spiRead 0001  
                  ?_buttonCallback 0001                          ?_service 0001  
-                  __size_of_setIo 0010   __end_of_processInterruptService 1170  
-                       _setSerial 118A                         main@F4601 1001  
-                        _SSP1CON1 000FC6                   ??_setInterrupts 0001  
-      __end_of_setSwitchInterrput 11E6                  ??_serialCallback 0001  
-                      ?_setSerial 0001                          __Hrparam 0000  
-                        __Lrparam 0000                      __Lsmallconst 1000  
-           __size_of_serialHandle 0008                  _interruptService 11F8  
-                        __ptext10 10FC                          __ptext11 11C8  
-                        __ptext12 11D0                          __ptext13 11D8  
-                        __ptext14 11AE                  __size_of_spiRead 0008  
-                __size_of_service 11C0                     __size_of_main 00AA  
-                    _serialHandle 11C8                          isa$xinst 000000  
+                  __size_of_setIo 0010   __end_of_processInterruptService 10C8  
+                       _setSerial 11A8                         main@F4608 1001  
+                        _SSP1CON1 000FC6                      ??_displaySPI 0001  
+                 ??_setInterrupts 0001        __end_of_setSwitchInterrput 1244  
+                ??_serialCallback 0001                        ?_setSerial 0001  
+                        __Hrparam 0000                          __Lrparam 0000  
+                    __Lsmallconst 1000             __size_of_serialHandle 0008  
+              __end_of_displaySPI 121C           __end_of_setSPIInterrupt 124A  
+                _interruptService 125C                          __ptext10 1212  
+                        __ptext11 1256                          __ptext20 11EE  
+                        __ptext12 1134                          __ptext14 125C  
+                        __ptext15 1052                          __ptext16 1226  
+                        __ptext17 1262                          __ptext18 122E  
+                        __ptext19 1236                  __size_of_spiRead 0008  
+                __size_of_service 121E              _displayRequestHandle 117A  
+                   __size_of_main 006C                      _serialHandle 1226  
+                 _displayCallback 1256                          isa$xinst 000000  
                         _outValue 0052                          int$flags 0056  
-                        main@test 0002                          intlevel2 0000  
+          __size_of_displaySerial 000A                          main@test 0002  
+                        intlevel2 0000             ?_displayRequestHandle 0001  
                 ??_spiReceiveWait 0001                       ??_setSerial 0001  
-                ??_buttonCallback 0001  
+                ?_setSPIInterrupt 0001                  ??_buttonCallback 0001  
+                   _displaySerial 1208           __end_of_displayCallback 125C  
+          __size_of_transmittRead 0006  

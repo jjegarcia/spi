@@ -1,29 +1,5 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"16509 /Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h
-[; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 16509: extern volatile __bit TXEN1 __attribute__((address(0x7D65)));
-[v _TXEN1 `Vb ~T0 @X0 0 e@32101 ]
-"13755
-[; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 13755: extern volatile __bit BRGH1 __attribute__((address(0x7D62)));
-[v _BRGH1 `Vb ~T0 @X0 0 e@32098 ]
-"15846
-[; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 15846: extern volatile __bit SPEN1 __attribute__((address(0x7D5F)));
-[v _SPEN1 `Vb ~T0 @X0 0 e@32095 ]
-"14037
-[; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 14037: extern volatile __bit CREN1 __attribute__((address(0x7D5C)));
-[v _CREN1 `Vb ~T0 @X0 0 e@32092 ]
-"16602
-[; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 16602: extern volatile __bit WUE1 __attribute__((address(0x7BF1)));
-[v _WUE1 `Vb ~T0 @X0 0 e@31729 ]
-"8975
-[; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 8975: extern volatile unsigned char SPBRG __attribute__((address(0xFAF)));
-[v _SPBRG `Vuc ~T0 @X0 0 e@4015 ]
-"15438
-[; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 15438: extern volatile __bit RC1IF __attribute__((address(0x7CF5)));
-[v _RC1IF `Vb ~T0 @X0 0 e@31989 ]
-"15435
-[; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 15435: extern volatile __bit RC1IE __attribute__((address(0x7CED)));
-[v _RC1IE `Vb ~T0 @X0 0 e@31981 ]
-"6123
+"6123 /Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h
 [; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 6123: extern volatile unsigned char TRISD __attribute__((address(0xF95)));
 [v _TRISD `Vuc ~T0 @X0 0 e@3989 ]
 "3195
@@ -38,12 +14,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "16221
 [; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 16221: extern volatile __bit TRISB0 __attribute__((address(0x7C98)));
 [v _TRISB0 `Vb ~T0 @X0 0 e@31896 ]
-"15900
-[; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 15900: extern volatile __bit SSPIF __attribute__((address(0x7CF3)));
-[v _SSPIF `Vb ~T0 @X0 0 e@31987 ]
-"15897
-[; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 15897: extern volatile __bit SSPIE __attribute__((address(0x7CEB)));
-[v _SSPIE `Vb ~T0 @X0 0 e@31979 ]
 "14250
 [; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 14250: extern volatile __bit GIE __attribute__((address(0x7F97)));
 [v _GIE `Vb ~T0 @X0 0 e@32663 ]
@@ -650,110 +620,60 @@ Version 4.0 HI-TECH Software Intermediate Code
 "13453
 [; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 13453: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-"8 init.c
-[; ;init.c: 8: void setSerial(void) {
-[v _setSerial `(v ~T0 @X0 1 ef ]
-{
-[e :U _setSerial ]
-[f ]
-"9
-[; ;init.c: 9:     TXEN1 = 1;
-[e = _TXEN1 -> -> 1 `i `b ]
-"10
-[; ;init.c: 10:     BRGH1 = 0;
-[e = _BRGH1 -> -> 0 `i `b ]
-"12
-[; ;init.c: 12:     SPEN1 = 1;
-[e = _SPEN1 -> -> 1 `i `b ]
-"13
-[; ;init.c: 13:     CREN1 = 1;
-[e = _CREN1 -> -> 1 `i `b ]
-"15
-[; ;init.c: 15:     WUE1 = 0;
-[e = _WUE1 -> -> 0 `i `b ]
-"16
-[; ;init.c: 16:     SPBRG = 0b01000000;
-[e = _SPBRG -> -> 64 `i `uc ]
-"18
-[; ;init.c: 18:     RC1IF = 0;
-[e = _RC1IF -> -> 0 `i `b ]
-"19
-[; ;init.c: 19:     RC1IE = 1;
-[e = _RC1IE -> -> 1 `i `b ]
-"24
-[; ;init.c: 24: }
-[e :UE 501 ]
-}
-"26
-[; ;init.c: 26: void setIo() {
+"9 init.c
+[; ;init.c: 9: void setIo() {
 [v _setIo `(v ~T0 @X0 1 ef ]
 {
 [e :U _setIo ]
 [f ]
-"28
-[; ;init.c: 28:     TRISD = 0x00;
+"11
+[; ;init.c: 11:     TRISD = 0x00;
 [e = _TRISD -> -> 0 `i `uc ]
-"29
-[; ;init.c: 29:     PORTD = 0x00;
+"12
+[; ;init.c: 12:     PORTD = 0x00;
 [e = _PORTD -> -> 0 `i `uc ]
-"30
-[; ;init.c: 30:     TRISC7 = 1;
+"13
+[; ;init.c: 13:     TRISC7 = 1;
 [e = _TRISC7 -> -> 1 `i `b ]
-"31
-[; ;init.c: 31:     TRISC6 = 0;
+"14
+[; ;init.c: 14:     TRISC6 = 0;
 [e = _TRISC6 -> -> 0 `i `b ]
-"32
-[; ;init.c: 32:     TRISB0 = 1;
+"15
+[; ;init.c: 15:     TRISB0 = 1;
 [e = _TRISB0 -> -> 1 `i `b ]
-"33
-[; ;init.c: 33: }
-[e :UE 502 ]
+"16
+[; ;init.c: 16: }
+[e :UE 501 ]
 }
-"35
-[; ;init.c: 35: void setSPI(void) {
-[v _setSPI `(v ~T0 @X0 1 ef ]
-{
-[e :U _setSPI ]
-[f ]
-"36
-[; ;init.c: 36:     SSPIF = 0;
-[e = _SSPIF -> -> 0 `i `b ]
-"37
-[; ;init.c: 37:     SSPIE = 1;
-[e = _SSPIE -> -> 1 `i `b ]
-"38
-[; ;init.c: 38: }
-[e :UE 503 ]
-}
-"40
-[; ;init.c: 40: void setInterrupts(void) {
+"18
+[; ;init.c: 18: void setInterrupts(void) {
 [v _setInterrupts `(v ~T0 @X0 1 ef ]
 {
 [e :U _setInterrupts ]
 [f ]
-"41
-[; ;init.c: 41:     GIE = 1;
+"19
+[; ;init.c: 19:     GIE = 1;
 [e = _GIE -> -> 1 `i `b ]
-"42
-[; ;init.c: 42:     PEIE = 1;
+"20
+[; ;init.c: 20:     PEIE = 1;
 [e = _PEIE -> -> 1 `i `b ]
-"44
-[; ;init.c: 44: }
-[e :UE 504 ]
+"22
+[; ;init.c: 22: }
+[e :UE 502 ]
 }
-"46
-[; ;init.c: 46: void setSwitchInterrput(void) {
+"24
+[; ;init.c: 24: void setSwitchInterrput(void) {
 [v _setSwitchInterrput `(v ~T0 @X0 1 ef ]
 {
 [e :U _setSwitchInterrput ]
 [f ]
-"47
-[; ;init.c: 47:     INTEDG0 = 1;
+"25
+[; ;init.c: 25:     INTEDG0 = 1;
 [e = _INTEDG0 -> -> 1 `i `b ]
-"48
-[; ;init.c: 48:     INT0IE = 1;
+"26
+[; ;init.c: 26:     INT0IE = 1;
 [e = _INT0IE -> -> 1 `i `b ]
-"49
-[; ;init.c: 49: }
-[e :UE 505 ]
+"27
+[; ;init.c: 27: }
+[e :UE 503 ]
 }

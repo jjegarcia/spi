@@ -5,12 +5,12 @@
 
 void displaySerial() {
     outValue = readSerialValue;
-    display();
+    displayCallback();
 }
 
 void displaySPI() {
     outValue = readSPIValue;
-    display();
+    displayCallback();
 }
 
 void displayRequestHandle() {
@@ -25,7 +25,7 @@ void displayRequestHandle() {
     }
 }
 
-void display() {
+void displayCallback() {
     PORTD = outValue;
 }
 

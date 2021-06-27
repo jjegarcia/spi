@@ -13,6 +13,6 @@ unsigned char outValue;
 void displaySerial(void);
 void displaySPI(void);
 void displayRequestHandle(void);
-void display(void);
+void displayCallback(void);
 #endif	/* DISPLAY_H */
 

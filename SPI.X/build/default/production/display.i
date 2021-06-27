@@ -14,7 +14,7 @@ unsigned char outValue;
 void displaySerial(void);
 void displaySPI(void);
 void displayRequestHandle(void);
-void display(void);
+void displayCallback(void);
 # 2 "display.c" 2
 # 1 "./main.h" 1
 # 29 "./main.h"
@@ -7798,8 +7798,11 @@ extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 
 
 unsigned char readSerialValue;
+
+void setSerial(void);
 void serialHandle(void);
 void serialCallback(void);
+void transmittRead(void);
 # 4 "display.c" 2
 # 1 "./spi.h" 1
 # 11 "./spi.h"
@@ -7833,6 +7836,7 @@ typedef enum
 
 unsigned char readSPIValue;
 
+void setSPIInterrupt(void);
 void spiInit(Spi_Type, Spi_Data_Sample, Spi_Clock_Idle, Spi_Transmit_Edge);
 void spiWrite(char);
 unsigned spiDataReady(void);
@@ -7843,12 +7847,12 @@ void SPICallback(void);
 
 void displaySerial() {
     outValue = readSerialValue;
-    display();
+    displayCallback();
 }
 
 void displaySPI() {
     outValue = readSPIValue;
-    display();
+    displayCallback();
 }
 
 void displayRequestHandle() {
@@ -7863,6 +7867,6 @@ void displayRequestHandle() {
     }
 }
 
-void display() {
+void displayCallback() {
     PORTD = outValue;
 }

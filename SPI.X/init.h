@@ -31,8 +31,6 @@
 // more than once.  
 void setInterrupts(void);
 void setIo(void);
-void setSerial(void);
-void setSPI(void); 
 void setSwitchInterrput(void);
 #endif
 

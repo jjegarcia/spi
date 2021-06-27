@@ -11,6 +11,7 @@
 #include "init.h"
 #include "serial.h"
 #include "button.h"
+#include "display.h"
 
 #define _XTAL_FREQ 8000000
 
@@ -20,7 +21,7 @@ void __interrupt() service() {
 
 void main() {
     setIo();
-    setSPI();
+    setSPIInterrupt();
     setSerial();
     setSwitchInterrput();
     setInterrupts();
@@ -31,20 +32,16 @@ void main() {
 
     while (1) {
         if (FLAGS.bits.DISPLAY_READING) {
+            displayRequestHandle();
             FLAGS.bits.DISPLAY_READING = 0;
         }
         if (FLAGS.bits.UART_RECEIVED) {
             serialCallback();
-            FLAGS.bits.DISPLAY_READING = 1;
             FLAGS.bits.UART_RECEIVED = 0;
         }
         if (FLAGS.bits.PUSHED_BUTTON) {
-            if (FLAGS.bits.PREVIOUS_BUTTON_STATE != FLAGS.bits.PUSHED_BUTTON) {
-                FLAGS.bits.PREVIOUS_BUTTON_STATE = FLAGS.bits.PUSHED_BUTTON;
-                buttonCallback();
-            }
+            buttonCallback();
             FLAGS.bits.PUSHED_BUTTON = 0;
-
         }
     }
 }

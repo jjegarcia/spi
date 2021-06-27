@@ -7805,6 +7805,7 @@ typedef enum
 
 unsigned char readSPIValue;
 
+void setSPIInterrupt(void);
 void spiInit(Spi_Type, Spi_Data_Sample, Spi_Clock_Idle, Spi_Transmit_Edge);
 void spiWrite(char);
 unsigned spiDataReady(void);
@@ -7912,20 +7913,31 @@ static void spiService(void);
 # 32 "./init.h"
 void setInterrupts(void);
 void setIo(void);
-void setSerial(void);
-void setSPI(void);
 void setSwitchInterrput(void);
 # 12 "newmain.c" 2
 # 1 "./serial.h" 1
 # 37 "./serial.h"
 unsigned char readSerialValue;
+
+void setSerial(void);
 void serialHandle(void);
 void serialCallback(void);
+void transmittRead(void);
 # 13 "newmain.c" 2
 # 1 "./button.h" 1
 # 38 "./button.h"
 void buttonCallback(void);
+void buttonHandle(void);
 # 14 "newmain.c" 2
+# 1 "./display.h" 1
+# 11 "./display.h"
+unsigned char outValue;
+
+void displaySerial(void);
+void displaySPI(void);
+void displayRequestHandle(void);
+void displayCallback(void);
+# 15 "newmain.c" 2
 
 
 
@@ -7935,7 +7947,7 @@ void __attribute__((picinterrupt(("")))) service() {
 
 void main() {
     setIo();
-    setSPI();
+    setSPIInterrupt();
     setSerial();
     setSwitchInterrput();
     setInterrupts();
@@ -7946,20 +7958,16 @@ void main() {
 
     while (1) {
         if (FLAGS.bits.DISPLAY_READING) {
+            displayRequestHandle();
             FLAGS.bits.DISPLAY_READING = 0;
         }
         if (FLAGS.bits.UART_RECEIVED) {
             serialCallback();
-            FLAGS.bits.DISPLAY_READING = 1;
             FLAGS.bits.UART_RECEIVED = 0;
         }
         if (FLAGS.bits.PUSHED_BUTTON) {
-            if (FLAGS.bits.PREVIOUS_BUTTON_STATE != FLAGS.bits.PUSHED_BUTTON) {
-                FLAGS.bits.PREVIOUS_BUTTON_STATE = FLAGS.bits.PUSHED_BUTTON;
-                buttonCallback();
-            }
+            buttonCallback();
             FLAGS.bits.PUSHED_BUTTON = 0;
-
         }
     }
 }
