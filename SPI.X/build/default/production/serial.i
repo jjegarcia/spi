@@ -7801,28 +7801,20 @@ unsigned char readSerial(void);
 
 void setSerial(void) {
     BRGH1 = 0;
-    SPBRG = 31;
+    SPBRG = 15;
     SYNC1=0;
     SPEN1 = 1;
     RC1IE = 1;
     CREN1 = 1;
     RC1IF = 0;
     TXEN1 = 1;
-
-
-
-
-
     RCREG1 = 0;
-
-
-
 }
 
 void serialCallback(void) {
     FLAGS.bits.DISPLAY_READING = 1;
     FLAGS.bits.DISPLAY_SERIAL_READING = 1;
-    transmittRead();
+
 }
 
 void serialHandle() {

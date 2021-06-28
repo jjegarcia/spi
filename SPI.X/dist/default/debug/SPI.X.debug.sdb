@@ -76,15 +76,13 @@ SPI_ACTIVE_2_IDLE 64
 [v _main main `(v  1 e 1 0 ]
 "5 /Users/jgarc609/github/spi/SPI.X/serial.c
 [v _setSerial setSerial `(v  1 e 1 0 ]
-"25
+"17
 [v _serialCallback serialCallback `(v  1 e 1 0 ]
-"31
+"23
 [v _serialHandle serialHandle `(v  1 e 1 0 ]
-"36
-[v _transmittRead transmittRead `(v  1 e 1 0 ]
-"40
+"32
 [v _writeSerial writeSerial `(v  1 e 1 0 ]
-"44
+"36
 [v _readSerial readSerial `(uc  1 e 1 0 ]
 "8 /Users/jgarc609/github/spi/SPI.X/spi.c
 [v _setSPIInterrupt setSPIInterrupt `(v  1 e 1 0 ]
@@ -264,7 +262,7 @@ SPI_ACTIVE_2_IDLE 64
 "5 /Users/jgarc609/github/spi/SPI.X/serial.c
 [v _setSerial setSerial `(v  1 e 1 0 ]
 {
-"23
+"15
 } 0
 "8 /Users/jgarc609/github/spi/SPI.X/spi.c
 [v _setSPIInterrupt setSPIInterrupt `(v  1 e 1 0 ]
@@ -281,23 +279,10 @@ SPI_ACTIVE_2_IDLE 64
 {
 "22
 } 0
-"25 /Users/jgarc609/github/spi/SPI.X/serial.c
+"17 /Users/jgarc609/github/spi/SPI.X/serial.c
 [v _serialCallback serialCallback `(v  1 e 1 0 ]
 {
-"29
-} 0
-"36
-[v _transmittRead transmittRead `(v  1 e 1 0 ]
-{
-"38
-} 0
-"40
-[v _writeSerial writeSerial `(v  1 e 1 0 ]
-{
-[v writeSerial@value value `uc  1 a 1 wreg ]
-[v writeSerial@value value `uc  1 a 1 wreg ]
-[v writeSerial@value value `uc  1 a 1 0 ]
-"42
+"21
 } 0
 "16 /Users/jgarc609/github/spi/SPI.X/display.c
 [v _displayRequestHandle displayRequestHandle `(v  1 e 1 0 ]
@@ -339,15 +324,15 @@ SPI_ACTIVE_2_IDLE 64
 {
 "26
 } 0
-"31 /Users/jgarc609/github/spi/SPI.X/serial.c
+"23 /Users/jgarc609/github/spi/SPI.X/serial.c
 [v _serialHandle serialHandle `(v  1 e 1 0 ]
 {
-"34
+"26
 } 0
-"44
+"36
 [v _readSerial readSerial `(uc  1 e 1 0 ]
 {
-"46
+"38
 } 0
 "11 /Users/jgarc609/github/spi/SPI.X/button.c
 [v _buttonHandle buttonHandle `(v  1 e 1 0 ]
