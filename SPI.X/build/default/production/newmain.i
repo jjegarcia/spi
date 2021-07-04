@@ -7911,9 +7911,10 @@ static void spiService(void);
 # 11 "newmain.c" 2
 # 1 "./init.h" 1
 # 32 "./init.h"
+void setButtonIo(void);
 void setInterrupts(void);
 void setIo(void);
-void setSwitchInterrput(void);
+void setButtonInterrput(void);
 # 12 "newmain.c" 2
 # 1 "./serial.h" 1
 # 37 "./serial.h"
@@ -7955,7 +7956,8 @@ void main() {
     setSerialIo();
     setSerial();
     setupDisplayIo();
-    setSwitchInterrput();
+    setButtonInterrput();
+    setButtonIo();
     setInterrupts();
 
 

@@ -1,8 +1,5 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"16221 /Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h
-[; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 16221: extern volatile __bit TRISB0 __attribute__((address(0x7C98)));
-[v _TRISB0 `Vb ~T0 @X0 0 e@31896 ]
-"14250
+"14250 /Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h
 [; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 14250: extern volatile __bit GIE __attribute__((address(0x7F97)));
 [v _GIE `Vb ~T0 @X0 0 e@32663 ]
 "15273
@@ -615,41 +612,38 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U _setIo ]
 [f ]
 "11
-[; ;init.c: 11:     TRISB0 = 1;
-[e = _TRISB0 -> -> 1 `i `b ]
-"12
-[; ;init.c: 12: }
+[; ;init.c: 11: }
 [e :UE 501 ]
 }
-"14
-[; ;init.c: 14: void setInterrupts(void) {
+"13
+[; ;init.c: 13: void setInterrupts(void) {
 [v _setInterrupts `(v ~T0 @X0 1 ef ]
 {
 [e :U _setInterrupts ]
 [f ]
-"15
-[; ;init.c: 15:     GIE = 1;
+"14
+[; ;init.c: 14:     GIE = 1;
 [e = _GIE -> -> 1 `i `b ]
-"16
-[; ;init.c: 16:     PEIE = 1;
+"15
+[; ;init.c: 15:     PEIE = 1;
 [e = _PEIE -> -> 1 `i `b ]
-"18
-[; ;init.c: 18: }
+"17
+[; ;init.c: 17: }
 [e :UE 502 ]
 }
-"20
-[; ;init.c: 20: void setSwitchInterrput(void) {
-[v _setSwitchInterrput `(v ~T0 @X0 1 ef ]
+"19
+[; ;init.c: 19: void setButtonInterrput(void) {
+[v _setButtonInterrput `(v ~T0 @X0 1 ef ]
 {
-[e :U _setSwitchInterrput ]
+[e :U _setButtonInterrput ]
 [f ]
-"21
-[; ;init.c: 21:     INTEDG0 = 1;
+"20
+[; ;init.c: 20:     INTEDG0 = 1;
 [e = _INTEDG0 -> -> 1 `i `b ]
-"22
-[; ;init.c: 22:     INT0IE = 1;
+"21
+[; ;init.c: 21:     INT0IE = 1;
 [e = _INT0IE -> -> 1 `i `b ]
-"23
-[; ;init.c: 23: }
+"22
+[; ;init.c: 22: }
 [e :UE 503 ]
 }

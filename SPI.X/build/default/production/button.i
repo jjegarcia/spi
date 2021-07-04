@@ -7793,6 +7793,9 @@ void buttonCallback(void);
 void buttonHandle(void);
 # 3 "button.c" 2
 
+void setButtonIo(void){
+        TRISB0 = 1;
+}
 void buttonCallback(void) {
     if (FLAGS.bits.PREVIOUS_BUTTON_STATE != FLAGS.bits.PUSHED_BUTTON) {
         FLAGS.bits.PREVIOUS_BUTTON_STATE = FLAGS.bits.PUSHED_BUTTON;

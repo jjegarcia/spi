@@ -13,8 +13,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;./interruptService.h: 28: void interruptService(void);
 [v _interruptService `(v ~T0 @X0 0 ef ]
 [p mainexit ]
-"33 ./init.h
-[; ;./init.h: 33: void setIo(void);
+"34 ./init.h
+[; ;./init.h: 34: void setIo(void);
 [v _setIo `(v ~T0 @X0 0 ef ]
 "41 ./spi.h
 [; ;./spi.h: 41: void setSPIInterrupt(void);
@@ -28,11 +28,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 "13 ./display.h
 [; ;./display.h: 13: void setupDisplayIo(void);
 [v _setupDisplayIo `(v ~T0 @X0 0 ef ]
-"34 ./init.h
-[; ;./init.h: 34: void setSwitchInterrput(void);
-[v _setSwitchInterrput `(v ~T0 @X0 0 ef ]
+"35 ./init.h
+[; ;./init.h: 35: void setButtonInterrput(void);
+[v _setButtonInterrput `(v ~T0 @X0 0 ef ]
 "32
-[; ;./init.h: 32: void setInterrupts(void);
+[; ;./init.h: 32: void setButtonIo(void);
+[v _setButtonIo `(v ~T0 @X0 0 ef ]
+"33
+[; ;./init.h: 33: void setInterrupts(void);
 [v _setInterrupts `(v ~T0 @X0 0 ef ]
 "16 ./display.h
 [; ;./display.h: 16: void displayRequestHandle(void);
@@ -786,16 +789,19 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;newmain.c: 27:     setupDisplayIo();
 [e ( _setupDisplayIo ..  ]
 "28
-[; ;newmain.c: 28:     setSwitchInterrput();
-[e ( _setSwitchInterrput ..  ]
+[; ;newmain.c: 28:     setButtonInterrput();
+[e ( _setButtonInterrput ..  ]
 "29
-[; ;newmain.c: 29:     setInterrupts();
+[; ;newmain.c: 29:     setButtonIo();
+[e ( _setButtonIo ..  ]
+"30
+[; ;newmain.c: 30:     setInterrupts();
 [e ( _setInterrupts ..  ]
-[v F4613 `Cuc ~T0 @X0 -> 80 `i s ]
-[i F4613
+[v F4614 `Cuc ~T0 @X0 -> 80 `i s ]
+[i F4614
 :U ..
-"33
-[; ;newmain.c: 33:     const unsigned char test[80] = "sssdddd";
+"34
+[; ;newmain.c: 34:     const unsigned char test[80] = "sssdddd";
 -> 115 `c
 -> 115 `c
 -> 115 `c
@@ -807,60 +813,60 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ]
 [v _test `Cuc ~T0 @X0 -> 80 `i a ]
-[e = _test F4613 ]
-"35
-[; ;newmain.c: 35:     while (1) {
+[e = _test F4614 ]
+"36
+[; ;newmain.c: 36:     while (1) {
 [e :U 506 ]
 {
-"36
-[; ;newmain.c: 36:         if (FLAGS.bits.DISPLAY_READING) {
+"37
+[; ;newmain.c: 37:         if (FLAGS.bits.DISPLAY_READING) {
 [e $ ! != -> . . _FLAGS 1 4 `i -> 0 `i 508  ]
 {
-"37
-[; ;newmain.c: 37:             displayRequestHandle();
-[e ( _displayRequestHandle ..  ]
 "38
-[; ;newmain.c: 38:             FLAGS.bits.DISPLAY_READING = 0;
-[e = . . _FLAGS 1 4 -> -> 0 `i `uc ]
+[; ;newmain.c: 38:             displayRequestHandle();
+[e ( _displayRequestHandle ..  ]
 "39
-[; ;newmain.c: 39:         }
+[; ;newmain.c: 39:             FLAGS.bits.DISPLAY_READING = 0;
+[e = . . _FLAGS 1 4 -> -> 0 `i `uc ]
+"40
+[; ;newmain.c: 40:         }
 }
 [e :U 508 ]
-"40
-[; ;newmain.c: 40:         if (FLAGS.bits.UART_RECEIVED) {
+"41
+[; ;newmain.c: 41:         if (FLAGS.bits.UART_RECEIVED) {
 [e $ ! != -> . . _FLAGS 1 1 `i -> 0 `i 509  ]
 {
-"41
-[; ;newmain.c: 41:             serialCallback();
-[e ( _serialCallback ..  ]
 "42
-[; ;newmain.c: 42:             FLAGS.bits.UART_RECEIVED = 0;
-[e = . . _FLAGS 1 1 -> -> 0 `i `uc ]
+[; ;newmain.c: 42:             serialCallback();
+[e ( _serialCallback ..  ]
 "43
-[; ;newmain.c: 43:         }
+[; ;newmain.c: 43:             FLAGS.bits.UART_RECEIVED = 0;
+[e = . . _FLAGS 1 1 -> -> 0 `i `uc ]
+"44
+[; ;newmain.c: 44:         }
 }
 [e :U 509 ]
-"44
-[; ;newmain.c: 44:         if (FLAGS.bits.PUSHED_BUTTON) {
+"45
+[; ;newmain.c: 45:         if (FLAGS.bits.PUSHED_BUTTON) {
 [e $ ! != -> . . _FLAGS 1 3 `i -> 0 `i 510  ]
 {
-"45
-[; ;newmain.c: 45:             buttonCallback();
-[e ( _buttonCallback ..  ]
 "46
-[; ;newmain.c: 46:             FLAGS.bits.PUSHED_BUTTON = 0;
-[e = . . _FLAGS 1 3 -> -> 0 `i `uc ]
+[; ;newmain.c: 46:             buttonCallback();
+[e ( _buttonCallback ..  ]
 "47
-[; ;newmain.c: 47:         }
+[; ;newmain.c: 47:             FLAGS.bits.PUSHED_BUTTON = 0;
+[e = . . _FLAGS 1 3 -> -> 0 `i `uc ]
+"48
+[; ;newmain.c: 48:         }
 }
 [e :U 510 ]
-"48
-[; ;newmain.c: 48:     }
+"49
+[; ;newmain.c: 49:     }
 }
 [e :U 505 ]
 [e $U 506  ]
 [e :U 507 ]
-"49
-[; ;newmain.c: 49: }
+"50
+[; ;newmain.c: 50: }
 [e :UE 504 ]
 }

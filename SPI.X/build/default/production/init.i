@@ -7776,15 +7776,15 @@ extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 
 
 
+void setButtonIo(void);
 void setInterrupts(void);
 void setIo(void);
-void setSwitchInterrput(void);
+void setButtonInterrput(void);
 # 7 "init.c" 2
 
 
 void setIo() {
 
-    TRISB0 = 1;
 }
 
 void setInterrupts(void) {
@@ -7793,7 +7793,7 @@ void setInterrupts(void) {
 
 }
 
-void setSwitchInterrput(void) {
+void setButtonInterrput(void) {
     INTEDG0 = 1;
     INT0IE = 1;
 }
