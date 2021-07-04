@@ -7,6 +7,22 @@
 # 1 "/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/language_support.h" 1 3
 # 2 "<built-in>" 2
 # 1 "button.c" 2
+# 1 "./main.h" 1
+# 29 "./main.h"
+union {
+    unsigned char byte;
+
+    struct {
+        unsigned SPI_READ_REQUEST : 1;
+        unsigned UART_RECEIVED : 1;
+        unsigned PREVIOUS_BUTTON_STATE : 1;
+        unsigned PUSHED_BUTTON : 1;
+        unsigned DISPLAY_READING: 1;
+        unsigned DISPLAY_SPI_READING : 1;
+        unsigned DISPLAY_SERIAL_READING : 1;
+    } bits;
+} FLAGS;
+# 2 "button.c" 2
 # 1 "./button.h" 1
 # 34 "./button.h"
 # 1 "/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/xc.h" 1 3
@@ -7774,8 +7790,19 @@ extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 
 
 void buttonCallback(void);
-# 2 "button.c" 2
+void buttonHandle(void);
+# 3 "button.c" 2
 
+void setButtonIo(void){
+        TRISB0 = 1;
+}
 void buttonCallback(void) {
-    TXREG = 0b11001100;
+    if (FLAGS.bits.PREVIOUS_BUTTON_STATE != FLAGS.bits.PUSHED_BUTTON) {
+        FLAGS.bits.PREVIOUS_BUTTON_STATE = FLAGS.bits.PUSHED_BUTTON;
+        TXREG1 = 'a';
+    }
+}
+
+void buttonHandle(void) {
+    FLAGS.bits.PUSHED_BUTTON = 1;
 }

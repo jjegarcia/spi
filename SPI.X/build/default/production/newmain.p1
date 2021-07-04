@@ -13,23 +13,35 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;./interruptService.h: 28: void interruptService(void);
 [v _interruptService `(v ~T0 @X0 0 ef ]
 [p mainexit ]
-"33 ./init.h
-[; ;./init.h: 33: void setIo(void);
+"34 ./init.h
+[; ;./init.h: 34: void setIo(void);
 [v _setIo `(v ~T0 @X0 0 ef ]
-"35
-[; ;./init.h: 35: void setSPI(void);
-[v _setSPI `(v ~T0 @X0 0 ef ]
-"34
-[; ;./init.h: 34: void setSerial(void);
+"41 ./spi.h
+[; ;./spi.h: 41: void setSPIInterrupt(void);
+[v _setSPIInterrupt `(v ~T0 @X0 0 ef ]
+"40 ./serial.h
+[; ;./serial.h: 40: void setSerialIo(void);
+[v _setSerialIo `(v ~T0 @X0 0 ef ]
+"39
+[; ;./serial.h: 39: void setSerial(void);
 [v _setSerial `(v ~T0 @X0 0 ef ]
-"36
-[; ;./init.h: 36: void setSwitchInterrput(void);
-[v _setSwitchInterrput `(v ~T0 @X0 0 ef ]
+"13 ./display.h
+[; ;./display.h: 13: void setupDisplayIo(void);
+[v _setupDisplayIo `(v ~T0 @X0 0 ef ]
+"35 ./init.h
+[; ;./init.h: 35: void setButtonInterrput(void);
+[v _setButtonInterrput `(v ~T0 @X0 0 ef ]
 "32
-[; ;./init.h: 32: void setInterrupts(void);
+[; ;./init.h: 32: void setButtonIo(void);
+[v _setButtonIo `(v ~T0 @X0 0 ef ]
+"33
+[; ;./init.h: 33: void setInterrupts(void);
 [v _setInterrupts `(v ~T0 @X0 0 ef ]
-"39 ./serial.h
-[; ;./serial.h: 39: void serialCallback(void);
+"16 ./display.h
+[; ;./display.h: 16: void displayRequestHandle(void);
+[v _displayRequestHandle `(v ~T0 @X0 0 ef ]
+"42 ./serial.h
+[; ;./serial.h: 42: void serialCallback(void);
 [v _serialCallback `(v ~T0 @X0 0 ef ]
 "38 ./button.h
 [; ;./button.h: 38: void buttonCallback(void);
@@ -737,47 +749,59 @@ Version 4.0 HI-TECH Software Intermediate Code
 "37 ./serial.h
 [; ;./serial.h: 37: unsigned char readSerialValue;
 [v _readSerialValue `uc ~T0 @X0 1 e ]
+"11 ./display.h
+[; ;./display.h: 11: unsigned char outValue;
+[v _outValue `uc ~T0 @X0 1 e ]
 [v $root$_service `(v ~T0 @X0 0 e ]
-"17 newmain.c
-[; ;newmain.c: 17: void __attribute__((picinterrupt(("")))) service() {
+"18 newmain.c
+[; ;newmain.c: 18: void __attribute__((picinterrupt(("")))) service() {
 [v _service `(v ~T110 @X0 1 ef ]
 {
 [e :U _service ]
 [f ]
-"18
-[; ;newmain.c: 18:     interruptService();
-[e ( _interruptService ..  ]
 "19
-[; ;newmain.c: 19: }
+[; ;newmain.c: 19:     interruptService();
+[e ( _interruptService ..  ]
+"20
+[; ;newmain.c: 20: }
 [e :UE 503 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
-"21
-[; ;newmain.c: 21: void main() {
+"22
+[; ;newmain.c: 22: void main() {
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"22
-[; ;newmain.c: 22:     setIo();
-[e ( _setIo ..  ]
 "23
-[; ;newmain.c: 23:     setSPI();
-[e ( _setSPI ..  ]
+[; ;newmain.c: 23:     setIo();
+[e ( _setIo ..  ]
 "24
-[; ;newmain.c: 24:     setSerial();
-[e ( _setSerial ..  ]
+[; ;newmain.c: 24:     setSPIInterrupt();
+[e ( _setSPIInterrupt ..  ]
 "25
-[; ;newmain.c: 25:     setSwitchInterrput();
-[e ( _setSwitchInterrput ..  ]
+[; ;newmain.c: 25:     setSerialIo();
+[e ( _setSerialIo ..  ]
 "26
-[; ;newmain.c: 26:     setInterrupts();
-[e ( _setInterrupts ..  ]
-[v F4601 `Cuc ~T0 @X0 -> 80 `i s ]
-[i F4601
-:U ..
+[; ;newmain.c: 26:     setSerial();
+[e ( _setSerial ..  ]
+"27
+[; ;newmain.c: 27:     setupDisplayIo();
+[e ( _setupDisplayIo ..  ]
+"28
+[; ;newmain.c: 28:     setButtonInterrput();
+[e ( _setButtonInterrput ..  ]
+"29
+[; ;newmain.c: 29:     setButtonIo();
+[e ( _setButtonIo ..  ]
 "30
-[; ;newmain.c: 30:     const unsigned char test[80] = "sssdddd";
+[; ;newmain.c: 30:     setInterrupts();
+[e ( _setInterrupts ..  ]
+[v F4614 `Cuc ~T0 @X0 -> 80 `i s ]
+[i F4614
+:U ..
+"34
+[; ;newmain.c: 34:     const unsigned char test[80] = "sssdddd";
 -> 115 `c
 -> 115 `c
 -> 115 `c
@@ -789,59 +813,48 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ]
 [v _test `Cuc ~T0 @X0 -> 80 `i a ]
-[e = _test F4601 ]
-"32
-[; ;newmain.c: 32:     while (1) {
+[e = _test F4614 ]
+"36
+[; ;newmain.c: 36:     while (1) {
 [e :U 506 ]
 {
-"33
-[; ;newmain.c: 33:         if (FLAGS.bits.DISPLAY_READING) {
+"37
+[; ;newmain.c: 37:         if (FLAGS.bits.DISPLAY_READING) {
 [e $ ! != -> . . _FLAGS 1 4 `i -> 0 `i 508  ]
 {
-"34
-[; ;newmain.c: 34:             FLAGS.bits.DISPLAY_READING = 0;
-[e = . . _FLAGS 1 4 -> -> 0 `i `uc ]
-"35
-[; ;newmain.c: 35:         }
-}
-[e :U 508 ]
-"36
-[; ;newmain.c: 36:         if (FLAGS.bits.UART_RECEIVED) {
-[e $ ! != -> . . _FLAGS 1 1 `i -> 0 `i 509  ]
-{
-"37
-[; ;newmain.c: 37:             serialCallback();
-[e ( _serialCallback ..  ]
 "38
-[; ;newmain.c: 38:             FLAGS.bits.DISPLAY_READING = 1;
-[e = . . _FLAGS 1 4 -> -> 1 `i `uc ]
+[; ;newmain.c: 38:             displayRequestHandle();
+[e ( _displayRequestHandle ..  ]
 "39
-[; ;newmain.c: 39:             FLAGS.bits.UART_RECEIVED = 0;
-[e = . . _FLAGS 1 1 -> -> 0 `i `uc ]
+[; ;newmain.c: 39:             FLAGS.bits.DISPLAY_READING = 0;
+[e = . . _FLAGS 1 4 -> -> 0 `i `uc ]
 "40
 [; ;newmain.c: 40:         }
 }
-[e :U 509 ]
+[e :U 508 ]
 "41
-[; ;newmain.c: 41:         if (FLAGS.bits.PUSHED_BUTTON) {
-[e $ ! != -> . . _FLAGS 1 3 `i -> 0 `i 510  ]
+[; ;newmain.c: 41:         if (FLAGS.bits.UART_RECEIVED) {
+[e $ ! != -> . . _FLAGS 1 1 `i -> 0 `i 509  ]
 {
 "42
-[; ;newmain.c: 42:             if (FLAGS.bits.PREVIOUS_BUTTON_STATE != FLAGS.bits.PUSHED_BUTTON) {
-[e $ ! != -> . . _FLAGS 1 2 `i -> . . _FLAGS 1 3 `i 511  ]
-{
+[; ;newmain.c: 42:             serialCallback();
+[e ( _serialCallback ..  ]
 "43
-[; ;newmain.c: 43:                 FLAGS.bits.PREVIOUS_BUTTON_STATE = FLAGS.bits.PUSHED_BUTTON;
-[e = . . _FLAGS 1 2 . . _FLAGS 1 3 ]
+[; ;newmain.c: 43:             FLAGS.bits.UART_RECEIVED = 0;
+[e = . . _FLAGS 1 1 -> -> 0 `i `uc ]
 "44
-[; ;newmain.c: 44:                 buttonCallback();
-[e ( _buttonCallback ..  ]
-"45
-[; ;newmain.c: 45:             }
+[; ;newmain.c: 44:         }
 }
-[e :U 511 ]
+[e :U 509 ]
+"45
+[; ;newmain.c: 45:         if (FLAGS.bits.PUSHED_BUTTON) {
+[e $ ! != -> . . _FLAGS 1 3 `i -> 0 `i 510  ]
+{
 "46
-[; ;newmain.c: 46:             FLAGS.bits.PUSHED_BUTTON = 0;
+[; ;newmain.c: 46:             buttonCallback();
+[e ( _buttonCallback ..  ]
+"47
+[; ;newmain.c: 47:             FLAGS.bits.PUSHED_BUTTON = 0;
 [e = . . _FLAGS 1 3 -> -> 0 `i `uc ]
 "48
 [; ;newmain.c: 48:         }

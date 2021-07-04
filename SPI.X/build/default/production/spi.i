@@ -7812,6 +7812,7 @@ typedef enum
 
 unsigned char readSPIValue;
 
+void setSPIInterrupt(void);
 void spiInit(Spi_Type, Spi_Data_Sample, Spi_Clock_Idle, Spi_Transmit_Edge);
 void spiWrite(char);
 unsigned spiDataReady(void);
@@ -7821,6 +7822,11 @@ void SPICallback(void);
 # 6 "spi.c" 2
 
 
+void setSPIInterrupt(void) {
+    SSPIF = 0;
+    SSPIE = 1;
+}
+
 void spiInit(Spi_Type sType, Spi_Data_Sample sDataSample, Spi_Clock_Idle sClockIdle, Spi_Transmit_Edge sTransmitEdge) {
     TRISC5 = 0;
     TRISC4 = 1;
@@ -7828,13 +7834,13 @@ void spiInit(Spi_Type sType, Spi_Data_Sample sDataSample, Spi_Clock_Idle sClockI
     {
         SSPSTAT = sTransmitEdge;
         TRISC3 = 1;
-        TRISC2 = 0;
+        TRISC2 = 1;
         LATC0 = 1;
     } else
     {
         SSPSTAT = sDataSample | sTransmitEdge;
         TRISC3 = 0;
-        TRISC2 = 1;
+        TRISC2 = 0;
     }
     SSP1CON1 = 0b00100101;
 }

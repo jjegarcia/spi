@@ -11,10 +11,11 @@
 # 11 "./display.h"
 unsigned char outValue;
 
+void setupDisplayIo(void);
 void displaySerial(void);
 void displaySPI(void);
 void displayRequestHandle(void);
-void display(void);
+void displayCallback(void);
 # 2 "display.c" 2
 # 1 "./main.h" 1
 # 29 "./main.h"
@@ -7798,8 +7799,14 @@ extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 
 
 unsigned char readSerialValue;
+
+void setSerial(void);
+void setSerialIo(void);
 void serialHandle(void);
 void serialCallback(void);
+void transmittRead(void);
+void writeSerial(unsigned char);
+unsigned char readSerial(void);
 # 4 "display.c" 2
 # 1 "./spi.h" 1
 # 11 "./spi.h"
@@ -7833,6 +7840,7 @@ typedef enum
 
 unsigned char readSPIValue;
 
+void setSPIInterrupt(void);
 void spiInit(Spi_Type, Spi_Data_Sample, Spi_Clock_Idle, Spi_Transmit_Edge);
 void spiWrite(char);
 unsigned spiDataReady(void);
@@ -7841,17 +7849,22 @@ void SPIHandle(void);
 void SPICallback(void);
 # 5 "display.c" 2
 
-void displaySerial() {
+void setupDisplayIo(void) {
+    TRISD = 0x00;
+    PORTD = 0x00;
+}
+
+void displaySerial(void) {
     outValue = readSerialValue;
-    display();
+    displayCallback();
 }
 
-void displaySPI() {
+void displaySPI(void) {
     outValue = readSPIValue;
-    display();
+    displayCallback();
 }
 
-void displayRequestHandle() {
+void displayRequestHandle(void) {
     if (FLAGS.bits.DISPLAY_SERIAL_READING) {
         displaySerial();
         FLAGS.bits.DISPLAY_SERIAL_READING = 0;
@@ -7863,6 +7876,6 @@ void displayRequestHandle() {
     }
 }
 
-void display() {
+void displayCallback(void) {
     PORTD = outValue;
 }

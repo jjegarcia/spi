@@ -35,7 +35,14 @@
 #include <pic18f8722.h>
 
 unsigned char readSerialValue;
+
+void setSerial(void);
+void setSerialIo(void); 
 void serialHandle(void);
 void serialCallback(void);
+void transmittRead(void);
+void writeSerial(unsigned char); 
+unsigned char readSerial(void);
+
 #endif	/* XC_HEADER_TEMPLATE_H */
 

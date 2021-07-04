@@ -5,6 +5,11 @@
 #include "spi.h"
 #include <pic18f8722.h>
 
+void setSPIInterrupt(void) {
+    SSPIF = 0;
+    SSPIE = 1;
+}
+
 void spiInit(Spi_Type sType, Spi_Data_Sample sDataSample, Spi_Clock_Idle sClockIdle, Spi_Transmit_Edge sTransmitEdge) {
     TRISC5 = 0; //SDO  
     TRISC4 = 1; //SDI
@@ -12,13 +17,13 @@ void spiInit(Spi_Type sType, Spi_Data_Sample sDataSample, Spi_Clock_Idle sClockI
     {
         SSPSTAT = sTransmitEdge;
         TRISC3 = 1; //clock as input
-        TRISC2 = 0; //CE For This IC as output
+        TRISC2 = 1; //CE For This IC as input
         LATC0 = 1;
     } else //If Master Mode
     {
         SSPSTAT = sDataSample | sTransmitEdge;
         TRISC3 = 0; //clock as output
-        TRISC2 = 1; //CE For This IC as input
+        TRISC2 = 0; //CE For This IC as output
     }
     SSP1CON1 = 0b00100101; //sType | sClockIdle;
 }

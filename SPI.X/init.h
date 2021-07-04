@@ -28,12 +28,11 @@
 #include <xc.h> 
 
 // This is a guard condition so that contents of this file are not included
-// more than once.  
+// more than once. 
+void setButtonIo(void);
 void setInterrupts(void);
 void setIo(void);
-void setSerial(void);
-void setSPI(void); 
-void setSwitchInterrput(void);
+void setButtonInterrput(void);
 #endif
 
 

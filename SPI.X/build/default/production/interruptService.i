@@ -7821,6 +7821,7 @@ typedef enum
 
 unsigned char readSPIValue;
 
+void setSPIInterrupt(void);
 void spiInit(Spi_Type, Spi_Data_Sample, Spi_Clock_Idle, Spi_Transmit_Edge);
 void spiWrite(char);
 unsigned spiDataReady(void);
@@ -7836,22 +7837,33 @@ static void spiService(void);
 # 1 "./serial.h" 1
 # 37 "./serial.h"
 unsigned char readSerialValue;
+
+void setSerial(void);
+void setSerialIo(void);
 void serialHandle(void);
 void serialCallback(void);
+void transmittRead(void);
+void writeSerial(unsigned char);
+unsigned char readSerial(void);
 # 11 "interruptService.c" 2
+# 1 "./button.h" 1
+# 38 "./button.h"
+void buttonCallback(void);
+void buttonHandle(void);
+# 12 "interruptService.c" 2
 
 void processInterruptService(void) {
     if (SSPIE == 1 && SSPIF == 1) {
         SPIHandle();
         SSPIF = 0;
     }
-    if (RC1IE == 1 && RC1IF == 1 && FLAGS.bits.UART_RECEIVED==0) {
+    if (RC1IE == 1 && RC1IF == 1 && FLAGS.bits.UART_RECEIVED == 0) {
         serialHandle();
         RC1IF = 0;
     }
-    if (INTEDG0==1 && INT0IF==1){
-        INT0IF=0;
-        FLAGS.bits.PUSHED_BUTTON = 1;
+    if (INTEDG0 == 1 && INT0IF == 1) {
+        buttonHandle();
+        INT0IF = 0;
     }
 }
 

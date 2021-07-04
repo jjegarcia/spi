@@ -7790,15 +7790,52 @@ extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 
 
 unsigned char readSerialValue;
+
+void setSerial(void);
+void setSerialIo(void);
 void serialHandle(void);
 void serialCallback(void);
+void transmittRead(void);
+void writeSerial(unsigned char);
+unsigned char readSerial(void);
 # 4 "serial.c" 2
 
+void setSerial(void) {
+    BRGH1 = 0;
+    SPBRG = 15;
+    SYNC1 = 0;
+    SPEN1 = 1;
+    RC1IE = 1;
+    CREN1 = 1;
+    RC1IF = 0;
+    TXEN1 = 1;
+    RCREG1 = 0;
+}
+
+void setSerialIo(void) {
+    TRISC7 = 1;
+    TRISC6 = 0;
+}
+
 void serialCallback(void) {
+    FLAGS.bits.DISPLAY_READING = 1;
+    FLAGS.bits.DISPLAY_SERIAL_READING = 1;
 
 }
 
 void serialHandle() {
     FLAGS.bits.UART_RECEIVED = 1;
-    readSerialValue = RCREG;
+    readSerialValue = readSerial();
+}
+
+void transmittRead(void) {
+    writeSerial(readSerialValue);
+}
+
+void writeSerial(unsigned char value) {
+    TXREG1 = value;
+}
+
+unsigned char readSerial() {
+    return RCREG1;
 }

@@ -36,6 +36,6 @@
 
 
 void buttonCallback(void);
-
+void buttonHandle(void);
 #endif	/* BUTTON_H */
 

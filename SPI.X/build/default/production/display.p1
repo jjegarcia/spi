@@ -7,12 +7,15 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;./main.h: 29: union {
 [u S1 `uc 1 `S2 1 ]
 [n S1 . byte bits ]
-"16 ./display.h
-[; ;./display.h: 16: void display(void);
-[v _display `(v ~T0 @X0 0 ef ]
-"3195 /Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h
+"6123 /Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h
+[; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 6123: extern volatile unsigned char TRISD __attribute__((address(0xF95)));
+[v _TRISD `Vuc ~T0 @X0 0 e@3989 ]
+"3195
 [; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 3195: extern volatile unsigned char PORTD __attribute__((address(0xF83)));
 [v _PORTD `Vuc ~T0 @X0 0 e@3971 ]
+"17 ./display.h
+[; ;./display.h: 17: void displayCallback(void);
+[v _displayCallback `(v ~T0 @X0 0 ef ]
 "11 ./display.h
 [; ;./display.h: 11: unsigned char outValue;
 [v _outValue `uc ~T0 @X0 1 e ]
@@ -620,91 +623,107 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;./spi.h: 39: unsigned char readSPIValue;
 [v _readSPIValue `uc ~T0 @X0 1 e ]
 "6 display.c
-[; ;display.c: 6: void displaySerial() {
-[v _displaySerial `(v ~T0 @X0 1 ef ]
+[; ;display.c: 6: void setupDisplayIo(void) {
+[v _setupDisplayIo `(v ~T0 @X0 1 ef ]
 {
-[e :U _displaySerial ]
+[e :U _setupDisplayIo ]
 [f ]
 "7
-[; ;display.c: 7:     outValue = readSerialValue;
-[e = _outValue _readSerialValue ]
+[; ;display.c: 7:     TRISD = 0x00;
+[e = _TRISD -> -> 0 `i `uc ]
 "8
-[; ;display.c: 8:     display();
-[e ( _display ..  ]
+[; ;display.c: 8:     PORTD = 0x00;
+[e = _PORTD -> -> 0 `i `uc ]
 "9
 [; ;display.c: 9: }
 [e :UE 503 ]
 }
 "11
-[; ;display.c: 11: void displaySPI() {
-[v _displaySPI `(v ~T0 @X0 1 ef ]
+[; ;display.c: 11: void displaySerial(void) {
+[v _displaySerial `(v ~T0 @X0 1 ef ]
 {
-[e :U _displaySPI ]
+[e :U _displaySerial ]
 [f ]
 "12
-[; ;display.c: 12:     outValue = readSPIValue;
-[e = _outValue _readSPIValue ]
+[; ;display.c: 12:     outValue = readSerialValue;
+[e = _outValue _readSerialValue ]
 "13
-[; ;display.c: 13:     display();
-[e ( _display ..  ]
+[; ;display.c: 13:     displayCallback();
+[e ( _displayCallback ..  ]
 "14
 [; ;display.c: 14: }
 [e :UE 504 ]
 }
 "16
-[; ;display.c: 16: void displayRequestHandle() {
+[; ;display.c: 16: void displaySPI(void) {
+[v _displaySPI `(v ~T0 @X0 1 ef ]
+{
+[e :U _displaySPI ]
+[f ]
+"17
+[; ;display.c: 17:     outValue = readSPIValue;
+[e = _outValue _readSPIValue ]
+"18
+[; ;display.c: 18:     displayCallback();
+[e ( _displayCallback ..  ]
+"19
+[; ;display.c: 19: }
+[e :UE 505 ]
+}
+"21
+[; ;display.c: 21: void displayRequestHandle(void) {
 [v _displayRequestHandle `(v ~T0 @X0 1 ef ]
 {
 [e :U _displayRequestHandle ]
 [f ]
-"17
-[; ;display.c: 17:     if (FLAGS.bits.DISPLAY_SERIAL_READING) {
-[e $ ! != -> . . _FLAGS 1 6 `i -> 0 `i 506  ]
-{
-"18
-[; ;display.c: 18:         displaySerial();
-[e ( _displaySerial ..  ]
-"19
-[; ;display.c: 19:         FLAGS.bits.DISPLAY_SERIAL_READING = 0;
-[e = . . _FLAGS 1 6 -> -> 0 `i `uc ]
-"20
-[; ;display.c: 20:     } else {
-}
-[e $U 507  ]
-[e :U 506 ]
-{
-"21
-[; ;display.c: 21:         if (FLAGS.bits.DISPLAY_SPI_READING) {
-[e $ ! != -> . . _FLAGS 1 5 `i -> 0 `i 508  ]
-{
 "22
-[; ;display.c: 22:             displaySPI();
-[e ( _displaySPI ..  ]
+[; ;display.c: 22:     if (FLAGS.bits.DISPLAY_SERIAL_READING) {
+[e $ ! != -> . . _FLAGS 1 6 `i -> 0 `i 507  ]
+{
 "23
-[; ;display.c: 23:             FLAGS.bits.DISPLAY_SPI_READING = 0;
-[e = . . _FLAGS 1 5 -> -> 0 `i `uc ]
+[; ;display.c: 23:         displaySerial();
+[e ( _displaySerial ..  ]
 "24
-[; ;display.c: 24:         }
+[; ;display.c: 24:         FLAGS.bits.DISPLAY_SERIAL_READING = 0;
+[e = . . _FLAGS 1 6 -> -> 0 `i `uc ]
+"25
+[; ;display.c: 25:     } else {
+}
+[e $U 508  ]
+[e :U 507 ]
+{
+"26
+[; ;display.c: 26:         if (FLAGS.bits.DISPLAY_SPI_READING) {
+[e $ ! != -> . . _FLAGS 1 5 `i -> 0 `i 509  ]
+{
+"27
+[; ;display.c: 27:             displaySPI();
+[e ( _displaySPI ..  ]
+"28
+[; ;display.c: 28:             FLAGS.bits.DISPLAY_SPI_READING = 0;
+[e = . . _FLAGS 1 5 -> -> 0 `i `uc ]
+"29
+[; ;display.c: 29:         }
+}
+[e :U 509 ]
+"30
+[; ;display.c: 30:     }
 }
 [e :U 508 ]
-"25
-[; ;display.c: 25:     }
+"31
+[; ;display.c: 31: }
+[e :UE 506 ]
 }
-[e :U 507 ]
-"26
-[; ;display.c: 26: }
-[e :UE 505 ]
-}
-"28
-[; ;display.c: 28: void display() {
-[v _display `(v ~T0 @X0 1 ef ]
+"33
+[; ;display.c: 33: void displayCallback(void) {
+[v _displayCallback `(v ~T0 @X0 1 ef ]
 {
-[e :U _display ]
+[e :U _displayCallback ]
 [f ]
-"29
-[; ;display.c: 29:     PORTD = outValue;
+"34
+[; ;display.c: 34:     PORTD = outValue;
 [e = _PORTD _outValue ]
-"30
-[; ;display.c: 30: }
-[e :UE 509 ]
+"35
+[; ;display.c: 35: }
+[e :UE 510 ]
 }

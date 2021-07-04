@@ -1,7 +1,21 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"8951 /Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h
-[; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 8951: extern volatile unsigned char TXREG __attribute__((address(0xFAD)));
-[v _TXREG `Vuc ~T0 @X0 0 e@4013 ]
+"32 ./main.h
+[; ;./main.h: 32:     struct {
+[s S2 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S2 . SPI_READ_REQUEST UART_RECEIVED PREVIOUS_BUTTON_STATE PUSHED_BUTTON DISPLAY_READING DISPLAY_SPI_READING DISPLAY_SERIAL_READING ]
+"29
+[; ;./main.h: 29: union {
+[u S1 `uc 1 `S2 1 ]
+[n S1 . byte bits ]
+"16221 /Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h
+[; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 16221: extern volatile __bit TRISB0 __attribute__((address(0x7C98)));
+[v _TRISB0 `Vb ~T0 @X0 0 e@31896 ]
+"8946
+[; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 8946: extern volatile unsigned char TXREG1 __attribute__((address(0xFAD)));
+[v _TXREG1 `Vuc ~T0 @X0 0 e@4013 ]
+"41 ./main.h
+[; ;./main.h: 41: } FLAGS;
+[v _FLAGS `S1 ~T0 @X0 1 e ]
 "54 /Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h
 [; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 54: __asm("SSP2CON2 equ 0F62h");
 [; <" SSP2CON2 equ 0F62h ;# ">
@@ -596,16 +610,53 @@ Version 4.0 HI-TECH Software Intermediate Code
 "13453
 [; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 13453: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-"3 button.c
-[; ;button.c: 3: void buttonCallback(void) {
+"4 button.c
+[; ;button.c: 4: void setButtonIo(void){
+[v _setButtonIo `(v ~T0 @X0 1 ef ]
+{
+[e :U _setButtonIo ]
+[f ]
+"5
+[; ;button.c: 5:         TRISB0 = 1;
+[e = _TRISB0 -> -> 1 `i `b ]
+"6
+[; ;button.c: 6: }
+[e :UE 503 ]
+}
+"7
+[; ;button.c: 7: void buttonCallback(void) {
 [v _buttonCallback `(v ~T0 @X0 1 ef ]
 {
 [e :U _buttonCallback ]
 [f ]
-"4
-[; ;button.c: 4:     TXREG = 0b11001100;
-[e = _TXREG -> -> 204 `i `uc ]
-"5
-[; ;button.c: 5: }
-[e :UE 501 ]
+"8
+[; ;button.c: 8:     if (FLAGS.bits.PREVIOUS_BUTTON_STATE != FLAGS.bits.PUSHED_BUTTON) {
+[e $ ! != -> . . _FLAGS 1 2 `i -> . . _FLAGS 1 3 `i 505  ]
+{
+"9
+[; ;button.c: 9:         FLAGS.bits.PREVIOUS_BUTTON_STATE = FLAGS.bits.PUSHED_BUTTON;
+[e = . . _FLAGS 1 2 . . _FLAGS 1 3 ]
+"10
+[; ;button.c: 10:         TXREG1 = 'a';
+[e = _TXREG1 -> -> 97 `ui `uc ]
+"11
+[; ;button.c: 11:     }
+}
+[e :U 505 ]
+"12
+[; ;button.c: 12: }
+[e :UE 504 ]
+}
+"14
+[; ;button.c: 14: void buttonHandle(void) {
+[v _buttonHandle `(v ~T0 @X0 1 ef ]
+{
+[e :U _buttonHandle ]
+[f ]
+"15
+[; ;button.c: 15:     FLAGS.bits.PUSHED_BUTTON = 1;
+[e = . . _FLAGS 1 3 -> -> 1 `i `uc ]
+"16
+[; ;button.c: 16: }
+[e :UE 506 ]
 }
