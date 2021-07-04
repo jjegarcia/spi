@@ -15,7 +15,7 @@ union {
     struct {
         unsigned SPI_READ_REQUEST : 1;
         unsigned UART_RECEIVED : 1;
-        unsigned PREVIOUS_BUTTON_STATE : 1;
+        unsigned SERVICED : 1;
         unsigned PUSHED_BUTTON : 1;
         unsigned DISPLAY_READING: 1;
         unsigned DISPLAY_SPI_READING : 1;
@@ -7788,21 +7788,39 @@ extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 # 35 "./button.h" 2
 
 
-
+void initialiseButton(void);
 void buttonCallback(void);
 void buttonHandle(void);
+void buttonDebounce(void);
 # 3 "button.c" 2
 
-void setButtonIo(void){
-        TRISB0 = 1;
+void setButtonIo(void) {
+    TRISB0 = 1;
 }
+
+void initialiseButton(void) {
+    FLAGS.bits.PUSHED_BUTTON = 0;
+    FLAGS.bits.SERVICED = 1;
+}
+
 void buttonCallback(void) {
-    if (FLAGS.bits.PREVIOUS_BUTTON_STATE != FLAGS.bits.PUSHED_BUTTON) {
-        FLAGS.bits.PREVIOUS_BUTTON_STATE = FLAGS.bits.PUSHED_BUTTON;
+    if (FLAGS.bits.SERVICED == 0 && FLAGS.bits.PUSHED_BUTTON == 1) {
         TXREG1 = 'a';
     }
+    FLAGS.bits.PUSHED_BUTTON = 0;
 }
 
 void buttonHandle(void) {
-    FLAGS.bits.PUSHED_BUTTON = 1;
+    if (FLAGS.bits.SERVICED == 1 && FLAGS.bits.PUSHED_BUTTON == 0) {
+        FLAGS.bits.PUSHED_BUTTON = 1;
+    }
+}
+
+void buttonDebounce(void) {
+    static int counter = 255;
+    counter--;
+    if (counter == 0) {
+        FLAGS.bits.SERVICED = 1;
+        counter = 255;
+    }
 }

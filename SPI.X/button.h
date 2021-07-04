@@ -34,8 +34,9 @@
 #include <xc.h> // include processor files - each processor file is guarded. 
 #include <pic18f8722.h>
 
-
+void initialiseButton(void);
 void buttonCallback(void);
 void buttonHandle(void);
+void buttonDebounce(void);
 #endif	/* BUTTON_H */
 

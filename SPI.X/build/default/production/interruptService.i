@@ -7781,7 +7781,7 @@ union {
     struct {
         unsigned SPI_READ_REQUEST : 1;
         unsigned UART_RECEIVED : 1;
-        unsigned PREVIOUS_BUTTON_STATE : 1;
+        unsigned SERVICED : 1;
         unsigned PUSHED_BUTTON : 1;
         unsigned DISPLAY_READING: 1;
         unsigned DISPLAY_SPI_READING : 1;
@@ -7847,9 +7847,11 @@ void writeSerial(unsigned char);
 unsigned char readSerial(void);
 # 11 "interruptService.c" 2
 # 1 "./button.h" 1
-# 38 "./button.h"
+# 37 "./button.h"
+void initialiseButton(void);
 void buttonCallback(void);
 void buttonHandle(void);
+void buttonDebounce(void);
 # 12 "interruptService.c" 2
 
 void processInterruptService(void) {

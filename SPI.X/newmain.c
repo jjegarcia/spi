@@ -22,9 +22,10 @@ void __interrupt() service() {
 void main() {
     setIo();
     setSPIInterrupt();
-    setSerialIo(); 
+    setSerialIo();
     setSerial();
     setupDisplayIo();
+    initialiseButton();
     setButtonInterrput();
     setButtonIo();
     setInterrupts();
@@ -43,8 +44,11 @@ void main() {
             FLAGS.bits.UART_RECEIVED = 0;
         }
         if (FLAGS.bits.PUSHED_BUTTON) {
+            FLAGS.bits.SERVICED = 0;
             buttonCallback();
-            FLAGS.bits.PUSHED_BUTTON = 0;
+        }
+        if(FLAGS.bits.SERVICED==0){
+            buttonDebounce();
         }
     }
 }

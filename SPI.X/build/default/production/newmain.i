@@ -7896,7 +7896,7 @@ union {
     struct {
         unsigned SPI_READ_REQUEST : 1;
         unsigned UART_RECEIVED : 1;
-        unsigned PREVIOUS_BUTTON_STATE : 1;
+        unsigned SERVICED : 1;
         unsigned PUSHED_BUTTON : 1;
         unsigned DISPLAY_READING: 1;
         unsigned DISPLAY_SPI_READING : 1;
@@ -7929,9 +7929,11 @@ void writeSerial(unsigned char);
 unsigned char readSerial(void);
 # 13 "newmain.c" 2
 # 1 "./button.h" 1
-# 38 "./button.h"
+# 37 "./button.h"
+void initialiseButton(void);
 void buttonCallback(void);
 void buttonHandle(void);
+void buttonDebounce(void);
 # 14 "newmain.c" 2
 # 1 "./display.h" 1
 # 11 "./display.h"
@@ -7956,6 +7958,7 @@ void main() {
     setSerialIo();
     setSerial();
     setupDisplayIo();
+    initialiseButton();
     setButtonInterrput();
     setButtonIo();
     setInterrupts();
@@ -7974,8 +7977,11 @@ void main() {
             FLAGS.bits.UART_RECEIVED = 0;
         }
         if (FLAGS.bits.PUSHED_BUTTON) {
+            FLAGS.bits.SERVICED = 0;
             buttonCallback();
-            FLAGS.bits.PUSHED_BUTTON = 0;
+        }
+        if(FLAGS.bits.SERVICED==0){
+            buttonDebounce();
         }
     }
 }

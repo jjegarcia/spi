@@ -50,10 +50,14 @@ SPI_ACTIVE_2_IDLE 64
 [v ___omul __omul `(uo  1 e 8 0 ]
 "4 /Users/jgarc609/github/spi/SPI.X/button.c
 [v _setButtonIo setButtonIo `(v  1 e 1 0 ]
-"7
+"8
+[v _initialiseButton initialiseButton `(v  1 e 1 0 ]
+"13
 [v _buttonCallback buttonCallback `(v  1 e 1 0 ]
-"14
+"20
 [v _buttonHandle buttonHandle `(v  1 e 1 0 ]
+"26
+[v _buttonDebounce buttonDebounce `(v  1 e 1 0 ]
 "6 /Users/jgarc609/github/spi/SPI.X/display.c
 [v _setupDisplayIo setupDisplayIo `(v  1 e 1 0 ]
 "11
@@ -102,7 +106,7 @@ SPI_ACTIVE_2_IDLE 64
 [v _outValue outValue `uc  1 e 1 0 ]
 [s S24 . 1 `uc 1 SPI_READ_REQUEST 1 0 :1:0 
 `uc 1 UART_RECEIVED 1 0 :1:1 
-`uc 1 PREVIOUS_BUTTON_STATE 1 0 :1:2 
+`uc 1 SERVICED 1 0 :1:2 
 `uc 1 PUSHED_BUTTON 1 0 :1:3 
 `uc 1 DISPLAY_READING 1 0 :1:4 
 `uc 1 DISPLAY_SPI_READING 1 0 :1:5 
@@ -129,14 +133,14 @@ SPI_ACTIVE_2_IDLE 64
 [v _SSP1CON1 SSP1CON1 `VEuc  1 e 1 @4038 ]
 "10996
 [v _SSPSTAT SSPSTAT `VEuc  1 e 1 @4039 ]
-[s S140 . 1 `uc 1 . 1 0 :2:0 
+[s S148 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R_NOT_W 1 0 :1:2 
 ]
 "11384
-[s S143 . 1 `uc 1 . 1 0 :5:0 
+[s S151 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 D_NOT_A 1 0 :1:5 
 ]
-[s S146 . 1 `uc 1 BF 1 0 :1:0 
+[s S154 . 1 `uc 1 BF 1 0 :1:0 
 `uc 1 UA 1 0 :1:1 
 `uc 1 R_nW 1 0 :1:2 
 `uc 1 S 1 0 :1:3 
@@ -145,44 +149,44 @@ SPI_ACTIVE_2_IDLE 64
 `uc 1 CKE 1 0 :1:6 
 `uc 1 SMP 1 0 :1:7 
 ]
-[s S155 . 1 `uc 1 . 1 0 :2:0 
+[s S163 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R_W 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 D_A 1 0 :1:5 
 ]
-[s S160 . 1 `uc 1 . 1 0 :2:0 
+[s S168 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 I2C_READ 1 0 :1:2 
 `uc 1 I2C_START 1 0 :1:3 
 `uc 1 I2C_STOP 1 0 :1:4 
 `uc 1 I2C_DAT 1 0 :1:5 
 ]
-[s S166 . 1 `uc 1 . 1 0 :2:0 
+[s S174 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 nW 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 nA 1 0 :1:5 
 ]
-[s S171 . 1 `uc 1 . 1 0 :2:0 
+[s S179 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 NOT_WRITE 1 0 :1:2 
 ]
-[s S174 . 1 `uc 1 . 1 0 :5:0 
+[s S182 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 NOT_ADDRESS 1 0 :1:5 
 ]
-[s S177 . 1 `uc 1 . 1 0 :2:0 
+[s S185 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 nWRITE 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 nADDRESS 1 0 :1:5 
 ]
-[s S182 . 1 `uc 1 . 1 0 :2:0 
+[s S190 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 READ_WRITE 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 DATA_ADDRESS 1 0 :1:5 
 ]
-[s S187 . 1 `uc 1 . 1 0 :2:0 
+[s S195 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 D 1 0 :1:5 
 ]
-[s S192 . 1 `uc 1 BF1 1 0 :1:0 
+[s S200 . 1 `uc 1 BF1 1 0 :1:0 
 `uc 1 UA1 1 0 :1:1 
 `uc 1 RW 1 0 :1:2 
 `uc 1 START 1 0 :1:3 
@@ -191,20 +195,20 @@ SPI_ACTIVE_2_IDLE 64
 `uc 1 CKE1 1 0 :1:6 
 `uc 1 SMP1 1 0 :1:7 
 ]
-[s S201 . 1 `uc 1 . 1 0 :2:0 
+[s S209 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 RW1 1 0 :1:2 
 `uc 1 START1 1 0 :1:3 
 `uc 1 STOP1 1 0 :1:4 
 `uc 1 DA1 1 0 :1:5 
 ]
-[s S207 . 1 `uc 1 . 1 0 :2:0 
+[s S215 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 NOT_W 1 0 :1:2 
 ]
-[s S210 . 1 `uc 1 . 1 0 :5:0 
+[s S218 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 NOT_A 1 0 :1:5 
 ]
-[u S213 . 1 `S140 1 . 1 0 `S143 1 . 1 0 `S146 1 . 1 0 `S155 1 . 1 0 `S160 1 . 1 0 `S166 1 . 1 0 `S171 1 . 1 0 `S174 1 . 1 0 `S177 1 . 1 0 `S182 1 . 1 0 `S187 1 . 1 0 `S192 1 . 1 0 `S201 1 . 1 0 `S207 1 . 1 0 `S210 1 . 1 0 ]
-[v _SSPSTATbits SSPSTATbits `VES213  1 e 1 @4039 ]
+[u S221 . 1 `S148 1 . 1 0 `S151 1 . 1 0 `S154 1 . 1 0 `S163 1 . 1 0 `S168 1 . 1 0 `S174 1 . 1 0 `S179 1 . 1 0 `S182 1 . 1 0 `S185 1 . 1 0 `S190 1 . 1 0 `S195 1 . 1 0 `S200 1 . 1 0 `S209 1 . 1 0 `S215 1 . 1 0 `S218 1 . 1 0 ]
+[v _SSPSTATbits SSPSTATbits `VES221  1 e 1 @4039 ]
 "11816
 [v _SSPBUF SSPBUF `VEuc  1 e 1 @4041 ]
 "13755
@@ -254,11 +258,11 @@ SPI_ACTIVE_2_IDLE 64
 "22 /Users/jgarc609/github/spi/SPI.X/newmain.c
 [v _main main `(v  1 e 1 0 ]
 {
-"34
-[v main@test test `C[80]uc  1 a 80 1 ]
-"30
-[v main@F4614 F4614 `C[80]uc  1 s 80 F4614 ]
-"50
+"35
+[v main@test test `C[80]uc  1 a 80 0 ]
+"31
+[v main@F4616 F4616 `C[80]uc  1 s 80 F4616 ]
+"54
 } 0
 "6 /Users/jgarc609/github/spi/SPI.X/display.c
 [v _setupDisplayIo setupDisplayIo `(v  1 e 1 0 ]
@@ -305,6 +309,11 @@ SPI_ACTIVE_2_IDLE 64
 {
 "26
 } 0
+"8 /Users/jgarc609/github/spi/SPI.X/button.c
+[v _initialiseButton initialiseButton `(v  1 e 1 0 ]
+{
+"11
+} 0
 "21 /Users/jgarc609/github/spi/SPI.X/display.c
 [v _displayRequestHandle displayRequestHandle `(v  1 e 1 0 ]
 {
@@ -325,10 +334,17 @@ SPI_ACTIVE_2_IDLE 64
 {
 "35
 } 0
-"7 /Users/jgarc609/github/spi/SPI.X/button.c
+"26 /Users/jgarc609/github/spi/SPI.X/button.c
+[v _buttonDebounce buttonDebounce `(v  1 e 1 0 ]
+{
+"27
+[v buttonDebounce@counter counter `i  1 s 2 counter ]
+"33
+} 0
+"13
 [v _buttonCallback buttonCallback `(v  1 e 1 0 ]
 {
-"12
+"18
 } 0
 "18 /Users/jgarc609/github/spi/SPI.X/newmain.c
 [v _service service `IIH(v  1 e 1 0 ]
@@ -355,10 +371,10 @@ SPI_ACTIVE_2_IDLE 64
 {
 "43
 } 0
-"14 /Users/jgarc609/github/spi/SPI.X/button.c
+"20 /Users/jgarc609/github/spi/SPI.X/button.c
 [v _buttonHandle buttonHandle `(v  1 e 1 0 ]
 {
-"16
+"24
 } 0
 "54 /Users/jgarc609/github/spi/SPI.X/spi.c
 [v _SPIHandle SPIHandle `(v  1 e 1 0 ]
