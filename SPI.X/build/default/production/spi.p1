@@ -748,8 +748,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;spi.c: 19:         TRISC3 = 1;
 [e = _TRISC3 -> -> 1 `i `b ]
 "20
-[; ;spi.c: 20:         TRISC2 = 0;
-[e = _TRISC2 -> -> 0 `i `b ]
+[; ;spi.c: 20:         TRISC2 = 1;
+[e = _TRISC2 -> -> 1 `i `b ]
 "21
 [; ;spi.c: 21:         LATC0 = 1;
 [e = _LATC0 -> -> 1 `i `b ]
@@ -768,8 +768,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;spi.c: 25:         TRISC3 = 0;
 [e = _TRISC3 -> -> 0 `i `b ]
 "26
-[; ;spi.c: 26:         TRISC2 = 1;
-[e = _TRISC2 -> -> 1 `i `b ]
+[; ;spi.c: 26:         TRISC2 = 0;
+[e = _TRISC2 -> -> 0 `i `b ]
 "27
 [; ;spi.c: 27:     }
 }

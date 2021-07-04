@@ -7920,6 +7920,7 @@ void setSwitchInterrput(void);
 unsigned char readSerialValue;
 
 void setSerial(void);
+void setSerialIo(void);
 void serialHandle(void);
 void serialCallback(void);
 void transmittRead(void);
@@ -7935,6 +7936,7 @@ void buttonHandle(void);
 # 11 "./display.h"
 unsigned char outValue;
 
+void setupDisplayIo(void);
 void displaySerial(void);
 void displaySPI(void);
 void displayRequestHandle(void);
@@ -7950,7 +7952,9 @@ void __attribute__((picinterrupt(("")))) service() {
 void main() {
     setIo();
     setSPIInterrupt();
+    setSerialIo();
     setSerial();
+    setupDisplayIo();
     setSwitchInterrput();
     setInterrupts();
 

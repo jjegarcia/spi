@@ -7834,13 +7834,13 @@ void spiInit(Spi_Type sType, Spi_Data_Sample sDataSample, Spi_Clock_Idle sClockI
     {
         SSPSTAT = sTransmitEdge;
         TRISC3 = 1;
-        TRISC2 = 0;
+        TRISC2 = 1;
         LATC0 = 1;
     } else
     {
         SSPSTAT = sDataSample | sTransmitEdge;
         TRISC3 = 0;
-        TRISC2 = 1;
+        TRISC2 = 0;
     }
     SSP1CON1 = 0b00100101;
 }

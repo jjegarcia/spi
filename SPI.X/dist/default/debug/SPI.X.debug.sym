@@ -346,7 +346,7 @@ text14 1052 125D CODE 1052 0
 %locals
 dist/default/debug/SPI.X.debug.o
 /Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h
-/tmp/xc5ouifvo.s
+/tmp/xc6a1DAn1.s
 3122 11A8 0 CODE 0
 3124 11A8 0 CODE 0
 3127 11A8 0 CODE 0
@@ -450,7 +450,7 @@ button.c
 6 116A 0 CODE 0
 7 1174 0 CODE 0
 9 1178 0 CODE 0
-/tmp/xc5ouifvo.s
+/tmp/xc6a1DAn1.s
 4550 8 0 CODE 0
 newmain.c
 18 8 0 CODE 0

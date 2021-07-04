@@ -53,18 +53,20 @@ SPI_ACTIVE_2_IDLE 64
 "11
 [v _buttonHandle buttonHandle `(v  1 e 1 0 ]
 "6 /Users/jgarc609/github/spi/SPI.X/display.c
-[v _displaySerial displaySerial `(v  1 e 1 0 ]
+[v _setupDisplayIo setupDisplayIo `(v  1 e 1 0 ]
 "11
-[v _displaySPI displaySPI `(v  1 e 1 0 ]
+[v _displaySerial displaySerial `(v  1 e 1 0 ]
 "16
+[v _displaySPI displaySPI `(v  1 e 1 0 ]
+"21
 [v _displayRequestHandle displayRequestHandle `(v  1 e 1 0 ]
-"28
+"33
 [v _displayCallback displayCallback `(v  1 e 1 0 ]
 "9 /Users/jgarc609/github/spi/SPI.X/init.c
 [v _setIo setIo `(v  1 e 1 0 ]
-"18
+"14
 [v _setInterrupts setInterrupts `(v  1 e 1 0 ]
-"24
+"20
 [v _setSwitchInterrput setSwitchInterrput `(v  1 e 1 0 ]
 "13 /Users/jgarc609/github/spi/SPI.X/interruptService.c
 [v _processInterruptService processInterruptService `(v  1 e 1 0 ]
@@ -77,12 +79,14 @@ SPI_ACTIVE_2_IDLE 64
 "5 /Users/jgarc609/github/spi/SPI.X/serial.c
 [v _setSerial setSerial `(v  1 e 1 0 ]
 "17
+[v _setSerialIo setSerialIo `(v  1 e 1 0 ]
+"22
 [v _serialCallback serialCallback `(v  1 e 1 0 ]
-"23
+"28
 [v _serialHandle serialHandle `(v  1 e 1 0 ]
-"32
+"37
 [v _writeSerial writeSerial `(v  1 e 1 0 ]
-"36
+"41
 [v _readSerial readSerial `(uc  1 e 1 0 ]
 "8 /Users/jgarc609/github/spi/SPI.X/spi.c
 [v _setSPIInterrupt setSPIInterrupt `(v  1 e 1 0 ]
@@ -123,14 +127,14 @@ SPI_ACTIVE_2_IDLE 64
 [v _SSP1CON1 SSP1CON1 `VEuc  1 e 1 @4038 ]
 "10996
 [v _SSPSTAT SSPSTAT `VEuc  1 e 1 @4039 ]
-[s S128 . 1 `uc 1 . 1 0 :2:0 
+[s S136 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R_NOT_W 1 0 :1:2 
 ]
 "11384
-[s S131 . 1 `uc 1 . 1 0 :5:0 
+[s S139 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 D_NOT_A 1 0 :1:5 
 ]
-[s S134 . 1 `uc 1 BF 1 0 :1:0 
+[s S142 . 1 `uc 1 BF 1 0 :1:0 
 `uc 1 UA 1 0 :1:1 
 `uc 1 R_nW 1 0 :1:2 
 `uc 1 S 1 0 :1:3 
@@ -139,44 +143,44 @@ SPI_ACTIVE_2_IDLE 64
 `uc 1 CKE 1 0 :1:6 
 `uc 1 SMP 1 0 :1:7 
 ]
-[s S143 . 1 `uc 1 . 1 0 :2:0 
+[s S151 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R_W 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 D_A 1 0 :1:5 
 ]
-[s S148 . 1 `uc 1 . 1 0 :2:0 
+[s S156 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 I2C_READ 1 0 :1:2 
 `uc 1 I2C_START 1 0 :1:3 
 `uc 1 I2C_STOP 1 0 :1:4 
 `uc 1 I2C_DAT 1 0 :1:5 
 ]
-[s S154 . 1 `uc 1 . 1 0 :2:0 
+[s S162 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 nW 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 nA 1 0 :1:5 
 ]
-[s S159 . 1 `uc 1 . 1 0 :2:0 
+[s S167 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 NOT_WRITE 1 0 :1:2 
 ]
-[s S162 . 1 `uc 1 . 1 0 :5:0 
+[s S170 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 NOT_ADDRESS 1 0 :1:5 
 ]
-[s S165 . 1 `uc 1 . 1 0 :2:0 
+[s S173 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 nWRITE 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 nADDRESS 1 0 :1:5 
 ]
-[s S170 . 1 `uc 1 . 1 0 :2:0 
+[s S178 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 READ_WRITE 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 DATA_ADDRESS 1 0 :1:5 
 ]
-[s S175 . 1 `uc 1 . 1 0 :2:0 
+[s S183 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 D 1 0 :1:5 
 ]
-[s S180 . 1 `uc 1 BF1 1 0 :1:0 
+[s S188 . 1 `uc 1 BF1 1 0 :1:0 
 `uc 1 UA1 1 0 :1:1 
 `uc 1 RW 1 0 :1:2 
 `uc 1 START 1 0 :1:3 
@@ -185,20 +189,20 @@ SPI_ACTIVE_2_IDLE 64
 `uc 1 CKE1 1 0 :1:6 
 `uc 1 SMP1 1 0 :1:7 
 ]
-[s S189 . 1 `uc 1 . 1 0 :2:0 
+[s S197 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 RW1 1 0 :1:2 
 `uc 1 START1 1 0 :1:3 
 `uc 1 STOP1 1 0 :1:4 
 `uc 1 DA1 1 0 :1:5 
 ]
-[s S195 . 1 `uc 1 . 1 0 :2:0 
+[s S203 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 NOT_W 1 0 :1:2 
 ]
-[s S198 . 1 `uc 1 . 1 0 :5:0 
+[s S206 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 NOT_A 1 0 :1:5 
 ]
-[u S201 . 1 `S128 1 . 1 0 `S131 1 . 1 0 `S134 1 . 1 0 `S143 1 . 1 0 `S148 1 . 1 0 `S154 1 . 1 0 `S159 1 . 1 0 `S162 1 . 1 0 `S165 1 . 1 0 `S170 1 . 1 0 `S175 1 . 1 0 `S180 1 . 1 0 `S189 1 . 1 0 `S195 1 . 1 0 `S198 1 . 1 0 ]
-[v _SSPSTATbits SSPSTATbits `VES201  1 e 1 @4039 ]
+[u S209 . 1 `S136 1 . 1 0 `S139 1 . 1 0 `S142 1 . 1 0 `S151 1 . 1 0 `S156 1 . 1 0 `S162 1 . 1 0 `S167 1 . 1 0 `S170 1 . 1 0 `S173 1 . 1 0 `S178 1 . 1 0 `S183 1 . 1 0 `S188 1 . 1 0 `S197 1 . 1 0 `S203 1 . 1 0 `S206 1 . 1 0 ]
+[v _SSPSTATbits SSPSTATbits `VES209  1 e 1 @4039 ]
 "11816
 [v _SSPBUF SSPBUF `VEuc  1 e 1 @4041 ]
 "13755
@@ -248,18 +252,28 @@ SPI_ACTIVE_2_IDLE 64
 "22 /Users/jgarc609/github/spi/SPI.X/newmain.c
 [v _main main `(v  1 e 1 0 ]
 {
-"31
+"33
 [v main@test test `C[80]uc  1 a 80 1 ]
-"27
-[v main@F4611 F4611 `C[80]uc  1 s 80 F4611 ]
-"47
+"29
+[v main@F4613 F4613 `C[80]uc  1 s 80 F4613 ]
+"49
 } 0
-"24 /Users/jgarc609/github/spi/SPI.X/init.c
+"6 /Users/jgarc609/github/spi/SPI.X/display.c
+[v _setupDisplayIo setupDisplayIo `(v  1 e 1 0 ]
+{
+"9
+} 0
+"20 /Users/jgarc609/github/spi/SPI.X/init.c
 [v _setSwitchInterrput setSwitchInterrput `(v  1 e 1 0 ]
 {
-"27
+"23
 } 0
-"5 /Users/jgarc609/github/spi/SPI.X/serial.c
+"17 /Users/jgarc609/github/spi/SPI.X/serial.c
+[v _setSerialIo setSerialIo `(v  1 e 1 0 ]
+{
+"20
+} 0
+"5
 [v _setSerial setSerial `(v  1 e 1 0 ]
 {
 "15
@@ -272,37 +286,37 @@ SPI_ACTIVE_2_IDLE 64
 "9 /Users/jgarc609/github/spi/SPI.X/init.c
 [v _setIo setIo `(v  1 e 1 0 ]
 {
-"16
+"12
 } 0
-"18
+"14
 [v _setInterrupts setInterrupts `(v  1 e 1 0 ]
 {
-"22
+"18
 } 0
-"17 /Users/jgarc609/github/spi/SPI.X/serial.c
+"22 /Users/jgarc609/github/spi/SPI.X/serial.c
 [v _serialCallback serialCallback `(v  1 e 1 0 ]
-{
-"21
-} 0
-"16 /Users/jgarc609/github/spi/SPI.X/display.c
-[v _displayRequestHandle displayRequestHandle `(v  1 e 1 0 ]
 {
 "26
 } 0
-"6
-[v _displaySerial displaySerial `(v  1 e 1 0 ]
+"21 /Users/jgarc609/github/spi/SPI.X/display.c
+[v _displayRequestHandle displayRequestHandle `(v  1 e 1 0 ]
 {
-"9
+"31
 } 0
 "11
-[v _displaySPI displaySPI `(v  1 e 1 0 ]
+[v _displaySerial displaySerial `(v  1 e 1 0 ]
 {
 "14
 } 0
-"28
+"16
+[v _displaySPI displaySPI `(v  1 e 1 0 ]
+{
+"19
+} 0
+"33
 [v _displayCallback displayCallback `(v  1 e 1 0 ]
 {
-"30
+"35
 } 0
 "4 /Users/jgarc609/github/spi/SPI.X/button.c
 [v _buttonCallback buttonCallback `(v  1 e 1 0 ]
@@ -324,15 +338,15 @@ SPI_ACTIVE_2_IDLE 64
 {
 "26
 } 0
-"23 /Users/jgarc609/github/spi/SPI.X/serial.c
+"28 /Users/jgarc609/github/spi/SPI.X/serial.c
 [v _serialHandle serialHandle `(v  1 e 1 0 ]
 {
-"26
+"31
 } 0
-"36
+"41
 [v _readSerial readSerial `(uc  1 e 1 0 ]
 {
-"38
+"43
 } 0
 "11 /Users/jgarc609/github/spi/SPI.X/button.c
 [v _buttonHandle buttonHandle `(v  1 e 1 0 ]

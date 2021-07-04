@@ -11,6 +11,7 @@
 # 11 "./display.h"
 unsigned char outValue;
 
+void setupDisplayIo(void);
 void displaySerial(void);
 void displaySPI(void);
 void displayRequestHandle(void);
@@ -7800,6 +7801,7 @@ extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 unsigned char readSerialValue;
 
 void setSerial(void);
+void setSerialIo(void);
 void serialHandle(void);
 void serialCallback(void);
 void transmittRead(void);
@@ -7847,17 +7849,22 @@ void SPIHandle(void);
 void SPICallback(void);
 # 5 "display.c" 2
 
-void displaySerial() {
+void setupDisplayIo(void) {
+    TRISD = 0x00;
+    PORTD = 0x00;
+}
+
+void displaySerial(void) {
     outValue = readSerialValue;
     displayCallback();
 }
 
-void displaySPI() {
+void displaySPI(void) {
     outValue = readSPIValue;
     displayCallback();
 }
 
-void displayRequestHandle() {
+void displayRequestHandle(void) {
     if (FLAGS.bits.DISPLAY_SERIAL_READING) {
         displaySerial();
         FLAGS.bits.DISPLAY_SERIAL_READING = 0;
@@ -7869,6 +7876,6 @@ void displayRequestHandle() {
     }
 }
 
-void displayCallback() {
+void displayCallback(void) {
     PORTD = outValue;
 }

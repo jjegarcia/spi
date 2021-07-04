@@ -8,10 +8,6 @@
 
 void setIo() {
     //    nRBPU = 0; //Enable PORTB internal pull up resistor
-    TRISD = 0x00; //PORTD as output
-    PORTD = 0x00; //All LEDs OFF
-    TRISC7 = 1; //serial Port RC
-    TRISC6 = 0; //serial Port TX
     TRISB0 = 1; //read switch
 }
 

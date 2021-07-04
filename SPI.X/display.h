@@ -10,6 +10,7 @@
 
 unsigned char outValue;
 
+void setupDisplayIo(void);
 void displaySerial(void);
 void displaySPI(void);
 void displayRequestHandle(void);

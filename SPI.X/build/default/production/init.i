@@ -7784,10 +7784,6 @@ void setSwitchInterrput(void);
 
 void setIo() {
 
-    TRISD = 0x00;
-    PORTD = 0x00;
-    TRISC7 = 1;
-    TRISC6 = 0;
     TRISB0 = 1;
 }
 

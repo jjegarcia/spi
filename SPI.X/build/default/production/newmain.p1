@@ -19,20 +19,26 @@ Version 4.0 HI-TECH Software Intermediate Code
 "41 ./spi.h
 [; ;./spi.h: 41: void setSPIInterrupt(void);
 [v _setSPIInterrupt `(v ~T0 @X0 0 ef ]
-"39 ./serial.h
+"40 ./serial.h
+[; ;./serial.h: 40: void setSerialIo(void);
+[v _setSerialIo `(v ~T0 @X0 0 ef ]
+"39
 [; ;./serial.h: 39: void setSerial(void);
 [v _setSerial `(v ~T0 @X0 0 ef ]
+"13 ./display.h
+[; ;./display.h: 13: void setupDisplayIo(void);
+[v _setupDisplayIo `(v ~T0 @X0 0 ef ]
 "34 ./init.h
 [; ;./init.h: 34: void setSwitchInterrput(void);
 [v _setSwitchInterrput `(v ~T0 @X0 0 ef ]
 "32
 [; ;./init.h: 32: void setInterrupts(void);
 [v _setInterrupts `(v ~T0 @X0 0 ef ]
-"15 ./display.h
-[; ;./display.h: 15: void displayRequestHandle(void);
+"16 ./display.h
+[; ;./display.h: 16: void displayRequestHandle(void);
 [v _displayRequestHandle `(v ~T0 @X0 0 ef ]
-"41 ./serial.h
-[; ;./serial.h: 41: void serialCallback(void);
+"42 ./serial.h
+[; ;./serial.h: 42: void serialCallback(void);
 [v _serialCallback `(v ~T0 @X0 0 ef ]
 "38 ./button.h
 [; ;./button.h: 38: void buttonCallback(void);
@@ -771,19 +777,25 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;newmain.c: 24:     setSPIInterrupt();
 [e ( _setSPIInterrupt ..  ]
 "25
-[; ;newmain.c: 25:     setSerial();
-[e ( _setSerial ..  ]
+[; ;newmain.c: 25:     setSerialIo();
+[e ( _setSerialIo ..  ]
 "26
-[; ;newmain.c: 26:     setSwitchInterrput();
-[e ( _setSwitchInterrput ..  ]
+[; ;newmain.c: 26:     setSerial();
+[e ( _setSerial ..  ]
 "27
-[; ;newmain.c: 27:     setInterrupts();
+[; ;newmain.c: 27:     setupDisplayIo();
+[e ( _setupDisplayIo ..  ]
+"28
+[; ;newmain.c: 28:     setSwitchInterrput();
+[e ( _setSwitchInterrput ..  ]
+"29
+[; ;newmain.c: 29:     setInterrupts();
 [e ( _setInterrupts ..  ]
-[v F4611 `Cuc ~T0 @X0 -> 80 `i s ]
-[i F4611
+[v F4613 `Cuc ~T0 @X0 -> 80 `i s ]
+[i F4613
 :U ..
-"31
-[; ;newmain.c: 31:     const unsigned char test[80] = "sssdddd";
+"33
+[; ;newmain.c: 33:     const unsigned char test[80] = "sssdddd";
 -> 115 `c
 -> 115 `c
 -> 115 `c
@@ -795,60 +807,60 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ]
 [v _test `Cuc ~T0 @X0 -> 80 `i a ]
-[e = _test F4611 ]
-"33
-[; ;newmain.c: 33:     while (1) {
+[e = _test F4613 ]
+"35
+[; ;newmain.c: 35:     while (1) {
 [e :U 506 ]
 {
-"34
-[; ;newmain.c: 34:         if (FLAGS.bits.DISPLAY_READING) {
+"36
+[; ;newmain.c: 36:         if (FLAGS.bits.DISPLAY_READING) {
 [e $ ! != -> . . _FLAGS 1 4 `i -> 0 `i 508  ]
 {
-"35
-[; ;newmain.c: 35:             displayRequestHandle();
-[e ( _displayRequestHandle ..  ]
-"36
-[; ;newmain.c: 36:             FLAGS.bits.DISPLAY_READING = 0;
-[e = . . _FLAGS 1 4 -> -> 0 `i `uc ]
 "37
-[; ;newmain.c: 37:         }
+[; ;newmain.c: 37:             displayRequestHandle();
+[e ( _displayRequestHandle ..  ]
+"38
+[; ;newmain.c: 38:             FLAGS.bits.DISPLAY_READING = 0;
+[e = . . _FLAGS 1 4 -> -> 0 `i `uc ]
+"39
+[; ;newmain.c: 39:         }
 }
 [e :U 508 ]
-"38
-[; ;newmain.c: 38:         if (FLAGS.bits.UART_RECEIVED) {
+"40
+[; ;newmain.c: 40:         if (FLAGS.bits.UART_RECEIVED) {
 [e $ ! != -> . . _FLAGS 1 1 `i -> 0 `i 509  ]
 {
-"39
-[; ;newmain.c: 39:             serialCallback();
-[e ( _serialCallback ..  ]
-"40
-[; ;newmain.c: 40:             FLAGS.bits.UART_RECEIVED = 0;
-[e = . . _FLAGS 1 1 -> -> 0 `i `uc ]
 "41
-[; ;newmain.c: 41:         }
+[; ;newmain.c: 41:             serialCallback();
+[e ( _serialCallback ..  ]
+"42
+[; ;newmain.c: 42:             FLAGS.bits.UART_RECEIVED = 0;
+[e = . . _FLAGS 1 1 -> -> 0 `i `uc ]
+"43
+[; ;newmain.c: 43:         }
 }
 [e :U 509 ]
-"42
-[; ;newmain.c: 42:         if (FLAGS.bits.PUSHED_BUTTON) {
+"44
+[; ;newmain.c: 44:         if (FLAGS.bits.PUSHED_BUTTON) {
 [e $ ! != -> . . _FLAGS 1 3 `i -> 0 `i 510  ]
 {
-"43
-[; ;newmain.c: 43:             buttonCallback();
-[e ( _buttonCallback ..  ]
-"44
-[; ;newmain.c: 44:             FLAGS.bits.PUSHED_BUTTON = 0;
-[e = . . _FLAGS 1 3 -> -> 0 `i `uc ]
 "45
-[; ;newmain.c: 45:         }
+[; ;newmain.c: 45:             buttonCallback();
+[e ( _buttonCallback ..  ]
+"46
+[; ;newmain.c: 46:             FLAGS.bits.PUSHED_BUTTON = 0;
+[e = . . _FLAGS 1 3 -> -> 0 `i `uc ]
+"47
+[; ;newmain.c: 47:         }
 }
 [e :U 510 ]
-"46
-[; ;newmain.c: 46:     }
+"48
+[; ;newmain.c: 48:     }
 }
 [e :U 505 ]
 [e $U 506  ]
 [e :U 507 ]
-"47
-[; ;newmain.c: 47: }
+"49
+[; ;newmain.c: 49: }
 [e :UE 504 ]
 }

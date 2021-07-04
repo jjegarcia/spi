@@ -3,17 +3,22 @@
 #include "serial.h"
 #include "spi.h"
 
-void displaySerial() {
+void setupDisplayIo(void) {
+    TRISD = 0x00; //PORTD as output
+    PORTD = 0x00; //All LEDs OFF
+}
+
+void displaySerial(void) {
     outValue = readSerialValue;
     displayCallback();
 }
 
-void displaySPI() {
+void displaySPI(void) {
     outValue = readSPIValue;
     displayCallback();
 }
 
-void displayRequestHandle() {
+void displayRequestHandle(void) {
     if (FLAGS.bits.DISPLAY_SERIAL_READING) {
         displaySerial();
         FLAGS.bits.DISPLAY_SERIAL_READING = 0;
@@ -25,7 +30,7 @@ void displayRequestHandle() {
     }
 }
 
-void displayCallback() {
+void displayCallback(void) {
     PORTD = outValue;
 }
 

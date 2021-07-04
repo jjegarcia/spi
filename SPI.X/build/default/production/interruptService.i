@@ -7839,6 +7839,7 @@ static void spiService(void);
 unsigned char readSerialValue;
 
 void setSerial(void);
+void setSerialIo(void);
 void serialHandle(void);
 void serialCallback(void);
 void transmittRead(void);
