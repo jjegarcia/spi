@@ -13,9 +13,10 @@ union {
     unsigned char byte;
 
     struct {
-        unsigned SPI_READ_REQUEST : 1;
+        unsigned SPI_WRITE_REQUEST : 1;
+        unsigned SPI_READ_REQUEST:1;
         unsigned UART_RECEIVED : 1;
-        unsigned PREVIOUS_BUTTON_STATE : 1;
+        unsigned PUSH_REQUEST_SERVICED : 1;
         unsigned PUSHED_BUTTON : 1;
         unsigned DISPLAY_READING: 1;
         unsigned DISPLAY_SPI_READING : 1;
@@ -7788,18 +7789,90 @@ extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 # 35 "./button.h" 2
 
 
-
+void initialiseButton(void);
 void buttonCallback(void);
 void buttonHandle(void);
+void buttonDebounce(void);
 # 3 "button.c" 2
+# 1 "./serial.h" 1
+# 37 "./serial.h"
+unsigned char readSerialValue;
+
+void setSerial(void);
+void setSerialIo(void);
+void serialHandle(void);
+void serialCallback(void);
+void transmittRead(void);
+void writeSerial(unsigned char);
+void testSerialSend(void);
+unsigned char readSerial(void);
+# 4 "button.c" 2
+# 1 "./spi.h" 1
+# 11 "./spi.h"
+typedef enum {
+    SPI_MASTER_OSC_DIV4 = 0b00100000,
+    SPI_MASTER_OSC_DIV16 = 0b00100001,
+    SPI_MASTER_OSC_DIV64 = 0b00100010,
+    SPI_MASTER_TMR2 = 0b00100011,
+    SPI_SLAVE_SS_EN = 0b00100100,
+    SPI_SLAVE_SS_DIS = 0b00100101
+} Spi_Type;
+
+typedef enum {
+    SPI_DATA_SAMPLE_MIDDLE =0b00000000,
+    SPI_DATA_SAMPLE_END = 0b10000000
+} Spi_Data_Sample;
+
+typedef enum {
+    SPI_CLOCK_IDLE_HIGH = 0b00010000,
+    SPI_CLOCK_IDLE_LOW = 0b00000000
+} Spi_Clock_Idle;
+
+typedef enum {
+    SPI_IDLE_2_ACTIVE = 0b00000000,
+    SPI_ACTIVE_2_IDLE = 0b01000000
+} Spi_Transmit_Edge;
+
+unsigned char readSPIValue;
+
+void setSPIInterrupt(void);
+void spiInit(Spi_Type, Spi_Data_Sample, Spi_Clock_Idle, Spi_Transmit_Edge);
+void spiWrite(char);
+unsigned spiDataReady(void);
+char spiRead(void);
+void SPIHandle(void);
+void SPICallback(void);
+void testSpiSend(void);
+# 5 "button.c" 2
+
+void setButtonIo(void) {
+    TRISB0 = 1;
+}
+
+void initialiseButton(void) {
+    FLAGS.bits.PUSHED_BUTTON = 0;
+    FLAGS.bits.PUSH_REQUEST_SERVICED = 1;
+}
 
 void buttonCallback(void) {
-    if (FLAGS.bits.PREVIOUS_BUTTON_STATE != FLAGS.bits.PUSHED_BUTTON) {
-        FLAGS.bits.PREVIOUS_BUTTON_STATE = FLAGS.bits.PUSHED_BUTTON;
-        TXREG1 = 'a';
+    if (FLAGS.bits.PUSH_REQUEST_SERVICED == 0 && FLAGS.bits.PUSHED_BUTTON == 1) {
+
+        testSpiSend();
     }
+    FLAGS.bits.PUSHED_BUTTON = 0;
 }
 
 void buttonHandle(void) {
-    FLAGS.bits.PUSHED_BUTTON = 1;
+    if (FLAGS.bits.PUSH_REQUEST_SERVICED == 1 && FLAGS.bits.PUSHED_BUTTON == 0) {
+        FLAGS.bits.PUSHED_BUTTON = 1;
+    }
+}
+
+void buttonDebounce(void) {
+    static int counter = 255;
+    counter--;
+    if (counter == 0) {
+        FLAGS.bits.PUSH_REQUEST_SERVICED = 1;
+        counter = 255;
+    }
 }

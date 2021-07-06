@@ -9,8 +9,9 @@
 # 1 "display.c" 2
 # 1 "./display.h" 1
 # 11 "./display.h"
-unsigned char outValue;
+unsigned char ledValue;
 
+void setupDisplayIo(void);
 void displaySerial(void);
 void displaySPI(void);
 void displayRequestHandle(void);
@@ -22,9 +23,10 @@ union {
     unsigned char byte;
 
     struct {
-        unsigned SPI_READ_REQUEST : 1;
+        unsigned SPI_WRITE_REQUEST : 1;
+        unsigned SPI_READ_REQUEST:1;
         unsigned UART_RECEIVED : 1;
-        unsigned PREVIOUS_BUTTON_STATE : 1;
+        unsigned PUSH_REQUEST_SERVICED : 1;
         unsigned PUSHED_BUTTON : 1;
         unsigned DISPLAY_READING: 1;
         unsigned DISPLAY_SPI_READING : 1;
@@ -7800,41 +7802,39 @@ extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 unsigned char readSerialValue;
 
 void setSerial(void);
+void setSerialIo(void);
 void serialHandle(void);
 void serialCallback(void);
 void transmittRead(void);
 void writeSerial(unsigned char);
+void testSerialSend(void);
 unsigned char readSerial(void);
 # 4 "display.c" 2
 # 1 "./spi.h" 1
 # 11 "./spi.h"
-typedef enum
-{
+typedef enum {
     SPI_MASTER_OSC_DIV4 = 0b00100000,
     SPI_MASTER_OSC_DIV16 = 0b00100001,
     SPI_MASTER_OSC_DIV64 = 0b00100010,
     SPI_MASTER_TMR2 = 0b00100011,
     SPI_SLAVE_SS_EN = 0b00100100,
     SPI_SLAVE_SS_DIS = 0b00100101
-}Spi_Type;
+} Spi_Type;
 
-typedef enum
-{
-    SPI_DATA_SAMPLE_MIDDLE = 0b00000000,
+typedef enum {
+    SPI_DATA_SAMPLE_MIDDLE =0b00000000,
     SPI_DATA_SAMPLE_END = 0b10000000
-}Spi_Data_Sample;
+} Spi_Data_Sample;
 
-typedef enum
-{
+typedef enum {
     SPI_CLOCK_IDLE_HIGH = 0b00010000,
     SPI_CLOCK_IDLE_LOW = 0b00000000
-}Spi_Clock_Idle;
+} Spi_Clock_Idle;
 
-typedef enum
-{
+typedef enum {
     SPI_IDLE_2_ACTIVE = 0b00000000,
     SPI_ACTIVE_2_IDLE = 0b01000000
-}Spi_Transmit_Edge;
+} Spi_Transmit_Edge;
 
 unsigned char readSPIValue;
 
@@ -7845,19 +7845,25 @@ unsigned spiDataReady(void);
 char spiRead(void);
 void SPIHandle(void);
 void SPICallback(void);
+void testSpiSend(void);
 # 5 "display.c" 2
 
-void displaySerial() {
-    outValue = readSerialValue;
+void setupDisplayIo(void) {
+    TRISD = 0x00;
+    PORTD = 0x00;
+}
+
+void displaySerial(void) {
+    ledValue = readSerialValue;
     displayCallback();
 }
 
-void displaySPI() {
-    outValue = readSPIValue;
+void displaySPI(void) {
+    ledValue = readSPIValue;
     displayCallback();
 }
 
-void displayRequestHandle() {
+void displayRequestHandle(void) {
     if (FLAGS.bits.DISPLAY_SERIAL_READING) {
         displaySerial();
         FLAGS.bits.DISPLAY_SERIAL_READING = 0;
@@ -7869,6 +7875,6 @@ void displayRequestHandle() {
     }
 }
 
-void displayCallback() {
-    PORTD = outValue;
+void displayCallback(void) {
+    PORTD = ledValue;
 }

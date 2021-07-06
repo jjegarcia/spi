@@ -8,7 +8,7 @@
 #ifndef DISPLAY_H
 #define	DISPLAY_H
 
-unsigned char outValue;
+unsigned char ledValue;
 
 void setupDisplayIo(void);
 void displaySerial(void);

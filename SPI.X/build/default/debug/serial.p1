@@ -1,8 +1,8 @@
 Version 4.0 HI-TECH Software Intermediate Code
 "32 ./main.h
 [; ;./main.h: 32:     struct {
-[s S2 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S2 . SPI_READ_REQUEST UART_RECEIVED PREVIOUS_BUTTON_STATE PUSHED_BUTTON DISPLAY_READING DISPLAY_SPI_READING DISPLAY_SERIAL_READING ]
+[s S2 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S2 . SPI_WRITE_REQUEST SPI_READ_REQUEST UART_RECEIVED PUSH_REQUEST_SERVICED PUSHED_BUTTON DISPLAY_READING DISPLAY_SPI_READING DISPLAY_SERIAL_READING ]
 "29
 [; ;./main.h: 29: union {
 [u S1 `uc 1 `S2 1 ]
@@ -34,17 +34,23 @@ Version 4.0 HI-TECH Software Intermediate Code
 "8958
 [; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 8958: extern volatile unsigned char RCREG1 __attribute__((address(0xFAE)));
 [v _RCREG1 `Vuc ~T0 @X0 0 e@4014 ]
-"44 ./serial.h
-[; ;./serial.h: 44: unsigned char readSerial(void);
+"16266
+[; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 16266: extern volatile __bit TRISC7 __attribute__((address(0x7CA7)));
+[v _TRISC7 `Vb ~T0 @X0 0 e@31911 ]
+"16263
+[; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 16263: extern volatile __bit TRISC6 __attribute__((address(0x7CA6)));
+[v _TRISC6 `Vb ~T0 @X0 0 e@31910 ]
+"46 ./serial.h
+[; ;./serial.h: 46: unsigned char readSerial(void);
 [v _readSerial `(uc ~T0 @X0 0 ef ]
-"43
-[; ;./serial.h: 43: void writeSerial(unsigned char);
+"44
+[; ;./serial.h: 44: void writeSerial(unsigned char);
 [v _writeSerial `(v ~T0 @X0 0 ef1`uc ]
 "8946 /Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h
 [; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 8946: extern volatile unsigned char TXREG1 __attribute__((address(0xFAD)));
 [v _TXREG1 `Vuc ~T0 @X0 0 e@4013 ]
-"41 ./main.h
-[; ;./main.h: 41: } FLAGS;
+"42 ./main.h
+[; ;./main.h: 42: } FLAGS;
 [v _FLAGS `S1 ~T0 @X0 1 e ]
 "54 /Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h
 [; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 54: __asm("SSP2CON2 equ 0F62h");
@@ -656,7 +662,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;serial.c: 7:     SPBRG = 15;
 [e = _SPBRG -> -> 15 `i `uc ]
 "8
-[; ;serial.c: 8:     SYNC1=0;
+[; ;serial.c: 8:     SYNC1 = 0;
 [e = _SYNC1 -> -> 0 `i `b ]
 "9
 [; ;serial.c: 9:     SPEN1 = 1;
@@ -681,75 +687,104 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :UE 503 ]
 }
 "17
-[; ;serial.c: 17: void serialCallback(void) {
+[; ;serial.c: 17: void setSerialIo(void) {
+[v _setSerialIo `(v ~T0 @X0 1 ef ]
+{
+[e :U _setSerialIo ]
+[f ]
+"18
+[; ;serial.c: 18:     TRISC7 = 1;
+[e = _TRISC7 -> -> 1 `i `b ]
+"19
+[; ;serial.c: 19:     TRISC6 = 0;
+[e = _TRISC6 -> -> 0 `i `b ]
+"20
+[; ;serial.c: 20: }
+[e :UE 504 ]
+}
+"22
+[; ;serial.c: 22: void serialCallback(void) {
 [v _serialCallback `(v ~T0 @X0 1 ef ]
 {
 [e :U _serialCallback ]
 [f ]
-"18
-[; ;serial.c: 18:     FLAGS.bits.DISPLAY_READING = 1;
-[e = . . _FLAGS 1 4 -> -> 1 `i `uc ]
-"19
-[; ;serial.c: 19:     FLAGS.bits.DISPLAY_SERIAL_READING = 1;
-[e = . . _FLAGS 1 6 -> -> 1 `i `uc ]
-"21
-[; ;serial.c: 21: }
-[e :UE 504 ]
-}
 "23
-[; ;serial.c: 23: void serialHandle() {
-[v _serialHandle `(v ~T0 @X0 1 ef ]
-{
-[e :U _serialHandle ]
-[f ]
+[; ;serial.c: 23:     FLAGS.bits.DISPLAY_READING = 1;
+[e = . . _FLAGS 1 5 -> -> 1 `i `uc ]
 "24
-[; ;serial.c: 24:     FLAGS.bits.UART_RECEIVED = 1;
-[e = . . _FLAGS 1 1 -> -> 1 `i `uc ]
-"25
-[; ;serial.c: 25:     readSerialValue = readSerial();
-[e = _readSerialValue ( _readSerial ..  ]
+[; ;serial.c: 24:     FLAGS.bits.DISPLAY_SERIAL_READING = 1;
+[e = . . _FLAGS 1 7 -> -> 1 `i `uc ]
 "26
 [; ;serial.c: 26: }
 [e :UE 505 ]
 }
 "28
-[; ;serial.c: 28: void transmittRead(void) {
+[; ;serial.c: 28: void serialHandle() {
+[v _serialHandle `(v ~T0 @X0 1 ef ]
+{
+[e :U _serialHandle ]
+[f ]
+"29
+[; ;serial.c: 29:     FLAGS.bits.UART_RECEIVED = 1;
+[e = . . _FLAGS 1 2 -> -> 1 `i `uc ]
+"30
+[; ;serial.c: 30:     readSerialValue = readSerial();
+[e = _readSerialValue ( _readSerial ..  ]
+"31
+[; ;serial.c: 31: }
+[e :UE 506 ]
+}
+"33
+[; ;serial.c: 33: void transmittRead(void) {
 [v _transmittRead `(v ~T0 @X0 1 ef ]
 {
 [e :U _transmittRead ]
 [f ]
-"29
-[; ;serial.c: 29:     writeSerial(readSerialValue);
+"34
+[; ;serial.c: 34:     writeSerial(readSerialValue);
 [e ( _writeSerial (1 _readSerialValue ]
-"30
-[; ;serial.c: 30: }
-[e :UE 506 ]
+"35
+[; ;serial.c: 35: }
+[e :UE 507 ]
 }
-"32
-[; ;serial.c: 32: void writeSerial(unsigned char value) {
+"37
+[; ;serial.c: 37: void writeSerial(unsigned char value) {
 [v _writeSerial `(v ~T0 @X0 1 ef1`uc ]
 {
 [e :U _writeSerial ]
 [v _value `uc ~T0 @X0 1 r1 ]
 [f ]
-"33
-[; ;serial.c: 33:     TXREG1 = value;
+"38
+[; ;serial.c: 38:     TXREG1 = value;
 [e = _TXREG1 _value ]
-"34
-[; ;serial.c: 34: }
-[e :UE 507 ]
+"39
+[; ;serial.c: 39: }
+[e :UE 508 ]
 }
-"36
-[; ;serial.c: 36: unsigned char readSerial(){
+"41
+[; ;serial.c: 41: unsigned char readSerial(void) {
 [v _readSerial `(uc ~T0 @X0 1 ef ]
 {
 [e :U _readSerial ]
 [f ]
-"37
-[; ;serial.c: 37:     return RCREG1;
+"42
+[; ;serial.c: 42:     return RCREG1;
 [e ) _RCREG1 ]
-[e $UE 508  ]
-"38
-[; ;serial.c: 38: }
-[e :UE 508 ]
+[e $UE 509  ]
+"43
+[; ;serial.c: 43: }
+[e :UE 509 ]
+}
+"45
+[; ;serial.c: 45: void testSerialSend(void) {
+[v _testSerialSend `(v ~T0 @X0 1 ef ]
+{
+[e :U _testSerialSend ]
+[f ]
+"46
+[; ;serial.c: 46:     TXREG1 = 'a';
+[e = _TXREG1 -> -> 97 `ui `uc ]
+"47
+[; ;serial.c: 47: }
+[e :UE 510 ]
 }

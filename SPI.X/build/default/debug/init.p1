@@ -1,20 +1,5 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"6123 /Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h
-[; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 6123: extern volatile unsigned char TRISD __attribute__((address(0xF95)));
-[v _TRISD `Vuc ~T0 @X0 0 e@3989 ]
-"3195
-[; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 3195: extern volatile unsigned char PORTD __attribute__((address(0xF83)));
-[v _PORTD `Vuc ~T0 @X0 0 e@3971 ]
-"16266
-[; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 16266: extern volatile __bit TRISC7 __attribute__((address(0x7CA7)));
-[v _TRISC7 `Vb ~T0 @X0 0 e@31911 ]
-"16263
-[; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 16263: extern volatile __bit TRISC6 __attribute__((address(0x7CA6)));
-[v _TRISC6 `Vb ~T0 @X0 0 e@31910 ]
-"16221
-[; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 16221: extern volatile __bit TRISB0 __attribute__((address(0x7C98)));
-[v _TRISB0 `Vb ~T0 @X0 0 e@31896 ]
-"14250
+"14250 /Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h
 [; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 14250: extern volatile __bit GIE __attribute__((address(0x7F97)));
 [v _GIE `Vb ~T0 @X0 0 e@32663 ]
 "15273
@@ -627,53 +612,38 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U _setIo ]
 [f ]
 "11
-[; ;init.c: 11:     TRISD = 0x00;
-[e = _TRISD -> -> 0 `i `uc ]
-"12
-[; ;init.c: 12:     PORTD = 0x00;
-[e = _PORTD -> -> 0 `i `uc ]
-"13
-[; ;init.c: 13:     TRISC7 = 1;
-[e = _TRISC7 -> -> 1 `i `b ]
-"14
-[; ;init.c: 14:     TRISC6 = 0;
-[e = _TRISC6 -> -> 0 `i `b ]
-"15
-[; ;init.c: 15:     TRISB0 = 1;
-[e = _TRISB0 -> -> 1 `i `b ]
-"16
-[; ;init.c: 16: }
+[; ;init.c: 11: }
 [e :UE 501 ]
 }
-"18
-[; ;init.c: 18: void setInterrupts(void) {
+"13
+[; ;init.c: 13: void setInterrupts(void) {
 [v _setInterrupts `(v ~T0 @X0 1 ef ]
 {
 [e :U _setInterrupts ]
 [f ]
-"19
-[; ;init.c: 19:     GIE = 1;
+"14
+[; ;init.c: 14:     GIE = 1;
 [e = _GIE -> -> 1 `i `b ]
-"20
-[; ;init.c: 20:     PEIE = 1;
+"15
+[; ;init.c: 15:     PEIE = 1;
 [e = _PEIE -> -> 1 `i `b ]
-"22
-[; ;init.c: 22: }
+"17
+[; ;init.c: 17: }
 [e :UE 502 ]
 }
-"24
-[; ;init.c: 24: void setSwitchInterrput(void) {
-[v _setSwitchInterrput `(v ~T0 @X0 1 ef ]
+"19
+[; ;init.c: 19: void setButtonInterrput(void) {
+[v _setButtonInterrput `(v ~T0 @X0 1 ef ]
 {
-[e :U _setSwitchInterrput ]
+[e :U _setButtonInterrput ]
 [f ]
-"25
-[; ;init.c: 25:     INTEDG0 = 1;
+"20
+[; ;init.c: 20:     INTEDG0 = 1;
 [e = _INTEDG0 -> -> 1 `i `b ]
-"26
-[; ;init.c: 26:     INT0IE = 1;
+"21
+[; ;init.c: 21:     INT0IE = 1;
 [e = _INT0IE -> -> 1 `i `b ]
-"27
-[; ;init.c: 27: }
+"22
+[; ;init.c: 22: }
 [e :UE 503 ]
 }

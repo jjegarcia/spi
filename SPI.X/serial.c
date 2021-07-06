@@ -38,6 +38,10 @@ void writeSerial(unsigned char value) {
     TXREG1 = value;
 }
 
-unsigned char readSerial() {
+unsigned char readSerial(void) {
     return RCREG1;
+}
+
+void testSerialSend(void) {
+    TXREG1 = 'a';
 }

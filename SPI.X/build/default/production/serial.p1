@@ -1,8 +1,8 @@
 Version 4.0 HI-TECH Software Intermediate Code
 "32 ./main.h
 [; ;./main.h: 32:     struct {
-[s S2 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S2 . SPI_READ_REQUEST UART_RECEIVED SERVICED PUSHED_BUTTON DISPLAY_READING DISPLAY_SPI_READING DISPLAY_SERIAL_READING ]
+[s S2 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S2 . SPI_WRITE_REQUEST SPI_READ_REQUEST UART_RECEIVED PUSH_REQUEST_SERVICED PUSHED_BUTTON DISPLAY_READING DISPLAY_SPI_READING DISPLAY_SERIAL_READING ]
 "29
 [; ;./main.h: 29: union {
 [u S1 `uc 1 `S2 1 ]
@@ -40,8 +40,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "16263
 [; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 16263: extern volatile __bit TRISC6 __attribute__((address(0x7CA6)));
 [v _TRISC6 `Vb ~T0 @X0 0 e@31910 ]
-"45 ./serial.h
-[; ;./serial.h: 45: unsigned char readSerial(void);
+"46 ./serial.h
+[; ;./serial.h: 46: unsigned char readSerial(void);
 [v _readSerial `(uc ~T0 @X0 0 ef ]
 "44
 [; ;./serial.h: 44: void writeSerial(unsigned char);
@@ -49,8 +49,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "8946 /Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h
 [; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 8946: extern volatile unsigned char TXREG1 __attribute__((address(0xFAD)));
 [v _TXREG1 `Vuc ~T0 @X0 0 e@4013 ]
-"41 ./main.h
-[; ;./main.h: 41: } FLAGS;
+"42 ./main.h
+[; ;./main.h: 42: } FLAGS;
 [v _FLAGS `S1 ~T0 @X0 1 e ]
 "54 /Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h
 [; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 54: __asm("SSP2CON2 equ 0F62h");
@@ -710,10 +710,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 [f ]
 "23
 [; ;serial.c: 23:     FLAGS.bits.DISPLAY_READING = 1;
-[e = . . _FLAGS 1 4 -> -> 1 `i `uc ]
+[e = . . _FLAGS 1 5 -> -> 1 `i `uc ]
 "24
 [; ;serial.c: 24:     FLAGS.bits.DISPLAY_SERIAL_READING = 1;
-[e = . . _FLAGS 1 6 -> -> 1 `i `uc ]
+[e = . . _FLAGS 1 7 -> -> 1 `i `uc ]
 "26
 [; ;serial.c: 26: }
 [e :UE 505 ]
@@ -726,7 +726,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [f ]
 "29
 [; ;serial.c: 29:     FLAGS.bits.UART_RECEIVED = 1;
-[e = . . _FLAGS 1 1 -> -> 1 `i `uc ]
+[e = . . _FLAGS 1 2 -> -> 1 `i `uc ]
 "30
 [; ;serial.c: 30:     readSerialValue = readSerial();
 [e = _readSerialValue ( _readSerial ..  ]
@@ -762,7 +762,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :UE 508 ]
 }
 "41
-[; ;serial.c: 41: unsigned char readSerial() {
+[; ;serial.c: 41: unsigned char readSerial(void) {
 [v _readSerial `(uc ~T0 @X0 1 ef ]
 {
 [e :U _readSerial ]
@@ -774,4 +774,17 @@ Version 4.0 HI-TECH Software Intermediate Code
 "43
 [; ;serial.c: 43: }
 [e :UE 509 ]
+}
+"45
+[; ;serial.c: 45: void testSerialSend(void) {
+[v _testSerialSend `(v ~T0 @X0 1 ef ]
+{
+[e :U _testSerialSend ]
+[f ]
+"46
+[; ;serial.c: 46:     TXREG1 = 'a';
+[e = _TXREG1 -> -> 97 `ui `uc ]
+"47
+[; ;serial.c: 47: }
+[e :UE 510 ]
 }

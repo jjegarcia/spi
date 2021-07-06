@@ -7775,33 +7775,29 @@ extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 
 # 1 "./spi.h" 1
 # 11 "./spi.h"
-typedef enum
-{
+typedef enum {
     SPI_MASTER_OSC_DIV4 = 0b00100000,
     SPI_MASTER_OSC_DIV16 = 0b00100001,
     SPI_MASTER_OSC_DIV64 = 0b00100010,
     SPI_MASTER_TMR2 = 0b00100011,
     SPI_SLAVE_SS_EN = 0b00100100,
     SPI_SLAVE_SS_DIS = 0b00100101
-}Spi_Type;
+} Spi_Type;
 
-typedef enum
-{
+typedef enum {
     SPI_DATA_SAMPLE_MIDDLE = 0b00000000,
     SPI_DATA_SAMPLE_END = 0b10000000
-}Spi_Data_Sample;
+} Spi_Data_Sample;
 
-typedef enum
-{
+typedef enum {
     SPI_CLOCK_IDLE_HIGH = 0b00010000,
     SPI_CLOCK_IDLE_LOW = 0b00000000
-}Spi_Clock_Idle;
+} Spi_Clock_Idle;
 
-typedef enum
-{
+typedef enum {
     SPI_IDLE_2_ACTIVE = 0b00000000,
     SPI_ACTIVE_2_IDLE = 0b01000000
-}Spi_Transmit_Edge;
+} Spi_Transmit_Edge;
 
 unsigned char readSPIValue;
 
@@ -7894,9 +7890,10 @@ union {
     unsigned char byte;
 
     struct {
-        unsigned SPI_READ_REQUEST : 1;
+        unsigned SPI_WRITE_REQUEST : 1;
+        unsigned SPI_READ_REQUEST:1;
         unsigned UART_RECEIVED : 1;
-        unsigned SERVICED : 1;
+        unsigned PUSH_REQUEST_SERVICED : 1;
         unsigned PUSHED_BUTTON : 1;
         unsigned DISPLAY_READING: 1;
         unsigned DISPLAY_SPI_READING : 1;
@@ -7926,6 +7923,7 @@ void serialHandle(void);
 void serialCallback(void);
 void transmittRead(void);
 void writeSerial(unsigned char);
+void testSerialSend(void);
 unsigned char readSerial(void);
 # 13 "newmain.c" 2
 # 1 "./button.h" 1
@@ -7963,11 +7961,15 @@ void main() {
     setButtonIo();
     setInterrupts();
 
-
+    spiInit(SPI_SLAVE_SS_EN, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
 
     const unsigned char test[80] = "sssdddd";
 
     while (1) {
+        if (FLAGS.bits.SPI_READ_REQUEST == 1) {
+            SPICallback();
+            FLAGS.bits.SPI_READ_REQUEST = 0;
+        }
         if (FLAGS.bits.DISPLAY_READING) {
             displayRequestHandle();
             FLAGS.bits.DISPLAY_READING = 0;
@@ -7977,10 +7979,10 @@ void main() {
             FLAGS.bits.UART_RECEIVED = 0;
         }
         if (FLAGS.bits.PUSHED_BUTTON) {
-            FLAGS.bits.SERVICED = 0;
+            FLAGS.bits.PUSH_REQUEST_SERVICED = 0;
             buttonCallback();
         }
-        if(FLAGS.bits.SERVICED==0){
+        if (FLAGS.bits.PUSH_REQUEST_SERVICED == 0) {
             buttonDebounce();
         }
     }

@@ -7782,33 +7782,29 @@ extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 # 9 "./spi.h" 2
 
 
-typedef enum
-{
+typedef enum {
     SPI_MASTER_OSC_DIV4 = 0b00100000,
     SPI_MASTER_OSC_DIV16 = 0b00100001,
     SPI_MASTER_OSC_DIV64 = 0b00100010,
     SPI_MASTER_TMR2 = 0b00100011,
     SPI_SLAVE_SS_EN = 0b00100100,
     SPI_SLAVE_SS_DIS = 0b00100101
-}Spi_Type;
+} Spi_Type;
 
-typedef enum
-{
-    SPI_DATA_SAMPLE_MIDDLE = 0b00000000,
+typedef enum {
+    SPI_DATA_SAMPLE_MIDDLE =0b00000000,
     SPI_DATA_SAMPLE_END = 0b10000000
-}Spi_Data_Sample;
+} Spi_Data_Sample;
 
-typedef enum
-{
+typedef enum {
     SPI_CLOCK_IDLE_HIGH = 0b00010000,
     SPI_CLOCK_IDLE_LOW = 0b00000000
-}Spi_Clock_Idle;
+} Spi_Clock_Idle;
 
-typedef enum
-{
+typedef enum {
     SPI_IDLE_2_ACTIVE = 0b00000000,
     SPI_ACTIVE_2_IDLE = 0b01000000
-}Spi_Transmit_Edge;
+} Spi_Transmit_Edge;
 
 unsigned char readSPIValue;
 
@@ -7819,12 +7815,30 @@ unsigned spiDataReady(void);
 char spiRead(void);
 void SPIHandle(void);
 void SPICallback(void);
+void testSpiSend(void);
 # 6 "spi.c" 2
+# 1 "./main.h" 1
+# 29 "./main.h"
+union {
+    unsigned char byte;
+
+    struct {
+        unsigned SPI_WRITE_REQUEST : 1;
+        unsigned SPI_READ_REQUEST:1;
+        unsigned UART_RECEIVED : 1;
+        unsigned PUSH_REQUEST_SERVICED : 1;
+        unsigned PUSHED_BUTTON : 1;
+        unsigned DISPLAY_READING: 1;
+        unsigned DISPLAY_SPI_READING : 1;
+        unsigned DISPLAY_SERIAL_READING : 1;
+    } bits;
+} FLAGS;
+# 7 "spi.c" 2
 
 
 void setSPIInterrupt(void) {
-    SSPIF = 0;
-    SSPIE = 1;
+    SSP1IF = 0;
+    SSP1IE = 1;
 }
 
 void spiInit(Spi_Type sType, Spi_Data_Sample sDataSample, Spi_Clock_Idle sClockIdle, Spi_Transmit_Edge sTransmitEdge) {
@@ -7832,31 +7846,31 @@ void spiInit(Spi_Type sType, Spi_Data_Sample sDataSample, Spi_Clock_Idle sClockI
     TRISC4 = 1;
     if (sType & 0b00000100)
     {
-        SSPSTAT = sTransmitEdge;
+        SSP1STAT = sTransmitEdge;
         TRISC3 = 1;
-        TRISC2 = 0;
+        TRISC2 = 1;
         LATC0 = 1;
     } else
     {
-        SSPSTAT = sDataSample | sTransmitEdge;
+        SSP1STAT = sDataSample | sTransmitEdge;
         TRISC3 = 0;
-        TRISC2 = 1;
+        TRISC2 = 0;
     }
-    SSP1CON1 = 0b00100101;
+    SSP1CON1 = sType | sClockIdle;
 }
 
 static void spiReceiveWait() {
-    while (!SSPSTATbits.BF);
+    while (!SSP1STATbits.BF);
 }
 
 void spiWrite(char dat)
 {
-    SSPBUF = dat;
+    SSP1BUF = dat;
 }
 
 unsigned spiDataReady(void)
 {
-    if (SSPSTATbits.BF)
+    if (SSP1STATbits.BF)
         return 1;
     else
         return 0;
@@ -7865,13 +7879,19 @@ unsigned spiDataReady(void)
 char spiRead(void)
 {
     spiReceiveWait();
-    return (SSPBUF);
+    return (SSP1BUF);
 }
 
 void SPIHandle(void) {
     readSPIValue = spiRead();
+    FLAGS.bits.SPI_READ_REQUEST = 1;
+    FLAGS.bits.DISPLAY_SPI_READING = 1;
 }
 
-void SPICallback(void){
+void SPICallback(void) {
 
+    FLAGS.bits.DISPLAY_READING = 1;
+}
+void testSpiSend(void){
+    spiWrite(0x88);
 }

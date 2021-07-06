@@ -1,8 +1,8 @@
 Version 4.0 HI-TECH Software Intermediate Code
 "32 ./main.h
 [; ;./main.h: 32:     struct {
-[s S2 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S2 . SPI_READ_REQUEST UART_RECEIVED SERVICED PUSHED_BUTTON DISPLAY_READING DISPLAY_SPI_READING DISPLAY_SERIAL_READING ]
+[s S2 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S2 . SPI_WRITE_REQUEST SPI_READ_REQUEST UART_RECEIVED PUSH_REQUEST_SERVICED PUSHED_BUTTON DISPLAY_READING DISPLAY_SPI_READING DISPLAY_SERIAL_READING ]
 "29
 [; ;./main.h: 29: union {
 [u S1 `uc 1 `S2 1 ]
@@ -19,8 +19,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "11 ./display.h
 [; ;./display.h: 11: unsigned char outValue;
 [v _outValue `uc ~T0 @X0 1 e ]
-"41 ./main.h
-[; ;./main.h: 41: } FLAGS;
+"42 ./main.h
+[; ;./main.h: 42: } FLAGS;
 [v _FLAGS `S1 ~T0 @X0 1 e ]
 "54 /Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h
 [; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 54: __asm("SSP2CON2 equ 0F62h");
@@ -619,8 +619,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "37 ./serial.h
 [; ;./serial.h: 37: unsigned char readSerialValue;
 [v _readSerialValue `uc ~T0 @X0 1 e ]
-"39 ./spi.h
-[; ;./spi.h: 39: unsigned char readSPIValue;
+"35 ./spi.h
+[; ;./spi.h: 35: unsigned char readSPIValue;
 [v _readSPIValue `uc ~T0 @X0 1 e ]
 "6 display.c
 [; ;display.c: 6: void setupDisplayIo(void) {
@@ -678,14 +678,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 [f ]
 "22
 [; ;display.c: 22:     if (FLAGS.bits.DISPLAY_SERIAL_READING) {
-[e $ ! != -> . . _FLAGS 1 6 `i -> 0 `i 507  ]
+[e $ ! != -> . . _FLAGS 1 7 `i -> 0 `i 507  ]
 {
 "23
 [; ;display.c: 23:         displaySerial();
 [e ( _displaySerial ..  ]
 "24
 [; ;display.c: 24:         FLAGS.bits.DISPLAY_SERIAL_READING = 0;
-[e = . . _FLAGS 1 6 -> -> 0 `i `uc ]
+[e = . . _FLAGS 1 7 -> -> 0 `i `uc ]
 "25
 [; ;display.c: 25:     } else {
 }
@@ -694,14 +694,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 "26
 [; ;display.c: 26:         if (FLAGS.bits.DISPLAY_SPI_READING) {
-[e $ ! != -> . . _FLAGS 1 5 `i -> 0 `i 509  ]
+[e $ ! != -> . . _FLAGS 1 6 `i -> 0 `i 509  ]
 {
 "27
 [; ;display.c: 27:             displaySPI();
 [e ( _displaySPI ..  ]
 "28
 [; ;display.c: 28:             FLAGS.bits.DISPLAY_SPI_READING = 0;
-[e = . . _FLAGS 1 5 -> -> 0 `i `uc ]
+[e = . . _FLAGS 1 6 -> -> 0 `i `uc ]
 "29
 [; ;display.c: 29:         }
 }
