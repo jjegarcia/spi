@@ -119,18 +119,20 @@ SPI_ACTIVE_2_IDLE 64
 [v _setSPIInterrupt setSPIInterrupt `(v  1 e 1 0 ]
 "14
 [v _spiInit spiInit `(v  1 e 1 0 ]
-"32
+"37
 [v _spiReceiveWait spiReceiveWait `(v  1 s 1 spiReceiveWait ]
-"36
+"41
 [v _spiWrite spiWrite `(v  1 e 1 0 ]
-"49
+"54
 [v _spiRead spiRead `(uc  1 e 1 0 ]
-"55
+"60
 [v _SPIHandle SPIHandle `(v  1 e 1 0 ]
-"61
+"66
 [v _SPICallback SPICallback `(v  1 e 1 0 ]
+"70
+[v _testSpiSend testSpiSend `(v  1 e 1 0 ]
 "11 /Users/jgarc609/github/spi/SPI.X/display.h
-[v _outValue outValue `uc  1 e 1 0 ]
+[v _ledValue ledValue `uc  1 e 1 0 ]
 [s S24 . 1 `uc 1 SPI_WRITE_REQUEST 1 0 :1:0 
 `uc 1 SPI_READ_REQUEST 1 0 :1:1 
 `uc 1 UART_RECEIVED 1 0 :1:2 
@@ -159,16 +161,16 @@ SPI_ACTIVE_2_IDLE 64
 [v _SPBRG SPBRG `VEuc  1 e 1 @4015 ]
 "10753
 [v _SSP1CON1 SSP1CON1 `VEuc  1 e 1 @4038 ]
-"10996
-[v _SSPSTAT SSPSTAT `VEuc  1 e 1 @4039 ]
-[s S191 . 1 `uc 1 . 1 0 :2:0 
+"10991
+[v _SSP1STAT SSP1STAT `VEuc  1 e 1 @4039 ]
+[s S193 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R_NOT_W 1 0 :1:2 
 ]
-"11384
-[s S194 . 1 `uc 1 . 1 0 :5:0 
+"11091
+[s S196 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 D_NOT_A 1 0 :1:5 
 ]
-[s S197 . 1 `uc 1 BF 1 0 :1:0 
+[s S199 . 1 `uc 1 BF 1 0 :1:0 
 `uc 1 UA 1 0 :1:1 
 `uc 1 R_nW 1 0 :1:2 
 `uc 1 S 1 0 :1:3 
@@ -177,44 +179,44 @@ SPI_ACTIVE_2_IDLE 64
 `uc 1 CKE 1 0 :1:6 
 `uc 1 SMP 1 0 :1:7 
 ]
-[s S206 . 1 `uc 1 . 1 0 :2:0 
+[s S208 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R_W 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 D_A 1 0 :1:5 
 ]
-[s S211 . 1 `uc 1 . 1 0 :2:0 
+[s S213 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 I2C_READ 1 0 :1:2 
 `uc 1 I2C_START 1 0 :1:3 
 `uc 1 I2C_STOP 1 0 :1:4 
 `uc 1 I2C_DAT 1 0 :1:5 
 ]
-[s S217 . 1 `uc 1 . 1 0 :2:0 
+[s S219 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 nW 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 nA 1 0 :1:5 
 ]
-[s S222 . 1 `uc 1 . 1 0 :2:0 
+[s S224 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 NOT_WRITE 1 0 :1:2 
 ]
-[s S225 . 1 `uc 1 . 1 0 :5:0 
+[s S227 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 NOT_ADDRESS 1 0 :1:5 
 ]
-[s S228 . 1 `uc 1 . 1 0 :2:0 
+[s S230 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 nWRITE 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 nADDRESS 1 0 :1:5 
 ]
-[s S233 . 1 `uc 1 . 1 0 :2:0 
+[s S235 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 READ_WRITE 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 DATA_ADDRESS 1 0 :1:5 
 ]
-[s S238 . 1 `uc 1 . 1 0 :2:0 
+[s S240 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 D 1 0 :1:5 
 ]
-[s S243 . 1 `uc 1 BF1 1 0 :1:0 
+[s S245 . 1 `uc 1 BF1 1 0 :1:0 
 `uc 1 UA1 1 0 :1:1 
 `uc 1 RW 1 0 :1:2 
 `uc 1 START 1 0 :1:3 
@@ -223,24 +225,28 @@ SPI_ACTIVE_2_IDLE 64
 `uc 1 CKE1 1 0 :1:6 
 `uc 1 SMP1 1 0 :1:7 
 ]
-[s S252 . 1 `uc 1 . 1 0 :2:0 
+[s S254 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 RW1 1 0 :1:2 
 `uc 1 START1 1 0 :1:3 
 `uc 1 STOP1 1 0 :1:4 
 `uc 1 DA1 1 0 :1:5 
 ]
-[s S258 . 1 `uc 1 . 1 0 :2:0 
+[s S260 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 NOT_W 1 0 :1:2 
 ]
-[s S261 . 1 `uc 1 . 1 0 :5:0 
+[s S263 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 NOT_A 1 0 :1:5 
 ]
-[u S264 . 1 `S191 1 . 1 0 `S194 1 . 1 0 `S197 1 . 1 0 `S206 1 . 1 0 `S211 1 . 1 0 `S217 1 . 1 0 `S222 1 . 1 0 `S225 1 . 1 0 `S228 1 . 1 0 `S233 1 . 1 0 `S238 1 . 1 0 `S243 1 . 1 0 `S252 1 . 1 0 `S258 1 . 1 0 `S261 1 . 1 0 ]
-[v _SSPSTATbits SSPSTATbits `VES264  1 e 1 @4039 ]
-"11816
-[v _SSPBUF SSPBUF `VEuc  1 e 1 @4041 ]
+[u S266 . 1 `S193 1 . 1 0 `S196 1 . 1 0 `S199 1 . 1 0 `S208 1 . 1 0 `S213 1 . 1 0 `S219 1 . 1 0 `S224 1 . 1 0 `S227 1 . 1 0 `S230 1 . 1 0 `S235 1 . 1 0 `S240 1 . 1 0 `S245 1 . 1 0 `S254 1 . 1 0 `S260 1 . 1 0 `S263 1 . 1 0 ]
+[v _SSP1STATbits SSP1STATbits `VES266  1 e 1 @4039 ]
+"11811
+[v _SSP1BUF SSP1BUF `VEuc  1 e 1 @4041 ]
 "13755
 [v _BRGH1 BRGH1 `VEb  1 e 0 @32098 ]
+"13989
+[v _CKE1 CKE1 `VEb  1 e 0 @32318 ]
+"13998
+[v _CKP1 CKP1 `VEb  1 e 0 @32308 ]
 "14037
 [v _CREN1 CREN1 `VEb  1 e 0 @32092 ]
 "14250
@@ -261,10 +267,10 @@ SPI_ACTIVE_2_IDLE 64
 [v _RC1IF RC1IF `VEb  1 e 0 @31989 ]
 "15846
 [v _SPEN1 SPEN1 `VEb  1 e 0 @32095 ]
-"15897
-[v _SSPIE SSPIE `VEb  1 e 0 @31979 ]
-"15900
-[v _SSPIF SSPIF `VEb  1 e 0 @31987 ]
+"15870
+[v _SSP1IE SSP1IE `VEb  1 e 0 @31979 ]
+"15873
+[v _SSP1IF SSP1IF `VEb  1 e 0 @31987 ]
 "16002
 [v _SYNC1 SYNC1 `VEb  1 e 0 @32100 ]
 "16221
@@ -289,7 +295,7 @@ SPI_ACTIVE_2_IDLE 64
 "35
 [v main@test test `C[80]uc  1 a 80 4 ]
 "33
-[v main@F4618 F4618 `C[80]uc  1 s 80 F4618 ]
+[v main@F4619 F4619 `C[80]uc  1 s 80 F4619 ]
 "58
 } 0
 "14 /Users/jgarc609/github/spi/SPI.X/spi.c
@@ -301,7 +307,7 @@ SPI_ACTIVE_2_IDLE 64
 [v spiInit@sClockIdle sClockIdle `E4556  1 p 1 1 ]
 [v spiInit@sTransmitEdge sTransmitEdge `E4560  1 p 1 2 ]
 [v spiInit@sType sType `E4544  1 a 1 3 ]
-"30
+"35
 } 0
 "6 /Users/jgarc609/github/spi/SPI.X/display.c
 [v _setupDisplayIo setupDisplayIo `(v  1 e 1 0 ]
@@ -385,19 +391,24 @@ SPI_ACTIVE_2_IDLE 64
 {
 "21
 } 0
-"61 /Users/jgarc609/github/spi/SPI.X/spi.c
+"70 /Users/jgarc609/github/spi/SPI.X/spi.c
+[v _testSpiSend testSpiSend `(v  1 e 1 0 ]
+{
+"72
+} 0
+"66
 [v _SPICallback SPICallback `(v  1 e 1 0 ]
 {
-"63
+"69
 } 0
-"36
+"41
 [v _spiWrite spiWrite `(v  1 e 1 0 ]
 {
 [v spiWrite@dat dat `uc  1 a 1 wreg ]
 [v spiWrite@dat dat `uc  1 a 1 wreg ]
-"38
+"43
 [v spiWrite@dat dat `uc  1 a 1 0 ]
-"39
+"44
 } 0
 "18 /Users/jgarc609/github/spi/SPI.X/newmain.c
 [v _service service `IIH(v  1 e 1 0 ]
@@ -429,18 +440,18 @@ SPI_ACTIVE_2_IDLE 64
 {
 "27
 } 0
-"55 /Users/jgarc609/github/spi/SPI.X/spi.c
+"60 /Users/jgarc609/github/spi/SPI.X/spi.c
 [v _SPIHandle SPIHandle `(v  1 e 1 0 ]
 {
-"59
+"64
 } 0
-"49
+"54
 [v _spiRead spiRead `(uc  1 e 1 0 ]
 {
-"53
+"58
 } 0
-"32
+"37
 [v _spiReceiveWait spiReceiveWait `(v  1 s 1 spiReceiveWait ]
 {
-"34
+"39
 } 0

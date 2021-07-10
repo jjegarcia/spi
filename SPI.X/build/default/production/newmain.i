@@ -7785,7 +7785,7 @@ typedef enum {
 } Spi_Type;
 
 typedef enum {
-    SPI_DATA_SAMPLE_MIDDLE = 0b00000000,
+    SPI_DATA_SAMPLE_MIDDLE =0b00000000,
     SPI_DATA_SAMPLE_END = 0b10000000
 } Spi_Data_Sample;
 
@@ -7808,6 +7808,7 @@ unsigned spiDataReady(void);
 char spiRead(void);
 void SPIHandle(void);
 void SPICallback(void);
+void testSpiSend(void);
 # 8 "newmain.c" 2
 # 1 "./config.h" 1
 # 36 "./config.h"
@@ -7935,7 +7936,7 @@ void buttonDebounce(void);
 # 14 "newmain.c" 2
 # 1 "./display.h" 1
 # 11 "./display.h"
-unsigned char outValue;
+unsigned char ledValue;
 
 void setupDisplayIo(void);
 void displaySerial(void);
@@ -7961,7 +7962,7 @@ void main() {
     setButtonIo();
     setInterrupts();
 
-    spiInit(SPI_SLAVE_SS_EN, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
+    spiInit(SPI_SLAVE_SS_DIS, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
 
     const unsigned char test[80] = "sssdddd";
 

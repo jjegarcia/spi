@@ -9,7 +9,7 @@
 # 1 "display.c" 2
 # 1 "./display.h" 1
 # 11 "./display.h"
-unsigned char outValue;
+unsigned char ledValue;
 
 void setupDisplayIo(void);
 void displaySerial(void);
@@ -7822,7 +7822,7 @@ typedef enum {
 } Spi_Type;
 
 typedef enum {
-    SPI_DATA_SAMPLE_MIDDLE = 0b00000000,
+    SPI_DATA_SAMPLE_MIDDLE =0b00000000,
     SPI_DATA_SAMPLE_END = 0b10000000
 } Spi_Data_Sample;
 
@@ -7845,6 +7845,7 @@ unsigned spiDataReady(void);
 char spiRead(void);
 void SPIHandle(void);
 void SPICallback(void);
+void testSpiSend(void);
 # 5 "display.c" 2
 
 void setupDisplayIo(void) {
@@ -7853,12 +7854,12 @@ void setupDisplayIo(void) {
 }
 
 void displaySerial(void) {
-    outValue = readSerialValue;
+    ledValue = readSerialValue;
     displayCallback();
 }
 
 void displaySPI(void) {
-    outValue = readSPIValue;
+    ledValue = readSPIValue;
     displayCallback();
 }
 
@@ -7875,5 +7876,5 @@ void displayRequestHandle(void) {
 }
 
 void displayCallback(void) {
-    PORTD = outValue;
+    PORTD = ledValue;
 }

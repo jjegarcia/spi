@@ -7792,7 +7792,7 @@ typedef enum {
 } Spi_Type;
 
 typedef enum {
-    SPI_DATA_SAMPLE_MIDDLE = 0b00000000,
+    SPI_DATA_SAMPLE_MIDDLE =0b00000000,
     SPI_DATA_SAMPLE_END = 0b10000000
 } Spi_Data_Sample;
 
@@ -7815,6 +7815,7 @@ unsigned spiDataReady(void);
 char spiRead(void);
 void SPIHandle(void);
 void SPICallback(void);
+void testSpiSend(void);
 # 6 "spi.c" 2
 # 1 "./main.h" 1
 # 29 "./main.h"
@@ -7836,8 +7837,8 @@ union {
 
 
 void setSPIInterrupt(void) {
-    SSPIF = 0;
-    SSPIE = 1;
+    SSP1IF = 0;
+    SSP1IE = 1;
 }
 
 void spiInit(Spi_Type sType, Spi_Data_Sample sDataSample, Spi_Clock_Idle sClockIdle, Spi_Transmit_Edge sTransmitEdge) {
@@ -7845,31 +7846,36 @@ void spiInit(Spi_Type sType, Spi_Data_Sample sDataSample, Spi_Clock_Idle sClockI
     TRISC4 = 1;
     if (sType & 0b00000100)
     {
-        SSPSTAT = sTransmitEdge;
+        SSP1STAT = sTransmitEdge;
         TRISC3 = 1;
         TRISC2 = 1;
         LATC0 = 1;
     } else
     {
-        SSPSTAT = sDataSample | sTransmitEdge;
+        SSP1STAT = sDataSample | sTransmitEdge;
         TRISC3 = 0;
         TRISC2 = 0;
     }
-    SSP1CON1 = 0b00100101;
-}
+    SSP1CON1 = sType | sClockIdle;
+
+    CKE1=0;
+    CKP1=0;
+
+
+  }
 
 static void spiReceiveWait() {
-    while (!SSPSTATbits.BF);
+    while (!SSP1STATbits.BF);
 }
 
 void spiWrite(char dat)
 {
-    SSPBUF = dat;
+    SSP1BUF = dat;
 }
 
 unsigned spiDataReady(void)
 {
-    if (SSPSTATbits.BF)
+    if (SSP1STATbits.BF)
         return 1;
     else
         return 0;
@@ -7878,7 +7884,7 @@ unsigned spiDataReady(void)
 char spiRead(void)
 {
     spiReceiveWait();
-    return (SSPBUF);
+    return (SSP1BUF);
 }
 
 void SPIHandle(void) {
@@ -7888,8 +7894,9 @@ void SPIHandle(void) {
 }
 
 void SPICallback(void) {
-    spiWrite(readSPIValue);
+    spiWrite(0x87);
+    FLAGS.bits.DISPLAY_READING = 1;
 }
-void testSpilSend(void){
+void testSpiSend(void){
     spiWrite(0x88);
 }

@@ -7802,7 +7802,7 @@ typedef enum {
 } Spi_Type;
 
 typedef enum {
-    SPI_DATA_SAMPLE_MIDDLE = 0b00000000,
+    SPI_DATA_SAMPLE_MIDDLE =0b00000000,
     SPI_DATA_SAMPLE_END = 0b10000000
 } Spi_Data_Sample;
 
@@ -7825,6 +7825,7 @@ unsigned spiDataReady(void);
 char spiRead(void);
 void SPIHandle(void);
 void SPICallback(void);
+void testSpiSend(void);
 # 9 "interruptService.c" 2
 # 1 "./interruptService.h" 1
 # 28 "./interruptService.h"
@@ -7853,9 +7854,9 @@ void buttonDebounce(void);
 # 12 "interruptService.c" 2
 
 void processInterruptService(void) {
-    if (SSPIE == 1 && SSPIF == 1) {
+    if (SSP1IE == 1 && SSP1IF == 1) {
         SPIHandle();
-        SSPIF = 0;
+        SSP1IF = 0;
     }
     if (RC1IE == 1 && RC1IF == 1 && FLAGS.bits.UART_RECEIVED == 0) {
         serialHandle();

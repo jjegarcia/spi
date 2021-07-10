@@ -27,7 +27,12 @@ void spiInit(Spi_Type sType, Spi_Data_Sample sDataSample, Spi_Clock_Idle sClockI
         TRISC2 = 0; //CE For This IC as output
     }
     SSP1CON1 = sType | sClockIdle;
-}
+    
+    CKE1=0;
+    CKP1=0;
+    
+    
+  }
 
 static void spiReceiveWait() {
     while (!SSP1STATbits.BF); // Wait for Data Transmit/Receipt complete
@@ -59,7 +64,7 @@ void SPIHandle(void) {
 }
 
 void SPICallback(void) {
-//    spiWrite(readSPIValue); //acknowledge read value
+    spiWrite(0x87); //acknowledge read value
     FLAGS.bits.DISPLAY_READING = 1;
 }
 void testSpiSend(void){

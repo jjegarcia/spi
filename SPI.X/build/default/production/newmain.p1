@@ -41,7 +41,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;./init.h: 33: void setInterrupts(void);
 [v _setInterrupts `(v ~T0 @X0 0 ef ]
 "33 newmain.c
-[; ;newmain.c: 33:     spiInit(SPI_SLAVE_SS_EN, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
+[; ;newmain.c: 33:     spiInit(SPI_SLAVE_SS_DIS, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
 [c E4544 32 33 34 35 36 37 .. ]
 [n E4544 . SPI_MASTER_OSC_DIV4 SPI_MASTER_OSC_DIV16 SPI_MASTER_OSC_DIV64 SPI_MASTER_TMR2 SPI_SLAVE_SS_EN SPI_SLAVE_SS_DIS  ]
 [c E4552 0 128 .. ]
@@ -772,8 +772,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;./serial.h: 37: unsigned char readSerialValue;
 [v _readSerialValue `uc ~T0 @X0 1 e ]
 "11 ./display.h
-[; ;./display.h: 11: unsigned char outValue;
-[v _outValue `uc ~T0 @X0 1 e ]
+[; ;./display.h: 11: unsigned char ledValue;
+[v _ledValue `uc ~T0 @X0 1 e ]
 [v $root$_service `(v ~T0 @X0 0 e ]
 "18 newmain.c
 [; ;newmain.c: 18: void __attribute__((picinterrupt(("")))) service() {
@@ -823,10 +823,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;newmain.c: 31:     setInterrupts();
 [e ( _setInterrupts ..  ]
 "33
-[; ;newmain.c: 33:     spiInit(SPI_SLAVE_SS_EN, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
-[e ( _spiInit (4 , , , . `E4544 4 . `E4552 0 . `E4556 1 . `E4560 0 ]
-[v F4618 `Cuc ~T0 @X0 -> 80 `i s ]
-[i F4618
+[; ;newmain.c: 33:     spiInit(SPI_SLAVE_SS_DIS, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
+[e ( _spiInit (4 , , , . `E4544 5 . `E4552 0 . `E4556 1 . `E4560 0 ]
+[v F4619 `Cuc ~T0 @X0 -> 80 `i s ]
+[i F4619
 :U ..
 "35
 [; ;newmain.c: 35:     const unsigned char test[80] = "sssdddd";
@@ -841,7 +841,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ]
 [v _test `Cuc ~T0 @X0 -> 80 `i a ]
-[e = _test F4618 ]
+[e = _test F4619 ]
 "37
 [; ;newmain.c: 37:     while (1) {
 [e :U 506 ]

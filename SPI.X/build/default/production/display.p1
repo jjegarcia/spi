@@ -17,8 +17,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;./display.h: 17: void displayCallback(void);
 [v _displayCallback `(v ~T0 @X0 0 ef ]
 "11 ./display.h
-[; ;./display.h: 11: unsigned char outValue;
-[v _outValue `uc ~T0 @X0 1 e ]
+[; ;./display.h: 11: unsigned char ledValue;
+[v _ledValue `uc ~T0 @X0 1 e ]
 "42 ./main.h
 [; ;./main.h: 42: } FLAGS;
 [v _FLAGS `S1 ~T0 @X0 1 e ]
@@ -645,8 +645,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U _displaySerial ]
 [f ]
 "12
-[; ;display.c: 12:     outValue = readSerialValue;
-[e = _outValue _readSerialValue ]
+[; ;display.c: 12:     ledValue = readSerialValue;
+[e = _ledValue _readSerialValue ]
 "13
 [; ;display.c: 13:     displayCallback();
 [e ( _displayCallback ..  ]
@@ -661,8 +661,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U _displaySPI ]
 [f ]
 "17
-[; ;display.c: 17:     outValue = readSPIValue;
-[e = _outValue _readSPIValue ]
+[; ;display.c: 17:     ledValue = readSPIValue;
+[e = _ledValue _readSPIValue ]
 "18
 [; ;display.c: 18:     displayCallback();
 [e ( _displayCallback ..  ]
@@ -721,8 +721,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U _displayCallback ]
 [f ]
 "34
-[; ;display.c: 34:     PORTD = outValue;
-[e = _PORTD _outValue ]
+[; ;display.c: 34:     PORTD = ledValue;
+[e = _PORTD _ledValue ]
 "35
 [; ;display.c: 35: }
 [e :UE 510 ]

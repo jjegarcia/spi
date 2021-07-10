@@ -7819,7 +7819,7 @@ typedef enum {
 } Spi_Type;
 
 typedef enum {
-    SPI_DATA_SAMPLE_MIDDLE = 0b00000000,
+    SPI_DATA_SAMPLE_MIDDLE =0b00000000,
     SPI_DATA_SAMPLE_END = 0b10000000
 } Spi_Data_Sample;
 
@@ -7842,6 +7842,7 @@ unsigned spiDataReady(void);
 char spiRead(void);
 void SPIHandle(void);
 void SPICallback(void);
+void testSpiSend(void);
 # 5 "button.c" 2
 
 void setButtonIo(void) {
@@ -7856,7 +7857,7 @@ void initialiseButton(void) {
 void buttonCallback(void) {
     if (FLAGS.bits.PUSH_REQUEST_SERVICED == 0 && FLAGS.bits.PUSHED_BUTTON == 1) {
 
-
+        testSpiSend();
     }
     FLAGS.bits.PUSHED_BUTTON = 0;
 }

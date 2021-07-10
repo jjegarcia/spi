@@ -7,12 +7,12 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;./main.h: 29: union {
 [u S501 `uc 1 `S502 1 ]
 [n S501 . byte bits ]
-"15897 /Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h
-[; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 15897: extern volatile __bit SSPIE __attribute__((address(0x7CEB)));
-[v _SSPIE `Vb ~T0 @X0 0 e@31979 ]
-"15900
-[; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 15900: extern volatile __bit SSPIF __attribute__((address(0x7CF3)));
-[v _SSPIF `Vb ~T0 @X0 0 e@31987 ]
+"15870 /Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h
+[; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 15870: extern volatile __bit SSP1IE __attribute__((address(0x7CEB)));
+[v _SSP1IE `Vb ~T0 @X0 0 e@31979 ]
+"15873
+[; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 15873: extern volatile __bit SSP1IF __attribute__((address(0x7CF3)));
+[v _SSP1IF `Vb ~T0 @X0 0 e@31987 ]
 "42 ./spi.h
 [; ;./spi.h: 42: void SPIHandle(void);
 [v _SPIHandle `(v ~T0 @X0 0 ef ]
@@ -644,15 +644,15 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U _processInterruptService ]
 [f ]
 "14
-[; ;interruptService.c: 14:     if (SSPIE == 1 && SSPIF == 1) {
-[e $ ! && == -> _SSPIE `i -> 1 `i == -> _SSPIF `i -> 1 `i 504  ]
+[; ;interruptService.c: 14:     if (SSP1IE == 1 && SSP1IF == 1) {
+[e $ ! && == -> _SSP1IE `i -> 1 `i == -> _SSP1IF `i -> 1 `i 504  ]
 {
 "15
 [; ;interruptService.c: 15:         SPIHandle();
 [e ( _SPIHandle ..  ]
 "16
-[; ;interruptService.c: 16:         SSPIF = 0;
-[e = _SSPIF -> -> 0 `i `b ]
+[; ;interruptService.c: 16:         SSP1IF = 0;
+[e = _SSP1IF -> -> 0 `i `b ]
 "17
 [; ;interruptService.c: 17:     }
 }
