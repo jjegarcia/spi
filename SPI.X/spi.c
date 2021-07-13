@@ -14,11 +14,13 @@ void setSPIInterrupt(void) {
 void spiInit(Spi_Type sType, Spi_Data_Sample sDataSample, Spi_Clock_Idle sClockIdle, Spi_Transmit_Edge sTransmitEdge) {
     TRISC5 = 0; //SDO  
     TRISC4 = 1; //SDI
+    
+    
     if (sType & 0b00000100) //If Slave Mode
     {
         SSP1STAT = sTransmitEdge;
         TRISC3 = 1; //clock as input
-        TRISC2 = 1; //CE For This IC as input
+        //TRISC2 = 1; //CE For This IC as input
         LATC0 = 1;
     } else //If Master Mode
     {

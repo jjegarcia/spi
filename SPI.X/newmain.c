@@ -55,5 +55,7 @@ void main() {
             buttonDebounce();
         }
     }
+               buttonCallback();
+ 
 }
 

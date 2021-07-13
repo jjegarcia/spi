@@ -7844,13 +7844,11 @@ void setSPIInterrupt(void) {
 void spiInit(Spi_Type sType, Spi_Data_Sample sDataSample, Spi_Clock_Idle sClockIdle, Spi_Transmit_Edge sTransmitEdge) {
     TRISC5 = 0;
     TRISC4 = 1;
-
-
     if (sType & 0b00000100)
     {
         SSP1STAT = sTransmitEdge;
         TRISC3 = 1;
-
+        TRISC2 = 1;
         LATC0 = 1;
     } else
     {

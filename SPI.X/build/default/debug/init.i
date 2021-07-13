@@ -1,4 +1,4 @@
-# 1 "spi.c"
+# 1 "init.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,141 +6,11 @@
 # 1 "<built-in>" 2
 # 1 "/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "spi.c" 2
+# 1 "init.c" 2
 
 
 
 
-# 1 "./spi.h" 1
-
-
-
-
-
-
-
-# 1 "/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/xc.h" 1 3
-# 18 "/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/xc.h" 3
-extern const char __xc8_OPTIM_SPEED;
-
-extern double __fpnormalize(double);
-
-
-
-# 1 "/Applications/microchip/xc8/v2.32/pic/include/c99/xc8debug.h" 1 3
-
-
-
-# 1 "/Applications/microchip/xc8/v2.32/pic/include/c99/stdlib.h" 1 3
-
-
-
-# 1 "/Applications/microchip/xc8/v2.32/pic/include/c99/musl_xc8.h" 1 3
-# 5 "/Applications/microchip/xc8/v2.32/pic/include/c99/stdlib.h" 2 3
-
-
-
-
-
-# 1 "/Applications/microchip/xc8/v2.32/pic/include/c99/features.h" 1 3
-# 11 "/Applications/microchip/xc8/v2.32/pic/include/c99/stdlib.h" 2 3
-# 21 "/Applications/microchip/xc8/v2.32/pic/include/c99/stdlib.h" 3
-# 1 "/Applications/microchip/xc8/v2.32/pic/include/c99/bits/alltypes.h" 1 3
-# 18 "/Applications/microchip/xc8/v2.32/pic/include/c99/bits/alltypes.h" 3
-typedef long int wchar_t;
-# 122 "/Applications/microchip/xc8/v2.32/pic/include/c99/bits/alltypes.h" 3
-typedef unsigned size_t;
-# 168 "/Applications/microchip/xc8/v2.32/pic/include/c99/bits/alltypes.h" 3
-typedef __int24 int24_t;
-# 204 "/Applications/microchip/xc8/v2.32/pic/include/c99/bits/alltypes.h" 3
-typedef __uint24 uint24_t;
-# 22 "/Applications/microchip/xc8/v2.32/pic/include/c99/stdlib.h" 2 3
-
-int atoi (const char *);
-long atol (const char *);
-long long atoll (const char *);
-double atof (const char *);
-
-float strtof (const char *restrict, char **restrict);
-double strtod (const char *restrict, char **restrict);
-long double strtold (const char *restrict, char **restrict);
-
-
-
-long strtol (const char *restrict, char **restrict, int);
-unsigned long strtoul (const char *restrict, char **restrict, int);
-long long strtoll (const char *restrict, char **restrict, int);
-unsigned long long strtoull (const char *restrict, char **restrict, int);
-
-int rand (void);
-void srand (unsigned);
-
-          void abort (void);
-int atexit (void (*) (void));
-          void exit (int);
-          void _Exit (int);
-
-void *bsearch (const void *, const void *, size_t, size_t, int (*)(const void *, const void *));
-
-__attribute__((nonreentrant)) void qsort (void *, size_t, size_t, int (*)(const void *, const void *));
-
-int abs (int);
-long labs (long);
-long long llabs (long long);
-
-typedef struct { int quot, rem; } div_t;
-typedef struct { long quot, rem; } ldiv_t;
-typedef struct { long long quot, rem; } lldiv_t;
-
-div_t div (int, int);
-ldiv_t ldiv (long, long);
-lldiv_t lldiv (long long, long long);
-
-typedef struct { unsigned int quot, rem; } udiv_t;
-typedef struct { unsigned long quot, rem; } uldiv_t;
-udiv_t udiv (unsigned int, unsigned int);
-uldiv_t uldiv (unsigned long, unsigned long);
-
-
-
-
-
-size_t __ctype_get_mb_cur_max(void);
-# 5 "/Applications/microchip/xc8/v2.32/pic/include/c99/xc8debug.h" 2 3
-
-
-
-
-
-
-
-#pragma intrinsic(__builtin_software_breakpoint)
-extern void __builtin_software_breakpoint(void);
-# 24 "/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/xc.h" 2 3
-
-
-
-
-
-
-
-
-# 1 "/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/pic18.h" 1 3
-
-
-
-
-# 1 "/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/htc.h" 1 3
-
-
-
-# 1 "/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/xc.h" 1 3
-# 5 "/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/htc.h" 2 3
-# 6 "/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/pic18.h" 2 3
-
-
-# 1 "/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/pic18_chip_select.h" 1 3
-# 569 "/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/pic18_chip_select.h" 3
 # 1 "/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h" 1 3
 # 44 "/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h" 3
 # 1 "/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/__at.h" 1 3
@@ -7742,7 +7612,130 @@ extern volatile __bit nWRITE2 __attribute__((address(0x7B22)));
 
 
 extern volatile __bit nWRL __attribute__((address(0x7C42)));
-# 570 "/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/pic18_chip_select.h" 2 3
+# 6 "init.c" 2
+# 1 "./init.h" 1
+# 28 "./init.h"
+# 1 "/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/xc.h" 1 3
+# 18 "/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/xc.h" 3
+extern const char __xc8_OPTIM_SPEED;
+
+extern double __fpnormalize(double);
+
+
+
+# 1 "/Applications/microchip/xc8/v2.32/pic/include/c99/xc8debug.h" 1 3
+
+
+
+# 1 "/Applications/microchip/xc8/v2.32/pic/include/c99/stdlib.h" 1 3
+
+
+
+# 1 "/Applications/microchip/xc8/v2.32/pic/include/c99/musl_xc8.h" 1 3
+# 5 "/Applications/microchip/xc8/v2.32/pic/include/c99/stdlib.h" 2 3
+
+
+
+
+
+# 1 "/Applications/microchip/xc8/v2.32/pic/include/c99/features.h" 1 3
+# 11 "/Applications/microchip/xc8/v2.32/pic/include/c99/stdlib.h" 2 3
+# 21 "/Applications/microchip/xc8/v2.32/pic/include/c99/stdlib.h" 3
+# 1 "/Applications/microchip/xc8/v2.32/pic/include/c99/bits/alltypes.h" 1 3
+# 18 "/Applications/microchip/xc8/v2.32/pic/include/c99/bits/alltypes.h" 3
+typedef long int wchar_t;
+# 122 "/Applications/microchip/xc8/v2.32/pic/include/c99/bits/alltypes.h" 3
+typedef unsigned size_t;
+# 168 "/Applications/microchip/xc8/v2.32/pic/include/c99/bits/alltypes.h" 3
+typedef __int24 int24_t;
+# 204 "/Applications/microchip/xc8/v2.32/pic/include/c99/bits/alltypes.h" 3
+typedef __uint24 uint24_t;
+# 22 "/Applications/microchip/xc8/v2.32/pic/include/c99/stdlib.h" 2 3
+
+int atoi (const char *);
+long atol (const char *);
+long long atoll (const char *);
+double atof (const char *);
+
+float strtof (const char *restrict, char **restrict);
+double strtod (const char *restrict, char **restrict);
+long double strtold (const char *restrict, char **restrict);
+
+
+
+long strtol (const char *restrict, char **restrict, int);
+unsigned long strtoul (const char *restrict, char **restrict, int);
+long long strtoll (const char *restrict, char **restrict, int);
+unsigned long long strtoull (const char *restrict, char **restrict, int);
+
+int rand (void);
+void srand (unsigned);
+
+          void abort (void);
+int atexit (void (*) (void));
+          void exit (int);
+          void _Exit (int);
+
+void *bsearch (const void *, const void *, size_t, size_t, int (*)(const void *, const void *));
+
+__attribute__((nonreentrant)) void qsort (void *, size_t, size_t, int (*)(const void *, const void *));
+
+int abs (int);
+long labs (long);
+long long llabs (long long);
+
+typedef struct { int quot, rem; } div_t;
+typedef struct { long quot, rem; } ldiv_t;
+typedef struct { long long quot, rem; } lldiv_t;
+
+div_t div (int, int);
+ldiv_t ldiv (long, long);
+lldiv_t lldiv (long long, long long);
+
+typedef struct { unsigned int quot, rem; } udiv_t;
+typedef struct { unsigned long quot, rem; } uldiv_t;
+udiv_t udiv (unsigned int, unsigned int);
+uldiv_t uldiv (unsigned long, unsigned long);
+
+
+
+
+
+size_t __ctype_get_mb_cur_max(void);
+# 5 "/Applications/microchip/xc8/v2.32/pic/include/c99/xc8debug.h" 2 3
+
+
+
+
+
+
+
+#pragma intrinsic(__builtin_software_breakpoint)
+extern void __builtin_software_breakpoint(void);
+# 24 "/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/xc.h" 2 3
+
+
+
+
+
+
+
+
+# 1 "/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/pic18.h" 1 3
+
+
+
+
+# 1 "/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/htc.h" 1 3
+
+
+
+# 1 "/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/xc.h" 1 3
+# 5 "/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/htc.h" 2 3
+# 6 "/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/pic18.h" 2 3
+
+
+# 1 "/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/pic18_chip_select.h" 1 3
 # 9 "/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/pic18.h" 2 3
 # 18 "/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/pic18.h" 3
 __attribute__((__unsupported__("The " "flash_write" " routine is no longer supported. Please use the MPLAB X MCC."))) void flash_write(const unsigned char *, unsigned int, __far unsigned char *);
@@ -7779,126 +7772,28 @@ extern __attribute__((nonreentrant)) void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 # 33 "/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/xc.h" 2 3
-# 9 "./spi.h" 2
+# 29 "./init.h" 2
 
 
-typedef enum {
-    SPI_MASTER_OSC_DIV4 = 0b00100000,
-    SPI_MASTER_OSC_DIV16 = 0b00100001,
-    SPI_MASTER_OSC_DIV64 = 0b00100010,
-    SPI_MASTER_TMR2 = 0b00100011,
-    SPI_SLAVE_SS_EN = 0b00100100,
-    SPI_SLAVE_SS_DIS = 0b00100101
-} Spi_Type;
 
-typedef enum {
-    SPI_DATA_SAMPLE_MIDDLE =0b00000000,
-    SPI_DATA_SAMPLE_END = 0b10000000
-} Spi_Data_Sample;
-
-typedef enum {
-    SPI_CLOCK_IDLE_HIGH = 0b00010000,
-    SPI_CLOCK_IDLE_LOW = 0b00000000
-} Spi_Clock_Idle;
-
-typedef enum {
-    SPI_IDLE_2_ACTIVE = 0b00000000,
-    SPI_ACTIVE_2_IDLE = 0b01000000
-} Spi_Transmit_Edge;
-
-unsigned char readSPIValue;
-
-void setSPIInterrupt(void);
-void spiInit(Spi_Type, Spi_Data_Sample, Spi_Clock_Idle, Spi_Transmit_Edge);
-void spiWrite(char);
-unsigned spiDataReady(void);
-char spiRead(void);
-void SPIHandle(void);
-void SPICallback(void);
-void testSpiSend(void);
-# 6 "spi.c" 2
-# 1 "./main.h" 1
-# 29 "./main.h"
-union {
-    unsigned char byte;
-
-    struct {
-        unsigned SPI_WRITE_REQUEST : 1;
-        unsigned SPI_READ_REQUEST:1;
-        unsigned UART_RECEIVED : 1;
-        unsigned PUSH_REQUEST_SERVICED : 1;
-        unsigned PUSHED_BUTTON : 1;
-        unsigned DISPLAY_READING: 1;
-        unsigned DISPLAY_SPI_READING : 1;
-        unsigned DISPLAY_SERIAL_READING : 1;
-    } bits;
-} FLAGS;
-# 7 "spi.c" 2
+void setButtonIo(void);
+void setInterrupts(void);
+void setIo(void);
+void setButtonInterrput(void);
+# 7 "init.c" 2
 
 
-void setSPIInterrupt(void) {
-    SSP1IF = 0;
-    SSP1IE = 1;
+void setIo() {
+
 }
 
-void spiInit(Spi_Type sType, Spi_Data_Sample sDataSample, Spi_Clock_Idle sClockIdle, Spi_Transmit_Edge sTransmitEdge) {
-    TRISC5 = 0;
-    TRISC4 = 1;
+void setInterrupts(void) {
+    GIE = 1;
+    PEIE = 1;
 
-
-    if (sType & 0b00000100)
-    {
-        SSP1STAT = sTransmitEdge;
-        TRISC3 = 1;
-
-        LATC0 = 1;
-    } else
-    {
-        SSP1STAT = sDataSample | sTransmitEdge;
-        TRISC3 = 0;
-        TRISC2 = 0;
-    }
-    SSP1CON1 = sType | sClockIdle;
-
-    CKE1=0;
-    CKP1=0;
-
-
-  }
-
-static void spiReceiveWait() {
-    while (!SSP1STATbits.BF);
 }
 
-void spiWrite(char dat)
-{
-    SSP1BUF = dat;
-}
-
-unsigned spiDataReady(void)
-{
-    if (SSP1STATbits.BF)
-        return 1;
-    else
-        return 0;
-}
-
-char spiRead(void)
-{
-    spiReceiveWait();
-    return (SSP1BUF);
-}
-
-void SPIHandle(void) {
-    readSPIValue = spiRead();
-    FLAGS.bits.SPI_READ_REQUEST = 1;
-    FLAGS.bits.DISPLAY_SPI_READING = 1;
-}
-
-void SPICallback(void) {
-    spiWrite(0x87);
-    FLAGS.bits.DISPLAY_READING = 1;
-}
-void testSpiSend(void){
-    spiWrite(0x88);
+void setButtonInterrput(void) {
+    INTEDG0 = 1;
+    INT0IE = 1;
 }

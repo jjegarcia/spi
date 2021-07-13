@@ -1,4 +1,4 @@
-# 1 "spi.c"
+# 1 "interruptService.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,14 +6,7 @@
 # 1 "<built-in>" 2
 # 1 "/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "spi.c" 2
-
-
-
-
-# 1 "./spi.h" 1
-
-
+# 1 "interruptService.c" 2
 
 
 
@@ -7779,9 +7772,26 @@ extern __attribute__((nonreentrant)) void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 # 33 "/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/xc.h" 2 3
-# 9 "./spi.h" 2
+# 7 "interruptService.c" 2
+# 1 "./main.h" 1
+# 29 "./main.h"
+union {
+    unsigned char byte;
 
-
+    struct {
+        unsigned SPI_WRITE_REQUEST : 1;
+        unsigned SPI_READ_REQUEST:1;
+        unsigned UART_RECEIVED : 1;
+        unsigned PUSH_REQUEST_SERVICED : 1;
+        unsigned PUSHED_BUTTON : 1;
+        unsigned DISPLAY_READING: 1;
+        unsigned DISPLAY_SPI_READING : 1;
+        unsigned DISPLAY_SERIAL_READING : 1;
+    } bits;
+} FLAGS;
+# 8 "interruptService.c" 2
+# 1 "./spi.h" 1
+# 11 "./spi.h"
 typedef enum {
     SPI_MASTER_OSC_DIV4 = 0b00100000,
     SPI_MASTER_OSC_DIV16 = 0b00100001,
@@ -7816,89 +7826,48 @@ char spiRead(void);
 void SPIHandle(void);
 void SPICallback(void);
 void testSpiSend(void);
-# 6 "spi.c" 2
-# 1 "./main.h" 1
-# 29 "./main.h"
-union {
-    unsigned char byte;
+# 9 "interruptService.c" 2
+# 1 "./interruptService.h" 1
+# 28 "./interruptService.h"
+void interruptService(void);
+static void spiService(void);
+# 10 "interruptService.c" 2
+# 1 "./serial.h" 1
+# 37 "./serial.h"
+unsigned char readSerialValue;
 
-    struct {
-        unsigned SPI_WRITE_REQUEST : 1;
-        unsigned SPI_READ_REQUEST:1;
-        unsigned UART_RECEIVED : 1;
-        unsigned PUSH_REQUEST_SERVICED : 1;
-        unsigned PUSHED_BUTTON : 1;
-        unsigned DISPLAY_READING: 1;
-        unsigned DISPLAY_SPI_READING : 1;
-        unsigned DISPLAY_SERIAL_READING : 1;
-    } bits;
-} FLAGS;
-# 7 "spi.c" 2
+void setSerial(void);
+void setSerialIo(void);
+void serialHandle(void);
+void serialCallback(void);
+void transmittRead(void);
+void writeSerial(unsigned char);
+void testSerialSend(void);
+unsigned char readSerial(void);
+# 11 "interruptService.c" 2
+# 1 "./button.h" 1
+# 37 "./button.h"
+void initialiseButton(void);
+void buttonCallback(void);
+void buttonHandle(void);
+void buttonDebounce(void);
+# 12 "interruptService.c" 2
 
-
-void setSPIInterrupt(void) {
-    SSP1IF = 0;
-    SSP1IE = 1;
-}
-
-void spiInit(Spi_Type sType, Spi_Data_Sample sDataSample, Spi_Clock_Idle sClockIdle, Spi_Transmit_Edge sTransmitEdge) {
-    TRISC5 = 0;
-    TRISC4 = 1;
-
-
-    if (sType & 0b00000100)
-    {
-        SSP1STAT = sTransmitEdge;
-        TRISC3 = 1;
-
-        LATC0 = 1;
-    } else
-    {
-        SSP1STAT = sDataSample | sTransmitEdge;
-        TRISC3 = 0;
-        TRISC2 = 0;
+void processInterruptService(void) {
+    if (SSP1IE == 1 && SSP1IF == 1) {
+        SPIHandle();
+        SSP1IF = 0;
     }
-    SSP1CON1 = sType | sClockIdle;
-
-    CKE1=0;
-    CKP1=0;
-
-
-  }
-
-static void spiReceiveWait() {
-    while (!SSP1STATbits.BF);
+    if (RC1IE == 1 && RC1IF == 1 && FLAGS.bits.UART_RECEIVED == 0) {
+        serialHandle();
+        RC1IF = 0;
+    }
+    if (INTEDG0 == 1 && INT0IF == 1) {
+        buttonHandle();
+        INT0IF = 0;
+    }
 }
 
-void spiWrite(char dat)
-{
-    SSP1BUF = dat;
-}
-
-unsigned spiDataReady(void)
-{
-    if (SSP1STATbits.BF)
-        return 1;
-    else
-        return 0;
-}
-
-char spiRead(void)
-{
-    spiReceiveWait();
-    return (SSP1BUF);
-}
-
-void SPIHandle(void) {
-    readSPIValue = spiRead();
-    FLAGS.bits.SPI_READ_REQUEST = 1;
-    FLAGS.bits.DISPLAY_SPI_READING = 1;
-}
-
-void SPICallback(void) {
-    spiWrite(0x87);
-    FLAGS.bits.DISPLAY_READING = 1;
-}
-void testSpiSend(void){
-    spiWrite(0x88);
+void interruptService(void) {
+    processInterruptService();
 }

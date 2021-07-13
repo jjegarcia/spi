@@ -119,17 +119,17 @@ SPI_ACTIVE_2_IDLE 64
 [v _setSPIInterrupt setSPIInterrupt `(v  1 e 1 0 ]
 "14
 [v _spiInit spiInit `(v  1 e 1 0 ]
-"39
+"37
 [v _spiReceiveWait spiReceiveWait `(v  1 s 1 spiReceiveWait ]
-"43
+"41
 [v _spiWrite spiWrite `(v  1 e 1 0 ]
-"56
+"54
 [v _spiRead spiRead `(uc  1 e 1 0 ]
-"62
+"60
 [v _SPIHandle SPIHandle `(v  1 e 1 0 ]
-"68
+"66
 [v _SPICallback SPICallback `(v  1 e 1 0 ]
-"72
+"70
 [v _testSpiSend testSpiSend `(v  1 e 1 0 ]
 "11 /Users/jgarc609/github/spi/SPI.X/display.h
 [v _ledValue ledValue `uc  1 e 1 0 ]
@@ -307,7 +307,7 @@ SPI_ACTIVE_2_IDLE 64
 [v spiInit@sClockIdle sClockIdle `E4556  1 p 1 1 ]
 [v spiInit@sTransmitEdge sTransmitEdge `E4560  1 p 1 2 ]
 [v spiInit@sType sType `E4544  1 a 1 3 ]
-"37
+"35
 } 0
 "6 /Users/jgarc609/github/spi/SPI.X/display.c
 [v _setupDisplayIo setupDisplayIo `(v  1 e 1 0 ]
@@ -391,24 +391,24 @@ SPI_ACTIVE_2_IDLE 64
 {
 "21
 } 0
-"72 /Users/jgarc609/github/spi/SPI.X/spi.c
+"70 /Users/jgarc609/github/spi/SPI.X/spi.c
 [v _testSpiSend testSpiSend `(v  1 e 1 0 ]
 {
-"74
+"72
 } 0
-"68
+"66
 [v _SPICallback SPICallback `(v  1 e 1 0 ]
 {
-"71
+"69
 } 0
-"43
+"41
 [v _spiWrite spiWrite `(v  1 e 1 0 ]
 {
 [v spiWrite@dat dat `uc  1 a 1 wreg ]
 [v spiWrite@dat dat `uc  1 a 1 wreg ]
-"45
+"43
 [v spiWrite@dat dat `uc  1 a 1 0 ]
-"46
+"44
 } 0
 "18 /Users/jgarc609/github/spi/SPI.X/newmain.c
 [v _service service `IIH(v  1 e 1 0 ]
@@ -440,18 +440,18 @@ SPI_ACTIVE_2_IDLE 64
 {
 "27
 } 0
-"62 /Users/jgarc609/github/spi/SPI.X/spi.c
+"60 /Users/jgarc609/github/spi/SPI.X/spi.c
 [v _SPIHandle SPIHandle `(v  1 e 1 0 ]
 {
-"66
+"64
 } 0
-"56
+"54
 [v _spiRead spiRead `(uc  1 e 1 0 ]
 {
-"60
+"58
 } 0
-"39
+"37
 [v _spiReceiveWait spiReceiveWait `(v  1 s 1 spiReceiveWait ]
 {
-"41
+"39
 } 0
