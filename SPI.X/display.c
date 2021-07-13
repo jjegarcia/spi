@@ -9,12 +9,12 @@ void setupDisplayIo(void) {
 }
 
 void displaySerial(void) {
-    outValue = readSerialValue;
+    ledValue = readSerialValue;
     displayCallback();
 }
 
 void displaySPI(void) {
-    outValue = readSPIValue;
+    ledValue = readSPIValue;
     displayCallback();
 }
 
@@ -31,6 +31,6 @@ void displayRequestHandle(void) {
 }
 
 void displayCallback(void) {
-    PORTD = outValue;
+    PORTD = ledValue;
 }
 

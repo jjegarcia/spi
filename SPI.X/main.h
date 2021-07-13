@@ -30,9 +30,10 @@ union {
     unsigned char byte;
 
     struct {
-        unsigned SPI_READ_REQUEST : 1;
+        unsigned SPI_WRITE_REQUEST : 1;
+        unsigned SPI_READ_REQUEST:1;
         unsigned UART_RECEIVED : 1;
-        unsigned PREVIOUS_BUTTON_STATE : 1;
+        unsigned PUSH_REQUEST_SERVICED : 1;
         unsigned PUSHED_BUTTON : 1;
         unsigned DISPLAY_READING: 1;
         unsigned DISPLAY_SPI_READING : 1;

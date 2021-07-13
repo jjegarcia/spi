@@ -14,9 +14,10 @@ union {
     unsigned char byte;
 
     struct {
-        unsigned SPI_READ_REQUEST : 1;
+        unsigned SPI_WRITE_REQUEST : 1;
+        unsigned SPI_READ_REQUEST:1;
         unsigned UART_RECEIVED : 1;
-        unsigned PREVIOUS_BUTTON_STATE : 1;
+        unsigned PUSH_REQUEST_SERVICED : 1;
         unsigned PUSHED_BUTTON : 1;
         unsigned DISPLAY_READING: 1;
         unsigned DISPLAY_SPI_READING : 1;
@@ -7797,6 +7798,7 @@ void serialHandle(void);
 void serialCallback(void);
 void transmittRead(void);
 void writeSerial(unsigned char);
+void testSerialSend(void);
 unsigned char readSerial(void);
 # 4 "serial.c" 2
 
@@ -7836,6 +7838,10 @@ void writeSerial(unsigned char value) {
     TXREG1 = value;
 }
 
-unsigned char readSerial() {
+unsigned char readSerial(void) {
     return RCREG1;
+}
+
+void testSerialSend(void) {
+    TXREG1 = 'a';
 }

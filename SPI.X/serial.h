@@ -37,11 +37,12 @@
 unsigned char readSerialValue;
 
 void setSerial(void);
-void setSerialIo(void); 
+void setSerialIo(void);
 void serialHandle(void);
 void serialCallback(void);
 void transmittRead(void);
-void writeSerial(unsigned char); 
+void writeSerial(unsigned char);
+void testSerialSend(void);
 unsigned char readSerial(void);
 
 #endif	/* XC_HEADER_TEMPLATE_H */
