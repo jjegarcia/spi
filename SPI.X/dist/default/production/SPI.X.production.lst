@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V2.32 build 20210201212658 
-                                                                                               Tue Jul 13 12:41:19 2021
+                                                                                               Tue Jul 13 21:50:25 2021
 
 Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1 
      1                           	processor	18F8722
@@ -573,34 +573,34 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
    548                           ;spi.c: 22:         TRISC3 = 1;
    549  001194  8694               	bsf	3988,3,c	;volatile
    550                           
-   551                           ;spi.c: 24:         LATC0 = 1;
+   551                           ;spi.c: 23:         LATC0 = 1;
    552  001196  808B               	bsf	3979,0,c	;volatile
    553                           
-   554                           ;spi.c: 25:     } else
+   554                           ;spi.c: 24:     } else
    555  001198  EFD3  F008         	goto	l97
    556  00119C                     l1176:
    557                           
-   558                           ;spi.c: 26:     {;spi.c: 27:         SSP1STAT = sDataSample | sTransmitEdge;
+   558                           ;spi.c: 25:     {;spi.c: 26:         SSP1STAT = sDataSample | sTransmitEdge;
    559  00119C  5001               	movf	spiInit@sDataSample^0,w,c
    560  00119E  1003               	iorwf	spiInit@sTransmitEdge^0,w,c
    561  0011A0  6EC7               	movwf	199,c	;volatile
    562  0011A2                     
-   563                           ;spi.c: 28:         TRISC3 = 0;
+   563                           ;spi.c: 27:         TRISC3 = 0;
    564  0011A2  9694               	bcf	3988,3,c	;volatile
    565  0011A4                     
-   566                           ;spi.c: 29:         TRISC2 = 0;
+   566                           ;spi.c: 28:         TRISC2 = 0;
    567  0011A4  9494               	bcf	3988,2,c	;volatile
    568  0011A6                     l97:
    569                           
-   570                           ;spi.c: 31:     SSP1CON1 = sType | sClockIdle;
+   570                           ;spi.c: 30:     SSP1CON1 = sType | sClockIdle;
    571  0011A6  5004               	movf	spiInit@sType^0,w,c
    572  0011A8  1002               	iorwf	spiInit@sClockIdle^0,w,c
    573  0011AA  6EC6               	movwf	198,c	;volatile
    574  0011AC                     
-   575                           ;spi.c: 33:     CKE1=0;
+   575                           ;spi.c: 32:     CKE1 = 0;
    576  0011AC  9CC7               	bcf	4039,6,c	;volatile
    577  0011AE                     
-   578                           ;spi.c: 34:     CKP1=0;
+   578                           ;spi.c: 33:     CKP1 = 0;
    579  0011AE  98C6               	bcf	4038,4,c	;volatile
    580  0011B0  0012               	return		;funcret
    581  0011B2                     __end_of_spiInit:
@@ -1484,7 +1484,7 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
   1378                           
   1379 ;; *************** function _testSpiSend *****************
   1380 ;; Defined at:
-  1381 ;;		line 72 in file "spi.c"
+  1381 ;;		line 70 in file "spi.c"
   1382 ;; Parameters:    Size  Location     Type
   1383 ;;		None
   1384 ;; Auto vars:     Size  Location     Type
@@ -1523,7 +1523,7 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
   1412  0012E8                     _testSpiSend:
   1413                           	callstack 22
   1414  0012E8                     
-  1415                           ;spi.c: 73:     spiWrite(0x88);
+  1415                           ;spi.c: 71:     spiWrite(0x88);
   1416  0012E8  0E88               	movlw	136
   1417  0012EA  EC78  F009         	call	_spiWrite
   1418  0012EE  0012               	return		;funcret
@@ -1532,7 +1532,7 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
   1421                           
   1422 ;; *************** function _SPICallback *****************
   1423 ;; Defined at:
-  1424 ;;		line 68 in file "spi.c"
+  1424 ;;		line 65 in file "spi.c"
   1425 ;; Parameters:    Size  Location     Type
   1426 ;;		None
   1427 ;; Auto vars:     Size  Location     Type
@@ -1540,7 +1540,7 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
   1429 ;; Return value:  Size  Location     Type
   1430 ;;                  1    wreg      void 
   1431 ;; Registers used:
-  1432 ;;		wreg, cstack
+  1432 ;;		wreg, status,2, cstack
   1433 ;; Tracked objects:
   1434 ;;		On entry : 0/0
   1435 ;;		On exit  : 0/0
@@ -1571,11 +1571,11 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
   1455  0012CA                     _SPICallback:
   1456                           	callstack 23
   1457  0012CA                     
-  1458                           ;spi.c: 69:     spiWrite(0x87);
-  1459  0012CA  0E87               	movlw	135
+  1458                           ;spi.c: 66:     spiWrite(readSPIValue);
+  1459  0012CA  5058               	movf	_readSPIValue^0,w,c
   1460  0012CC  EC78  F009         	call	_spiWrite
   1461  0012D0                     
-  1462                           ;spi.c: 70:     FLAGS.bits.DISPLAY_READING = 1;
+  1462                           ;spi.c: 67:     FLAGS.bits.DISPLAY_READING = 1;
   1463  0012D0  8A57               	bsf	_FLAGS^0,5,c
   1464  0012D2  0012               	return		;funcret
   1465  0012D4                     __end_of_SPICallback:
@@ -1583,7 +1583,7 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
   1467                           
   1468 ;; *************** function _spiWrite *****************
   1469 ;; Defined at:
-  1470 ;;		line 43 in file "spi.c"
+  1470 ;;		line 40 in file "spi.c"
   1471 ;; Parameters:    Size  Location     Type
   1472 ;;  dat             1    wreg     unsigned char 
   1473 ;; Auto vars:     Size  Location     Type
@@ -1627,7 +1627,7 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
   1506                           ;spiWrite@dat stored from wreg
   1507  0012F0  6E01               	movwf	spiWrite@dat^0,c
   1508  0012F2                     
-  1509                           ;spi.c: 43: void spiWrite(char dat);spi.c: 44: {;spi.c: 45:     SSP1BUF = dat;
+  1509                           ;spi.c: 40: void spiWrite(char dat);spi.c: 41: {;spi.c: 42:     SSP1BUF = dat;
   1510  0012F2  C001  FFC9         	movff	spiWrite@dat,4041	;volatile
   1511  0012F6  0012               	return		;funcret
   1512  0012F8                     __end_of_spiWrite:
@@ -2016,7 +2016,7 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
   1863                           
   1864 ;; *************** function _SPIHandle *****************
   1865 ;; Defined at:
-  1866 ;;		line 62 in file "spi.c"
+  1866 ;;		line 59 in file "spi.c"
   1867 ;; Parameters:    Size  Location     Type
   1868 ;;		None
   1869 ;; Auto vars:     Size  Location     Type
@@ -2055,14 +2055,14 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
   1897  0012A0                     _SPIHandle:
   1898                           	callstack 22
   1899  0012A0                     
-  1900                           ;spi.c: 63:     readSPIValue = spiRead();
+  1900                           ;spi.c: 60:     readSPIValue = spiRead();
   1901  0012A0  EC7C  F009         	call	_spiRead	;wreg free
   1902  0012A4  6E58               	movwf	_readSPIValue^0,c
   1903  0012A6                     
-  1904                           ;spi.c: 64:     FLAGS.bits.SPI_READ_REQUEST = 1;
+  1904                           ;spi.c: 61:     FLAGS.bits.SPI_READ_REQUEST = 1;
   1905  0012A6  8257               	bsf	_FLAGS^0,1,c
   1906  0012A8                     
-  1907                           ;spi.c: 65:     FLAGS.bits.DISPLAY_SPI_READING = 1;
+  1907                           ;spi.c: 62:     FLAGS.bits.DISPLAY_SPI_READING = 1;
   1908  0012A8  8C57               	bsf	_FLAGS^0,6,c
   1909  0012AA  0012               	return		;funcret
   1910  0012AC                     __end_of_SPIHandle:
@@ -2070,7 +2070,7 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
   1912                           
   1913 ;; *************** function _spiRead *****************
   1914 ;; Defined at:
-  1915 ;;		line 56 in file "spi.c"
+  1915 ;;		line 53 in file "spi.c"
   1916 ;; Parameters:    Size  Location     Type
   1917 ;;		None
   1918 ;; Auto vars:     Size  Location     Type
@@ -2109,10 +2109,10 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
   1946  0012F8                     _spiRead:
   1947                           	callstack 22
   1948  0012F8                     
-  1949                           ;spi.c: 58:     spiReceiveWait();
+  1949                           ;spi.c: 55:     spiReceiveWait();
   1950  0012F8  EC48  F009         	call	_spiReceiveWait	;wreg free
   1951  0012FC                     
-  1952                           ;spi.c: 59:     return (SSP1BUF);
+  1952                           ;spi.c: 56:     return (SSP1BUF);
   1953  0012FC  50C9               	movf	201,w,c	;volatile
   1954  0012FE  0012               	return		;funcret
   1955  001300                     __end_of_spiRead:
@@ -2120,7 +2120,7 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
   1957                           
   1958 ;; *************** function _spiReceiveWait *****************
   1959 ;; Defined at:
-  1960 ;;		line 39 in file "spi.c"
+  1960 ;;		line 36 in file "spi.c"
   1961 ;; Parameters:    Size  Location     Type
   1962 ;;		None
   1963 ;; Auto vars:     Size  Location     Type
@@ -2789,7 +2789,7 @@ CODE                 0      0       0       0        0.0%
 
 
 Microchip Technology PIC18 Macro Assembler V2.32 build 20210201212658 
-Symbol Table                                                                                   Tue Jul 13 12:41:19 2021
+Symbol Table                                                                                   Tue Jul 13 21:50:25 2021
 
         ?_processInterruptService 0001                                l93 130A  
                               l97 11A6                                l98 11B0  

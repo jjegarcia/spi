@@ -11,11 +11,6 @@
 # All addresses and the length are given in unqualified hexadecimal
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
-$/tmp/xcNqAPOGh.o
-idloc IDLOC 5 200000 200000 8 1
-init CODE 0 E E 4 1
-reset_vec CODE 0 0 0 4 1
-config CONFIG 4 300000 300000 E 1
 $dist/default/production/SPI.X.production.o
 cinit CODE 0 11B2 11B2 32 1
 idloc IDLOC 5 200000 200000 8 1
@@ -56,6 +51,11 @@ intcode CODE 0 8 8 6 1
 smallconst SMALLCONST 0 1000 1000 52 1
 dataCOMRAM COMRAM 1 59 59 2 1
 bssCOMRAM COMRAM 1 55 55 4 1
+config CONFIG 4 300000 300000 E 1
+$/tmp/xcDB5vp2a.o
+idloc IDLOC 5 200000 200000 8 1
+init CODE 0 E E 4 1
+reset_vec CODE 0 0 0 4 1
 config CONFIG 4 300000 300000 E 1
 # %UNUSED Section
 # This section enumerates the unused ranges of each CLASS. Each entry
@@ -108,20 +108,20 @@ MEDIUMCONST 11000-1FFFF 1
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production/SPI.X.production.o
-8 intcode CODE >5315:/tmp/xcIfmlq8D.s
+8 intcode CODE >5315:/tmp/xcBZ0bKrx.s
 8 intcode CODE >18:/Users/jgarc609/github/spi/SPI.X/newmain.c
-1290 text29 CODE >39:/Users/jgarc609/github/spi/SPI.X/spi.c
-1290 text29 CODE >40:/Users/jgarc609/github/spi/SPI.X/spi.c
-129E text29 CODE >41:/Users/jgarc609/github/spi/SPI.X/spi.c
-12F8 text28 CODE >56:/Users/jgarc609/github/spi/SPI.X/spi.c
-12F8 text28 CODE >58:/Users/jgarc609/github/spi/SPI.X/spi.c
-12FC text28 CODE >59:/Users/jgarc609/github/spi/SPI.X/spi.c
-12FE text28 CODE >60:/Users/jgarc609/github/spi/SPI.X/spi.c
-12A0 text27 CODE >62:/Users/jgarc609/github/spi/SPI.X/spi.c
-12A0 text27 CODE >63:/Users/jgarc609/github/spi/SPI.X/spi.c
-12A6 text27 CODE >64:/Users/jgarc609/github/spi/SPI.X/spi.c
-12A8 text27 CODE >65:/Users/jgarc609/github/spi/SPI.X/spi.c
-12AA text27 CODE >66:/Users/jgarc609/github/spi/SPI.X/spi.c
+1290 text29 CODE >36:/Users/jgarc609/github/spi/SPI.X/spi.c
+1290 text29 CODE >37:/Users/jgarc609/github/spi/SPI.X/spi.c
+129E text29 CODE >38:/Users/jgarc609/github/spi/SPI.X/spi.c
+12F8 text28 CODE >53:/Users/jgarc609/github/spi/SPI.X/spi.c
+12F8 text28 CODE >55:/Users/jgarc609/github/spi/SPI.X/spi.c
+12FC text28 CODE >56:/Users/jgarc609/github/spi/SPI.X/spi.c
+12FE text28 CODE >57:/Users/jgarc609/github/spi/SPI.X/spi.c
+12A0 text27 CODE >59:/Users/jgarc609/github/spi/SPI.X/spi.c
+12A0 text27 CODE >60:/Users/jgarc609/github/spi/SPI.X/spi.c
+12A6 text27 CODE >61:/Users/jgarc609/github/spi/SPI.X/spi.c
+12A8 text27 CODE >62:/Users/jgarc609/github/spi/SPI.X/spi.c
+12AA text27 CODE >63:/Users/jgarc609/github/spi/SPI.X/spi.c
 1258 text26 CODE >23:/Users/jgarc609/github/spi/SPI.X/button.c
 1258 text26 CODE >24:/Users/jgarc609/github/spi/SPI.X/button.c
 1274 text26 CODE >25:/Users/jgarc609/github/spi/SPI.X/button.c
@@ -150,16 +150,16 @@ $dist/default/production/SPI.X.production.o
 12D4 intcode_body CODE >18:/Users/jgarc609/github/spi/SPI.X/newmain.c
 12D6 intcode_body CODE >19:/Users/jgarc609/github/spi/SPI.X/newmain.c
 12DA intcode_body CODE >20:/Users/jgarc609/github/spi/SPI.X/newmain.c
-12F0 text20 CODE >43:/Users/jgarc609/github/spi/SPI.X/spi.c
-12F2 text20 CODE >45:/Users/jgarc609/github/spi/SPI.X/spi.c
-12F6 text20 CODE >46:/Users/jgarc609/github/spi/SPI.X/spi.c
-12CA text19 CODE >68:/Users/jgarc609/github/spi/SPI.X/spi.c
-12CA text19 CODE >69:/Users/jgarc609/github/spi/SPI.X/spi.c
-12D0 text19 CODE >70:/Users/jgarc609/github/spi/SPI.X/spi.c
-12D2 text19 CODE >71:/Users/jgarc609/github/spi/SPI.X/spi.c
-12E8 text18 CODE >72:/Users/jgarc609/github/spi/SPI.X/spi.c
-12E8 text18 CODE >73:/Users/jgarc609/github/spi/SPI.X/spi.c
-12EE text18 CODE >74:/Users/jgarc609/github/spi/SPI.X/spi.c
+12F0 text20 CODE >40:/Users/jgarc609/github/spi/SPI.X/spi.c
+12F2 text20 CODE >42:/Users/jgarc609/github/spi/SPI.X/spi.c
+12F6 text20 CODE >43:/Users/jgarc609/github/spi/SPI.X/spi.c
+12CA text19 CODE >65:/Users/jgarc609/github/spi/SPI.X/spi.c
+12CA text19 CODE >66:/Users/jgarc609/github/spi/SPI.X/spi.c
+12D0 text19 CODE >67:/Users/jgarc609/github/spi/SPI.X/spi.c
+12D2 text19 CODE >68:/Users/jgarc609/github/spi/SPI.X/spi.c
+12E8 text18 CODE >70:/Users/jgarc609/github/spi/SPI.X/spi.c
+12E8 text18 CODE >71:/Users/jgarc609/github/spi/SPI.X/spi.c
+12EE text18 CODE >72:/Users/jgarc609/github/spi/SPI.X/spi.c
 1212 text17 CODE >15:/Users/jgarc609/github/spi/SPI.X/button.c
 1212 text17 CODE >16:/Users/jgarc609/github/spi/SPI.X/button.c
 122E text17 CODE >18:/Users/jgarc609/github/spi/SPI.X/button.c
@@ -241,16 +241,16 @@ $dist/default/production/SPI.X.production.o
 1182 text1 CODE >19:/Users/jgarc609/github/spi/SPI.X/spi.c
 1190 text1 CODE >21:/Users/jgarc609/github/spi/SPI.X/spi.c
 1194 text1 CODE >22:/Users/jgarc609/github/spi/SPI.X/spi.c
-1196 text1 CODE >24:/Users/jgarc609/github/spi/SPI.X/spi.c
-1198 text1 CODE >25:/Users/jgarc609/github/spi/SPI.X/spi.c
-119C text1 CODE >27:/Users/jgarc609/github/spi/SPI.X/spi.c
-11A2 text1 CODE >28:/Users/jgarc609/github/spi/SPI.X/spi.c
-11A4 text1 CODE >29:/Users/jgarc609/github/spi/SPI.X/spi.c
+1196 text1 CODE >23:/Users/jgarc609/github/spi/SPI.X/spi.c
+1198 text1 CODE >24:/Users/jgarc609/github/spi/SPI.X/spi.c
+119C text1 CODE >26:/Users/jgarc609/github/spi/SPI.X/spi.c
+11A2 text1 CODE >27:/Users/jgarc609/github/spi/SPI.X/spi.c
+11A4 text1 CODE >28:/Users/jgarc609/github/spi/SPI.X/spi.c
+11A6 text1 CODE >29:/Users/jgarc609/github/spi/SPI.X/spi.c
 11A6 text1 CODE >30:/Users/jgarc609/github/spi/SPI.X/spi.c
-11A6 text1 CODE >31:/Users/jgarc609/github/spi/SPI.X/spi.c
-11AC text1 CODE >33:/Users/jgarc609/github/spi/SPI.X/spi.c
-11AE text1 CODE >34:/Users/jgarc609/github/spi/SPI.X/spi.c
-11B0 text1 CODE >37:/Users/jgarc609/github/spi/SPI.X/spi.c
+11AC text1 CODE >32:/Users/jgarc609/github/spi/SPI.X/spi.c
+11AE text1 CODE >33:/Users/jgarc609/github/spi/SPI.X/spi.c
+11B0 text1 CODE >34:/Users/jgarc609/github/spi/SPI.X/spi.c
 1052 text0 CODE >22:/Users/jgarc609/github/spi/SPI.X/newmain.c
 1052 text0 CODE >23:/Users/jgarc609/github/spi/SPI.X/newmain.c
 1056 text0 CODE >24:/Users/jgarc609/github/spi/SPI.X/newmain.c
@@ -277,32 +277,32 @@ $dist/default/production/SPI.X.production.o
 10E8 text0 CODE >52:/Users/jgarc609/github/spi/SPI.X/newmain.c
 10EC text0 CODE >54:/Users/jgarc609/github/spi/SPI.X/newmain.c
 10FA text0 CODE >55:/Users/jgarc609/github/spi/SPI.X/newmain.c
-11B2 cinit CODE >3145:/tmp/xcIfmlq8D.s
-11B2 cinit CODE >3147:/tmp/xcIfmlq8D.s
-11B2 cinit CODE >3150:/tmp/xcIfmlq8D.s
-11B2 cinit CODE >3179:/tmp/xcIfmlq8D.s
-11B4 cinit CODE >3180:/tmp/xcIfmlq8D.s
-11B6 cinit CODE >3181:/tmp/xcIfmlq8D.s
-11B8 cinit CODE >3182:/tmp/xcIfmlq8D.s
-11BA cinit CODE >3183:/tmp/xcIfmlq8D.s
-11BC cinit CODE >3184:/tmp/xcIfmlq8D.s
-11BE cinit CODE >3185:/tmp/xcIfmlq8D.s
-11C0 cinit CODE >3186:/tmp/xcIfmlq8D.s
-11C4 cinit CODE >3187:/tmp/xcIfmlq8D.s
-11C6 cinit CODE >3188:/tmp/xcIfmlq8D.s
-11CA cinit CODE >3192:/tmp/xcIfmlq8D.s
-11CC cinit CODE >3193:/tmp/xcIfmlq8D.s
-11CE cinit CODE >3194:/tmp/xcIfmlq8D.s
-11D0 cinit CODE >3195:/tmp/xcIfmlq8D.s
-11D2 cinit CODE >3201:/tmp/xcIfmlq8D.s
-11D2 cinit CODE >3203:/tmp/xcIfmlq8D.s
-11D4 cinit CODE >3204:/tmp/xcIfmlq8D.s
-11D6 cinit CODE >3206:/tmp/xcIfmlq8D.s
-11D8 cinit CODE >3207:/tmp/xcIfmlq8D.s
-11DA cinit CODE >3208:/tmp/xcIfmlq8D.s
-11DC cinit CODE >3209:/tmp/xcIfmlq8D.s
-11DE cinit CODE >3210:/tmp/xcIfmlq8D.s
-11E0 cinit CODE >3211:/tmp/xcIfmlq8D.s
+11B2 cinit CODE >3145:/tmp/xcBZ0bKrx.s
+11B2 cinit CODE >3147:/tmp/xcBZ0bKrx.s
+11B2 cinit CODE >3150:/tmp/xcBZ0bKrx.s
+11B2 cinit CODE >3179:/tmp/xcBZ0bKrx.s
+11B4 cinit CODE >3180:/tmp/xcBZ0bKrx.s
+11B6 cinit CODE >3181:/tmp/xcBZ0bKrx.s
+11B8 cinit CODE >3182:/tmp/xcBZ0bKrx.s
+11BA cinit CODE >3183:/tmp/xcBZ0bKrx.s
+11BC cinit CODE >3184:/tmp/xcBZ0bKrx.s
+11BE cinit CODE >3185:/tmp/xcBZ0bKrx.s
+11C0 cinit CODE >3186:/tmp/xcBZ0bKrx.s
+11C4 cinit CODE >3187:/tmp/xcBZ0bKrx.s
+11C6 cinit CODE >3188:/tmp/xcBZ0bKrx.s
+11CA cinit CODE >3192:/tmp/xcBZ0bKrx.s
+11CC cinit CODE >3193:/tmp/xcBZ0bKrx.s
+11CE cinit CODE >3194:/tmp/xcBZ0bKrx.s
+11D0 cinit CODE >3195:/tmp/xcBZ0bKrx.s
+11D2 cinit CODE >3201:/tmp/xcBZ0bKrx.s
+11D2 cinit CODE >3203:/tmp/xcBZ0bKrx.s
+11D4 cinit CODE >3204:/tmp/xcBZ0bKrx.s
+11D6 cinit CODE >3206:/tmp/xcBZ0bKrx.s
+11D8 cinit CODE >3207:/tmp/xcBZ0bKrx.s
+11DA cinit CODE >3208:/tmp/xcBZ0bKrx.s
+11DC cinit CODE >3209:/tmp/xcBZ0bKrx.s
+11DE cinit CODE >3210:/tmp/xcBZ0bKrx.s
+11E0 cinit CODE >3211:/tmp/xcBZ0bKrx.s
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -323,7 +323,7 @@ __Hspace_4 60000E 0 ABS 0 - dist/default/production/SPI.X.production.o
 spiInit@sTransmitEdge 3 0 COMRAM 1 cstackCOMRAM dist/default/production/SPI.X.production.o
 _SSP1STATbits FC7 0 ABS 0 - dist/default/production/SPI.X.production.o
 __Hibigdata 0 0 CODE 0 ibigdata dist/default/production/SPI.X.production.o
-__mediumconst 0 0 MEDIUMCONST 0 mediumconst /tmp/xcNqAPOGh.o
+__mediumconst 0 0 MEDIUMCONST 0 mediumconst /tmp/xcDB5vp2a.o
 __size_of_displaySPI 0 0 ABS 0 - dist/default/production/SPI.X.production.o
 __Heeprom_data 0 0 EEDATA 0 eeprom_data dist/default/production/SPI.X.production.o
 __size_of_setupDisplayIo 0 0 ABS 0 - dist/default/production/SPI.X.production.o
@@ -332,12 +332,12 @@ _CKE1 7E3E 0 ABS 0 - dist/default/production/SPI.X.production.o
 _CKP1 7E34 0 ABS 0 - dist/default/production/SPI.X.production.o
 _PEIE 7F96 0 ABS 0 - dist/default/production/SPI.X.production.o
 buttonDebounce@counter 59 0 COMRAM 1 dataCOMRAM dist/default/production/SPI.X.production.o
-___sp 0 0 STACK 2 stack /tmp/xcNqAPOGh.o
+___sp 0 0 STACK 2 stack /tmp/xcDB5vp2a.o
 _main 1052 0 CODE 0 text0 dist/default/production/SPI.X.production.o
 btemp 5B 0 COMRAM 1 temp dist/default/production/SPI.X.production.o
 _displayRequestHandle 11E4 0 CODE 0 text12 dist/default/production/SPI.X.production.o
 __size_of_setButtonInterrput 0 0 ABS 0 - dist/default/production/SPI.X.production.o
-start E 0 CODE 0 init /tmp/xcNqAPOGh.o
+start E 0 CODE 0 init /tmp/xcDB5vp2a.o
 __size_of_main 0 0 ABS 0 - dist/default/production/SPI.X.production.o
 __HbssCOMRAM 0 0 ABS 0 bssCOMRAM dist/default/production/SPI.X.production.o
 __Hpowerup E 0 CODE 0 powerup dist/default/production/SPI.X.production.o
@@ -347,11 +347,11 @@ ttemp6 5F 0 COMRAM 1 temp dist/default/production/SPI.X.production.o
 ttemp7 63 0 COMRAM 1 temp dist/default/production/SPI.X.production.o
 __HdataCOMRAM 0 0 ABS 0 dataCOMRAM dist/default/production/SPI.X.production.o
 __size_of_buttonCallback 0 0 ABS 0 - dist/default/production/SPI.X.production.o
-__accesstop 60 0 ABS 0 - /tmp/xcNqAPOGh.o
-intlevel0 0 0 CODE 0 text /tmp/xcNqAPOGh.o
-intlevel1 0 0 CODE 0 text /tmp/xcNqAPOGh.o
-intlevel2 0 0 CODE 0 text /tmp/xcNqAPOGh.o
-intlevel3 0 0 CODE 0 text /tmp/xcNqAPOGh.o
+__accesstop 60 0 ABS 0 - /tmp/xcDB5vp2a.o
+intlevel0 0 0 CODE 0 text /tmp/xcDB5vp2a.o
+intlevel1 0 0 CODE 0 text /tmp/xcDB5vp2a.o
+intlevel2 0 0 CODE 0 text /tmp/xcDB5vp2a.o
+intlevel3 0 0 CODE 0 text /tmp/xcDB5vp2a.o
 _setInterrupts 130C 0 CODE 0 text7 dist/default/production/SPI.X.production.o
 __LbssCOMRAM 0 0 ABS 0 bssCOMRAM dist/default/production/SPI.X.production.o
 __size_of_service 0 0 ABS 0 - dist/default/production/SPI.X.production.o
@@ -363,8 +363,8 @@ __size_of_buttonDebounce 0 0 ABS 0 - dist/default/production/SPI.X.production.o
 __Hclrtext 0 0 ABS 0 clrtext dist/default/production/SPI.X.production.o
 __pidataCOMRAM 1338 0 CODE 0 idataCOMRAM dist/default/production/SPI.X.production.o
 __end_of_displayCallback 132A 0 CODE 0 text15 dist/default/production/SPI.X.production.o
-___inthi_sp 0 0 STACK 2 stack /tmp/xcNqAPOGh.o
-___intlo_sp 0 0 STACK 2 stack /tmp/xcNqAPOGh.o
+___inthi_sp 0 0 STACK 2 stack /tmp/xcDB5vp2a.o
+___intlo_sp 0 0 STACK 2 stack /tmp/xcDB5vp2a.o
 __LdataCOMRAM 0 0 ABS 0 dataCOMRAM dist/default/production/SPI.X.production.o
 __Hintcode_body 0 0 ABS 0 intcode_body dist/default/production/SPI.X.production.o
 _setSPIInterrupt 1306 0 CODE 0 text5 dist/default/production/SPI.X.production.o
@@ -406,7 +406,7 @@ _TRISC7 7CA7 0 ABS 0 - dist/default/production/SPI.X.production.o
 _TXREG1 FAD 0 ABS 0 - dist/default/production/SPI.X.production.o
 __end_of_setButtonIo 1334 0 CODE 0 text8 dist/default/production/SPI.X.production.o
 _buttonHandle 1258 0 CODE 0 text26 dist/default/production/SPI.X.production.o
-isa$xinst 0 0 ABS 0 - /tmp/xcNqAPOGh.o
+isa$xinst 0 0 ABS 0 - /tmp/xcDB5vp2a.o
 __Hbank0 0 0 ABS 0 bank0 dist/default/production/SPI.X.production.o
 __Hbank1 0 0 ABS 0 bank1 dist/default/production/SPI.X.production.o
 __Hbank2 0 0 ABS 0 bank2 dist/default/production/SPI.X.production.o
@@ -446,7 +446,7 @@ __Hbank14 0 0 ABS 0 bank14 dist/default/production/SPI.X.production.o
 __Hbank15 0 0 ABS 0 bank15 dist/default/production/SPI.X.production.o
 __Hbigbss 0 0 BIGRAM 1 bigbss dist/default/production/SPI.X.production.o
 __Hbigram 0 0 ABS 0 bigram dist/default/production/SPI.X.production.o
-__smallconst 1000 0 SMALLCONST 0 smallconst /tmp/xcNqAPOGh.o
+__smallconst 1000 0 SMALLCONST 0 smallconst /tmp/xcDB5vp2a.o
 __end_of_spiInit 11B2 0 CODE 0 text1 dist/default/production/SPI.X.production.o
 __end_of_spiRead 1300 0 CODE 0 text28 dist/default/production/SPI.X.production.o
 __end_of_serialCallback 131E 0 CODE 0 text10 dist/default/production/SPI.X.production.o
@@ -591,11 +591,11 @@ main@F4619 1001 0 SMALLCONST 0 smallconst dist/default/production/SPI.X.producti
 main@test 5 0 COMRAM 1 cstackCOMRAM dist/default/production/SPI.X.production.o
 __Lfarbss 0 0 FARRAM 0 farbss dist/default/production/SPI.X.production.o
 __Lfardata 0 0 FARRAM 0 fardata dist/default/production/SPI.X.production.o
-isa$std 1 0 ABS 0 - /tmp/xcNqAPOGh.o
+isa$std 1 0 ABS 0 - /tmp/xcDB5vp2a.o
 _readSPIValue 58 0 COMRAM 1 bssCOMRAM dist/default/production/SPI.X.production.o
 __end_of_readSerial 1338 0 CODE 0 text25 dist/default/production/SPI.X.production.o
-stackhi F5F 0 ABS 0 - /tmp/xcNqAPOGh.o
-stacklo 60 0 ABS 0 - /tmp/xcNqAPOGh.o
+stackhi F5F 0 ABS 0 - /tmp/xcDB5vp2a.o
+stacklo 60 0 ABS 0 - /tmp/xcDB5vp2a.o
 __Lintcode 8 0 CODE 0 intcode dist/default/production/SPI.X.production.o
 __Lintret 0 0 ABS 0 intret dist/default/production/SPI.X.production.o
 __Lirdata 0 0 CODE 0 irdata dist/default/production/SPI.X.production.o
@@ -650,7 +650,7 @@ __Ltext28 0 0 ABS 0 text28 dist/default/production/SPI.X.production.o
 __Ltext29 0 0 ABS 0 text29 dist/default/production/SPI.X.production.o
 _spiInit 117C 0 CODE 0 text1 dist/default/production/SPI.X.production.o
 _spiRead 12F8 0 CODE 0 text28 dist/default/production/SPI.X.production.o
-__ramtop 1000 0 RAM 0 ramtop /tmp/xcNqAPOGh.o
+__ramtop 1000 0 RAM 0 ramtop /tmp/xcDB5vp2a.o
 spiWrite@dat 1 0 COMRAM 1 cstackCOMRAM dist/default/production/SPI.X.production.o
 __end_of_initialiseButton 1324 0 CODE 0 text11 dist/default/production/SPI.X.production.o
 __Lpowerup E 0 CODE 0 powerup dist/default/production/SPI.X.production.o
@@ -707,7 +707,7 @@ __Lram 0 0 ABS 0 ram dist/default/production/SPI.X.production.o
 __Lsfr 0 0 ABS 0 sfr dist/default/production/SPI.X.production.o
 _testSpiSend 12E8 0 CODE 0 text18 dist/default/production/SPI.X.production.o
 _setIo 133A 0 CODE 0 text6 dist/default/production/SPI.X.production.o
-___extmem_base 20000 0 ABS 0 - /tmp/xcNqAPOGh.o
+___extmem_base 20000 0 ABS 0 - /tmp/xcDB5vp2a.o
 _SPIHandle 12A0 0 CODE 0 text27 dist/default/production/SPI.X.production.o
 spiInit@sClockIdle 2 0 COMRAM 1 cstackCOMRAM dist/default/production/SPI.X.production.o
 __initialization 11B2 0 CODE 0 cinit dist/default/production/SPI.X.production.o

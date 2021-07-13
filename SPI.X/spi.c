@@ -14,13 +14,12 @@ void setSPIInterrupt(void) {
 void spiInit(Spi_Type sType, Spi_Data_Sample sDataSample, Spi_Clock_Idle sClockIdle, Spi_Transmit_Edge sTransmitEdge) {
     TRISC5 = 0; //SDO  
     TRISC4 = 1; //SDI
-    
-    
+
+
     if (sType & 0b00000100) //If Slave Mode
     {
         SSP1STAT = sTransmitEdge;
         TRISC3 = 1; //clock as input
-        //TRISC2 = 1; //CE For This IC as input
         LATC0 = 1;
     } else //If Master Mode
     {
@@ -29,12 +28,10 @@ void spiInit(Spi_Type sType, Spi_Data_Sample sDataSample, Spi_Clock_Idle sClockI
         TRISC2 = 0; //CE For This IC as output
     }
     SSP1CON1 = sType | sClockIdle;
-    
-    CKE1=0;
-    CKP1=0;
-    
-    
-  }
+
+    CKE1 = 0;
+    CKP1 = 0;
+}
 
 static void spiReceiveWait() {
     while (!SSP1STATbits.BF); // Wait for Data Transmit/Receipt complete
@@ -66,9 +63,10 @@ void SPIHandle(void) {
 }
 
 void SPICallback(void) {
-    spiWrite(0x87); //acknowledge read value
+    spiWrite(readSPIValue); //acknowledge read value
     FLAGS.bits.DISPLAY_READING = 1;
 }
-void testSpiSend(void){
+
+void testSpiSend(void) {
     spiWrite(0x88);
 }

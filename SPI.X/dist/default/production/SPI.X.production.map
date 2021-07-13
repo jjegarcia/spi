@@ -5,7 +5,7 @@ Linker command line:
 --edf=/Applications/microchip/xc8/v2.32/pic/dat/en_msgs.txt -cn \
   -h+dist/default/production/SPI.X.production.sym \
   --cmf=dist/default/production/SPI.X.production.cmf -z -Q18F8722 \
-  -o/tmp/xc459aMrg --defsym=__MPLAB_BUILD=1 \
+  -o/tmp/xcMPwwLy4 --defsym=__MPLAB_BUILD=1 \
   -Mdist/default/production/SPI.X.production.map -E1 -ver=XC8 Compiler \
   --acfsm=1493 -ASTACK=060h-0F5Fh -pstack=STACK -ACODE=00h-01FFFFh \
   -ACONST=00h-01FFFFh -ASMALLCONST=01000h-010FFhx496 \
@@ -26,7 +26,7 @@ Linker command line:
   -pfarbss=FARRAM,fardata=FARRAM,nvFARRAM=FARRAM \
   -pintsave_regs=BIGRAM,bigbss=BIGRAM,bigdata=BIGRAM -pbss=RAM \
   -pidata=CODE,irdata=CODE,ibigdata=CODE,ifardata=CODE -prparam=COMRAM \
-  /tmp/xcNqAPOGh.o dist/default/production/SPI.X.production.o 
+  /tmp/xcDB5vp2a.o dist/default/production/SPI.X.production.o 
 
 Object code version is 3.11
 
@@ -35,7 +35,7 @@ Machine type is 18F8722
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-/tmp/xcNqAPOGh.o
+/tmp/xcDB5vp2a.o
                 idloc                            200000   200000        8        0       5
                 config                           300000   300000        E        0       4
                 init                                  E        E        4        4       0
