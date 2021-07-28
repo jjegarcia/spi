@@ -1,73 +1,21 @@
 Version 4.0 HI-TECH Software Intermediate Code
 "32 ./main.h
 [; ;./main.h: 32:     struct {
-[s S502 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S502 . SPI_WRITE_REQUEST SPI_READ_REQUEST UART_RECEIVED PUSH_REQUEST_SERVICED PUSHED_BUTTON DISPLAY_READING DISPLAY_SPI_READING DISPLAY_SERIAL_READING ]
+[s S2 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S2 . SPI_WRITE_REQUEST SPI_READ_REQUEST UART_RECEIVED PUSH_REQUEST_SERVICED PUSHED_BUTTON DISPLAY_READING DISPLAY_SPI_READING DISPLAY_SERIAL_READING ]
 "29
 [; ;./main.h: 29: union {
-[u S501 `uc 1 `S502 1 ]
-[n S501 . byte bits ]
-[t ~ __interrupt . k ]
-[t T110 __interrupt ]
-"28 ./interruptService.h
-[; ;./interruptService.h: 28: void interruptService(void);
-[v _interruptService `(v ~T0 @X0 0 ef ]
-[p mainexit ]
-"34 ./init.h
-[; ;./init.h: 34: void setIo(void);
-[v _setIo `(v ~T0 @X0 0 ef ]
-"37 ./spi.h
-[; ;./spi.h: 37: void setSPIInterrupt(void);
-[v _setSPIInterrupt `(v ~T0 @X0 0 ef ]
-"40 ./serial.h
-[; ;./serial.h: 40: void setSerialIo(void);
-[v _setSerialIo `(v ~T0 @X0 0 ef ]
-"39
-[; ;./serial.h: 39: void setSerial(void);
-[v _setSerial `(v ~T0 @X0 0 ef ]
-"13 ./display.h
-[; ;./display.h: 13: void setupDisplayIo(void);
-[v _setupDisplayIo `(v ~T0 @X0 0 ef ]
-"37 ./button.h
-[; ;./button.h: 37: void initialiseButton(void);
-[v _initialiseButton `(v ~T0 @X0 0 ef ]
-"35 ./init.h
-[; ;./init.h: 35: void setButtonInterrput(void);
-[v _setButtonInterrput `(v ~T0 @X0 0 ef ]
-"32
-[; ;./init.h: 32: void setButtonIo(void);
-[v _setButtonIo `(v ~T0 @X0 0 ef ]
-"33
-[; ;./init.h: 33: void setInterrupts(void);
-[v _setInterrupts `(v ~T0 @X0 0 ef ]
-"32 newmain.c
-[; ;newmain.c: 32:     spiInit(SPI_MASTER_OSC_DIV4, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
-[c E4544 32 33 34 35 36 37 .. ]
-[n E4544 . SPI_MASTER_OSC_DIV4 SPI_MASTER_OSC_DIV16 SPI_MASTER_OSC_DIV64 SPI_MASTER_TMR2 SPI_SLAVE_SS_EN SPI_SLAVE_SS_DIS  ]
-[c E4552 0 128 .. ]
-[n E4552 . SPI_DATA_SAMPLE_MIDDLE SPI_DATA_SAMPLE_END  ]
-[c E4556 16 0 .. ]
-[n E4556 . SPI_CLOCK_IDLE_HIGH SPI_CLOCK_IDLE_LOW  ]
-[c E4560 0 64 .. ]
-[n E4560 . SPI_IDLE_2_ACTIVE SPI_ACTIVE_2_IDLE  ]
-"38 ./spi.h
-[; ;./spi.h: 38: void spiInit(Spi_Type, Spi_Data_Sample, Spi_Clock_Idle, Spi_Transmit_Edge);
-[v _spiInit `(v ~T0 @X0 0 ef4`E4544`E4552`E4556`E4560 ]
-"43
-[; ;./spi.h: 43: void SPICallback(void);
-[v _SPICallback `(v ~T0 @X0 0 ef ]
-"16 ./display.h
-[; ;./display.h: 16: void displayRequestHandle(void);
-[v _displayRequestHandle `(v ~T0 @X0 0 ef ]
-"42 ./serial.h
-[; ;./serial.h: 42: void serialCallback(void);
-[v _serialCallback `(v ~T0 @X0 0 ef ]
-"38 ./button.h
-[; ;./button.h: 38: void buttonCallback(void);
-[v _buttonCallback `(v ~T0 @X0 0 ef ]
-"40
-[; ;./button.h: 40: void buttonDebounce(void);
-[v _buttonDebounce `(v ~T0 @X0 0 ef ]
+[u S1 `uc 1 `S2 1 ]
+[n S1 . byte bits ]
+"16221 /Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h
+[; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 16221: extern volatile __bit TRISB0 __attribute__((address(0x7C98)));
+[v _TRISB0 `Vb ~T0 @X0 0 e@31896 ]
+"44 ./spi.h
+[; ;./spi.h: 44: void testSpiSend(void);
+[v _testSpiSend `(v ~T0 @X0 0 ef ]
+"42 ./main.h
+[; ;./main.h: 42: } FLAGS;
+[v _FLAGS `S1 ~T0 @X0 1 e ]
 "54 /Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h
 [; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 54: __asm("SSP2CON2 equ 0F62h");
 [; <" SSP2CON2 equ 0F62h ;# ">
@@ -662,267 +610,116 @@ Version 4.0 HI-TECH Software Intermediate Code
 "13453
 [; ;/Applications/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f8722.h: 13453: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-"35 ./spi.h
-[; ;./spi.h: 35: unsigned char readSPIValue;
-[v _readSPIValue `uc ~T0 @X0 1 e ]
-"36 ./config.h
-[p x OSC  =  XT          ]
-"37
-[p x FCMEN  =  OFF       ]
-"38
-[p x IESO  =  OFF        ]
-"41
-[p x PWRT  =  OFF        ]
-"42
-[p x BOREN  =  OFF       ]
-"43
-[p x BORV  =  3          ]
-"46
-[p x WDT  =  OFF         ]
-"47
-[p x WDTPS  =  32768     ]
-"50
-[p x MODE  =  MC         ]
-"51
-[p x ADDRBW  =  ADDR20BIT ]
-"52
-[p x DATABW  =  DATA16BIT ]
-"53
-[p x WAIT  =  OFF        ]
-"56
-[p x CCP2MX  =  PORTC    ]
-"57
-[p x ECCPMX  =  PORTE    ]
-"58
-[p x LPT1OSC  =  OFF     ]
-"59
-[p x MCLRE  =  ON        ]
-"62
-[p x STVREN  =  ON       ]
-"63
-[p x LVP  =  OFF         ]
-"64
-[p x BBSIZ  =  BB2K      ]
-"65
-[p x XINST  =  OFF       ]
-"68
-[p x CP0  =  OFF         ]
-"69
-[p x CP1  =  OFF         ]
-"70
-[p x CP2  =  OFF         ]
-"71
-[p x CP3  =  OFF         ]
-"72
-[p x CP4  =  OFF         ]
-"73
-[p x CP5  =  OFF         ]
-"74
-[p x CP6  =  OFF         ]
-"75
-[p x CP7  =  OFF         ]
-"78
-[p x CPB  =  OFF         ]
-"79
-[p x CPD  =  OFF         ]
-"82
-[p x WRT0  =  OFF        ]
-"83
-[p x WRT1  =  OFF        ]
-"84
-[p x WRT2  =  OFF        ]
-"85
-[p x WRT3  =  OFF        ]
-"86
-[p x WRT4  =  OFF        ]
-"87
-[p x WRT5  =  OFF        ]
-"88
-[p x WRT6  =  OFF        ]
-"89
-[p x WRT7  =  OFF        ]
-"92
-[p x WRTC  =  OFF        ]
-"93
-[p x WRTB  =  OFF        ]
-"94
-[p x WRTD  =  OFF        ]
-"97
-[p x EBTR0  =  OFF       ]
-"98
-[p x EBTR1  =  OFF       ]
-"99
-[p x EBTR2  =  OFF       ]
-"100
-[p x EBTR3  =  OFF       ]
-"101
-[p x EBTR4  =  OFF       ]
-"102
-[p x EBTR5  =  OFF       ]
-"103
-[p x EBTR6  =  OFF       ]
-"104
-[p x EBTR7  =  OFF       ]
-"107
-[p x EBTRB  =  OFF       ]
-"42 ./main.h
-[; ;./main.h: 42: } FLAGS;
-[v _FLAGS `S501 ~T0 @X0 1 e ]
 "37 ./serial.h
 [; ;./serial.h: 37: unsigned char readSerialValue;
 [v _readSerialValue `uc ~T0 @X0 1 e ]
-"11 ./display.h
-[; ;./display.h: 11: unsigned char ledValue;
-[v _ledValue `uc ~T0 @X0 1 e ]
-[v $root$_service `(v ~T0 @X0 0 e ]
-"18 newmain.c
-[; ;newmain.c: 18: void __attribute__((picinterrupt(("")))) service() {
-[v _service `(v ~T110 @X0 1 ef ]
+"35 ./spi.h
+[; ;./spi.h: 35: unsigned char readSPIValue;
+[v _readSPIValue `uc ~T0 @X0 1 e ]
+"6 button.c
+[; ;button.c: 6: void setButtonIo(void) {
+[v _setButtonIo `(v ~T0 @X0 1 ef ]
 {
-[e :U _service ]
+[e :U _setButtonIo ]
 [f ]
-"19
-[; ;newmain.c: 19:     interruptService();
-[e ( _interruptService ..  ]
-"20
-[; ;newmain.c: 20: }
+"7
+[; ;button.c: 7:     TRISB0 = 1;
+[e = _TRISB0 -> -> 1 `i `b ]
+"8
+[; ;button.c: 8: }
 [e :UE 503 ]
 }
-[v $root$_main `(v ~T0 @X0 0 e ]
-"22
-[; ;newmain.c: 22: void main() {
-[v _main `(v ~T0 @X0 1 ef ]
+"10
+[; ;button.c: 10: void initialiseButton(void) {
+[v _initialiseButton `(v ~T0 @X0 1 ef ]
 {
-[e :U _main ]
+[e :U _initialiseButton ]
 [f ]
-"23
-[; ;newmain.c: 23:     setIo();
-[e ( _setIo ..  ]
-"24
-[; ;newmain.c: 24:     setSPIInterrupt();
-[e ( _setSPIInterrupt ..  ]
-"25
-[; ;newmain.c: 25:     setSerialIo();
-[e ( _setSerialIo ..  ]
-"26
-[; ;newmain.c: 26:     setSerial();
-[e ( _setSerial ..  ]
-"27
-[; ;newmain.c: 27:     setupDisplayIo();
-[e ( _setupDisplayIo ..  ]
-"28
-[; ;newmain.c: 28:     initialiseButton();
-[e ( _initialiseButton ..  ]
-"29
-[; ;newmain.c: 29:     setButtonInterrput();
-[e ( _setButtonInterrput ..  ]
-"30
-[; ;newmain.c: 30:     setButtonIo();
-[e ( _setButtonIo ..  ]
-"31
-[; ;newmain.c: 31:     setInterrupts();
-[e ( _setInterrupts ..  ]
-"32
-[; ;newmain.c: 32:     spiInit(SPI_MASTER_OSC_DIV4, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
-[e ( _spiInit (4 , , , . `E4544 0 . `E4552 0 . `E4556 1 . `E4560 0 ]
-[v F4619 `Cuc ~T0 @X0 -> 80 `i s ]
-[i F4619
-:U ..
-"35
-[; ;newmain.c: 35:     const unsigned char test[80] = "sssdddd";
--> 115 `c
--> 115 `c
--> 115 `c
--> 100 `c
--> 100 `c
--> 100 `c
--> 100 `c
--> 0 `c
-..
-]
-[v _test `Cuc ~T0 @X0 -> 80 `i a ]
-[e = _test F4619 ]
-"37
-[; ;newmain.c: 37:     while (1) {
+"11
+[; ;button.c: 11:     FLAGS.bits.PUSHED_BUTTON = 0;
+[e = . . _FLAGS 1 4 -> -> 0 `i `uc ]
+"12
+[; ;button.c: 12:     FLAGS.bits.PUSH_REQUEST_SERVICED = 1;
+[e = . . _FLAGS 1 3 -> -> 1 `i `uc ]
+"13
+[; ;button.c: 13: }
+[e :UE 504 ]
+}
+"15
+[; ;button.c: 15: void buttonCallback(void) {
+[v _buttonCallback `(v ~T0 @X0 1 ef ]
+{
+[e :U _buttonCallback ]
+[f ]
+"16
+[; ;button.c: 16:     if (FLAGS.bits.PUSH_REQUEST_SERVICED == 0 && FLAGS.bits.PUSHED_BUTTON == 1) {
+[e $ ! && == -> . . _FLAGS 1 3 `i -> 0 `i == -> . . _FLAGS 1 4 `i -> 1 `i 506  ]
+{
+"18
+[; ;button.c: 18:         testSpiSend();
+[e ( _testSpiSend ..  ]
+"19
+[; ;button.c: 19:     }
+}
 [e :U 506 ]
+"20
+[; ;button.c: 20:     FLAGS.bits.PUSHED_BUTTON = 0;
+[e = . . _FLAGS 1 4 -> -> 0 `i `uc ]
+"21
+[; ;button.c: 21: }
+[e :UE 505 ]
+}
+"23
+[; ;button.c: 23: void buttonHandle(void) {
+[v _buttonHandle `(v ~T0 @X0 1 ef ]
 {
-"38
-[; ;newmain.c: 38:         if (FLAGS.bits.SPI_READ_REQUEST == 1) {
-[e $ ! == -> . . _FLAGS 1 1 `i -> 1 `i 508  ]
+[e :U _buttonHandle ]
+[f ]
+"24
+[; ;button.c: 24:     if (FLAGS.bits.PUSH_REQUEST_SERVICED == 1 && FLAGS.bits.PUSHED_BUTTON == 0) {
+[e $ ! && == -> . . _FLAGS 1 3 `i -> 1 `i == -> . . _FLAGS 1 4 `i -> 0 `i 508  ]
 {
-"39
-[; ;newmain.c: 39:             SPICallback();
-[e ( _SPICallback ..  ]
-"40
-[; ;newmain.c: 40:             FLAGS.bits.SPI_READ_REQUEST = 0;
-[e = . . _FLAGS 1 1 -> -> 0 `i `uc ]
-"41
-[; ;newmain.c: 41:         }
+"25
+[; ;button.c: 25:         FLAGS.bits.PUSHED_BUTTON = 1;
+[e = . . _FLAGS 1 4 -> -> 1 `i `uc ]
+"26
+[; ;button.c: 26:     }
 }
 [e :U 508 ]
-"42
-[; ;newmain.c: 42:         if (FLAGS.bits.DISPLAY_READING) {
-[e $ ! != -> . . _FLAGS 1 5 `i -> 0 `i 509  ]
-{
-"43
-[; ;newmain.c: 43:             displayRequestHandle();
-[e ( _displayRequestHandle ..  ]
-"44
-[; ;newmain.c: 44:             FLAGS.bits.DISPLAY_READING = 0;
-[e = . . _FLAGS 1 5 -> -> 0 `i `uc ]
-"45
-[; ;newmain.c: 45:         }
+"27
+[; ;button.c: 27: }
+[e :UE 507 ]
 }
-[e :U 509 ]
-"46
-[; ;newmain.c: 46:         if (FLAGS.bits.UART_RECEIVED) {
-[e $ ! != -> . . _FLAGS 1 2 `i -> 0 `i 510  ]
+"29
+[; ;button.c: 29: void buttonDebounce(void) {
+[v _buttonDebounce `(v ~T0 @X0 1 ef ]
 {
-"47
-[; ;newmain.c: 47:             serialCallback();
-[e ( _serialCallback ..  ]
-"48
-[; ;newmain.c: 48:             FLAGS.bits.UART_RECEIVED = 0;
-[e = . . _FLAGS 1 2 -> -> 0 `i `uc ]
-"49
-[; ;newmain.c: 49:         }
+[e :U _buttonDebounce ]
+[f ]
+"30
+[; ;button.c: 30:     static int counter = 255;
+[v F4610 `i ~T0 @X0 1 s counter ]
+[i F4610
+-> 255 `i
+]
+"31
+[; ;button.c: 31:     counter--;
+[e -- F4610 -> 1 `i ]
+"32
+[; ;button.c: 32:     if (counter == 0) {
+[e $ ! == F4610 -> 0 `i 510  ]
+{
+"33
+[; ;button.c: 33:         FLAGS.bits.PUSH_REQUEST_SERVICED = 1;
+[e = . . _FLAGS 1 3 -> -> 1 `i `uc ]
+"34
+[; ;button.c: 34:         counter = 255;
+[e = F4610 -> 255 `i ]
+"35
+[; ;button.c: 35:     }
 }
 [e :U 510 ]
-"50
-[; ;newmain.c: 50:         if (FLAGS.bits.PUSHED_BUTTON) {
-[e $ ! != -> . . _FLAGS 1 4 `i -> 0 `i 511  ]
-{
-"51
-[; ;newmain.c: 51:             FLAGS.bits.PUSH_REQUEST_SERVICED = 0;
-[e = . . _FLAGS 1 3 -> -> 0 `i `uc ]
-"52
-[; ;newmain.c: 52:             buttonCallback();
-[e ( _buttonCallback ..  ]
-"53
-[; ;newmain.c: 53:         }
-}
-[e :U 511 ]
-"54
-[; ;newmain.c: 54:         if (FLAGS.bits.PUSH_REQUEST_SERVICED == 0) {
-[e $ ! == -> . . _FLAGS 1 3 `i -> 0 `i 512  ]
-{
-"55
-[; ;newmain.c: 55:             buttonDebounce();
-[e ( _buttonDebounce ..  ]
-"56
-[; ;newmain.c: 56:         }
-}
-[e :U 512 ]
-"57
-[; ;newmain.c: 57:     }
-}
-[e :U 505 ]
-[e $U 506  ]
-[e :U 507 ]
-"58
-[; ;newmain.c: 58:                buttonCallback();
-[e ( _buttonCallback ..  ]
-"60
-[; ;newmain.c: 60: }
-[e :UE 504 ]
+"36
+[; ;button.c: 36: }
+[e :UE 509 ]
 }

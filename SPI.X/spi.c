@@ -52,7 +52,7 @@ unsigned spiDataReady(void) //Check whether the data is ready to read
 
 char spiRead(void) //REad the received data
 {
-    spiReceiveWait(); // wait until the all bits receive
+    spiReceiveWait(); // wait until the all bits received
     return (SSP1BUF); // read the received data from the buffer
 }
 
@@ -68,5 +68,5 @@ void SPICallback(void) {
 }
 
 void testSpiSend(void) {
-    spiWrite(0x88);
+    spiWrite(0x9C);
 }
